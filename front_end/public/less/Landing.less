@@ -1,0 +1,99 @@
+.landing {
+  background: #f2f2f2;
+}
+.main-content{
+  position: absolute;
+  top:56px;
+  right:0;
+  left:50px;
+  display: block;
+  overflow: hidden;
+}
+.side-bar {
+  height: 100vh;
+}
+.top-notification {
+  margin:0;
+}
+.hero {
+  &-section{
+    & {
+      position: relative;
+      background-color: #909090;
+      background-image: url(/public/img/hero.jpg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width:100%;
+      height: 400px;
+      color: #fff;
+    }
+    h1,h2,h3,h4,h5 {
+      font-weight: 600;
+      text-shadow: 2px 2px rgba(0,0,0,.4);
+    }
+    p {
+      font-size: 1.5em;
+      text-shadow: 2px 2px rgba(0,0,0,.4);
+    }
+    .hero-content {
+      // border-radius: 10px;
+      background: fadeout(#000, 70%);
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      padding:15px;
+      margin:auto;
+      max-width: 600px;
+      width:100%;
+      input {
+        height: 3em;
+        border: none;
+      }
+      .input-group {
+        border: 2px solid #5cd65c;
+        border-radius: 5px;
+        &-addon {
+          background: rgb(92, 214, 92);
+          border: none;
+          .fa{
+            font-size: 1.5em;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+.categories {
+  .category {
+    margin-bottom: 30px;
+    &-card {
+      word-wrap: break-word;
+      word-break: break-all;
+      height: 100%;
+      border: solid 2px;
+      // border-radius: 10px;
+      padding: 15px;
+      background-color: #fff;
+      -webkit-box-shadow: 0px 1px 1px 0px rgba(163,163,163,0.4);
+      -moz-box-shadow: 0px 1px 1px 0px rgba(163,163,163,0.4);
+      box-shadow: 0px 1px 1px 0px rgba(163,163,163,0.4);
+      .icon {
+        text-align: center;
+        font-size: 5em;
+        text-shadow: 1px 1px #fff,
+          2px 2px rgba(0,0,0, 0.2)
+      }
+      .actions {
+        padding: 10px 0;
+      }
+    }
+  }
+  position: relative;
+  top: -30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
