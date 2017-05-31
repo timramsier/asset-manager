@@ -2,14 +2,15 @@ const express = require('express')
 const app = express()
 var generateData = require('./js/generateData')
 var data = {}
+var port = 3000
 
 data.assets = require('./data/assets')
 data.siteConfig = require('./data/siteConfig')
 
-data.assets[0].models = data.assets[0].models.concat(generateData.assets(30))
-data.assets[1].models = data.assets[1].models.concat(generateData.assets(30))
-data.assets[2].models = data.assets[2].models.concat(generateData.assets(30))
-data.assets[3].models = data.assets[3].models.concat(generateData.assets(30))
+data.assets[0].models = data.assets[0].models.concat(generateData.asset(30))
+data.assets[1].models = data.assets[1].models.concat(generateData.asset(30))
+data.assets[2].models = data.assets[2].models.concat(generateData.asset(30))
+data.assets[3].models = data.assets[3].models.concat(generateData.asset(30))
 
 // Allow CORS
 app.use(function (req, res, next) {
@@ -72,6 +73,6 @@ app.get('/api/mock/:dataTarget/:productType', (req, res) => {
   }
 })
 
-app.listen(3000, () => {
-  console.log('Test API Server running')
+app.listen(port, () => {
+  console.log(`Test API Server running running on ${port}`)
 })

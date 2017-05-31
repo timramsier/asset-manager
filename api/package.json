@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "mongoose": "^4.10.4",
+    "shortid": "^2.2.8"
   },
   "devDependencies": {
     "faker": "^4.1.0"
