@@ -77,7 +77,7 @@ const ShowProducts = React.createClass({
           <div className='container-fluid'>
             <div className='row is-table-row'>
               <div className='col-sm-9 center'>
-                <div className='container'>
+                <div className='container width-override'>
                   <div className='row type-header'>
                     {locationPath}
                     <h1>{productType}</h1>
