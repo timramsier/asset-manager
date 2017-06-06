@@ -12,7 +12,7 @@ const database = {
 mongoose.connect(`mongodb://${database.defaults.host}/${database.defaults.name}`)
 var dbConnection = mongoose.connection
 dbConnection.on('error', console.error.bind(console, 'MongoDB connection error:'))
-// require('./seed')
+// require('./js/seed')
 
 const app = express()
 // var data = {}
