@@ -6,22 +6,14 @@ const { string, shape, array, arrayOf } = React.PropTypes
 
 const AssetCard = React.createClass({
   propTypes: {
-    category: shape({
-      id: string,
-      name: string,
-      label: string,
-      faIcon: string,
-      color: string,
-      api: string,
-      fallbackImage: string
-    }),
     model: shape({
-      id: string,
+      _id: string,
       vendor: string,
       name: string,
       version: string,
-      bgImage: string,
+      image: string,
       description: string,
+      category: string,
       assets: array,
       specs: arrayOf(shape({
         key: string,
@@ -77,7 +69,7 @@ const AssetCard = React.createClass({
         duration: 400
       }
     }
-    const { model, category } = this.props
+    const { model } = this.props
     let active
     if (model.active) {
       active = {
@@ -92,18 +84,18 @@ const AssetCard = React.createClass({
     }
     let thumbnailImage,
       thumbnailClass
-    if (model.bgImage) {
-      thumbnailImage = model.bgImage
+    if (model.image) {
+      thumbnailImage = model.image
       thumbnailClass = 'with-image'
     } else {
-      thumbnailImage = category.fallbackImage
+      thumbnailImage = model._parent.config.fallbackImage
       thumbnailClass = 'no-image'
     }
     return (
       <Col xs={6} sm={6} md={4} lg={3} className='asset'>
         <a
           className='asset-card'
-          href={`/show/${category.name}/${model.id}`}
+          href={`/show/${model._parent.label}/${model._id}`}
           {...hoverEffect}
           >
           <VelocityComponent {...animationPropsAsset}>
@@ -130,8 +122,8 @@ const AssetCard = React.createClass({
                   <span style={{backgroundColor: active.color}} className='tag'>
                     <p>{active.text}</p>
                   </span>
-                  <span style={{backgroundColor: category.color}} className='tag'>
-                    <p>{category.name}</p>
+                  <span style={{backgroundColor: model._parent.config.color}} className='tag'>
+                    <p>{model._parent.name}</p>
                   </span>
                 </section>
                 <hr />
@@ -146,7 +138,7 @@ const AssetCard = React.createClass({
                     <tbody>
                       {model.specs.map((spec) => {
                         return (
-                          <tr key={`spec_${spec.id}_${spec.key}`}>
+                          <tr key={`spec_${spec._id}_${spec.key}`}>
                             <td>{spec.key}:</td>
                             <td>{spec.value}</td>
                           </tr>

@@ -17,11 +17,12 @@ const LeftNavigation = React.createClass({
             <span className='line lower-line' />
           </span>
           <ul className='nav-list'>
-            <MenuButton bgColor='#666' linkTo='/show/' label='All' faIcon='home' />
+            <MenuButton bgColor='#666' linkTo='/show/all' label='All' faIcon='home' />
             {categories.map((category) => {
-              const {name, label, faIcon, color, api, id} = category
+              const {name, label, _id} = category
+              const {color, faIcon, api} = category.config
               return (
-                <MenuButton key={`button_${id}`} bgColor={color} linkTo={`/${api}/${name}`} label={label} faIcon={faIcon} />
+                <MenuButton key={`button_${_id}`} bgColor={color} linkTo={`/${api}/${name}`} label={label} faIcon={faIcon} />
               )
             })}
             {menuOptions.map((option) => {

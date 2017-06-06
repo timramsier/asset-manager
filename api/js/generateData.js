@@ -1,5 +1,8 @@
 const faker = require('faker')
-
+const imageCategories = [
+  'abstract', 'animals', 'business', 'cats', 'city', 'food', 'nightlife',
+  'fashion', 'people', 'nature', 'sports', 'technics', 'transport'
+]
 const _coinFlip = () => {
   return (Math.floor(Math.random() * 2) === 0)
 }
@@ -18,6 +21,7 @@ const _asset = (count) => {
       version: faker.company.catchPhrase(),
       description: faker.lorem.sentence(),
       active: _coinFlip(),
+      image: faker.image.technics,
       specs: [
         {
           id: _guid(),
@@ -63,31 +67,32 @@ const _assetForDb = (count) => {
       version: faker.company.catchPhrase(),
       description: faker.lorem.sentence(),
       active: _coinFlip(),
-      // specs: [
-      //   {
-      //     key: faker.lorem.word(),
-      //     value: faker.lorem.word()
-      //   },
-      //   {
-      //     key: faker.lorem.word(),
-      //     value: faker.lorem.word()
-      //   },
-      //   {
-      //     key: faker.lorem.word(),
-      //     value: faker.lorem.word()
-      //   },
-      //   {
-      //     key: faker.lorem.word(),
-      //     value: faker.lorem.word()
-      //   },
-      //   {
-      //     key: faker.lorem.word(),
-      //     value: faker.lorem.word()
-      //   }
-      // ],
-      // assets: [
-      //   {}
-      // ]
+      image: `http://lorempixel.com/640/480/${imageCategories[Math.round(Math.random() * 12)]}/${Math.ceil(Math.random() * 10)}/`,
+      specs: [
+        {
+          key: faker.lorem.word(),
+          value: faker.lorem.word()
+        },
+        {
+          key: faker.lorem.word(),
+          value: faker.lorem.word()
+        },
+        {
+          key: faker.lorem.word(),
+          value: faker.lorem.word()
+        },
+        {
+          key: faker.lorem.word(),
+          value: faker.lorem.word()
+        },
+        {
+          key: faker.lorem.word(),
+          value: faker.lorem.word()
+        }
+      ],
+      assets: [
+        {}
+      ]
     }
     returnData.push(newData)
   }
