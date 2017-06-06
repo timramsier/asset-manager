@@ -6,20 +6,12 @@ const { string, shape, arrayOf, array } = React.PropTypes
 
 const AssetGrid = React.createClass({
   propTypes: {
-    category: shape({
-      id: string,
-      name: string,
-      label: string,
-      faIcon: string,
-      color: string,
-      api: string
-    }),
     models: arrayOf(shape({
-      id: string,
+      _id: string,
       vendor: string,
       name: string,
       version: string,
-      bgImage: string,
+      image: string,
       description: string,
       assets: array
     }))
@@ -31,8 +23,7 @@ const AssetGrid = React.createClass({
           return (
             <AssetCard
               model={model}
-              category={this.props.category}
-              key={`model_${model.id}`}
+              key={`model_${model._id}`}
             />
           )
         })}

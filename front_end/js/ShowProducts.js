@@ -16,7 +16,6 @@ const ShowProducts = React.createClass({
   getInitialState () {
     return ({
       models: [],
-      category: {},
       view: 'all'
     })
   },
@@ -25,53 +24,43 @@ const ShowProducts = React.createClass({
     Object.assign(newState, {view})
     this.setState(newState)
     this.updateAssetData()
-    console.log(this.state)
   },
   updateAssetData () {
-    let categoryData = () => {
-      return new Promise((resolve, reject) => {
-        const filterdData = this.props.categories.filter((search) => {
-          return search.name === this.props.params.productType
-        })
-        let newState = this.state
-        Object.assign(newState, {category: filterdData[0]})
-        this.setState(newState)
-        resolve(filterdData[0])
-      })
-    }
     let queryString
-    let assetData = (categoryData) => {
-      return new Promise((resolve, reject) => {
-        switch (this.state.view) {
-          case 'active':
-            queryString = `?active=true`
-            break
-          case 'inactive':
-            queryString = `?active=false`
-            break
-          default:
-            queryString = ''
-            break
-        }
-        if (categoryData) {
-          axios.get(`
-            http://localhost:3000/api/mock/assets/${categoryData.name}${queryString}`)
-            .then((response) => {
-              resolve(response.data)
-            })
-        }
-      })
+    let category = this.props.params.productType.toLowerCase()
+
+    switch (this.state.view) {
+      case 'active':
+        queryString = `?active=true`
+        break
+      case 'inactive':
+        queryString = `?active=false`
+        break
+      default:
+        queryString = ''
+        break
     }
-    categoryData().then(assetData).then((result) => {
-      if (result) {
-        let newState = this.state
-        Object.assign(newState, {models: result[0].models})
-        this.setState(newState)
-      }
-    })
+
+    let url = `http://localhost:3000/api/alpha/assets/${category}${queryString}`
+    console.log(url)
+    axios.get(url)
+      .then((response) => {
+        this.updateModels(response.data)
+      })
+  },
+  updateModels (models) {
+    if (this._isMounted) {
+      let newState = this.state
+      Object.assign(newState, {models: models})
+      this.setState(newState)
+    }
   },
   componentDidMount () {
+    this._isMounted = true
     this.updateAssetData()
+  },
+  componentWillUnmount () {
+    this._isMounted = false
   },
   render () {
     const { productType } = this.props.params
@@ -82,7 +71,6 @@ const ShowProducts = React.createClass({
         <a href={`/show/${productType}`}>{productType}</a>
       </span>
     )
-    const { category } = this.state
     return (
       <div className='show-products'>
         <div className='content'>
@@ -114,7 +102,7 @@ const ShowProducts = React.createClass({
                     </nav>
                   </div>
                 </div>
-                <AssetGrid category={category} models={this.state.models} />
+                <AssetGrid models={this.state.models} />
               </div>
               <div className='col-sm-3 side-bar'>
                 column

@@ -5,6 +5,7 @@ import axios from 'axios'
 import Landing from './Landing'
 import ShowProducts from './ShowProducts'
 import LeftNavigation from './LeftNavigation'
+import defaultLeftNavButtons from '../config/defaultLeftNavButtons'
 import TopNavigation from './TopNavigation'
 import '../public/less/main.less'
 
@@ -21,25 +22,26 @@ const App = React.createClass({
   },
   componentDidMount () {
     let componentConfig = new Promise((resolve, reject) => {
-      axios.get('http://localhost:3000/api/mock/siteConfig').then((response) => {
+      axios.get('http://localhost:3000/api/alpha/category').then((response) => {
         resolve(response)
       })
     })
     componentConfig.then((result) => {
-      const { categories, menuOptions } = result.data.config
+      const categories = result.data
       const newState = this.state
       Object.assign(newState.categories, categories)
-      Object.assign(newState.menuOptions, menuOptions)
+      // Object.assign(newState.menuOptions, menuOptions)
       this.setState(newState)
     })
   },
   render () {
-    const { categories, menuOptions, alertMessage } = this.state
+    const { categories, alertMessage } = this.state
+    const { adminOptions } = defaultLeftNavButtons.buttons
     return (
       <BrowserRouter>
         <div className='app'>
           <TopNavigation />
-          <LeftNavigation categories={categories} menuOptions={menuOptions} />
+          <LeftNavigation categories={categories} menuOptions={adminOptions} />
           <div className='main-content'>
             <Match exactly pattern='/' component={() => {
               return <Landing categories={categories} alertMessage={alertMessage} />
@@ -48,10 +50,6 @@ const App = React.createClass({
               component={(props) => {
                 return <ShowProducts categories={categories} {...props} />
               }} />
-            {/* <Match pattern='/show/'
-              component={(props) => {
-                return <ShowProducts categories={categories} {...props} propTypes='all' />
-              }} /> */}
           </div>
         </div>
       </BrowserRouter>

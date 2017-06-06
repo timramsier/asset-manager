@@ -1,15 +1,22 @@
 const express = require('express')
+const mongoose = require('mongoose')
+const api = require('./routes/api.router')
+
+// database config
+const database = {
+  defaults: {
+    name: 'test_assets',
+    host: 'localhost'
+  }
+}
+mongoose.connect(`mongodb://${database.defaults.host}/${database.defaults.name}`)
+var dbConnection = mongoose.connection
+dbConnection.on('error', console.error.bind(console, 'MongoDB connection error:'))
+// require('./seed')
+
 const app = express()
-var generateData = require('./js/generateData')
-var data = {}
-
-data.assets = require('./data/assets')
-data.siteConfig = require('./data/siteConfig')
-
-data.assets[0].models = data.assets[0].models.concat(generateData.assets(30))
-data.assets[1].models = data.assets[1].models.concat(generateData.assets(30))
-data.assets[2].models = data.assets[2].models.concat(generateData.assets(30))
-data.assets[3].models = data.assets[3].models.concat(generateData.assets(30))
+// var data = {}
+var port = 3000
 
 // Allow CORS
 app.use(function (req, res, next) {
@@ -35,43 +42,8 @@ app.get('/', (req, res) => {
   res.send(landing)
 })
 
-app.get('/api/mock/:dataTarget', (req, res) => {
-  res.send(JSON.stringify(data[req.params.dataTarget]))
-})
-app.get('/api/mock/:dataTarget/:productType', (req, res) => {
-  const filteredData = data[req.params.dataTarget].filter((data) => {
-    return (data.name === req.params.productType)
-  })
-  if (req.query.active) {
-    var active
-    if (req.query.active === 'true') {
-      active = true
-    } else {
-      active = false
-    }
-    if (filteredData) {
-      res.send(JSON.stringify([
-        {
-          name: filteredData[0].name,
-          description: filteredData[0].description,
-          categoryId: filteredData[0].categoryId,
-          models: filteredData[0].models.filter((item) => {
-            return item.active === active
-          })
-        }
-      ]))
-    } else {
-      res.send('[{}]')
-    }
-  } else {
-    if (filteredData) {
-      res.send(JSON.stringify(filteredData))
-    } else {
-      res.send('[{}]')
-    }
-  }
-})
+app.use('/api/alpha/', api)
 
-app.listen(3000, () => {
-  console.log('Test API Server running')
+app.listen(port, () => {
+  console.log(`Test API Server running running on ${port}`)
 })

@@ -5,12 +5,14 @@
   "main": "api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon api.js"
+    "start": "echo 'Make sure mongod is running' && nodemon api.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "mongoose": "^4.10.4",
+    "shortid": "^2.2.8"
   },
   "devDependencies": {
     "faker": "^4.1.0"

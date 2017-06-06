@@ -11,7 +11,7 @@ const TopNavigation = React.createClass({
             <Navbar.Brand>
               <a className='fill' href='/'>
                 <img className='img-responsive' src='/public/img/barcode_dark.png' />
-                <span className='brand-text'>Asset Manager</span>
+                <span className='brand-text'>stockbase</span>
               </a>
             </Navbar.Brand>
           </Navbar.Header>
