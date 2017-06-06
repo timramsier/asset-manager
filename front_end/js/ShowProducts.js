@@ -3,6 +3,7 @@ import FontAwesome from 'react-fontawesome'
 import NavItem from './NavItem'
 import axios from 'axios'
 import AssetGrid from './AssetGrid'
+import AssetSearch from './AssetSearch'
 
 const { string, shape, array } = React.PropTypes
 
@@ -17,8 +18,15 @@ const ShowProducts = React.createClass({
     return ({
       models: [],
       view: 'all',
-      headerAccentColor: 'rgb(102, 102, 102)'
+      headerAccentColor: 'rgb(102, 102, 102)',
+      searchTerm: ''
     })
+  },
+  setSearchTerm (searchTerm) {
+    let newState = this.state
+    Object.assign(newState, {searchTerm})
+    this.setState(newState)
+    // this.updateAssetData()
   },
   setView (view) {
     let newState = this.state
@@ -81,11 +89,12 @@ const ShowProducts = React.createClass({
   },
   render () {
     const { productType } = this.props.params
+    const categoryName = productType[0].toUpperCase() + productType.slice(1)
     const locationPath = (
       <span className='location-path'>
         <a href='/'><FontAwesome className='fa-fw path-icon' name='home' /></a>
         {' '}/{' '}
-        <a href={`/show/${productType}`}>{productType}</a>
+        <a href={`/show/${productType}`}>{categoryName}</a>
       </span>
     )
     return (
@@ -95,9 +104,10 @@ const ShowProducts = React.createClass({
             <div className='row is-table-row'>
               <div className='col-sm-9 center'>
                 <div className='container width-override'>
-                  <div className='row type-header' style={{borderColor: this.state.headerAccentColor}}>
+                  <div className='row type-header'
+                    style={{borderColor: this.state.headerAccentColor}}>
                     {locationPath}
-                    <h1>{productType}</h1>
+                    <h1>{categoryName}</h1>
                     <nav className='product-nav'>
                       <ul>
                         <NavItem
@@ -122,6 +132,8 @@ const ShowProducts = React.createClass({
                     </nav>
                   </div>
                 </div>
+                <AssetSearch category={categoryName}
+                  setSearchTerm={this.setSearchTerm} />
                 <AssetGrid models={this.state.models} />
               </div>
               <div className='col-sm-3 side-bar'>
