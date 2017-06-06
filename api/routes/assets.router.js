@@ -31,14 +31,22 @@ router.get('/:productType', (req, res) => {
     }
     search.active = active
   }
+  var score = {}
+  var sort = {}
+  if (req.query.search) {
+    search['$text'] = {$search: decodeURIComponent(req.query.search)}
+    score = { score: { $meta: 'textScore' } }
+    sort = { score: { $meta: 'textScore' } }
+  }
+
   db.Category.find({ label: req.params.productType }).exec((err, result) => {
     if (err) res.send(err)
     if (req.params.productType.toLowerCase() !== 'all') {
       search._parent = result[0]._id
     }
-
     db.Model
-    .find(search)
+    .find(search, score)
+    .sort(sort)
     .populate('_parent', 'name description label config _shortId')
     .exec((err, result) => {
       if (err) res.send(err)
