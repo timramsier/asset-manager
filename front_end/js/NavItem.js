@@ -7,7 +7,8 @@ const NavItem = React.createClass({
   propTypes: {
     label: string,
     setView: func,
-    active: bool
+    active: bool,
+    highlightColor: string
   },
   getInitialState () {
     return ({
@@ -50,7 +51,10 @@ const NavItem = React.createClass({
         <a href='#' title={label} className={activeClass}>
           <span className='nav-label'>{label}</span>
           <VelocityComponent {...animationProps} >
-            <span className='nav-highlight' />
+            <span
+              className='nav-highlight'
+              style={{background: this.props.highlightColor}}
+            />
           </VelocityComponent>
         </a>
       </li>

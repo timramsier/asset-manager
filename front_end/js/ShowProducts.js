@@ -16,7 +16,8 @@ const ShowProducts = React.createClass({
   getInitialState () {
     return ({
       models: [],
-      view: 'all'
+      view: 'all',
+      headerAccentColor: 'rgb(102, 102, 102)'
     })
   },
   setView (view) {
@@ -42,11 +43,27 @@ const ShowProducts = React.createClass({
     }
 
     let url = `http://localhost:3000/api/alpha/assets/${category}${queryString}`
-    console.log(url)
+
     axios.get(url)
       .then((response) => {
         this.updateModels(response.data)
+        this.updateHeaderAccentColor()
       })
+  },
+  updateHeaderAccentColor () {
+    let color
+    if (this.props.params.productType !== 'all') {
+      color = this.props.categories.filter((category) => {
+        return category.label === this.props.params.productType.toLowerCase()
+      })[0].config.color
+    } else {
+      color = 'rgb(102, 102, 102)'
+    }
+    if (this._isMounted) {
+      let newState = this.state
+      Object.assign(newState, {headerAccentColor: color})
+      this.setState(newState)
+    }
   },
   updateModels (models) {
     if (this._isMounted) {
@@ -78,7 +95,7 @@ const ShowProducts = React.createClass({
             <div className='row is-table-row'>
               <div className='col-sm-9 center'>
                 <div className='container width-override'>
-                  <div className='row type-header'>
+                  <div className='row type-header' style={{borderColor: this.state.headerAccentColor}}>
                     {locationPath}
                     <h1>{productType}</h1>
                     <nav className='product-nav'>
@@ -87,16 +104,19 @@ const ShowProducts = React.createClass({
                           setView={this.setView}
                           label='All'
                           active={this.state.view === 'all'}
+                          highlightColor={this.state.headerAccentColor}
                         />
                         <NavItem
                           setView={this.setView}
                           label='Active'
                           active={this.state.view === 'active'}
+                          highlightColor={this.state.headerAccentColor}
                         />
                         <NavItem
                           setView={this.setView}
                           label='Inactive'
                           active={this.state.view === 'inactive'}
+                          highlightColor={this.state.headerAccentColor}
                         />
                       </ul>
                     </nav>
