@@ -26,7 +26,7 @@ const ShowProducts = React.createClass({
     let newState = this.state
     Object.assign(newState, {searchTerm})
     this.setState(newState)
-    // this.updateAssetData()
+    this.updateAssetData()
   },
   setView (view) {
     let newState = this.state
@@ -49,9 +49,18 @@ const ShowProducts = React.createClass({
         queryString = ''
         break
     }
-
-    let url = `http://localhost:3000/api/alpha/assets/${category}${queryString}`
-
+    let searchString = ''
+    if (this.state.searchTerm.length > 0) {
+      let pre
+      if (queryString.length > 0) {
+        pre = '&'
+      } else {
+        pre = '?'
+      }
+      searchString = `${pre}search=${encodeURIComponent(this.state.searchTerm)}`
+    }
+    let url = `http://localhost:3000/api/alpha/assets/${category}${queryString}${searchString}`
+    console.log(url)
     axios.get(url)
       .then((response) => {
         this.updateModels(response.data)
