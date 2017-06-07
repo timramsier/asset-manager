@@ -7,6 +7,7 @@ import ShowProducts from './ShowProducts'
 import LeftNavigation from './LeftNavigation'
 import defaultLeftNavButtons from '../config/defaultLeftNavButtons'
 import TopNavigation from './TopNavigation'
+import apiSettings from '../config/apiSettings'
 import '../public/less/main.less'
 
 const App = React.createClass({
@@ -22,7 +23,8 @@ const App = React.createClass({
   },
   componentDidMount () {
     let componentConfig = new Promise((resolve, reject) => {
-      axios.get('http://localhost:3000/api/alpha/category').then((response) => {
+      let url = `http://@localhost:3000/api/alpha/category`
+      axios.get(url, apiSettings.auth).then((response) => {
         resolve(response)
       })
     })
@@ -30,7 +32,6 @@ const App = React.createClass({
       const categories = result.data
       const newState = this.state
       Object.assign(newState.categories, categories)
-      // Object.assign(newState.menuOptions, menuOptions)
       this.setState(newState)
     })
   },

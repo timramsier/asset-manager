@@ -4,6 +4,7 @@ import NavItem from './NavItem'
 import axios from 'axios'
 import AssetGrid from './AssetGrid'
 import AssetSearch from './AssetSearch'
+import apiSettings from '../config/apiSettings'
 
 const { string, shape, array } = React.PropTypes
 
@@ -59,9 +60,8 @@ const ShowProducts = React.createClass({
       }
       searchString = `${pre}search=${encodeURIComponent(this.state.searchTerm)}`
     }
-    let url = `http://localhost:3000/api/alpha/assets/${category}${queryString}${searchString}`
-    console.log(url)
-    axios.get(url)
+    let url = `http://${apiSettings.key}:x@localhost:3000/api/alpha/assets/${category}${queryString}${searchString}`
+    axios.get(url, apiSettings.auth)
       .then((response) => {
         this.updateModels(response.data)
         this.updateHeaderAccentColor()
