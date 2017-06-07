@@ -5,7 +5,6 @@ const logger = require('morgan')
 const passport = require('passport')
 const api = require('./routes/api.router')
 
-
 // database config
 const database = {
   defaults: {

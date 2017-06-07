@@ -3,7 +3,6 @@
     -webkit-box-shadow: 1px 0px 1px 0px rgba(163,163,163,0.4);
     -moz-box-shadow: 1px 0px 1px 0px rgba(163,163,163,0.4);
     box-shadow: 1px 0px 1px 0px rgba(163,163,163,0.4);
-    width: 50px;
     position: fixed;
     z-index: 100;
     display: inline-block;
@@ -31,9 +30,13 @@
   }
   li {
     a {
+      .fa {
+        position: relative;
+        z-index: 2;
+      }
       text-decoration: none;
       color:inherit;
-      display:inline-block;
+      display:block;
     }
   }
 }
@@ -48,7 +51,7 @@ span.menu-toggle {
     width: 15px;
     height: 5px;
     display: inline-block;
-    background-color: white;
+    // background-color: white;
     border-radius: 2px;
 
     position: absolute;
@@ -57,11 +60,9 @@ span.menu-toggle {
     right: 0;
     margin: auto;
     &.upper-line {
-      transform: rotate(45deg);
       top: -8px;
     }
     &.lower-line {
-      transform: rotate(-45deg);
       top: 8px;
     }
   }
