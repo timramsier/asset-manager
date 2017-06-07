@@ -4,14 +4,14 @@ const Schema = mongoose.Schema
 
 const assetSchema = Schema({
   _shortId: {type: String, unique: true, default: shortId.generate},
-  tagId: { type: String, text: true },
-  assignedTo: { type: String, text: true }
+  tagId: String,
+  assignedTo: String
 })
 
 const specSchema = Schema({
   _shortId: {type: String, unique: true, default: shortId.generate},
-  key: { type: String, text: true },
-  value: { type: String, text: true }
+  key: String,
+  value: String
 })
 
 const categorySchema = Schema({
@@ -31,12 +31,12 @@ const categorySchema = Schema({
 const modelSchema = Schema({
   _parent: {type: String, ref: 'Category'},
   _shortId: {type: String, unique: true, default: shortId.generate},
-  category: { type: String, text: true },
-  vendor: { type: String, text: true },
-  name: { type: String, text: true },
-  version: { type: String, text: true },
+  category: String,
+  vendor: String,
+  name: String,
+  version: String,
   image: String,
-  description: { type: String, text: true },
+  description: String,
   active: Boolean,
   specs: [ specSchema ],
   assets: [ assetSchema ]
