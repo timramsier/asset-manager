@@ -8,7 +8,7 @@
     overflow: hidden;
     background: inherit;
     text-align: right;
-    z-index: -1;
+    z-index: 1;
     position: absolute;
     top:0;
     bottom:0;
@@ -26,5 +26,13 @@
     width: 100%;
     display: block;
     background: #2e3137;
+  }
+  &-expanded {
+    & {
+      transition: filter .2s;
+    }
+    &:hover {
+      filter:brightness(85%);
+    }
   }
 }
