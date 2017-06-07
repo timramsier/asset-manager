@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, FormGroup, FormControl, InputGroup, Grid, Col } from 'react-bootstrap'
+import { Row, FormGroup, FormControl, InputGroup, Grid, Col, Button } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 
 const AssetSearch = React.createClass({
@@ -10,9 +10,14 @@ const AssetSearch = React.createClass({
   },
   handleChange (e) {
     this.setState({ value: e.target.value })
-    this.props.setSearchTerm(e.target.value)
   },
   render () {
+    const clickEffect = {
+      onClick: () => {
+        this.setState({value: ''})
+        this.props.setSearchTerm('')
+      }
+    }
     return (
       <Grid className='width-override'>
         <Row className='asset-search'>
@@ -20,7 +25,10 @@ const AssetSearch = React.createClass({
             smOffset={6} sm={6}
             lgOffset={7} lg={5}
             className='search'>
-            <form>
+            <form onSubmit={(event) => {
+              event.preventDefault()
+              this.props.setSearchTerm(this.state.value)
+            }}>
               <FormGroup
                 controlId='formBasicText'
                 >
@@ -30,9 +38,12 @@ const AssetSearch = React.createClass({
                     value={this.state.value}
                     placeholder={`Search ${this.props.category}`}
                     onChange={this.handleChange} />
-                  <InputGroup.Addon>
-                    <FontAwesome name='search' />
-                  </InputGroup.Addon>
+                  <InputGroup.Button>
+                    <Button {...clickEffect}><FontAwesome name='times' /></Button>
+                  </InputGroup.Button>
+                  <InputGroup.Button>
+                    <Button type='submit'><FontAwesome name='search' /></Button>
+                  </InputGroup.Button>
                 </InputGroup>
               </FormGroup>
             </form>

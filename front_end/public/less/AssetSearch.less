@@ -4,6 +4,19 @@
   }
   .search {
     padding:0;
+    input[type='text'] {
+      border-right: 0;
+    }
+    .input-group-btn {
+      button, button:focus, button:active {
+        outline: none;
+        margin-right:0px;
+      }
+      &:last-child button{
+        border-top-right-radius: 5px!important;
+        border-bottom-right-radius: 5px!important;
+      }
+    }
   }
 
 }
