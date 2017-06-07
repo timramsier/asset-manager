@@ -11,6 +11,10 @@ const UserSchema = Schema({
   password: {
     type: String,
     required: true
+  },
+  accessLevel: {
+    type: String,
+    required: true
   }
 })
 
