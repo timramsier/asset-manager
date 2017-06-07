@@ -55,11 +55,11 @@ const Landing = React.createClass({
                   return (
                     <div key={`categorycard_${category.name}`} className='category col-sm-6 col-md-3'>
                       <div className='category-card' style={{
-                        borderColor: category.color,
-                        color: category.color
+                        borderColor: category.config.color,
+                        color: category.config.color
                       }}>
                         <section className='icon'>
-                          <FontAwesome name={category.faIcon} />
+                          <FontAwesome name={category.config.faIcon} />
                         </section>
                         <section className='title'>
                           <h2>{category.name}</h2>
