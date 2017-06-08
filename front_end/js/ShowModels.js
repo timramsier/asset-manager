@@ -2,13 +2,13 @@ import React from 'react'
 import FontAwesome from 'react-fontawesome'
 import NavItem from './NavItem'
 import axios from 'axios'
-import AssetGrid from './AssetGrid'
-import AssetSearch from './AssetSearch'
+import ModelGrid from './ModelGrid'
+import ModelSearch from './ModelSearch'
 import apiSettings from '../config/apiSettings'
 
 const { string, shape, array } = React.PropTypes
 
-const ShowProducts = React.createClass({
+const ShowModels = React.createClass({
   propTypes: {
     params: shape({
       productType: string
@@ -107,7 +107,7 @@ const ShowProducts = React.createClass({
       </span>
     )
     return (
-      <div className='show-products'>
+      <div className='show-models'>
         <div className='content'>
           <div className='container-fluid'>
             <div className='row is-table-row'>
@@ -141,9 +141,9 @@ const ShowProducts = React.createClass({
                     </nav>
                   </div>
                 </div>
-                <AssetSearch category={categoryName}
+                <ModelSearch category={categoryName}
                   setSearchTerm={this.setSearchTerm} />
-                <AssetGrid models={this.state.models} />
+                <ModelGrid models={this.state.models} />
               </div>
               <div className='col-sm-3 side-bar'>
                 column
@@ -156,4 +156,4 @@ const ShowProducts = React.createClass({
   }
 })
 
-export default ShowProducts
+export default ShowModels

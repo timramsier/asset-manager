@@ -2,7 +2,7 @@ import React from 'react'
 import { Row, FormGroup, FormControl, InputGroup, Grid, Col, Button } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 
-const AssetSearch = React.createClass({
+const ModelSearch = React.createClass({
   getInitialState () {
     return {
       value: ''
@@ -54,4 +54,4 @@ const AssetSearch = React.createClass({
   }
 })
 
-export default AssetSearch
+export default ModelSearch

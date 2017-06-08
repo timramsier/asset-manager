@@ -4,7 +4,7 @@ import { VelocityComponent } from 'velocity-react'
 
 const { string, shape, array, arrayOf } = React.PropTypes
 
-const AssetCard = React.createClass({
+const ModelCard = React.createClass({
   propTypes: {
     model: shape({
       _id: string,
@@ -156,4 +156,4 @@ const AssetCard = React.createClass({
   }
 })
 
-export default AssetCard
+export default ModelCard

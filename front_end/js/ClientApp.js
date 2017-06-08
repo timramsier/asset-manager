@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { BrowserRouter, Match } from 'react-router'
 import axios from 'axios'
 import Landing from './Landing'
-import ShowProducts from './ShowProducts'
+import ShowModels from './ShowModels'
 import LeftNavigation from './LeftNavigation'
 import AssetModal from './AssetModal'
 import defaultLeftNavButtons from '../config/defaultLeftNavButtons'
@@ -42,7 +42,7 @@ const App = React.createClass({
     return (
       <BrowserRouter>
         <div className='app'>
-          <AssetModal bgColor='#404040' />
+          {/* <AssetModal bgColor='#404040' /> */}
           <TopNavigation />
           <LeftNavigation categories={categories} menuOptions={adminOptions} />
           <div className='main-content'>
@@ -51,7 +51,7 @@ const App = React.createClass({
             }} />
             <Match pattern='/show/:productType'
               component={(props) => {
-                return <ShowProducts categories={categories} {...props} />
+                return <ShowModels categories={categories} {...props} />
               }} />
           </div>
         </div>

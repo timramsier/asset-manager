@@ -1,10 +1,10 @@
 import React from 'react'
 import { Row } from 'react-bootstrap'
-import AssetCard from './AssetCard'
+import ModelCard from './ModelCard'
 
 const { string, shape, arrayOf, array } = React.PropTypes
 
-const AssetGrid = React.createClass({
+const ModelGrid = React.createClass({
   propTypes: {
     models: arrayOf(shape({
       _id: string,
@@ -21,7 +21,7 @@ const AssetGrid = React.createClass({
       <Row className='row asset-grid'>
         {this.props.models.map((model) => {
           return (
-            <AssetCard
+            <ModelCard
               model={model}
               key={`model_${model._id}`}
             />
@@ -32,4 +32,4 @@ const AssetGrid = React.createClass({
   }
 })
 
-export default AssetGrid
+export default ModelGrid
