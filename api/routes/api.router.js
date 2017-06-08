@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const models = require('./models.router')
 const assets = require('./assets.router')
 const mainController = require('../js/main.controller')
 const userController = require('../auth/controllers/user')
@@ -17,6 +18,7 @@ router.route('/users')
   .post(userController.postUsers)
   .get(userController.getUsers)
 
+router.use('/models', models)
 router.use('/assets', assets)
 
 module.exports = router

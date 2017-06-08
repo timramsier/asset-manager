@@ -4,8 +4,10 @@ const Schema = mongoose.Schema
 
 const assetSchema = Schema({
   _shortId: {type: String, unique: true, default: shortId.generate},
-  tagId: String,
-  assignedTo: String
+  _parent: {type: String, ref: 'Model'},
+  assetTag: String,
+  assignedTo: {type: String, ref: 'User'},
+  status: String
 })
 
 const specSchema = Schema({
