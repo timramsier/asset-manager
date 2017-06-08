@@ -5,6 +5,7 @@ import axios from 'axios'
 import Landing from './Landing'
 import ShowProducts from './ShowProducts'
 import LeftNavigation from './LeftNavigation'
+import AssetModal from './AssetModal'
 import defaultLeftNavButtons from '../config/defaultLeftNavButtons'
 import TopNavigation from './TopNavigation'
 import apiSettings from '../config/apiSettings'
@@ -23,8 +24,8 @@ const App = React.createClass({
   },
   componentDidMount () {
     let componentConfig = new Promise((resolve, reject) => {
-      let url = `http://@localhost:3000/api/alpha/category`
-      axios.get(url, apiSettings.auth).then((response) => {
+      let url = `http://${apiSettings.uri}/category`
+      axios.get(url, {auth: apiSettings.auth}).then((response) => {
         resolve(response)
       })
     })
@@ -41,6 +42,7 @@ const App = React.createClass({
     return (
       <BrowserRouter>
         <div className='app'>
+          <AssetModal bgColor='#404040' />
           <TopNavigation />
           <LeftNavigation categories={categories} menuOptions={adminOptions} />
           <div className='main-content'>
