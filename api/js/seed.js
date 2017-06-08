@@ -1,10 +1,11 @@
 const mongoose = require('mongoose')
 const generateData = require('./generateData')
 const assetsJS = require('../data/assets.js')
-const { modelSchema, categorySchema } = require('./schema')
+const { modelSchema, categorySchema, assetSchema } = require('./schema')
 
 const Category = mongoose.model('Category', categorySchema)
 const Model = mongoose.model('Model', modelSchema)
+const Asset = mongoose.model('Asset', assetSchema)
 
 const verbose = false
 
@@ -62,6 +63,36 @@ const seedData = (success) => {
                   if (verbose) console.log('Successfully created:', model)
                   resolve(true)
                 })
+                for (let i = 0; i < 5; i++) {
+                  let data = {
+                    _parent: model._id,
+                    assetTag: Math.round(Math.random() * 1000000),
+                    assignedTo: '593833420757cb8be83dce82',
+                    status: 'deployed'
+                  }
+                  Asset.create(data, (err, asset) => {
+                    if (err) {
+                      if (verbose) console.log(err)
+                      resolve(false)
+                    } else {
+                      Model.findOneAndUpdate(
+                        { _id: model._id },
+                        { $push: { assets: asset._id } },
+                        (err, result) => {
+                          if (verbose) console.log(err)
+                        }
+                      )
+                      model.save((err) => {
+                        if (err) {
+                          if (verbose) console.log(err)
+                          resolve(false)
+                        }
+                        if (verbose) console.log('Successfully created:', asset)
+                        resolve(true)
+                      })
+                    }
+                  })
+                }
               }
             })
           })
