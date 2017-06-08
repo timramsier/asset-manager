@@ -60,8 +60,8 @@ const ShowProducts = React.createClass({
       }
       searchString = `${pre}search=${encodeURIComponent(this.state.searchTerm)}`
     }
-    let url = `http://${apiSettings.key}:x@localhost:3000/api/alpha/assets/${category}${queryString}${searchString}`
-    axios.get(url, apiSettings.auth)
+    let url = `http://${apiSettings.uri}/models/${category}${queryString}${searchString}`
+    axios.get(url, {auth: apiSettings.auth})
       .then((response) => {
         this.updateModels(response.data)
         this.updateHeaderAccentColor()

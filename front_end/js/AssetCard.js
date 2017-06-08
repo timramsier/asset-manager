@@ -95,7 +95,7 @@ const AssetCard = React.createClass({
       <Col xs={6} sm={6} md={4} lg={3} className='asset'>
         <a
           className='asset-card'
-          href={`/show/${model._parent.label}/${model._id}`}
+          href={`/show/${model._parent.label}/${model._shortId}`}
           {...hoverEffect}
           >
           <VelocityComponent {...animationPropsAsset}>
