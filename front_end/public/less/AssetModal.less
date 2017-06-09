@@ -113,18 +113,39 @@
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
-
+  .info-card {
+    display: inline-block;
+    margin: 15px;
+    .image {
+      width: 40%;
+      display: inline-block;
+    }
+    .specs {
+      display: inline-block;
+      position: absolute;
+    }
+  }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .info-card {
     top: -100px;
+    .image {
+      width: 100%;
+      display: block;
+    }
+    .specs {
+      display: block;
+      position: relative;
+    }
   }
 }
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) {}
+@media (min-width: 992px) {
+
+}
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {}
