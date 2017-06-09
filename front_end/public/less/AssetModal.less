@@ -1,19 +1,130 @@
 .asset-modal {
   & {
+    background-color: #f2f2f2;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 10000;
+    color: #404040;
+    overflow-y: scroll;
+  }
+  .header {
+    background: #2e3137;
+    font-weight: 300;
+    min-height: 200px;
     color: #f2f2f2;
+    h1 {
+      font-weight: 400;
+      margin-bottom: 5px;
+    }
+    h3 {
+      margin-top: 5px;
+      font-weight: 200;
+      margin-bottom: 15px;
+    }
+    .details {
+      margin-left: -5px;
+      margin-right: -5px;
+      .detail {
+        & {
+          padding: 5px 10px;
+          line-height: 1em;
+          margin: 0 5px;
+        }
+        &.active-true {
+          background: rgb(0, 204, 163);
+        }
+        &.active-false {
+          background: rgb(179, 179, 179);
+          color: #404040;
+        }
+      }
+    }
   }
-  div[class*=col-] {
-    height: 100vh;
+  .body {
+    .assets {
+      & {
+        margin: 15px;
+        padding: 15px;
+        background: #fff;
+        border: rgba(0,0,0,0.2) solid 1px;
+        -webkit-box-shadow: 0px 1px 1px 0px rgba(163,163,163,0.4);
+        -moz-box-shadow: 0px 1px 1px 0px rgba(163,163,163,0.4);
+        box-shadow: 0px 1px 1px 0px rgba(163,163,163,0.4);
+      }
+      h3 {
+        margin-top: 5px;
+      }
+    }
   }
-  .asset-card {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+  .info-card {
+    & {
+      position: relative;
+      background-color: lighten(#2e3137, 20%);
+      padding: 5px;
+      color: #f2f2f2;
+      -webkit-box-shadow: 0px 1px 1px 0px rgba(100,100,100,0.7);
+      -moz-box-shadow: 0px 1px 1px 0px rgba(100,100,100,0.7);
+      box-shadow: 0px 1px 1px 0px rgba(100,100,100,0.7);
+    }
+    .specs {
+      padding: 10px;
+      h3 {
+        font-weight: 600;
+      }
+      &-table {
+        font-weight: 300;
+        tr {
+          td:first-child {
+            font-weight: 600;
+          }
+          td:last-child {
+            padding-left: 15px;
+          }
+        }
+      }
+    }
+  }
+  .modal-close {
+    & {
+      display:inline-block;
+      float:right;
+      margin-top:15px;
+      padding: 5px 15px;
+      border: 2px solid #f2f2f2;
+      color: #f2f2f2;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    &:hover {
+      background:rgba(255,255,255, .2);
+    }
   }
 }
+
+// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+
+@media (max-width: 577px) {
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .info-card {
+    top: -100px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {}

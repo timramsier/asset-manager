@@ -6,14 +6,26 @@ import ModelGrid from './ModelGrid'
 import ModelSearch from './ModelSearch'
 import apiSettings from '../config/apiSettings'
 
-const { string, shape, array } = React.PropTypes
+const { string, shape, array, bool } = React.PropTypes
 
 const ShowModels = React.createClass({
   propTypes: {
     params: shape({
       productType: string
     }),
-    categories: array
+    categories: array,
+    assetModal: shape({
+      open: bool,
+      data: shape({
+        _id: string,
+        vendor: string,
+        name: string,
+        version: string,
+        image: string,
+        description: string,
+        assets: array
+      })
+    })
   },
   getInitialState () {
     return ({
@@ -27,15 +39,15 @@ const ShowModels = React.createClass({
     let newState = this.state
     Object.assign(newState, {searchTerm})
     this.setState(newState)
-    this.updateAssetData()
+    this.updateModelData()
   },
   setView (view) {
     let newState = this.state
     Object.assign(newState, {view})
     this.setState(newState)
-    this.updateAssetData()
+    this.updateModelData()
   },
-  updateAssetData () {
+  updateModelData () {
     let queryString
     let category = this.props.params.productType.toLowerCase()
 
@@ -91,7 +103,7 @@ const ShowModels = React.createClass({
   },
   componentDidMount () {
     this._isMounted = true
-    this.updateAssetData()
+    this.updateModelData()
   },
   componentWillUnmount () {
     this._isMounted = false
@@ -143,7 +155,10 @@ const ShowModels = React.createClass({
                 </div>
                 <ModelSearch category={categoryName}
                   setSearchTerm={this.setSearchTerm} />
-                <ModelGrid models={this.state.models} />
+                <ModelGrid
+                  models={this.state.models}
+                  assetModal={this.props.assetModal}
+                />
               </div>
               <div className='col-sm-3 side-bar'>
                 column
