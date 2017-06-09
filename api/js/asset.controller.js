@@ -10,7 +10,7 @@ module.exports = {
   getAssets: (req, res) => {
     db.Assets
     .find()
-    .populate('_parent assignedTo', 'username vendor name category description active image _shortId')
+    .populate('_parent assignedTo lastModifiedBy', 'username vendor name category description active image _shortId')
     .exec((err, result) => {
       if (err) res.send(err)
       res.send(JSON.stringify(result))
@@ -38,7 +38,7 @@ module.exports = {
       db.Assets
       .find(search, score)
       .sort(sort)
-      .populate('_parent assignedTo', 'username vendor name category description active image _shortId')
+      .populate('_parent assignedTo lastModifiedBy', 'username vendor name category description active image _shortId')
       .exec((err, result) => {
         if (err) res.send(err)
         res.send(JSON.stringify(result))

@@ -15,7 +15,7 @@ const database = {
 mongoose.connect(`mongodb://${database.defaults.host}/${database.defaults.name}`)
 var dbConnection = mongoose.connection
 dbConnection.on('error', console.error.bind(console, 'MongoDB connection error:'))
-// require('./js/seed')
+require('./js/seed')
 
 const app = express()
 
