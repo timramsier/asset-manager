@@ -7,7 +7,10 @@ const assetSchema = Schema({
   _parent: {type: String, ref: 'Model'},
   assetTag: String,
   assignedTo: {type: String, ref: 'User'},
-  status: String
+  status: String,
+  po: String,
+  lastModifiedBy: { type: String, ref: 'User' },
+  lastModified: { type: Date, default: Date.now }
 })
 
 const specSchema = Schema({
@@ -27,7 +30,9 @@ const categorySchema = Schema({
     api: String,
     fallbackImage: String
   },
-  models: [ { type: Schema.Types.ObjectId, ref: 'Model' } ]
+  models: [ { type: Schema.Types.ObjectId, ref: 'Model' } ],
+  lastModifiedBy: { type: String, ref: 'User' },
+  lastModified: { type: Date, default: Date.now }
 })
 
 const modelSchema = Schema({
@@ -41,14 +46,18 @@ const modelSchema = Schema({
   description: String,
   active: Boolean,
   specs: [ specSchema ],
-  assets: [ assetSchema ]
+  assets: [ { type: Schema.Types.ObjectId, ref: 'Asset' } ],
+  lastModifiedBy: { type: String, ref: 'User' },
+  lastModified: { type: Date, default: Date.now }
 })
 
 modelSchema.index({
   vendor: 'text',
   name: 'text',
   version: 'text',
-  description: 'text'
+  description: 'text',
+  lastModifiedBy: { type: String, ref: 'User' },
+  lastModified: { type: Date, default: Date.now }
 })
 
 module.exports = { assetSchema, modelSchema, categorySchema }

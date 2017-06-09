@@ -48,9 +48,6 @@ const _asset = (count) => {
           key: faker.lorem.word(),
           value: faker.lorem.word()
         }
-      ],
-      assets: [
-        {}
       ]
     }
     returnData.push(newData)
@@ -89,9 +86,6 @@ const _assetForDb = (count) => {
           key: faker.lorem.word(),
           value: faker.lorem.word()
         }
-      ],
-      assets: [
-        {}
       ]
     }
     returnData.push(newData)
