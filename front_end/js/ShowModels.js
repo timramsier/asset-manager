@@ -2,18 +2,30 @@ import React from 'react'
 import FontAwesome from 'react-fontawesome'
 import NavItem from './NavItem'
 import axios from 'axios'
-import AssetGrid from './AssetGrid'
-import AssetSearch from './AssetSearch'
+import ModelGrid from './ModelGrid'
+import ModelSearch from './ModelSearch'
 import apiSettings from '../config/apiSettings'
 
-const { string, shape, array } = React.PropTypes
+const { string, shape, array, bool } = React.PropTypes
 
-const ShowProducts = React.createClass({
+const ShowModels = React.createClass({
   propTypes: {
     params: shape({
       productType: string
     }),
-    categories: array
+    categories: array,
+    assetModal: shape({
+      open: bool,
+      data: shape({
+        _id: string,
+        vendor: string,
+        name: string,
+        version: string,
+        image: string,
+        description: string,
+        assets: array
+      })
+    })
   },
   getInitialState () {
     return ({
@@ -27,15 +39,15 @@ const ShowProducts = React.createClass({
     let newState = this.state
     Object.assign(newState, {searchTerm})
     this.setState(newState)
-    this.updateAssetData()
+    this.updateModelData()
   },
   setView (view) {
     let newState = this.state
     Object.assign(newState, {view})
     this.setState(newState)
-    this.updateAssetData()
+    this.updateModelData()
   },
-  updateAssetData () {
+  updateModelData () {
     let queryString
     let category = this.props.params.productType.toLowerCase()
 
@@ -91,7 +103,7 @@ const ShowProducts = React.createClass({
   },
   componentDidMount () {
     this._isMounted = true
-    this.updateAssetData()
+    this.updateModelData()
   },
   componentWillUnmount () {
     this._isMounted = false
@@ -107,7 +119,7 @@ const ShowProducts = React.createClass({
       </span>
     )
     return (
-      <div className='show-products'>
+      <div className='show-models'>
         <div className='content'>
           <div className='container-fluid'>
             <div className='row is-table-row'>
@@ -141,9 +153,12 @@ const ShowProducts = React.createClass({
                     </nav>
                   </div>
                 </div>
-                <AssetSearch category={categoryName}
+                <ModelSearch category={categoryName}
                   setSearchTerm={this.setSearchTerm} />
-                <AssetGrid models={this.state.models} />
+                <ModelGrid
+                  models={this.state.models}
+                  assetModal={this.props.assetModal}
+                />
               </div>
               <div className='col-sm-3 side-bar'>
                 column
@@ -156,4 +171,4 @@ const ShowProducts = React.createClass({
   }
 })
 
-export default ShowProducts
+export default ShowModels

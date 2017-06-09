@@ -2,10 +2,11 @@ import React from 'react'
 import { Col } from 'react-bootstrap'
 import { VelocityComponent } from 'velocity-react'
 
-const { string, shape, array, arrayOf } = React.PropTypes
+const { string, shape, array, arrayOf, func } = React.PropTypes
 
-const AssetCard = React.createClass({
+const ModelCard = React.createClass({
   propTypes: {
+    color: string,
     model: shape({
       _id: string,
       vendor: string,
@@ -19,7 +20,8 @@ const AssetCard = React.createClass({
         key: string,
         value: string
       }))
-    })
+    }),
+    setAssetModal: func
   },
   getInitialState () {
     return ({
@@ -30,6 +32,14 @@ const AssetCard = React.createClass({
     const hoverEffect = {
       onMouseEnter: () => { this.setState({hovering: true}) },
       onMouseLeave: () => { this.setState({hovering: false}) }
+    }
+    const clickEffect = {
+      onClick: (event) => {
+        event.preventDefault()
+        let modelData = this.props.model
+        modelData.color = model._parent.config.color
+        this.props.setAssetModal(true, modelData)
+      }
     }
     let animationPropsDetails,
       animationPropsAsset,
@@ -96,7 +106,7 @@ const AssetCard = React.createClass({
         <a
           className='asset-card'
           href={`/show/${model._parent.label}/${model._shortId}`}
-          {...hoverEffect}
+          {...hoverEffect} {...clickEffect}
           >
           <VelocityComponent {...animationPropsAsset}>
             <div className={`thumbnail ${thumbnailClass} `}>
@@ -156,4 +166,4 @@ const AssetCard = React.createClass({
   }
 })
 
-export default AssetCard
+export default ModelCard
