@@ -8,8 +8,21 @@ db.Assets = mongoose.model('Asset', assetSchema)
 
 module.exports = {
   getAssets: (req, res) => {
+    var search = {}
+    if (req.query.status) {
+      search.status = req.query.status
+    }
+    var score = {}
+    var sort = {}
+    if (req.query.search) {
+      search['$text'] = {$search: decodeURIComponent(req.query.search)}
+      score = { score: { $meta: 'textScore' } }
+      sort = { score: { $meta: 'textScore' } }
+    }
+    console.log(search)
     db.Assets
-    .find()
+    .find(search, score)
+    .sort(sort)
     .populate('_parent assignedTo lastModifiedBy', 'username accessLevel firstName lastName email vendor name category description active image _shortId')
     .exec((err, result) => {
       if (err) res.send(err)
