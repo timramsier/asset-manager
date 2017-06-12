@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const faker = require('faker')
 const generateData = require('./generateData')
 const assetsJS = require('../data/assets.js')
 const { modelSchema, categorySchema, assetSchema } = require('./schema')
@@ -97,6 +98,7 @@ const seedData = (success) => {
                     assetTag: Math.round(Math.random() * 1000000),
                     assignedTo: '593833420757cb8be83dce82',
                     status: 'deployed',
+                    sn: faker.random.uuid().slice(0, 16),
                     po: Math.round(Math.random() * 10000000),
                     lastModifiedBy: modifier,
                     lastModified: new Date()

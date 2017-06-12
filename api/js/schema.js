@@ -2,12 +2,14 @@ const mongoose = require('mongoose')
 const shortId = require('shortid')
 const Schema = mongoose.Schema
 
+// Schema
 const assetSchema = Schema({
   _shortId: {type: String, unique: true, default: shortId.generate},
   _parent: {type: String, ref: 'Model'},
   assetTag: String,
   assignedTo: {type: String, ref: 'User'},
   status: String,
+  sn: String,
   po: String,
   lastModifiedBy: { type: String, ref: 'User' },
   lastModified: { type: Date, default: Date.now }
@@ -51,13 +53,21 @@ const modelSchema = Schema({
   lastModified: { type: Date, default: Date.now }
 })
 
+// indexes
+
+assetSchema.index({
+  assetTag: 'text',
+  status: 'text',
+  sn: 'text',
+  po: 'text',
+  assignedTo: 'text'
+})
+
 modelSchema.index({
   vendor: 'text',
   name: 'text',
   version: 'text',
-  description: 'text',
-  lastModifiedBy: { type: String, ref: 'User' },
-  lastModified: { type: Date, default: Date.now }
+  description: 'text'
 })
 
 module.exports = { assetSchema, modelSchema, categorySchema }
