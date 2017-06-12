@@ -155,7 +155,7 @@ const ShowModels = React.createClass({
                   </div>
                 </div>
                 <Row className='asset-search width-override'>
-                  <Search category={categoryName}
+                  <Search searchType={categoryName}
                     setSearchTerm={this.setSearchTerm}
                     xs={12} sm={6} md={5}
                    />

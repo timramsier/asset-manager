@@ -105,9 +105,10 @@ const AssetTable = React.createClass({
         <div className='asset-table-controls'>
           <Search
             xs={12} sm={7} md={8} lg={6}
+            searchType='Assets'
           />
           <div className='button-group'>
-            <a className='table-button'>
+            <a className='table-button' title='Add Asset'>
               <FontAwesome name='plus' className='fa-fw' />
             </a>
           </div>
