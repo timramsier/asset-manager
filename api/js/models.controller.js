@@ -9,7 +9,7 @@ module.exports = {
   getModels: (req, res) => {
     db.Category
     .find()
-    .populate('models lastModifiedBy', 'username')
+    .populate('models lastModifiedBy', 'username firstName lastName email')
     .exec((err, result) => {
       if (err) res.send(err)
       res.send(JSON.stringify(result))
@@ -45,7 +45,7 @@ module.exports = {
       db.Model
       .find(search, score)
       .sort(sort)
-      .populate('_parent lastModifiedBy', 'name description label config _shortId username')
+      .populate('_parent lastModifiedBy', 'name firstName lastName email description label config _shortId username')
       .exec((err, result) => {
         if (err) res.send(err)
         res.send(JSON.stringify(result))
