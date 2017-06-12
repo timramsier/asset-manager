@@ -1,61 +1,77 @@
 const mongoose = require('mongoose')
-const { modelSchema, categorySchema, assetSchema } = require('../js/schema')
+const { modelSchema, categorySchema, assetSchema } = require('./schema')
 
 var db = {}
 db.Category = mongoose.model('Category', categorySchema)
 db.Model = mongoose.model('Model', modelSchema)
-db.Assets = mongoose.model('Asset', assetSchema)
+db.Asset = mongoose.model('Asset', assetSchema)
+db.User = require('../auth/schema')
+
+const _searchAssets = (req, res, search, score, sort) => {
+  db.Asset
+  .find(search, score)
+  .sort(sort)
+  .populate('_parent assignedTo lastModifiedBy', 'username accessLevel firstName lastName email vendor name category description active image _shortId')
+  .exec((err, result) => {
+    if (err) res.send(err)
+    res.send(JSON.stringify(result))
+  })
+}
 
 module.exports = {
+
   getAssets: (req, res) => {
     var search = {}
-    if (req.query.status) {
-      search.status = req.query.status
-    }
     var score = {}
     var sort = {}
+    req.query.status ? search.status = req.query.status : undefined
+
     if (req.query.search) {
       search['$text'] = {$search: decodeURIComponent(req.query.search)}
       score = { score: { $meta: 'textScore' } }
       sort = { score: { $meta: 'textScore' } }
+      db.User
+      .find(search, score)
+      .sort(sort)
+      .exec((err, result) => {
+        if (err) res.send(err)
+        result.forEach((user) => {
+          search['$text']['$search'] += ` ${user._id}`
+        })
+        _searchAssets(req, res, search, score, sort)
+      })
+    } else {
+      _searchAssets(req, res, search, score, sort)
     }
-    console.log(search)
-    db.Assets
-    .find(search, score)
-    .sort(sort)
-    .populate('_parent assignedTo lastModifiedBy', 'username accessLevel firstName lastName email vendor name category description active image _shortId')
-    .exec((err, result) => {
-      if (err) res.send(err)
-      res.send(JSON.stringify(result))
-    })
   },
   getAssetsByShortId: (req, res) => {
     var search = {}
-    if (req.query.status) {
-      search.status = req.query.status
-    }
     var score = {}
     var sort = {}
-    if (req.query.search) {
-      search['$text'] = {$search: decodeURIComponent(req.query.search)}
-      score = { score: { $meta: 'textScore' } }
-      sort = { score: { $meta: 'textScore' } }
-    }
-
+    req.query.status ? search.status = req.query.status : undefined
     db.Model.find({ _shortId: req.params.shortId }).exec((err, result) => {
       if (err) res.send(err)
       if (req.params.shortId.toLowerCase() !== 'all') {
         search._parent = result[0]._id
       }
-      console.log(search)
-      db.Assets
-      .find(search, score)
-      .sort(sort)
-      .populate('_parent assignedTo lastModifiedBy', 'username firstName lastName email vendor name category description active image _shortId')
-      .exec((err, result) => {
-        if (err) res.send(err)
-        res.send(JSON.stringify(result))
-      })
+
+      if (req.query.search) {
+        search['$text'] = {$search: decodeURIComponent(req.query.search)}
+        score = { score: { $meta: 'textScore' } }
+        sort = { score: { $meta: 'textScore' } }
+        db.User
+        .find({$text: search['$text']}, score)
+        .sort(sort)
+        .exec((err, result) => {
+          if (err) res.send(err)
+          result.forEach((user) => {
+            search['$text']['$search'] += ` ${user._id}`
+          })
+          _searchAssets(req, res, search, score, sort)
+        })
+      } else {
+        _searchAssets(req, res, search, score, sort)
+      }
     })
   }
 }
