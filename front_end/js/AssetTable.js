@@ -18,6 +18,7 @@ const AssetTable = React.createClass({
       rowHeight: 50,
       minColumnWidth: 80,
       assets: [],
+      searchTerm: '',
       columns: [
         {
           col: 'assetTag',
@@ -35,7 +36,7 @@ const AssetTable = React.createClass({
         },
         {
           col: 'assignedTo',
-          subCol: 'username',
+          subCol: 'displayName',
           label: 'Assigned To',
           type: 'text',
           minWidthPix: 100,
@@ -46,7 +47,7 @@ const AssetTable = React.createClass({
           label: 'Serial',
           type: 'text',
           minWidthPix: 100,
-          maxWidthPer: 20
+          maxWidthPer: 18
         },
         { col: 'po',
           label: 'P.O.',
@@ -59,7 +60,7 @@ const AssetTable = React.createClass({
           label: 'Last Modified',
           type: 'date',
           minWidthPix: 80,
-          maxWidthPer: 20
+          maxWidthPer: 22
         }
       ]
     })
@@ -74,6 +75,12 @@ const AssetTable = React.createClass({
         return CustomCell.Text
     }
   },
+  setSearchTerm (searchTerm) {
+    let newState = this.state
+    Object.assign(newState, {searchTerm})
+    this.setState(newState)
+    this.getAssetData(this.props.shortId)
+  },
   resizeTable (selector) {
     var tableWidth = document.querySelector(selector).offsetWidth
     this.setState({tableWidth})
@@ -84,10 +91,29 @@ const AssetTable = React.createClass({
     this.setState(newState)
   },
   getAssetData (shortId) {
-    let url = `http://${apiSettings.uri}/assets/${shortId}`
+    let searchString = ''
+    if (this.state.searchTerm.length > 0) {
+      searchString = `?search=${encodeURIComponent(this.state.searchTerm)}`
+    }
+    let url = `http://${apiSettings.uri}/assets/${shortId}${searchString}`
+    console.log(url)
     axios.get(url, {auth: apiSettings.auth})
       .then((response) => {
-        this.updateAssetData(response.data)
+        // add DisplayName if possible
+        const _addDisplayName = (data, key) => {
+          data.map((entry) => {
+            if (entry[key].firstName && entry[key].lastName) {
+              entry[key].displayName = `${entry[key].firstName} ${entry[key].lastName}`
+            }
+          })
+          return data
+        }
+
+        let responseData
+        responseData = _addDisplayName(response.data, 'assignedTo')
+        responseData = _addDisplayName(responseData, 'lastModifiedBy')
+        console.log(responseData)
+        this.updateAssetData(responseData)
       })
   },
   componentDidMount () {
@@ -105,6 +131,7 @@ const AssetTable = React.createClass({
         <div className='asset-table-controls'>
           <Search
             xs={12} sm={7} md={8} lg={6}
+            setSearchTerm={this.setSearchTerm}
             searchType='Assets'
           />
           <div className='button-group'>

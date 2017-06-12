@@ -20,12 +20,20 @@ const propValidation = {
     assetTag: string,
     assignedTo: shape({
       _id: string,
-      username: string
+      username: string,
+      email: string,
+      firstName: string,
+      lastName: string,
+      displayName: string
     }),
     lastModified: string,
     lastModifiedBy: shape({
       _id: string,
-      username: string
+      username: string,
+      email: string,
+      firstName: string,
+      lastName: string,
+      displayName: string
     }),
     po: string
   })),
