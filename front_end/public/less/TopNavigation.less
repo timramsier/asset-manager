@@ -9,6 +9,9 @@
     -moz-box-shadow: 0px 1px 1px 0px rgba(163,163,163,0.4);
     box-shadow: 0px 1px 1px 0px rgba(163,163,163,0.4);
   }
+  &-header {
+    display: inline-block;
+  }
   &-nav {
     li {
       padding-top: 1px;
@@ -50,4 +53,14 @@
 .navbar-nav>li>a {
   padding-top:10px;
   padding-bottom: 10px;
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+  .navbar-side {
+    top: 61px;
+  }
+  .navbar-brand {
+    border-color:transparent!important;
+  }
 }

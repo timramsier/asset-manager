@@ -11,22 +11,50 @@ const ModelGrid = React.createClass({
     models: arrayOf(shape({
       _id: string,
       vendor: string,
+      active: bool,
       name: string,
       version: string,
       image: string,
       description: string,
-      assets: array
+      assets: array,
+      _parent: shape({
+        _id: string,
+        name: string,
+        description: string,
+        label: string,
+        config: shape({
+          faIcon: string,
+          color: string,
+          api: string,
+          fallbackImage: string
+        }),
+        _shortId: string
+      })
     })),
     assetModal: shape({
       open: bool,
       data: shape({
         _id: string,
         vendor: string,
+        active: bool,
         name: string,
         version: string,
         image: string,
         description: string,
-        assets: array
+        assets: array,
+        _parent: shape({
+          _id: string,
+          name: string,
+          description: string,
+          label: string,
+          config: shape({
+            faIcon: string,
+            color: string,
+            api: string,
+            fallbackImage: string
+          }),
+          _shortId: string
+        })
       })
     })
   },
@@ -45,7 +73,6 @@ const ModelGrid = React.createClass({
       data: modalData
     })
     this.setState(newState)
-    
     // locks .main-content from scrolling when modal is open
     if (open) {
       document.querySelectorAll('.main-content').forEach((element) => {

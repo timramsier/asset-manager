@@ -6,7 +6,7 @@ const TopNavigation = React.createClass({
   render () {
     return (
       <div className='navbar-top'>
-        <Navbar fixedTop fluid>
+        <Navbar fixedTop fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
               <a className='fill' href='/'>
@@ -15,6 +15,7 @@ const TopNavigation = React.createClass({
               </a>
             </Navbar.Brand>
           </Navbar.Header>
+          <Navbar.Toggle />
           <Navbar.Collapse>
             <Nav pullRight>
               <NavItem eventKey={1} href='#'>
