@@ -7,7 +7,7 @@ const { func, string, number } = React.PropTypes
 const ModelSearch = React.createClass({
   propTypes: {
     setSearchTerm: func,
-    category: string,
+    searchType: string,
     xs: number,
     sm: number,
     md: number,
@@ -30,6 +30,10 @@ const ModelSearch = React.createClass({
     }
     let { xs, sm, md, lg } = this.props
     let colProps = {xs, sm, md, lg}
+    let searchType = ''
+    if (this.props.searchType) {
+      searchType = this.props.searchType
+    }
     return (
       <Col className='search' {...colProps}>
         <form onSubmit={(event) => {
@@ -43,13 +47,13 @@ const ModelSearch = React.createClass({
               <FormControl
                 type='text'
                 value={this.state.value}
-                placeholder={`Search ${this.props.category}`}
+                placeholder={`Search ${searchType}`}
                 onChange={this.handleChange} />
               <InputGroup.Button>
-                <Button {...clickEffect}><FontAwesome name='times' /></Button>
+                <Button {...clickEffect} title='Clear Search'><FontAwesome name='times' /></Button>
               </InputGroup.Button>
               <InputGroup.Button>
-                <Button type='submit'><FontAwesome name='search' /></Button>
+                <Button type='submit' title='Search'><FontAwesome name='search' /></Button>
               </InputGroup.Button>
             </InputGroup>
           </FormGroup>
