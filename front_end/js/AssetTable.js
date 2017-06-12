@@ -1,5 +1,10 @@
 import React from 'react'
+import axios from 'axios'
 import { Table, Column, Cell } from 'fixed-data-table'
+import FontAwesome from 'react-fontawesome'
+import CustomCell from './CustomCell'
+import Search from './Search'
+import apiSettings from '../config/apiSettings'
 
 const { string } = React.PropTypes
 
@@ -11,63 +16,124 @@ const AssetTable = React.createClass({
     return ({
       tableWidth: 0,
       rowHeight: 50,
-      minColumnWidth: 110
+      minColumnWidth: 80,
+      assets: [],
+      columns: [
+        {
+          col: 'assetTag',
+          label: 'Asset Tag',
+          type: 'text',
+          minWidthPix: 80,
+          maxWidthPer: 15
+        },
+        {
+          col: 'status',
+          label: 'Status',
+          type: 'text',
+          minWidthPix: 80,
+          maxWidthPer: 15
+        },
+        {
+          col: 'assignedTo',
+          subCol: 'username',
+          label: 'Assigned To',
+          type: 'text',
+          minWidthPix: 100,
+          maxWidthPer: 15
+        },
+        {
+          col: 'sn',
+          label: 'Serial',
+          type: 'text',
+          minWidthPix: 100,
+          maxWidthPer: 20
+        },
+        { col: 'po',
+          label: 'P.O.',
+          type: 'text',
+          minWidthPix: 80,
+          maxWidthPer: 15
+        },
+        {
+          col: 'lastModified',
+          label: 'Last Modified',
+          type: 'date',
+          minWidthPix: 80,
+          maxWidthPer: 20
+        }
+      ]
     })
+  },
+  getCellType (type) {
+    switch (type) {
+      case 'text':
+        return CustomCell.Text
+      case 'date':
+        return CustomCell.Date
+      default:
+        return CustomCell.Text
+    }
   },
   resizeTable (selector) {
     var tableWidth = document.querySelector(selector).offsetWidth
     this.setState({tableWidth})
   },
+  updateAssetData (assets) {
+    let newState = this.state
+    Object.assign(newState, {assets})
+    this.setState(newState)
+  },
+  getAssetData (shortId) {
+    let url = `http://${apiSettings.uri}/assets/${shortId}`
+    axios.get(url, {auth: apiSettings.auth})
+      .then((response) => {
+        this.updateAssetData(response.data)
+      })
+  },
   componentDidMount () {
+    this.getAssetData(this.props.shortId)
     this.resizeTable('.asset-table')
     window.addEventListener('resize', (event) => {
       this.resizeTable('.asset-table')
     }, true)
   },
   render () {
-    const rows = [
-      ['a1', 'b1', 'c1', 'd1', 'e1', 'f1'],
-      ['a2', 'b2', 'c2', 'd2', 'e2', 'f2'],
-      ['a3', 'b3', 'c3', 'd3', 'e3', 'f3']]
-    const { tableWidth, rowHeight, minColumnWidth } = this.state
+    const { tableWidth, rowHeight } = this.state
+
     return (
       <div className='asset-table'>
+        <div className='asset-table-controls'>
+          <Search
+            xs={12} sm={7} md={8} lg={6}
+          />
+          <div className='button-group'>
+            <a className='table-button'>
+              <FontAwesome name='plus' className='fa-fw' />
+            </a>
+          </div>
+        </div>
         <Table
           rowHeight={rowHeight}
-          rowsCount={rows.length}
+          rowsCount={this.state.assets.length}
           width={tableWidth}
           height={500}
           headerHeight={rowHeight}>
-          <Column
-            header={<Cell>Asset Tag</Cell>}
-            cell={<Cell>123456</Cell>}
-            width={tableWidth / 6 > minColumnWidth ? tableWidth / 6 : minColumnWidth}
-          />
-          <Column
-            header={<Cell>Status</Cell>}
-            cell={<Cell>Deployed</Cell>}
-            width={tableWidth / 6 > minColumnWidth ? tableWidth / 6 : minColumnWidth}
-          />
-          <Column
-            header={<Cell>Assigned To</Cell>}
-            cell={<Cell>John Doe</Cell>}
-            width={tableWidth / 6 > minColumnWidth ? tableWidth / 6 : minColumnWidth}
-          />
-          <Column
-            header={<Cell>Serial</Cell>}
-            cell={<Cell>1234567890asdf</Cell>}
-            width={tableWidth / 6 > minColumnWidth ? tableWidth / 6 : minColumnWidth}
-          />
-          <Column
-            header={<Cell>P.O.</Cell>}
-            cell={<Cell>1234567</Cell>}
-            width={tableWidth / 6 > minColumnWidth ? tableWidth / 6 : minColumnWidth}
-          />
-          <Column
-            header={<Cell>Last Modified</Cell>}
-            cell={<Cell>01/01/17 11:00</Cell>}
-            width={tableWidth / 6 > minColumnWidth ? tableWidth / 6 : minColumnWidth}
-          />
+          {this.state.columns.map((column) => {
+            const DataCell = this.getCellType(column.type)
+            let otherProps
+            if (column.subCol) {
+              otherProps = {subCol: column.subCol}
+            }
+            let maxWidth = (this.state.tableWidth - 1) * (column.maxWidthPer / 100)
+            return (
+              <Column
+                key={column.col}
+                header={<Cell>{column.label}</Cell>}
+                cell={<DataCell data={this.state.assets} col={column.col} {...otherProps} />}
+                width={maxWidth > column.minWidthPix ? maxWidth : column.minWidthPix}
+              />
+            )
+          })}
         </Table>
       </div>
     )

@@ -21,7 +21,7 @@ const LeftNavigation = React.createClass({
     if (this.state.expanded) {
       animationProps = {
         animation: {
-          width: 300
+          width: 200
         },
         duration: 400
       }

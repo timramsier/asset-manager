@@ -25,6 +25,7 @@
       margin-bottom: 15px;
     }
     .details {
+      margin-bottom: 15px;
       margin-left: -5px;
       margin-right: -5px;
       .detail {
@@ -61,6 +62,8 @@
   }
   .info-card {
     & {
+      margin: 15px;
+      display: block;
       position: relative;
       background-color: lighten(#2e3137, 20%);
       padding: 5px;
@@ -68,6 +71,12 @@
       -webkit-box-shadow: 0px 1px 1px 0px rgba(100,100,100,0.7);
       -moz-box-shadow: 0px 1px 1px 0px rgba(100,100,100,0.7);
       box-shadow: 0px 1px 1px 0px rgba(100,100,100,0.7);
+    }
+    .image {
+      background: fade(#2e3137, 50%);
+      .no-image {
+        padding:30px;
+      }
     }
     .specs {
       padding: 10px;
@@ -108,16 +117,18 @@
 // Extra small devices (portrait phones, less than 576px)
 // No media query since this is the default in Bootstrap
 
-@media (max-width: 577px) {
+@media (max-width: 992px) {
+  .fluid-at-lg {
+    width:100%;
+  }
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
   .info-card {
     display: inline-block;
-    margin: 15px;
     .image {
-      width: 40%;
+      width: 50%;
       display: inline-block;
     }
     .specs {
@@ -130,6 +141,7 @@
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .info-card {
+    margin: 0;
     top: -100px;
     .image {
       width: 100%;
@@ -140,11 +152,16 @@
       position: relative;
     }
   }
+  .specs-table {
+    font-size: 0.8em;
+  }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-
+  .specs-table {
+    font-size: 1.0em;
+  }
 }
 
 // Extra large devices (large desktops, 1200px and up)

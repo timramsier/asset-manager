@@ -3,8 +3,9 @@ import FontAwesome from 'react-fontawesome'
 import NavItem from './NavItem'
 import axios from 'axios'
 import ModelGrid from './ModelGrid'
-import ModelSearch from './ModelSearch'
+import Search from './Search'
 import apiSettings from '../config/apiSettings'
+import { Row } from 'react-bootstrap'
 
 const { string, shape, array, bool } = React.PropTypes
 
@@ -153,8 +154,12 @@ const ShowModels = React.createClass({
                     </nav>
                   </div>
                 </div>
-                <ModelSearch category={categoryName}
-                  setSearchTerm={this.setSearchTerm} />
+                <Row className='asset-search width-override'>
+                  <Search category={categoryName}
+                    setSearchTerm={this.setSearchTerm}
+                    xs={12} sm={6} md={5}
+                   />
+                </Row>
                 <ModelGrid
                   models={this.state.models}
                   assetModal={this.props.assetModal}
