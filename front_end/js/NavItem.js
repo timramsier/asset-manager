@@ -43,12 +43,11 @@ const NavItem = React.createClass({
     } else {
       activeClass = 'nav-active'
     }
-
     return (
       <li className='button' {...hoverEffect} onClick={() => {
         this.props.setView(label.toLowerCase())
       }}>
-        <a href='#' title={label} className={activeClass}>
+        <a title={label} className={activeClass}>
           <span className='nav-label'>{label}</span>
           <VelocityComponent {...animationProps} >
             <span
