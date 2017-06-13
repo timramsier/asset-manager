@@ -1,5 +1,6 @@
 import React from 'react'
-import { FormGroup, InputGroup, FormControl, Button } from 'react-bootstrap'
+import { Link } from 'react-router'
+import { FormGroup, InputGroup, FormControl } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 import PageAlert from './PageAlert'
 const { shape, string, arrayOf } = React.PropTypes
@@ -17,7 +18,14 @@ const Landing = React.createClass({
       faIcon: string,
       color: string,
       api: string
-    }))
+    })),
+    searchTerm: string
+  },
+  handleChange (e) {
+    this.setState({ searchTerm: e.target.value })
+  },
+  searchAll (event) {
+    console.log('not working yet')
   },
   render () {
     let alertMessage
@@ -36,10 +44,10 @@ const Landing = React.createClass({
             <div className='hero-content'>
               <h1>Search for what you need here.</h1>
               <p>You can search for users, hardware, or software</p>
-              <form className='hero-search'>
+              <form className='hero-search' onSubmit={this.searchAll}>
                 <FormGroup>
                   <InputGroup>
-                    <FormControl type='text' placeholder='Enter search here' />
+                    <FormControl type='text' placeholder='Search All Categories' onChange={this.handleChange} />
                     <InputGroup.Addon>
                       <FontAwesome name='search' />
                     </InputGroup.Addon>
@@ -70,7 +78,7 @@ const Landing = React.createClass({
                           aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
                         </section>
                         <section className='actions'>
-                          <Button>Take a look</Button>
+                          <Link className='btn btn-default' to={`/show/${category.name}`}>Take a look</Link>
                         </section>
                       </div>
                     </div>
