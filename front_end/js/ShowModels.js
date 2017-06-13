@@ -102,7 +102,14 @@ const ShowModels = React.createClass({
       this.setState(newState)
     }
   },
+  componentDidUpdate (prevProps) {
+    if (this.props.params.productType !== prevProps.params.productType) {
+      window.scrollTo(0, 0)
+      this.updateModelData()
+    }
+  },
   componentDidMount () {
+    window.scrollTo(0, 0)
     this._isMounted = true
     this.updateModelData()
   },

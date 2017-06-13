@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import FontAwesome from 'react-fontawesome'
 import { Navbar, Nav, NavItem, FormControl, FormGroup } from 'react-bootstrap'
 
@@ -9,10 +10,10 @@ const TopNavigation = React.createClass({
         <Navbar fixedTop fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a className='fill' href='/'>
+              <Link className='fill' to='/'>
                 <img className='img-responsive' src='/public/img/barcode_dark.png' />
                 <span className='brand-text'>stockbase</span>
-              </a>
+              </Link>
             </Navbar.Brand>
           </Navbar.Header>
           <Navbar.Toggle />

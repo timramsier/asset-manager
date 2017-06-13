@@ -1,5 +1,6 @@
 import React from 'react'
 import FontAwesome from 'react-fontawesome'
+import { Link } from 'react-router'
 import { VelocityComponent } from 'velocity-react'
 
 const { string, bool } = React.PropTypes
@@ -68,7 +69,7 @@ const MenuButton = React.createClass({
     }
     return (
       <li style={{backgroundColor: bgColor}} className={`button ${expandClass}`} {...hoverEffect}>
-        <a href={linkTo} title={label}>
+        <Link to={linkTo} title={label}>
           <FontAwesome className='fa-fw nav-button' name={faIcon} />
           <VelocityComponent {...animationProps} >
             <div className='button-label'>
@@ -77,7 +78,7 @@ const MenuButton = React.createClass({
               </VelocityComponent>
             </div>
           </VelocityComponent>
-        </a>
+        </Link>
       </li>
     )
   }
