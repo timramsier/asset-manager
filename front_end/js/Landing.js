@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { FormGroup, InputGroup, FormControl } from 'react-bootstrap'
+import LandingSearch from './LandingSearch'
 import FontAwesome from 'react-fontawesome'
 import PageAlert from './PageAlert'
 const { shape, string, arrayOf } = React.PropTypes
@@ -44,16 +44,7 @@ const Landing = React.createClass({
             <div className='hero-content'>
               <h1>Search for what you need here.</h1>
               <p>You can search for users, hardware, or software</p>
-              <form className='hero-search' onSubmit={this.searchAll}>
-                <FormGroup>
-                  <InputGroup>
-                    <FormControl type='text' placeholder='Search All Categories' onChange={this.handleChange} />
-                    <InputGroup.Addon>
-                      <FontAwesome name='search' />
-                    </InputGroup.Addon>
-                  </InputGroup>
-                </FormGroup>
-              </form>
+              <LandingSearch />
             </div>
           </div>
           <div className='row'>

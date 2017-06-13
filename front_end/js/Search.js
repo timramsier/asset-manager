@@ -8,6 +8,7 @@ const ModelSearch = React.createClass({
   propTypes: {
     setSearchTerm: func,
     searchType: string,
+    searchTerm: string,
     xs: number,
     sm: number,
     md: number,
@@ -20,6 +21,11 @@ const ModelSearch = React.createClass({
   },
   handleChange (e) {
     this.setState({ value: e.target.value })
+  },
+  componentDidUpdate (prevProps, prevState) {
+    if (prevProps.searchTerm !== this.props.searchTerm) {
+      this.setState({value: this.props.searchTerm})
+    }
   },
   render () {
     const clickEffect = {

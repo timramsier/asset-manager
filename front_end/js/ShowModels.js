@@ -111,7 +111,11 @@ const ShowModels = React.createClass({
   componentDidMount () {
     window.scrollTo(0, 0)
     this._isMounted = true
-    this.updateModelData()
+    if (this.props.location.query && this.props.location.query.search) {
+      this.setSearchTerm(this.props.location.query.search)
+    } else {
+      this.setSearchTerm('')
+    }
   },
   componentWillUnmount () {
     this._isMounted = false
@@ -162,8 +166,10 @@ const ShowModels = React.createClass({
                   </div>
                 </div>
                 <Row className='asset-search width-override'>
-                  <Search searchType={categoryName}
+                  <Search
+                    searchType={categoryName}
                     setSearchTerm={this.setSearchTerm}
+                    searchTerm={this.state.searchTerm}
                     xs={12} sm={6} md={5}
                    />
                 </Row>

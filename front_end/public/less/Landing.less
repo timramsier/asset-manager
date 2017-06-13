@@ -53,9 +53,20 @@
       .input-group {
         border: 2px solid #5cd65c;
         border-radius: 5px;
-        &-addon {
+        &-btn {
           background: rgb(92, 214, 92);
           border: none;
+          &:hover {
+            background: desaturate(rgb(92, 214, 92), 20%);
+          }
+          .btn {
+            background: none;
+            border-color:transparent;
+            &:hover {
+              outline: none;
+              border-color:transparent;
+            }
+          }
           .fa{
             font-size: 1.5em;
             color: #fff;
