@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const faker = require('faker')
 const generateData = require('./generateData')
-const assetsJS = require('../data/assets.js')
+const categoriesJS = require('../data/categories.js')
 const { modelSchema, categorySchema, assetSchema } = require('./schema')
 const { userSchema } = require('../auth/schema')
 const User = mongoose.model('User', userSchema)
@@ -18,7 +18,7 @@ User.findOne({username: '5503b8f9-d4ed-432d-b14a-3f061296f880'}).exec((err, resu
 
 const getAssetCategories = () => {
   return new Promise((resolve, reject) => {
-    assetsJS.forEach((asset) => {
+    categoriesJS.forEach((asset) => {
       Category.create(asset, (err, category) => {
         Object.assign(category, {
           lastModifiedBy: modifier

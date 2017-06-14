@@ -1,6 +1,6 @@
 const express = require('express')
-const assetController = require('../js/asset.controller')
-const authController = require('../auth/controllers/auth')
+const assetController = require('./controllers/asset.controller')
+const authController = require('../auth/controllers/auth.controller')
 const router = express.Router()
 
 router.route('/')

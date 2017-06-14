@@ -1,9 +1,8 @@
-const mongoose = require('mongoose')
-const { modelSchema, categorySchema } = require('../js/schema')
+const { modelModel, categoryModel } = require('../../js/schema')
 
 var db = {}
-db.Category = mongoose.model('Category', categorySchema)
-db.Model = mongoose.model('Model', modelSchema)
+db.Category = categoryModel
+db.Model = modelModel
 
 module.exports = {
   getModels: (req, res) => {
