@@ -26,6 +26,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }))
 
+app.use(bodyParser.json({ type: 'application/*+json' }))
+
 // Use the passport package in our application
 app.use(passport.initialize())
 
