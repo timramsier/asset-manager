@@ -8,7 +8,7 @@ const router = express.Router()
 
 router.use('/users', users)
 router.use('/models', models)
-router.use('/category', categories)
+router.use('/categories', categories)
 router.use('/assets', assets)
 
 module.exports = router

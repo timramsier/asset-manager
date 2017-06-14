@@ -13,7 +13,8 @@ router.route('/')
   .post(authController.isAuthenticated, jsonParse, categoryController.addCategory)
 
 router.route('/:shortId')
-  .delete(authController.isAuthenticated, jsonParse, categoryController.removeCategory)
+  .get(authController.isAuthenticated, categoryController.getCategory)
+  .delete(authController.isAuthenticated, categoryController.removeCategory)
   .put(authController.isAuthenticated, jsonParse, categoryController.updateCategory)
 
 module.exports = router
