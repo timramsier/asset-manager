@@ -41,13 +41,16 @@ const LeftNavigation = React.createClass({
             <ExpandButton toggleMenu={this.toggleMenu} expanded={this.state.expanded} />
             <ul className='nav-list'>
               <MenuButton bgColor='#666' linkTo='/show/all' label='All'
-                faIcon='home' expanded={this.state.expanded} />
+                name='All' faIcon='home' expanded={this.state.expanded} />
               {categories.map((category) => {
                 const {name, label, _id} = category
                 const {color, faIcon, api} = category.config
                 return (
                   <MenuButton key={`button_${_id}`} bgColor={color}
-                    linkTo={`/${api}/${name}`} label={label} faIcon={faIcon}
+                    linkTo={`/${api}/${name}`}
+                    name={name}
+                    label={label}
+                    faIcon={faIcon}
                     expanded={this.state.expanded} />
                 )
               })}
@@ -55,7 +58,10 @@ const LeftNavigation = React.createClass({
                 const {name, label, faIcon, color, api, id} = option
                 return (
                   <MenuButton key={`button_${id}`} bgColor={color}
-                    linkTo={`/${api}/${name}`} label={label} faIcon={faIcon}
+                    linkTo={`/${api}/${name}`}
+                    name={name}
+                    label={label}
+                    faIcon={faIcon}
                     expanded={this.state.expanded} />
                 )
               })}

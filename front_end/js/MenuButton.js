@@ -7,6 +7,7 @@ const { string, bool } = React.PropTypes
 
 const MenuButton = React.createClass({
   propTypes: {
+    name: string,
     faIcon: string,
     label: string,
     color: string,
@@ -20,7 +21,7 @@ const MenuButton = React.createClass({
     })
   },
   render () {
-    const { faIcon, label, linkTo, bgColor } = this.props
+    const { faIcon, label, linkTo, bgColor, name } = this.props
     const hoverEffect = {
       onMouseEnter: () => { this.setState({hovering: true}) },
       onMouseLeave: () => { this.setState({hovering: false}) }
@@ -74,7 +75,7 @@ const MenuButton = React.createClass({
           <VelocityComponent {...animationProps} >
             <div className='button-label'>
               <VelocityComponent {...labelAnimationProps}>
-                <span>{label}</span>
+                <span>{name}</span>
               </VelocityComponent>
             </div>
           </VelocityComponent>
