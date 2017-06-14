@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 // Schema
 const assetSchema = Schema({
   _shortId: {type: String, unique: true, default: shortId.generate},
-  _parent: {type: String, ref: 'Model'},
+  _parent: {type: String, required: true, ref: 'Model'},
   assetTag: String,
   assignedTo: {type: String, ref: 'User'},
   status: String,
@@ -23,14 +23,14 @@ const specSchema = Schema({
 
 const categorySchema = Schema({
   _shortId: {type: String, unique: true, default: shortId.generate},
-  name: String,
-  label: String,
+  name: {type: String, required: true},
+  label: {type: String, required: true},
   description: String,
   config: {
-    faIcon: String,
-    color: String,
-    api: String,
-    fallbackImage: String
+    faIcon: {type: String, required: true},
+    color: {type: String, required: true},
+    api: {type: String, required: true},
+    fallbackImage: {type: String, required: true}
   },
   models: [ { type: Schema.Types.ObjectId, ref: 'Model' } ],
   lastModifiedBy: { type: String, ref: 'User' },
