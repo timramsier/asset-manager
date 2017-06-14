@@ -24,7 +24,7 @@ const App = React.createClass({
   },
   componentDidMount () {
     let componentConfig = new Promise((resolve, reject) => {
-      let url = `http://${apiSettings.uri}/category`
+      let url = `http://${apiSettings.uri}/categories`
       axios.get(url, {auth: apiSettings.auth}).then((response) => {
         resolve(response)
       })

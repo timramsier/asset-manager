@@ -96,7 +96,6 @@ const AssetTable = React.createClass({
       searchString = `?search=${encodeURIComponent(this.state.searchTerm)}`
     }
     let url = `http://${apiSettings.uri}/assets/${shortId}${searchString}`
-    console.log(url)
     axios.get(url, {auth: apiSettings.auth})
       .then((response) => {
         // add DisplayName if possible
@@ -112,7 +111,6 @@ const AssetTable = React.createClass({
         let responseData
         responseData = _addDisplayName(response.data, 'assignedTo')
         responseData = _addDisplayName(responseData, 'lastModifiedBy')
-        console.log(responseData)
         this.updateAssetData(responseData)
       })
   },
