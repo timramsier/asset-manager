@@ -6,7 +6,15 @@ db.Category = categoryModel
 module.exports = {
   getCategories: (req, res) => {
     db.Category
-    .find({}, 'name label description config')
+    .find({}, 'name label description config _shortId')
+    .exec((err, result) => {
+      if (err) res.send(err)
+      res.send(JSON.stringify(result))
+    })
+  },
+  getCategory: (req, res) => {
+    db.Category
+    .find({_shortId: req.params.shortId}, 'name label description config _shortId')
     .exec((err, result) => {
       if (err) res.send(err)
       res.send(JSON.stringify(result))
