@@ -1,11 +1,11 @@
-const mongoose = require('mongoose')
-const { modelSchema, categorySchema, assetSchema } = require('./schema')
+const { modelModel, categoryModel, assetModel } = require('../../js/schema')
+const userModel = require('../../auth/schema')
 
 var db = {}
-db.Category = mongoose.model('Category', categorySchema)
-db.Model = mongoose.model('Model', modelSchema)
-db.Asset = mongoose.model('Asset', assetSchema)
-db.User = require('../auth/schema')
+db.Category = categoryModel
+db.Model = modelModel
+db.Asset = assetModel
+db.User = userModel
 
 const _searchAssets = (req, res, search, score, sort) => {
   db.Asset

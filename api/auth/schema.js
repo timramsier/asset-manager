@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 var bcrypt = require('bcrypt-nodejs')
 const Schema = mongoose.Schema
 
-const UserSchema = Schema({
+const userSchema = Schema({
   username: {
     type: String,
     unique: true,
@@ -25,7 +25,7 @@ const UserSchema = Schema({
 })
 
 // Execute before each user.save() call
-UserSchema.pre('save', function (callback) {
+userSchema.pre('save', function (callback) {
   var user = this
 
   // Break out if the password hasn't changed
@@ -43,11 +43,19 @@ UserSchema.pre('save', function (callback) {
   })
 })
 
-UserSchema.methods.verifyPassword = function (password, cb) {
+userSchema.methods.verifyPassword = function (password, cb) {
   bcrypt.compare(password, this.password, function (err, isMatch) {
     if (err) return cb(err)
     cb(null, isMatch)
   })
 }
 
-module.exports = mongoose.model('User', UserSchema)
+userSchema.index({
+  'accessLevel': 'text',
+  'email': 'text',
+  'firstName': 'text',
+  'lastName': 'text',
+  'username': 'text'
+})
+
+module.exports = mongoose.model('User', userSchema)

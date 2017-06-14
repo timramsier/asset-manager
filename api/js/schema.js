@@ -70,4 +70,11 @@ modelSchema.index({
   description: 'text'
 })
 
-module.exports = { assetSchema, modelSchema, categorySchema }
+module.exports = {
+  assetSchema,
+  modelSchema,
+  categorySchema,
+  modelModel: mongoose.model('Model', modelSchema),
+  assetModel: mongoose.model('Asset', assetSchema),
+  categoryModel: mongoose.model('Category', categorySchema)
+}

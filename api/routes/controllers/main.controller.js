@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { modelSchema, categorySchema } = require('../js/schema')
+const { modelSchema, categorySchema } = require('../../js/schema')
 
 var db = {}
 db.Category = mongoose.model('Category', categorySchema)

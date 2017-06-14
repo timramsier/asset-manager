@@ -1,4 +1,4 @@
-var assets = [
+var categories = [
   // Laptops
   {
     name: 'Laptops',
@@ -49,4 +49,4 @@ var assets = [
   }
 ]
 
-module.exports = assets
+module.exports = categories
