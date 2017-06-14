@@ -26,6 +26,11 @@ const ShowModels = React.createClass({
         description: string,
         assets: array
       })
+    }),
+    location: shape({
+      query: shape({
+        search: string
+      })
     })
   },
   getInitialState () {

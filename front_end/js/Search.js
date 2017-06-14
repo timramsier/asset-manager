@@ -22,9 +22,9 @@ const ModelSearch = React.createClass({
   handleChange (e) {
     this.setState({ value: e.target.value })
   },
-  componentDidUpdate (prevProps, prevState) {
-    if (prevProps.searchTerm !== this.props.searchTerm) {
-      this.setState({value: this.props.searchTerm})
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.searchTerm !== this.props.searchTerm) {
+      this.setState({value: nextProps.searchTerm})
     }
   },
   render () {
