@@ -1,44 +1,13 @@
 const { categoryModel } = require('../../js/schema')
+const _controller = require('./_.controller')
 
 var db = {}
 db.Category = categoryModel
 
 module.exports = {
-  getCategories: (req, res) => {
-    db.Category
-    .find({}, 'name label description config _shortId')
-    .exec((err, result) => {
-      if (err) res.send(err)
-      res.send(JSON.stringify(result))
-    })
-  },
-  getCategory: (req, res) => {
-    db.Category
-    .find({_shortId: req.params.shortId}, 'name label description config _shortId')
-    .exec((err, result) => {
-      if (err) res.send(err)
-      res.send(JSON.stringify(result))
-    })
-  },
-  addCategory: (req, res) => {
-    if (!req.body) return res.sendStatus(400)
-    db.Category.create(req.body, (err, category) => {
-      if (err) res.sendStatus(400)
-      res.status(200).send(JSON.stringify(category))
-    })
-  },
-  removeCategory: (req, res) => {
-    if (!req.body) return res.sendStatus(400)
-    db.Category.remove({_shortId: req.params.shortId}, (err) => {
-      if (err) res.sendStatus(400)
-      res.status(200).send(JSON.stringify(`Successfully Removed ${req.params.shortId}`))
-    })
-  },
-  updateCategory: (req, res) => {
-    if (!req.body) return res.sendStatus(400)
-    db.Category.findOneAndUpdate({_shortId: req.params.shortId}, req.body, (err, category) => {
-      if (err) res.sendStatus(400)
-      res.sendStatus(200)
-    })
-  }
+  getCategories: _controller(db.Category, 'name label description config _shortId').getAll,
+  getCategory: _controller(db.Category, 'name label description config _shortId').getOne,
+  addCategory: _controller(db.Category).add,
+  removeCategory: _controller(db.Category).remove,
+  updateCategory: _controller(db.Category).update
 }

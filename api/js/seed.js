@@ -59,7 +59,7 @@ const seedData = (success) => {
       Category.find({}, (err, result) => {
         if (err) return console.log(err)
         result.forEach((category) => {
-          generateData.assetForDb(36).forEach((entry) => {
+          generateData.assetForDb(2).forEach((entry) => {
             console.log(entry)
             Object.assign(entry, {
               _parent: category._id,

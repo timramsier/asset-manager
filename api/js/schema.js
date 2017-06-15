@@ -6,11 +6,11 @@ const Schema = mongoose.Schema
 const assetSchema = Schema({
   _shortId: {type: String, unique: true, default: shortId.generate},
   _parent: {type: String, required: true, ref: 'Model'},
-  assetTag: String,
+  assetTag: {type: String, default: ''},
   assignedTo: {type: String, ref: 'User'},
-  status: String,
-  sn: String,
-  po: String,
+  status: {type: String, default: 'new'},
+  sn: {type: String, required: true, default: ''},
+  po: {type: String, default: ''},
   lastModifiedBy: { type: String, ref: 'User' },
   lastModified: { type: Date, default: Date.now }
 })
@@ -38,15 +38,15 @@ const categorySchema = Schema({
 })
 
 const modelSchema = Schema({
-  _parent: {type: String, ref: 'Category'},
+  _parent: {type: String, required: true, ref: 'Category'},
   _shortId: {type: String, unique: true, default: shortId.generate},
-  category: String,
+  category: {type: String, required: true},
   vendor: String,
-  name: String,
+  name: {type: String, required: true},
   version: String,
   image: String,
   description: String,
-  active: Boolean,
+  active: {type: Boolean, default: false},
   specs: [ specSchema ],
   assets: [ { type: Schema.Types.ObjectId, ref: 'Asset' } ],
   lastModifiedBy: { type: String, ref: 'User' },

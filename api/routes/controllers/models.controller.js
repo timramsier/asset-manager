@@ -1,4 +1,5 @@
 const { modelModel, categoryModel } = require('../../js/schema')
+const _controller = require('./_.controller')
 
 var db = {}
 db.Category = categoryModel
@@ -6,7 +7,7 @@ db.Model = modelModel
 
 module.exports = {
   getModels: (req, res) => {
-    db.Category
+    db.Model
     .find()
     .populate('models lastModifiedBy', 'username firstName lastName email')
     .exec((err, result) => {
@@ -38,17 +39,26 @@ module.exports = {
 
     db.Category.find({ label: req.params.productType }).exec((err, result) => {
       if (err) res.send(err)
-      if (req.params.productType.toLowerCase() !== 'all') {
-        search._parent = result[0]._id
+      if (result.length < 1) {
+        res.status(400).send(JSON.stringify([]))
+      } else {
+        if (req.params.productType.toLowerCase() !== 'all') {
+          search._parent = result[0]._id
+        }
+        db.Model
+        .find(search, score)
+        .sort(sort)
+        .populate('_parent lastModifiedBy', 'name firstName lastName email description label config _shortId username')
+        .exec((err, result) => {
+          if (err) res.send(err)
+          res.send(JSON.stringify(result))
+        })
       }
-      db.Model
-      .find(search, score)
-      .sort(sort)
-      .populate('_parent lastModifiedBy', 'name firstName lastName email description label config _shortId username')
-      .exec((err, result) => {
-        if (err) res.send(err)
-        res.send(JSON.stringify(result))
-      })
     })
-  }
+  },
+  getAllModels: _controller(db.Model).getAll,
+  getModelByShortId: _controller(db.Model).getOne,
+  addModel: _controller(db.Model).add,
+  removeModel: _controller(db.Model).remove,
+  updateModel: _controller(db.Model).update
 }

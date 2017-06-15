@@ -101,8 +101,10 @@ const AssetTable = React.createClass({
         // add DisplayName if possible
         const _addDisplayName = (data, key) => {
           data.map((entry) => {
-            if (entry[key].firstName && entry[key].lastName) {
+            if (entry[key] && entry[key].firstName && entry[key].lastName) {
               entry[key].displayName = `${entry[key].firstName} ${entry[key].lastName}`
+            } else {
+              Object.assign(entry, {[key]: {displayName: ''}})
             }
           })
           return data
@@ -111,6 +113,7 @@ const AssetTable = React.createClass({
         let responseData
         responseData = _addDisplayName(response.data, 'assignedTo')
         responseData = _addDisplayName(responseData, 'lastModifiedBy')
+        console.log(responseData)
         this.updateAssetData(responseData)
       })
   },
