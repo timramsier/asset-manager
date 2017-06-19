@@ -79,6 +79,11 @@ categorySchema.index({
   'config.api': 'text'
 })
 
+// add property to allow 'search' url query usage in _.controller.js
+assetSchema._custom = { textIndex: true }
+modelSchema._custom = { textIndex: true }
+categorySchema._custom = { textIndex: true }
+
 module.exports = {
   assetSchema,
   modelSchema,

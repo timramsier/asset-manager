@@ -9,14 +9,18 @@ const getModelsByCategory = (req, res, next) => {
     label: req.params.productType.toLowerCase()
   }).getOne(req, res, next, (err, category) => {
     if (err) res.status(400).send(err)
-    let query = req.query
-    Object.assign(query, {_parent: category._id})
-    _controller(Model, {
-      populate: '_parent lastModifiedBy',
-      popFields: 'name firstName lastName email description label config _shortId username'
-    },
-    query
-  ).getAll(req, res, next)
+    if (!category) {
+      res.status(400).send(`Category with name ${req.params.productType} not found.`)
+    } else {
+      let query = req.query
+      Object.assign(query, {_parent: category._id})
+      _controller(Model, {
+        populate: '_parent lastModifiedBy',
+        popFields: 'name firstName lastName email description label config _shortId username'
+      },
+      query
+    ).getAll(req, res, next)
+    }
   })
 }
 
