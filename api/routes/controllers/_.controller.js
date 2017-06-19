@@ -23,8 +23,8 @@ const _controller = (
         search = query
       }
       if (search.search) {
-        // check if index exists else remove 'search' query
-        if (model.schema._indexes.length > 0) {
+        // check if index exists else remove 'search' url query data
+        if (model.schema._custom && model.schema._custom.textIndex) {
           search['$text'] = {$search: decodeURIComponent(req.query.search)}
           delete search.search
           score = { score: { $meta: 'textScore' } }
@@ -41,7 +41,6 @@ const _controller = (
         _options.skip = Number(req.query.skip)
         delete search.skip
       }
-
       model
       .find(search, score)
       .select(_options.properties)
@@ -61,16 +60,21 @@ const _controller = (
       var score = {}
       var sort = {}
       var search = {}
-      if (req.query && !query) {
+      if (!query && req.query) {
         search = req.query
-        if (req.query.search) {
+      } else {
+        search = query
+      }
+      if (search.search) {
+        // check if index exists else remove 'search' url query data
+        if (model.schema._custom && model.schema._custom.textIndex) {
           search['$text'] = {$search: decodeURIComponent(req.query.search)}
           delete search.search
           score = { score: { $meta: 'textScore' } }
           sort = { score: { $meta: 'textScore' } }
+        } else {
+          delete search.search
         }
-      } else {
-        search = query
       }
       model
       .findOne(search, score)

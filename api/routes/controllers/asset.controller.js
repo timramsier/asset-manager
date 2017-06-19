@@ -30,13 +30,17 @@ const getAssetsByModelId = (req, res, next) => {
     _shortId: req.params.shortId
   }).getOne(req, res, next, (err, model) => {
     if (err) res.status(400).send(err)
-    _controller(Asset,
-      {
-        populate: '_parent lastModifiedBy',
-        popFields: 'name firstName lastName email vendor name version description'
-      },
-    {_parent: model._id}
-  ).getAll(req, res, next)
+    if (!model) {
+
+    } else {
+      _controller(Asset,
+        {
+          populate: '_parent lastModifiedBy',
+          popFields: 'name firstName lastName email vendor name version description'
+        },
+      {_parent: model._id}
+    ).getAll(req, res, next)
+    }
   })
 }
 

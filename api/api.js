@@ -48,13 +48,11 @@ app.get('/', (req, res) => {
   res.send(landing)
 })
 
-app.use('/api/alpha/', api)
+app.use('/api/beta/', api)
 
 // If no route is matched by now, it must be a 404
 app.use(function (req, res, next) {
-  var err = new Error('API Not Found')
-  err.status = 404
-  next(err)
+  res.status(404).send('API Not Found')
 })
 
 // Start the server
