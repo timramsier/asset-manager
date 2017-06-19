@@ -5,7 +5,7 @@ const router = express.Router()
 const jsonParse = require('body-parser').json()
 
 router.route('/')
-  .get(authController.isAuthenticated, modelController.getModels)
+  .get(authController.isAuthenticated, modelController.getAllModels)
   .post(authController.isAuthenticated, jsonParse, modelController.addModel)
 
 router.route('/all')

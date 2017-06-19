@@ -1,64 +1,38 @@
 const { modelModel, categoryModel } = require('../../js/schema')
 const _controller = require('./_.controller')
 
-var db = {}
-db.Category = categoryModel
-db.Model = modelModel
+let Category = categoryModel
+let Model = modelModel
+
+const getModelsByCategory = (req, res, next) => {
+  _controller(Category, {}, {
+    label: req.params.productType.toLowerCase()
+  }).getOne(req, res, next, (err, category) => {
+    if (err) res.status(400).send(err)
+    let query = req.query
+    Object.assign(query, {_parent: category._id})
+    _controller(Model, {
+      populate: '_parent lastModifiedBy',
+      popFields: 'name firstName lastName email description label config _shortId username'
+    },
+    query
+  ).getAll(req, res, next)
+  })
+}
+
+const getModelByShortId = (req, res, next) => {
+  _controller(Model, {}, {_shortId: req.params.shortId})
+  .getOne(req, res, next)
+}
 
 module.exports = {
-  getModels: (req, res) => {
-    db.Model
-    .find()
-    .populate('models lastModifiedBy', 'username firstName lastName email')
-    .exec((err, result) => {
-      if (err) res.send(err)
-      res.send(JSON.stringify(result))
-    })
-  },
-  getModelsByCategory: (req, res) => {
-    var search = {}
-    if (req.query.active) {
-      let active
-      switch (req.query.active) {
-        case 'true':
-          active = true
-          break
-        case 'false':
-          active = false
-          break
-      }
-      search.active = active
-    }
-    var score = {}
-    var sort = {}
-    if (req.query.search) {
-      search['$text'] = {$search: decodeURIComponent(req.query.search)}
-      score = { score: { $meta: 'textScore' } }
-      sort = { score: { $meta: 'textScore' } }
-    }
-
-    db.Category.find({ label: req.params.productType }).exec((err, result) => {
-      if (err) res.send(err)
-      if (result.length < 1) {
-        res.status(400).send(JSON.stringify([]))
-      } else {
-        if (req.params.productType.toLowerCase() !== 'all') {
-          search._parent = result[0]._id
-        }
-        db.Model
-        .find(search, score)
-        .sort(sort)
-        .populate('_parent lastModifiedBy', 'name firstName lastName email description label config _shortId username')
-        .exec((err, result) => {
-          if (err) res.send(err)
-          res.send(JSON.stringify(result))
-        })
-      }
-    })
-  },
-  getAllModels: _controller(db.Model).getAll,
-  getModelByShortId: _controller(db.Model).getOne,
-  addModel: _controller(db.Model).add,
-  removeModel: _controller(db.Model).remove,
-  updateModel: _controller(db.Model).update
+  getModelsByCategory,
+  getModelByShortId,
+  getAllModels: _controller(Model,
+    { populate: '_parent lastModifiedBy',
+      popFields: 'name firstName lastName email description label config _shortId username'
+    }).getAll,
+  addModel: _controller(Model).add,
+  removeModel: _controller(Model).remove,
+  updateModel: _controller(Model).update
 }

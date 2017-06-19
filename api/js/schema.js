@@ -70,6 +70,15 @@ modelSchema.index({
   description: 'text'
 })
 
+categorySchema.index({
+  name: 'text',
+  label: 'text',
+  description: 'text',
+  'config.faIcon': 'text',
+  'config.color': 'text',
+  'config.api': 'text'
+})
+
 module.exports = {
   assetSchema,
   modelSchema,

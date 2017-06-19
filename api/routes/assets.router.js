@@ -5,7 +5,7 @@ const router = express.Router()
 const jsonParse = require('body-parser').json()
 
 router.route('/')
-  .get(authController.isAuthenticated, assetController.getAssets)
+  .get(authController.isAuthenticated, assetController.getAllAssets)
   .post(authController.isAuthenticated, jsonParse, assetController.addAsset)
 
 router.route('/all')
@@ -13,10 +13,10 @@ router.route('/all')
   .post(authController.isAuthenticated, jsonParse, assetController.addAsset)
 
 router.route('/:shortId')
-  .get(authController.isAuthenticated, assetController.getAssetsByShortId)
+  .get(authController.isAuthenticated, assetController.getAssetByShortId)
 
 router.route('/all/:shortId')
-  .get(authController.isAuthenticated, assetController.getAssetByShortId)
+  .get(authController.isAuthenticated, assetController.getAssetsByModelId)
   .put(authController.isAuthenticated, jsonParse, assetController.updateAsset)
   .delete(authController.isAuthenticated, assetController.removeAsset)
 
