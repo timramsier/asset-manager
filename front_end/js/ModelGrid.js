@@ -4,7 +4,7 @@ import ModelCard from './ModelCard'
 import AssetModal from './AssetModal'
 import { VelocityTransitionGroup } from 'velocity-react'
 
-const { string, shape, arrayOf, array, bool } = React.PropTypes
+const { string, shape, arrayOf, array, bool, func } = React.PropTypes
 
 const ModelGrid = React.createClass({
   propTypes: {
@@ -113,6 +113,7 @@ const ModelGrid = React.createClass({
               model={model}
               key={`model_${model._id}`}
               setAssetModal={this.setAssetModal}
+              checkVisible={this.props.checkVisible}
             />
           )
         })}

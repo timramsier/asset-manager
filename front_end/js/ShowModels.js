@@ -7,13 +7,14 @@ import Search from './Search'
 import apiSettings from '../config/apiSettings'
 import { Row } from 'react-bootstrap'
 
-const { string, shape, array, bool } = React.PropTypes
+const { string, shape, array, bool, func } = React.PropTypes
 
 const ShowModels = React.createClass({
   propTypes: {
     params: shape({
       productType: string
     }),
+    checkVisible: func,
     categories: array,
     assetModal: shape({
       open: bool,
@@ -38,7 +39,9 @@ const ShowModels = React.createClass({
       models: [],
       view: 'all',
       headerAccentColor: 'rgb(102, 102, 102)',
-      searchTerm: ''
+      searchTerm: '',
+      limit: 12,
+      loading: true
     })
   },
   setSearchTerm (searchTerm) {
@@ -56,7 +59,6 @@ const ShowModels = React.createClass({
   updateModelData () {
     let queryString
     let category = this.props.params.productType.toLowerCase()
-
     switch (this.state.view) {
       case 'active':
         queryString = `?active=true`
@@ -69,20 +71,16 @@ const ShowModels = React.createClass({
         break
     }
     let searchString = ''
+    let pre = `?limit=${this.state.limit}`
     if (this.state.searchTerm.length > 0) {
-      let pre
-      if (queryString.length > 0) {
-        pre = '&'
-      } else {
-        pre = '?'
-      }
-      searchString = `${pre}search=${encodeURIComponent(this.state.searchTerm)}`
+      searchString = `&search=${encodeURIComponent(this.state.searchTerm)}`
     }
-    let url = `http://${apiSettings.uri}/models/${category}${queryString}${searchString}`
+    let url = `http://${apiSettings.uri}/models/${category}${pre}${queryString}${searchString}`
     axios.get(url, {auth: apiSettings.auth})
       .then((response) => {
         this.updateModels(response.data)
         this.updateHeaderAccentColor()
+        this.state.loading = false
       })
   },
   updateHeaderAccentColor () {
@@ -115,12 +113,31 @@ const ShowModels = React.createClass({
   },
   componentDidMount () {
     window.scrollTo(0, 0)
+    const checkVisible = this.props.checkVisible
+    let lastScrollTop = 0
     this._isMounted = true
     if (this.props.location.query && this.props.location.query.search) {
       this.setSearchTerm(this.props.location.query.search)
     } else {
       this.setSearchTerm('')
     }
+    window.addEventListener('scroll', (event) => {
+      if (!this.state.loading) {
+        let last = document.querySelectorAll('.asset').length - 1
+        last < 0 ? last = 0 : undefined
+        let elems = document.querySelectorAll('.asset-card')
+        let lastElem = elems[last]
+        var st = window.pageYOffset || document.documentElement.scrollTop
+        if (st > lastScrollTop) {
+          if (checkVisible(lastElem)) {
+            this.state.limit += 12
+            this.state.loading = true
+            this.updateModelData()
+          }
+        }
+        lastScrollTop = st
+      }
+    })
   },
   componentWillUnmount () {
     this._isMounted = false
