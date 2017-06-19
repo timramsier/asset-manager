@@ -22,12 +22,16 @@ const _controller = (
       } else {
         search = query
       }
-
       if (search.search) {
-        search['$text'] = {$search: decodeURIComponent(req.query.search)}
-        delete search.search
-        score = { score: { $meta: 'textScore' } }
-        sort = { score: { $meta: 'textScore' } }
+        // check if index exists else remove 'search' query
+        if (model.schema._indexes.length > 0) {
+          search['$text'] = {$search: decodeURIComponent(req.query.search)}
+          delete search.search
+          score = { score: { $meta: 'textScore' } }
+          sort = { score: { $meta: 'textScore' } }
+        } else {
+          delete search.search
+        }
       }
       if (search.limit) {
         _options.limit = Number(req.query.limit)
