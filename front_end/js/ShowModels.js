@@ -3,6 +3,7 @@ import FontAwesome from 'react-fontawesome'
 import NavItem from './NavItem'
 import axios from 'axios'
 import ModelGrid from './ModelGrid'
+import AdminOptions from './AdminOptions'
 import Search from './Search'
 import apiSettings from '../config/apiSettings'
 import { Row } from 'react-bootstrap'
@@ -202,7 +203,7 @@ const ShowModels = React.createClass({
                 />
               </div>
               <div className='col-sm-3 side-bar'>
-                column
+                <AdminOptions />
               </div>
             </div>
           </div>

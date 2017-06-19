@@ -6,6 +6,7 @@
 @import './Search.less';
 @import './AssetModal.less';
 @import './AssetTable.less';
+@import './AdminOptions.less';
 @import '../../node_modules/fixed-data-table/dist/fixed-data-table.css';
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,600,700|Titillium+Web:200,300,400,600,700');
@@ -38,4 +39,24 @@ h1, h2, h3, h4, h5 {
 
 .btn {
   border-radius: 0!important;
+}
+
+.thin-text {
+  font-weight: 300;
+}
+
+ul.button-list {
+  list-style: none;
+  padding: 0;
+  li {
+    margin:0;
+    padding: 5px 0;
+    .fa {
+      text-align: left;
+    }
+  }
+}
+
+button, button:focus, button:active {
+  outline: none!important;
 }

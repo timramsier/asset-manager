@@ -48,6 +48,10 @@
     border-left: rgba(0,0,0,.2) solid 1px;
     border-right: rgba(0,0,0,.2) solid 1px;
   }
+  .nav-text {
+    // display: inline-block;
+    font-size: 1.3em;
+  }
 }
 
 .navbar-nav>li>a {
@@ -56,6 +60,12 @@
 }
 
 // Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  li.nav-text {
+    font-size: 2em!important;
+  }
+}
+
 @media (max-width: 768px) {
   .navbar-side {
     top: 61px;

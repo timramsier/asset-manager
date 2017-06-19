@@ -1,0 +1,45 @@
+.admin-options {
+  visibility: hidden;
+  .admin-button {
+    min-width: 100%;
+    text-align: left;
+  }
+}
+
+// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .admin-options {
+    visibility: visible;
+    .admin-button {
+      min-width: 100%;
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .admin-options {
+    .admin-button {
+      min-width: 80%;
+    }
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  @media (min-width: 992px) {
+    .admin-options {
+      .admin-button {
+        min-width: 60%;
+      }
+    }
+  }
+}
