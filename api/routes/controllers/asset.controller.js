@@ -31,7 +31,7 @@ const getAssetsByModelId = (req, res, next) => {
   }).getOne(req, res, next, (err, model) => {
     if (err) res.status(400).send(err)
     if (!model) {
-
+      res.status(400).send(`Model with _shortId ${req.params.shortId} not found.`)
     } else {
       _controller(Asset,
         {

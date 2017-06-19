@@ -36,6 +36,34 @@ const App = React.createClass({
       this.setState(newState)
     })
   },
+  checkVisible (element) {
+    let _posY = (element) => {
+      var test = element
+      var top = 0
+      while (!!test && test.tagName.toLowerCase() !== 'body') {
+        top += test.offsetTop
+        test = test.offsetParent
+      }
+      return top
+    }
+    let _viewPortHeight = () => {
+      var de = document.documentElement
+      if (window.innerWidth) {
+        return window.innerHeight
+      } else if (de && !isNaN(de.clientHeight)) {
+        return de.clientHeight
+      }
+      return 0
+    }
+    let _scrollY = () => {
+      if (window.pageYOffset) { return window.pageYOffset }
+      return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+    }
+    var vpH = _viewPortHeight() // Viewport Height
+    var st = _scrollY() // Scroll Top
+    var y = _posY(element) // element Y position
+    return (y < (vpH + st))
+  },
   render () {
     const { categories, alertMessage } = this.state
     const { adminOptions } = defaultLeftNavButtons.buttons
@@ -52,6 +80,7 @@ const App = React.createClass({
               component={(props) => {
                 return <ShowModels categories={categories}
                   assetModal={this.state.assetModal}
+                  checkVisible={this.checkVisible}
                   {...props} />
               }} />
           </div>
