@@ -108,6 +108,7 @@ const ShowModels = React.createClass({
   componentDidUpdate (prevProps) {
     if (this.props.params.productType !== prevProps.params.productType) {
       window.scrollTo(0, 0)
+      this.state.limit = 12
       this.updateModelData()
     }
   },
