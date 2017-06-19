@@ -1,77 +1,61 @@
-const { modelModel, categoryModel, assetModel } = require('../../js/schema')
-const userModel = require('../../auth/schema')
+const { modelModel, assetModel } = require('../../js/schema')
+const _controller = require('./_.controller')
 
-var db = {}
-db.Category = categoryModel
-db.Model = modelModel
-db.Asset = assetModel
-db.User = userModel
+let Asset = assetModel
+let Model = modelModel
 
-const _searchAssets = (req, res, search, score, sort) => {
-  db.Asset
-  .find(search, score)
-  .sort(sort)
-  .populate('_parent assignedTo lastModifiedBy', 'username accessLevel firstName lastName email vendor name category description active image _shortId')
-  .exec((err, result) => {
-    if (err) res.send(err)
-    res.send(JSON.stringify(result))
+const addAsset = (req, res, next) => {
+  _controller(Asset).add(req, res, next, (err, data) => {
+    if (err) res.sendStatus(400)
+    Model.findOneAndUpdate({_id: data._parent}, { $push: { assets: data._id } }, (err, result) => {
+      if (err) res.status(400).send(err)
+      res.status(200).send(result)
+    })
   })
 }
 
-module.exports = {
-
-  getAssets: (req, res) => {
-    var search = {}
-    var score = {}
-    var sort = {}
-    req.query.status ? search.status = req.query.status : undefined
-
-    if (req.query.search) {
-      search['$text'] = {$search: decodeURIComponent(req.query.search)}
-      score = { score: { $meta: 'textScore' } }
-      sort = { score: { $meta: 'textScore' } }
-      db.User
-      .find(search, score)
-      .sort(sort)
-      .exec((err, result) => {
-        if (err) res.send(err)
-        result.forEach((user) => {
-          search['$text']['$search'] += ` ${user._id}`
-        })
-        _searchAssets(req, res, search, score, sort)
-      })
-    } else {
-      _searchAssets(req, res, search, score, sort)
-    }
-  },
-  getAssetsByShortId: (req, res) => {
-    var search = {}
-    var score = {}
-    var sort = {}
-    req.query.status ? search.status = req.query.status : undefined
-    db.Model.find({ _shortId: req.params.shortId }).exec((err, result) => {
-      if (err) res.send(err)
-      if (req.params.shortId.toLowerCase() !== 'all') {
-        search._parent = result[0]._id
-      }
-
-      if (req.query.search) {
-        search['$text'] = {$search: decodeURIComponent(req.query.search)}
-        score = { score: { $meta: 'textScore' } }
-        sort = { score: { $meta: 'textScore' } }
-        db.User
-        .find({$text: search['$text']}, score)
-        .sort(sort)
-        .exec((err, result) => {
-          if (err) res.send(err)
-          result.forEach((user) => {
-            search['$text']['$search'] += ` ${user._id}`
-          })
-          _searchAssets(req, res, search, score, sort)
-        })
-      } else {
-        _searchAssets(req, res, search, score, sort)
-      }
+const removeAsset = (req, res, next) => {
+  _controller(Asset).remove(req, res, next, (err, data) => {
+    if (err) res.sendStatus(400)
+    console.log(data)
+    Model.findOneAndUpdate({_id: data._parent}, { $pull: { assets: data._id } }, (err, result) => {
+      if (err) res.status(400).send(err)
+      res.status(200).send(`Successfully Removed ${data._shortId}`)
     })
-  }
+  })
+}
+
+const getAssetsByModelId = (req, res, next) => {
+  _controller(Model, {}, {
+    _shortId: req.params.shortId
+  }).getOne(req, res, next, (err, model) => {
+    if (err) res.status(400).send(err)
+    _controller(Asset,
+      {
+        populate: '_parent lastModifiedBy',
+        popFields: 'name firstName lastName email vendor name version description'
+      },
+    {_parent: model._id}
+  ).getAll(req, res, next)
+  })
+}
+
+const getAssetByShortId = (req, res, next) => {
+  _controller(Asset, {
+    populate: '_parent lastModifiedBy',
+    popFields: 'name firstName lastName email vendor name version description'
+  }, {_shortId: req.params.shortId})
+  .getOne(req, res, next)
+}
+
+module.exports = {
+  addAsset,
+  removeAsset,
+  getAssetsByModelId,
+  getAssetByShortId,
+  getAllAssets: _controller(Asset, {
+    populate: '_parent assignedTo lastModifiedBy',
+    popFields: 'username accessLevel firstName lastName email vendor name category description active image _shortId'
+  }).getAll,
+  updateAsset: _controller(Asset).update
 }

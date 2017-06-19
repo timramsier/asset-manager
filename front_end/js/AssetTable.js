@@ -95,14 +95,16 @@ const AssetTable = React.createClass({
     if (this.state.searchTerm.length > 0) {
       searchString = `?search=${encodeURIComponent(this.state.searchTerm)}`
     }
-    let url = `http://${apiSettings.uri}/assets/${shortId}${searchString}`
+    let url = `http://${apiSettings.uri}/assets/all/${shortId}${searchString}`
     axios.get(url, {auth: apiSettings.auth})
       .then((response) => {
         // add DisplayName if possible
         const _addDisplayName = (data, key) => {
           data.map((entry) => {
-            if (entry[key].firstName && entry[key].lastName) {
+            if (entry[key] && entry[key].firstName && entry[key].lastName) {
               entry[key].displayName = `${entry[key].firstName} ${entry[key].lastName}`
+            } else {
+              Object.assign(entry, {[key]: {displayName: ''}})
             }
           })
           return data
@@ -111,6 +113,7 @@ const AssetTable = React.createClass({
         let responseData
         responseData = _addDisplayName(response.data, 'assignedTo')
         responseData = _addDisplayName(responseData, 'lastModifiedBy')
+        console.log(responseData)
         this.updateAssetData(responseData)
       })
   },
