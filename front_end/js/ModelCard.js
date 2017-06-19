@@ -21,7 +21,7 @@ const ModelCard = React.createClass({
         value: string
       }))
     }),
-    setAssetModal: func
+    setModelModal: func
   },
   getInitialState () {
     return ({
@@ -38,7 +38,7 @@ const ModelCard = React.createClass({
         event.preventDefault()
         let modelData = this.props.model
         modelData.color = model._parent.config.color
-        this.props.setAssetModal(true, modelData)
+        this.props.setModelModal(true, modelData)
       }
     }
     let animationPropsDetails,

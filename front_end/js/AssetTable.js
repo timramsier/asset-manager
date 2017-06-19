@@ -21,6 +21,13 @@ const AssetTable = React.createClass({
       searchTerm: '',
       columns: [
         {
+          col: 'sn',
+          label: 'Serial',
+          type: 'modal',
+          minWidthPix: 100,
+          maxWidthPer: 18
+        },
+        {
           col: 'assetTag',
           label: 'Asset Tag',
           type: 'text',
@@ -41,13 +48,6 @@ const AssetTable = React.createClass({
           type: 'text',
           minWidthPix: 100,
           maxWidthPer: 15
-        },
-        {
-          col: 'sn',
-          label: 'Serial',
-          type: 'text',
-          minWidthPix: 100,
-          maxWidthPer: 18
         },
         { col: 'po',
           label: 'P.O.',
@@ -71,6 +71,8 @@ const AssetTable = React.createClass({
         return CustomCell.Text
       case 'date':
         return CustomCell.Date
+      case 'modal':
+        return CustomCell.Modal
       default:
         return CustomCell.Text
     }
@@ -126,7 +128,6 @@ const AssetTable = React.createClass({
   },
   render () {
     const { tableWidth, rowHeight } = this.state
-
     return (
       <div className='asset-table'>
         <div className='asset-table-controls'>

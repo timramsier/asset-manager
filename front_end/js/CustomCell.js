@@ -76,8 +76,23 @@ const TextCell = React.createClass({
   }
 })
 
-export default {
+const ModalCell = React.createClass({
+  propTypes: propValidation,
+  render () {
+    const { data, rowIndex, col, subCol, height, width } = this.props
+    let cellData = data[rowIndex][col]
+    let dimensons = { height, width }
+    subCol ? cellData = data[rowIndex][col][subCol] : undefined
+    return (
+      <Cell {...dimensons}>
+        <a className='cell-link'>{cellData}</a>
+      </Cell>
+    )
+  }
+})
 
+export default {
+  Modal: ModalCell,
   Date: DateCell,
   Text: TextCell
 }

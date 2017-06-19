@@ -5,9 +5,9 @@ import FontAwesome from 'react-fontawesome'
 
 const { func, shape, string, array, bool } = React.PropTypes
 
-const AssetModal = React.createClass({
+const ModelModal = React.createClass({
   propTypes: {
-    setAssetModal: func,
+    setModelModal: func,
     model: shape({
       _id: string,
       vendor: string,
@@ -36,7 +36,7 @@ const AssetModal = React.createClass({
     let buttonEffect = {
       onClick: (event) => {
         event.preventDefault()
-        this.props.setAssetModal(false, {})
+        this.props.setModelModal(false, {})
       }
     }
     const { model } = this.props
@@ -121,4 +121,4 @@ const AssetModal = React.createClass({
   }
 })
 
-export default AssetModal
+export default ModelModal
