@@ -37,7 +37,7 @@ const ShowModels = React.createClass({
   getInitialState () {
     return ({
       models: [],
-      view: 'all',
+      view: 'active',
       headerAccentColor: 'rgb(102, 102, 102)',
       searchTerm: '',
       limit: 12,
