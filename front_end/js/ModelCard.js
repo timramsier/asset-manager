@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import { Col } from 'react-bootstrap'
 import { VelocityComponent } from 'velocity-react'
 
@@ -25,13 +26,45 @@ const ModelCard = React.createClass({
   },
   getInitialState () {
     return ({
-      hovering: false
+      hovering: false,
+      orientation: 'left'
+    })
+  },
+  testOnRightEdge (elem) {
+    const _p = elem.getBoundingClientRect()
+    const _w = window.innerWidth
+    return (_w - _p.right < _p.width)
+  },
+  setOrientation (orientation) {
+    let newState = this.state
+    Object.assign(newState, {orientation})
+    this.setState(newState)
+  },
+  componentDidMount () {
+    const _orient = () => {
+      if (this.testOnRightEdge(ReactDOM.findDOMNode(this))) {
+        this.setOrientation('right')
+      } else {
+        this.setOrientation('left')
+      }
+    }
+    _orient()
+    window.addEventListener('resize', (event) => {
+      _orient()
     })
   },
   render () {
     const hoverEffect = {
-      onMouseEnter: () => { this.setState({hovering: true}) },
-      onMouseLeave: () => { this.setState({hovering: false}) }
+      onMouseEnter: () => {
+        let newState = this.state
+        Object.assign(newState, {hovering: true})
+        this.setState(newState)
+      },
+      onMouseLeave: () => {
+        let newState = this.state
+        Object.assign(newState, {hovering: false})
+        this.setState(newState)
+      }
     }
     const clickEffect = {
       onClick: (event) => {
@@ -125,7 +158,8 @@ const ModelCard = React.createClass({
           </VelocityComponent>
         </a>
         <VelocityComponent {...animationPropsDetails}>
-          <div className='details-card' style={styleProps}
+          <div className={`details-card orientation-${this.state.orientation}`}
+            style={styleProps}
             {...hoverEffect} >
             <div className='details-card-container'>
               <div className='content'>

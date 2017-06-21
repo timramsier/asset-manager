@@ -66,30 +66,51 @@
     }
   }
   .details-card {
+    &.orientation {
+      &-left{
+        left:95%;
+        &::before {
+          left: 12px;
+          top: 50%;
+          transform: rotateZ(45deg) translateX(-50%);
+          position: absolute;
+          z-index: 10;
+          display: inline-block;
+          content: " ";
+          background: #fff;
+          width:20px;
+          height: 20px;
+          border-left: 1px solid rgba(0,0,0,0.3);
+          border-bottom: 1px solid rgba(0,0,0,0.3);
+        }
+      }
+      &-right {
+        right:95%;
+        &::before {
+          right: -2px;
+          top: 50%;
+          transform: rotateZ(45deg) translateX(-50%);
+          position: absolute;
+          z-index: 10;
+          display: inline-block;
+          content: " ";
+          background: #fff;
+          width:20px;
+          height: 20px;
+          border-right: 1px solid rgba(0,0,0,0.3);
+          border-top: 1px solid rgba(0,0,0,0.3);
+        }
+      }
+    }
     & {
       position: absolute;
       top: -15%;
       bottom: 0;
-      left:95%;
       width:100%;
       max-width: 320px;
       min-height: 130%;
       z-index: -1;
       padding:15px;
-    }
-    &::before {
-      left: 12px;
-      top: 50%;
-      transform: rotateZ(45deg) translateX(-50%);
-      position: absolute;
-      z-index: 10;
-      display: inline-block;
-      content: " ";
-      background: #fff;
-      width:20px;
-      height: 20px;
-      border-left: 1px solid rgba(0,0,0,0.3);
-      border-bottom: 1px solid rgba(0,0,0,0.3);
     }
     &-container {
       position: relative;
