@@ -25,10 +25,27 @@ h1, h2, h3, h4, h5 {
 .side-bar {
   background: #fff;
 }
+.main-content{
+  position: absolute;
+  top:56px;
+  right:0;
+  left:50px;
+  display: block;
+  overflow: hidden;
+  transition: all .5s;
+}
+.left-open {
+  left: 200px;
+}
+
+.right-open {
+  right: 300px;
+}
 
 .center {
   background: #f2f2f2;
   border-right: solid 1px #bbb;
+  padding: 0 15px;
   padding-bottom: 100px;
   min-height: 100vh;
 }

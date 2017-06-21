@@ -1,4 +1,7 @@
 .navbar-side{
+  &.open-true {
+    width:200px;
+  }
   & {
     -webkit-box-shadow: 1px 0px 1px 0px rgba(163,163,163,0.4);
     -moz-box-shadow: 1px 0px 1px 0px rgba(163,163,163,0.4);
@@ -12,6 +15,8 @@
     background-color: #2e3137;
     color: #f2f2f2;
     text-align: left;
+    transition: all .5s;
+    width: 50px;
   }
   .nav {
     &-list {
