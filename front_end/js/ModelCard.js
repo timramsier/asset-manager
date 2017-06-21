@@ -81,6 +81,7 @@ const ModelCard = React.createClass({
     }
     const { model } = this.props
     let active
+    let cardProps
     if (model.active) {
       active = {
         color: '#00cca3',
@@ -90,6 +91,9 @@ const ModelCard = React.createClass({
       active = {
         color: '#b3b3b3',
         text: 'Inactive'
+      }
+      cardProps = {
+        filter: 'saturate(10%) contrast(70%) brightness(90%)'
       }
     }
     let thumbnailImage,
@@ -109,7 +113,7 @@ const ModelCard = React.createClass({
           {...hoverEffect} {...clickEffect}
           >
           <VelocityComponent {...animationPropsAsset}>
-            <div className={`thumbnail ${thumbnailClass} `}>
+            <div className={`thumbnail ${thumbnailClass} `} style={cardProps}>
               <div className='image'>
                 <div className='asset-img' style={{backgroundImage: `url(${thumbnailImage})`}} />
               </div>
