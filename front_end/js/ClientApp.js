@@ -82,14 +82,15 @@ const App = React.createClass({
     return (
       <BrowserRouter>
         <div className='app'>
-          <TopNavigation />
+          <TopNavigation toggleMenuOpen={this.toggleMenuOpen} />
           <LeftNavigation categories={categories}
             menuOptions={adminOptions}
             toggleMenuOpen={this.toggleMenuOpen}
           />
           <div className='main-content'>
             <Match exactly pattern='/' component={() => {
-              return <Landing categories={categories} alertMessage={alertMessage} />
+              return <Landing categories={categories}
+                alertMessage={alertMessage} />
             }} />
             <Match pattern='/show/:productType'
               component={(props) => {
