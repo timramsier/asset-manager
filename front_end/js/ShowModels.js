@@ -3,7 +3,6 @@ import FontAwesome from 'react-fontawesome'
 import NavItem from './NavItem'
 import axios from 'axios'
 import ModelGrid from './ModelGrid'
-import AdminOptions from './AdminOptions'
 import Search from './Search'
 import apiSettings from '../config/apiSettings'
 import { Row } from 'react-bootstrap'
@@ -62,10 +61,10 @@ const ShowModels = React.createClass({
     let category = this.props.params.productType.toLowerCase()
     switch (this.state.view) {
       case 'active':
-        queryString = `?active=true`
+        queryString = `&active=true`
         break
       case 'inactive':
-        queryString = `?active=false`
+        queryString = `&active=false`
         break
       default:
         queryString = ''
