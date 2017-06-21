@@ -3,8 +3,19 @@ import { Link } from 'react-router'
 import FontAwesome from 'react-fontawesome'
 import { Navbar, Nav, NavItem, FormControl, FormGroup } from 'react-bootstrap'
 
+const { func } = React.PropTypes
+
 const TopNavigation = React.createClass({
+  propTypes: {
+    toggleMenuOpen: func
+  },
   render () {
+    let buttonProperties = {
+      onClick: (event) => {
+        event.preventDefault()
+        this.props.toggleMenuOpen('right')
+      }
+    }
     return (
       <div className='navbar-top'>
         <Navbar fixedTop fluid collapseOnSelect>
@@ -19,7 +30,7 @@ const TopNavigation = React.createClass({
           <Navbar.Toggle />
           <Navbar.Collapse>
             <Nav pullRight>
-              <NavItem eventKey={1} href='#' className='nav-text'>
+              <NavItem eventKey={1} className='nav-text' {...buttonProperties}>
                 <FontAwesome name='gear' className='fa-fw' />
                 <span className='visible-xs-inline-block'>Preferences</span>
               </NavItem>

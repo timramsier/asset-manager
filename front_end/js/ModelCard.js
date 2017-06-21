@@ -1,13 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Col } from 'react-bootstrap'
 import { VelocityComponent } from 'velocity-react'
+import ReactResizeDetector from 'react-resize-detector'
 
 const { string, shape, array, arrayOf, func } = React.PropTypes
 
 const ModelCard = React.createClass({
   propTypes: {
     color: string,
+    width: string,
     model: shape({
       _id: string,
       vendor: string,
@@ -27,13 +28,32 @@ const ModelCard = React.createClass({
   getInitialState () {
     return ({
       hovering: false,
-      orientation: 'left'
+      orientation: 'left',
+      cssProps: {
+        width: this.props.width || '25%'
+      }
     })
   },
   testOnRightEdge (elem) {
-    const _p = elem.getBoundingClientRect()
-    const _w = window.innerWidth
-    return (_w - _p.right < _p.width)
+    const element = elem.getBoundingClientRect()
+    const parent = elem.parentNode.getBoundingClientRect()
+    return (parent.right - element.right < element.width)
+  },
+  setGridProps () {
+    const _setWidth = (width) => {
+      let newState = this.state
+      Object.assign(newState, {cssProps: { width }})
+      this.setState(newState)
+    }
+    let parentWidth = ReactDOM.findDOMNode(this)
+      .parentNode
+      .getBoundingClientRect()
+      .width
+    if (parentWidth <= 576) _setWidth('100%')
+    else if (parentWidth <= 768 && parentWidth > 576) _setWidth('50%')
+    else if (parentWidth <= 992 && parentWidth > 768) _setWidth('33.33%')
+    else if (parentWidth <= 1200 && parentWidth > 992) _setWidth('25%')
+    else if (parentWidth >= 1200) _setWidth('25%')
   },
   setOrientation (orientation) {
     let newState = this.state
@@ -47,6 +67,7 @@ const ModelCard = React.createClass({
       } else {
         this.setOrientation('left')
       }
+      this.setGridProps()
     }
     _orient()
     window.addEventListener('resize', (event) => {
@@ -138,8 +159,9 @@ const ModelCard = React.createClass({
       thumbnailImage = model._parent.config.fallbackImage
       thumbnailClass = 'no-image'
     }
+    const { cssProps } = this.state
     return (
-      <Col xs={6} sm={6} md={4} lg={3} className='asset'>
+      <div style={cssProps} className='asset'>
         <a
           className='asset-card'
           href={`/show/${model._parent.label}/${model._shortId}`}
@@ -199,7 +221,8 @@ const ModelCard = React.createClass({
             </div>
           </div>
         </VelocityComponent>
-      </Col>
+        <ReactResizeDetector handleWidth handleHeight onResize={this.setGridProps} />
+      </div>
     )
   }
 })
