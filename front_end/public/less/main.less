@@ -4,8 +4,9 @@
 @import './MenuButton.less';
 @import './ShowModels.less';
 @import './Search.less';
-@import './AssetModal.less';
+@import './ModelModal.less';
 @import './AssetTable.less';
+@import './AdminOptions.less';
 @import '../../node_modules/fixed-data-table/dist/fixed-data-table.css';
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,600,700|Titillium+Web:200,300,400,600,700');
@@ -24,10 +25,27 @@ h1, h2, h3, h4, h5 {
 .side-bar {
   background: #fff;
 }
+.main-content{
+  position: absolute;
+  top:56px;
+  right:0;
+  left:50px;
+  display: block;
+  overflow: hidden;
+  transition: all .5s;
+}
+.left-open {
+  left: 200px;
+}
+
+.right-open {
+  right: 300px;
+}
 
 .center {
   background: #f2f2f2;
   border-right: solid 1px #bbb;
+  padding: 0 15px;
   padding-bottom: 100px;
   min-height: 100vh;
 }
@@ -38,4 +56,24 @@ h1, h2, h3, h4, h5 {
 
 .btn {
   border-radius: 0!important;
+}
+
+.thin-text {
+  font-weight: 300;
+}
+
+ul.button-list {
+  list-style: none;
+  padding: 0;
+  li {
+    margin:0;
+    padding: 5px 0;
+    .fa {
+      text-align: left;
+    }
+  }
+}
+
+button, button:focus, button:active {
+  outline: none!important;
 }

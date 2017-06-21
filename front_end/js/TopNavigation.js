@@ -19,8 +19,9 @@ const TopNavigation = React.createClass({
           <Navbar.Toggle />
           <Navbar.Collapse>
             <Nav pullRight>
-              <NavItem eventKey={1} href='#'>
-                <FontAwesome name='gear' size='2x' className='fa-fw' />
+              <NavItem eventKey={1} href='#' className='nav-text'>
+                <FontAwesome name='gear' className='fa-fw' />
+                <span className='visible-xs-inline-block'>Preferences</span>
               </NavItem>
             </Nav>
             <Navbar.Form pullRight>
@@ -28,7 +29,7 @@ const TopNavigation = React.createClass({
                 <FormControl type='text' placeholder='Search' />
               </FormGroup>
             </Navbar.Form>
-            <Navbar.Text pullRight>
+            <Navbar.Text pullRight className='hidden-xs'>
               Signed in as: <Navbar.Link href='#'>Tim Ramsier</Navbar.Link>
             </Navbar.Text>
           </Navbar.Collapse>

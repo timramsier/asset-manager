@@ -3,6 +3,7 @@ import FontAwesome from 'react-fontawesome'
 import NavItem from './NavItem'
 import axios from 'axios'
 import ModelGrid from './ModelGrid'
+import AdminOptions from './AdminOptions'
 import Search from './Search'
 import apiSettings from '../config/apiSettings'
 import { Row } from 'react-bootstrap'
@@ -158,7 +159,7 @@ const ShowModels = React.createClass({
         <div className='content'>
           <div className='container-fluid'>
             <div className='row is-table-row'>
-              <div className='col-sm-9 center'>
+              <div className='center'>
                 <div className='container width-override'>
                   <div className='row type-header'
                     style={{borderColor: this.state.headerAccentColor}}>
@@ -200,9 +201,6 @@ const ShowModels = React.createClass({
                   models={this.state.models}
                   assetModal={this.props.assetModal}
                 />
-              </div>
-              <div className='col-sm-3 side-bar'>
-                column
               </div>
             </div>
           </div>

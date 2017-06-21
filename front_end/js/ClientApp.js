@@ -19,8 +19,20 @@ const App = React.createClass({
         type: 'danger',
         message: 'This page is currently under development'
       },
-      modalOpen: false
+      modalOpen: false,
+      menu: {
+        leftOpen: false,
+        rightOpen: false
+      }
     })
+  },
+  setMenuState (menuState) {
+    let newState = this.state
+    Object.assign(newState, {menu: menuState})
+    this.setState(newState)
+  },
+  toggleMenuOpen (side) {
+    document.querySelector('.main-content').classList.toggle(`${side}-open`)
   },
   componentDidMount () {
     let componentConfig = new Promise((resolve, reject) => {
@@ -71,7 +83,10 @@ const App = React.createClass({
       <BrowserRouter>
         <div className='app'>
           <TopNavigation />
-          <LeftNavigation categories={categories} menuOptions={adminOptions} />
+          <LeftNavigation categories={categories}
+            menuOptions={adminOptions}
+            toggleMenuOpen={this.toggleMenuOpen}
+          />
           <div className='main-content'>
             <Match exactly pattern='/' component={() => {
               return <Landing categories={categories} alertMessage={alertMessage} />

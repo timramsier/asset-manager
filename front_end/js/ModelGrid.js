@@ -1,10 +1,10 @@
 import React from 'react'
 import { Row } from 'react-bootstrap'
 import ModelCard from './ModelCard'
-import AssetModal from './AssetModal'
+import ModelModal from './ModelModal'
 import { VelocityTransitionGroup } from 'velocity-react'
 
-const { string, shape, arrayOf, array, bool, func } = React.PropTypes
+const { string, shape, arrayOf, array, bool } = React.PropTypes
 
 const ModelGrid = React.createClass({
   propTypes: {
@@ -31,7 +31,7 @@ const ModelGrid = React.createClass({
         _shortId: string
       })
     })),
-    assetModal: shape({
+    modelModal: shape({
       open: bool,
       data: shape({
         _id: string,
@@ -60,15 +60,15 @@ const ModelGrid = React.createClass({
   },
   getInitialState () {
     return ({
-      assetModal: {
+      modelModal: {
         open: false,
         data: {}
       }
     })
   },
-  setAssetModal (open, modalData) {
+  setModelModal (open, modalData) {
     const newState = this.state
-    Object.assign(newState.assetModal, {
+    Object.assign(newState.modelModal, {
       open: open,
       data: modalData
     })
@@ -85,7 +85,7 @@ const ModelGrid = React.createClass({
     }
   },
   render () {
-    const assetModalAnimationProps = {
+    const modelModalAnimationProps = {
       runOnMount: true,
       enter: {
         animation: {
@@ -104,15 +104,15 @@ const ModelGrid = React.createClass({
     }
     return (
       <Row className='row asset-grid'>
-        <VelocityTransitionGroup {...assetModalAnimationProps}>
-          {this.state.assetModal.open ? <AssetModal setAssetModal={this.setAssetModal} model={this.state.assetModal.data} /> : undefined}
+        <VelocityTransitionGroup {...modelModalAnimationProps}>
+          {this.state.modelModal.open ? <ModelModal setModelModal={this.setModelModal} model={this.state.modelModal.data} /> : undefined}
         </VelocityTransitionGroup>
         {this.props.models.map((model) => {
           return (
             <ModelCard
               model={model}
               key={`model_${model._id}`}
-              setAssetModal={this.setAssetModal}
+              setModelModal={this.setModelModal}
               checkVisible={this.props.checkVisible}
             />
           )
