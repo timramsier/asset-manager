@@ -1,7 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router'
 import LandingSearch from './LandingSearch'
-import FontAwesome from 'react-fontawesome'
+import LandingCard from './LandingCard'
 import PageAlert from './PageAlert'
 const { shape, string, arrayOf } = React.PropTypes
 
@@ -48,34 +47,10 @@ const Landing = React.createClass({
             </div>
           </div>
           <div className='row'>
-            <div className='container'>
-              <div className='categories'>
-                {this.props.categories.map((category) => {
-                  return (
-                    <div key={`categorycard_${category.name}`} className='category col-sm-6 col-md-3'>
-                      <div className='category-card' style={{
-                        borderColor: category.config.color,
-                        color: category.config.color
-                      }}>
-                        <section className='icon'>
-                          <FontAwesome name={category.config.faIcon} />
-                        </section>
-                        <section className='title'>
-                          <h2>{category.name}</h2>
-                        </section>
-                        <section className='description'>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                          sed do eiusmod tempor incididunt ut labore et dolore magna
-                          aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-                        </section>
-                        <section className='actions'>
-                          <Link className='btn btn-default' to={`/show/${category.name}`}>Take a look</Link>
-                        </section>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
+            <div className='categories'>
+              {this.props.categories.map((category) => <LandingCard
+                key={`categorycard_${category.name}`}
+                category={category} />)}
             </div>
           </div>
         </div>

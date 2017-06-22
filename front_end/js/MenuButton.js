@@ -56,7 +56,7 @@ const MenuButton = React.createClass({
           animation: {
             opacity: 0.0
           },
-          duration: 200
+          duration: 0
         }
       }
     } else {
