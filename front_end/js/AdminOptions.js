@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
+import { Link } from 'react-router'
 import FontAwesome from 'react-fontawesome'
 
 const AdminOptions = React.createClass({
@@ -8,11 +8,11 @@ const AdminOptions = React.createClass({
       <div className='admin-options'>
         <h3>Administration</h3>
         <hr />
-        <p className='thin-text'>You have permission to execute the following actions:</p>
+        <p className='thin-text'>You have permission to access the following preferences:</p>
         <ul className='button-list'>
-          <li><Button className='admin-button'><FontAwesome className='fa-fw' name='plus-square-o' /> Add Model</Button></li>
-          <li><Button className='admin-button'><FontAwesome className='fa-fw' name='edit' /> Modify Model</Button></li>
-          <li><Button className='admin-button'><FontAwesome className='fa-fw' name='minus-square-o' /> Remove Model</Button></li>
+          <li><Link to='#'><FontAwesome className='fa-fw' name='gear' /> General Settings</Link></li>
+          <li><Link to='#'><FontAwesome className='fa-fw' name='user-o' /> Manage Users</Link></li>
+          <li><Link to='#'><FontAwesome className='fa-fw' name='laptop' /> Manage Assets</Link></li>
         </ul>
       </div>
     )
