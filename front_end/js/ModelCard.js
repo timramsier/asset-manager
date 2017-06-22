@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { setGridProps } from './common'
 import { VelocityComponent } from 'velocity-react'
 import ReactResizeDetector from 'react-resize-detector'
 
@@ -39,40 +40,28 @@ const ModelCard = React.createClass({
     const parent = elem.parentNode.getBoundingClientRect()
     return (parent.right - element.right < element.width)
   },
-  setGridProps () {
-    const _setWidth = (width) => {
-      let newState = this.state
-      Object.assign(newState, {cssProps: { width }})
-      this.setState(newState)
-    }
-    let parentWidth = ReactDOM.findDOMNode(this)
-      .parentNode
-      .getBoundingClientRect()
-      .width
-    if (parentWidth <= 576) _setWidth('100%')
-    else if (parentWidth <= 768 && parentWidth > 576) _setWidth('50%')
-    else if (parentWidth <= 992 && parentWidth > 768) _setWidth('33.33%')
-    else if (parentWidth <= 1200 && parentWidth > 992) _setWidth('25%')
-    else if (parentWidth >= 1200) _setWidth('25%')
-  },
   setOrientation (orientation) {
     let newState = this.state
     Object.assign(newState, {orientation})
     this.setState(newState)
   },
   componentDidMount () {
+    this._isMounted = true
     const _orient = () => {
       if (this.testOnRightEdge(ReactDOM.findDOMNode(this))) {
         this.setOrientation('right')
       } else {
         this.setOrientation('left')
       }
-      this.setGridProps()
+      setGridProps(this)
     }
     _orient()
     window.addEventListener('resize', (event) => {
       _orient()
     })
+  },
+  componentWillUnmount () {
+    this._isMounted = false
   },
   render () {
     const hoverEffect = {
@@ -221,7 +210,7 @@ const ModelCard = React.createClass({
             </div>
           </div>
         </VelocityComponent>
-        <ReactResizeDetector handleWidth handleHeight onResize={this.setGridProps} />
+        <ReactResizeDetector handleWidth handleHeight onResize={() => setGridProps(this)} />
       </div>
     )
   }

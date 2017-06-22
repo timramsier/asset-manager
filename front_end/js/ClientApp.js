@@ -2,13 +2,11 @@ import React from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter, Match } from 'react-router'
 import axios from 'axios'
-import { VelocityTransitionGroup } from 'velocity-react'
 import Landing from './Landing'
 import ShowModels from './ShowModels'
 import LeftNavigation from './LeftNavigation'
 import defaultLeftNavButtons from '../config/defaultLeftNavButtons'
 import TopNavigation from './TopNavigation'
-import AdminOptions from './AdminOptions'
 import apiSettings from '../config/apiSettings'
 import '../public/less/main.less'
 
@@ -35,9 +33,6 @@ const App = React.createClass({
   },
   toggleMenuOpen (side) {
     document.querySelector('.main-content').classList.toggle(`${side}-open`)
-    let newState = this.state
-    newState.menu[`${side}Open`] = !newState.menu[`${side}Open`]
-    this.setState(newState)
   },
   componentDidMount () {
     let componentConfig = new Promise((resolve, reject) => {
@@ -84,25 +79,6 @@ const App = React.createClass({
   render () {
     const { categories, alertMessage } = this.state
     const { adminOptions } = defaultLeftNavButtons.buttons
-    const adminOptionsAnimationProps = {
-      runOnMount: true,
-      enter: {
-        animation: {
-          right: 0,
-          opacity: 1.0
-        },
-        easing: [0.495, 0, 0.510, 0.995],
-        duration: 400
-      },
-      leave: {
-        animation: {
-          right: -300,
-          opacity: 0.0
-        },
-        easing: [0.495, 0, 0.510, 0.995],
-        duration: 400
-      }
-    }
     return (
       <BrowserRouter>
         <div className='app'>
@@ -124,9 +100,6 @@ const App = React.createClass({
                   {...props} />
               }} />
           </div>
-          <VelocityTransitionGroup {...adminOptionsAnimationProps}>
-            {this.state.menu.rightOpen ? <AdminOptions /> : undefined}
-          </VelocityTransitionGroup>
         </div>
       </BrowserRouter>
     )

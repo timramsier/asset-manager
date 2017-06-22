@@ -70,8 +70,17 @@
 }
 
 .categories {
+  & {
+    padding: 0 60px;
+    position: relative;
+    top: -60px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
   .category {
     margin-bottom: 30px;
+    padding: 15px;
     &-card {
       word-wrap: break-word;
       word-break: break-all;
@@ -94,9 +103,4 @@
       }
     }
   }
-  position: relative;
-  top: -30px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
 }

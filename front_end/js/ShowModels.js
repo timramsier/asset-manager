@@ -6,6 +6,7 @@ import ModelGrid from './ModelGrid'
 import Search from './Search'
 import apiSettings from '../config/apiSettings'
 import { Row } from 'react-bootstrap'
+import { List } from 'immutable'
 
 const { string, shape, array, bool, func } = React.PropTypes
 
@@ -36,7 +37,7 @@ const ShowModels = React.createClass({
   },
   getInitialState () {
     return ({
-      models: [],
+      models: List([]),
       view: 'active',
       headerAccentColor: 'rgb(102, 102, 102)',
       searchTerm: '',
@@ -57,6 +58,7 @@ const ShowModels = React.createClass({
     this.updateModelData()
   },
   updateModelData () {
+    this.reset
     let queryString
     let category = this.props.params.productType.toLowerCase()
     switch (this.state.view) {
@@ -101,7 +103,7 @@ const ShowModels = React.createClass({
   updateModels (models) {
     if (this._isMounted) {
       let newState = this.state
-      Object.assign(newState, {models: models})
+      Object.assign(newState, {models: List(models)})
       this.setState(newState)
     }
   },
