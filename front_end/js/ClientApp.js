@@ -19,20 +19,24 @@ const App = React.createClass({
         type: 'danger',
         message: 'This page is currently under development'
       },
-      modalOpen: false,
-      menu: {
-        leftOpen: false,
-        rightOpen: false
-      }
+      modalOpen: false
     })
   },
-  setMenuState (menuState) {
-    let newState = this.state
-    Object.assign(newState, {menu: menuState})
-    this.setState(newState)
+  toggleMenuOpen (menu) {
+    document.querySelector('.navbar-side').classList.toggle(`${menu}-open`)
+    document.querySelector('.main-content').classList.toggle(`${menu}-open`)
   },
-  toggleMenuOpen (side) {
-    document.querySelector('.main-content').classList.toggle(`${side}-open`)
+  openMenu (menu) {
+    setTimeout(() => {
+      document.querySelector('.navbar-side').classList.add(`${menu}-open`)
+    }, 400)
+    document.querySelector('.main-content').classList.add(`${menu}-open`)
+  },
+  closeMenu (menu) {
+    document.querySelector('.navbar-side').classList.remove(`${menu}-open`)
+    setTimeout(() => {
+      document.querySelector('.main-content').classList.remove(`${menu}-open`)
+    }, 400)
   },
   componentDidMount () {
     let componentConfig = new Promise((resolve, reject) => {
@@ -82,10 +86,15 @@ const App = React.createClass({
     return (
       <BrowserRouter>
         <div className='app'>
-          <TopNavigation toggleMenuOpen={this.toggleMenuOpen} />
+          <TopNavigation
+            toggleMenuOpen={this.toggleMenuOpen}
+            closeMenu={this.closeMenu}
+            openMenu={this.openMenu}
+          />
           <LeftNavigation categories={categories}
             menuOptions={adminOptions}
             toggleMenuOpen={this.toggleMenuOpen}
+            closeMenu={this.closeMenu}
           />
           <div className='main-content'>
             <Match exactly pattern='/' component={() => {
