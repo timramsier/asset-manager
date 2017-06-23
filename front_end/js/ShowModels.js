@@ -112,6 +112,7 @@ const ShowModels = React.createClass({
       window.scrollTo(0, 0)
       this.state.limit = 12
       this.updateModelData()
+      this.props.closeMenu('admin')
     }
   },
   componentDidMount () {

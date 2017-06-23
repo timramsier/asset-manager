@@ -35,13 +35,20 @@ h1, h2, h3, h4, h5 {
   display: block;
   overflow: hidden;
   transition: all 400ms cubic-bezier(0.495, 0, 0.510, 0.995);
-}
-.left-open {
-  left: 200px;
-}
-
-.right-open {
-  right: 300px;
+  -webkit-box-shadow: 1px 0px 1px 0px rgba(163,163,163,0.4);
+  -moz-box-shadow: 1px 0px 1px 0px rgba(163,163,163,0.4);
+  box-shadow: 1px 0px 1px 0px rgba(163,163,163,0.4);
+  &.left-open {
+    left: 200px;
+  }
+  &.right-open {
+    right: 300px;
+  }
+  &.admin-open {
+    z-index: 1000;
+    right: 100%;
+    visibility: hidden;
+  }
 }
 
 .center {
@@ -64,14 +71,33 @@ h1, h2, h3, h4, h5 {
   font-weight: 300;
 }
 
+.alert {
+  border-radius: 0!important;
+}
+
 ul.button-list {
   list-style: none;
   padding: 0;
   li {
     margin:0;
-    padding: 5px 0;
+    padding: 0;
     .fa {
-      text-align: left;
+      color: lighten(#2e3137, 30%);
+      margin-right: 15px;
+      font-size: 1.5em;
+      position: relative;
+      bottom: -.125em;
+    }
+    a {
+      cursor:pointer;
+      display: block;
+      text-decoration: none;
+      color: #2e3137;
+      padding: 7px 5px;
+      transition: background 200ms;
+      &:hover, &.active {
+        background: #f2f2f2;
+      }
     }
   }
 }

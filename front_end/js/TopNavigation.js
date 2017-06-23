@@ -8,7 +8,9 @@ const { func } = React.PropTypes
 
 const TopNavigation = React.createClass({
   propTypes: {
-    toggleMenuOpen: func
+    toggleMenuOpen: func,
+    openMenu: func,
+    closeMenu: func
   },
   render () {
     let buttonProperties = {
@@ -48,9 +50,11 @@ const TopNavigation = React.createClass({
             </Navbar.Collapse>
           </Navbar>
         </div>
-        <div className='admin-menu'>
-          <AdminOptions />
-        </div>
+        <AdminOptions
+          toggleMenuOpen={this.props.toggleMenuOpen}
+          closeMenu={this.props.closeMenu}
+          openMenu={this.props.openMenu}
+        />
       </div>
     )
   }

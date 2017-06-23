@@ -1,47 +1,65 @@
-.admin-options {
-  display: inline-block;
-  position: fixed;
-  right: 0;
-  top: 75px;
-  width:100%;
-  max-width:300px;
-  padding:15px;
-  text-align: left;
-}
-
-// Extra small devices (portrait phones, less than 576px)
-// No media query since this is the default in Bootstrap
-
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
+.admin-menu {
   .admin-options {
-    visibility: visible;
-    .admin-button {
-      min-width: 100%;
+    transition: all 400ms cubic-bezier(0.495, 0, 0.510, 0.995);
+    display: inline-block;
+    position: fixed;
+    right: 0;
+    left: ~"calc(100% - 300px)";
+    top: 0;
+    width:100%;
+    max-width:300px;
+    padding: 75px 15px 15px 15px;
+    text-align: left;
+    height: 100%;
+    border-right: 2px solid #eee;
+    h3 {
+      margin-top: 5px;
     }
   }
-}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .admin-options {
-    .admin-button {
-      min-width: 80%;
-    }
-  }
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  @media (min-width: 992px) {
+  &.admin-full-view {
     .admin-options {
-      .admin-button {
-        min-width: 60%;
+      left:0;
+      right:auto;
+    }
+    .admin-content {
+      left: 300px;
+    }
+    .admin-menu-controls {
+      visibility: visible;
+    }
+  }
+  .admin-content {
+    & {
+      transition: all 400ms cubic-bezier(0.495, 0, 0.510, 0.995);
+      position: absolute;
+      top:0;
+      left:100%;
+      right:0;
+      bottom:0;
+      padding: 75px 15px 15px 15px;
+      display: inline-block;
+      background: #f2f2f2;
+      height: 100%;
+    }
+  }
+  .admin-menu-controls {
+    visibility: hidden;
+    .admin-menu-close {
+      & {
+        position: relative;
+        top: -20px;
+        display:inline-block;
+        margin-top:15px;
+        padding: 5px 15px;
+        border: 2px solid #bebebe;
+        color: #bebebe;
+        text-decoration: none;
+        cursor: pointer;
+        transition: border 0.2s, color 0.2s;
+      }
+      &:hover {
+        border-color: #999;
+        color: #999;
       }
     }
   }

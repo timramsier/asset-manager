@@ -6,7 +6,8 @@ const LeftNavigation = React.createClass({
   propTypes: {
     categories: array,
     menuOptions: array,
-    toggleMenuOpen: func
+    toggleMenuOpen: func,
+    closeMenu: func
   },
   getInitialState () {
     return ({
@@ -35,7 +36,8 @@ const LeftNavigation = React.createClass({
                   name={name}
                   label={label}
                   faIcon={faIcon}
-                  expanded={this.state.expanded} />
+                  expanded={this.state.expanded}
+                />
               )
             })}
             {menuOptions.map((option) => {

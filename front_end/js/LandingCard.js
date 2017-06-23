@@ -20,7 +20,8 @@ const LandingCard = React.createClass({
         fallbackImage: string
       }),
       _shortId: string
-    })
+    }),
+    width: string
   },
   getInitialState () {
     return ({
