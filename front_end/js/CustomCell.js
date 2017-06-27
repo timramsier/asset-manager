@@ -1,47 +1,22 @@
 import React from 'react'
 import { Cell } from 'fixed-data-table'
+import { Modal, Button } from 'react-bootstrap'
+import FontAwesome from 'react-fontawesome'
+import axios from 'axios'
+import apiSettings from '../config/apiSettings'
 
-const { string, number, shape, arrayOf, bool } = React.PropTypes
+const { string, number, array, func } = React.PropTypes
 
 const propValidation = {
-  data: arrayOf(shape({
-    _id: string,
-    _parent: shape({
-      _id: string,
-      vendor: string,
-      name: string,
-      description: string,
-      active: bool,
-      image: string,
-      category: string,
-      _shortId: string
-    }),
-    _shortId: string,
-    assetTag: string,
-    assignedTo: shape({
-      _id: string,
-      username: string,
-      email: string,
-      firstName: string,
-      lastName: string,
-      displayName: string
-    }),
-    lastModified: string,
-    lastModifiedBy: shape({
-      _id: string,
-      username: string,
-      email: string,
-      firstName: string,
-      lastName: string,
-      displayName: string
-    }),
-    po: string
-  })),
+  data: array,
   rowIndex: number,
   col: string,
   subCol: string,
   height: number,
-  width: number
+  width: number,
+  apiCall: string,
+  getData: func,
+  flashMessage: func
 }
 
 const DateCell = React.createClass({
@@ -91,8 +66,89 @@ const ModalCell = React.createClass({
   }
 })
 
+const RemoveCell = React.createClass({
+  propTypes: propValidation,
+  getInitialState () {
+    return ({
+      showModal: false
+    })
+  },
+  removeData (cellData) {
+    let url = `http://${apiSettings.uri}/${this.props.apiCall}/all/${cellData._shortId}`
+    axios.delete(url, {auth: apiSettings.auth}).then((response) => {
+      if (response.status === 200) {
+        this.props.flashMessage('success',
+          <span><strong>Success!</strong> <em>{cellData.name}</em> successfully removed.</span>)
+      }
+      this.props.getData()
+    })
+  },
+  close () {
+    this.setState({ showModal: false })
+  },
+  open () {
+    this.setState({ showModal: true })
+  },
+  render () {
+    const { data, rowIndex, height, width } = this.props
+    let cellData = data[rowIndex]
+    let dimensons = { height, width }
+    const handleClick = {
+      onClick: (event) => {
+        event.preventDefault()
+        this.open()
+      }
+    }
+    return (
+      <Cell {...dimensons} className='admin-cell'>
+        <a title={`Remove ${cellData.name || ''}`} {...handleClick}>
+          <FontAwesome className='fa-fw' name='trash' />
+          <Modal show={this.state.showModal} onHide={this.close}
+            className='center-on-screen confirm-modal'>
+            <Modal.Header>
+              Confirm
+            </Modal.Header>
+            <Modal.Body>
+              Are you sure that you want to delete <strong>{cellData.name}</strong>?
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={() => {
+                this.removeData(cellData)
+                this.close()
+              }}>
+                <FontAwesome className='fa-fw' name='check' />Okay
+              </Button>
+              <Button onClick={this.close}>
+                <FontAwesome className='fa-fw' name='times' />Cancel
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </a>
+      </Cell>
+    )
+  }
+})
+
+const EditCell = React.createClass({
+  propTypes: propValidation,
+  render () {
+    const { data, rowIndex, height, width } = this.props
+    let cellData = data[rowIndex]
+    let dimensons = { height, width }
+    return (
+      <Cell {...dimensons} className='admin-cell'>
+        <a title={`Edit ${cellData.name || ''}`}>
+          <FontAwesome className='fa-fw' name='edit' />
+        </a>
+      </Cell>
+    )
+  }
+})
+
 export default {
   Modal: ModalCell,
   Date: DateCell,
-  Text: TextCell
+  Text: TextCell,
+  Remove: RemoveCell,
+  Edit: EditCell
 }

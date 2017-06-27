@@ -115,7 +115,6 @@ const AssetTable = React.createClass({
         let responseData
         responseData = _addDisplayName(response.data, 'assignedTo')
         responseData = _addDisplayName(responseData, 'lastModifiedBy')
-        console.log(responseData)
         this.updateAssetData(responseData)
       })
   },
