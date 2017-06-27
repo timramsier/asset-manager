@@ -67,7 +67,8 @@ modelSchema.index({
   vendor: 'text',
   name: 'text',
   version: 'text',
-  description: 'text'
+  description: 'text',
+  category: 'text'
 })
 
 categorySchema.index({

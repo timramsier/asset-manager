@@ -37,15 +37,15 @@ const getAssetCategories = () => {
 
 const clearData = () => {
   return new Promise((resolve, reject) => {
-    Category.remove({}, (err) => {
+    Category.collection.drop({}, (err) => {
       if (err) return console.log(err)
       if (verbose) console.log('Removing old category data')
     })
-    Model.remove({}, (err) => {
+    Model.collection.drop({}, (err) => {
       if (err) return console.log(err)
       if (verbose) console.log('Removing old model data')
     })
-    Asset.remove({}, (err) => {
+    Asset.collection.drop({}, (err) => {
       if (err) return console.log(err)
       if (verbose) console.log('Removing old asset data')
     })
@@ -60,7 +60,6 @@ const seedData = (success) => {
         if (err) return console.log(err)
         result.forEach((category) => {
           generateData.assetForDb(24).forEach((entry) => {
-            console.log(entry)
             Object.assign(entry, {
               _parent: category._id,
               category: category.name,
