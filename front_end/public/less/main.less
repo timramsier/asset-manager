@@ -8,7 +8,10 @@
 @import './Search.less';
 @import './ModelModal.less';
 @import './AssetTable.less';
+@import './DataTable.less';
+@import './CustomCell.less';
 @import './AdminOptions.less';
+@import './AdminMenu.less';
 @import '../../node_modules/fixed-data-table/dist/fixed-data-table.css';
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,600,700|Titillium+Web:200,300,400,600,700');
@@ -98,10 +101,29 @@ ul.button-list {
       &:hover, &.active {
         background: #f2f2f2;
       }
+      &.active {
+        .fa {
+          color: #5cd65c;
+        }
+      }
     }
   }
 }
 
 button, button:focus, button:active {
   outline: none!important;
+}
+
+a {
+  color: lighten(#2e3137, 20%);
+  text-decoration: none;
+  &:hover {
+    color: #2e3237;
+  }
+}
+
+.center-on-screen {
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
 }

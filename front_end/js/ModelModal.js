@@ -62,7 +62,8 @@ const ModelModal = React.createClass({
             <Grid className='fluid-at-lg'>
               <Row>
                 <Col xs={12} sm={4} smPush={8}>
-                  <a className='modal-close' {...buttonEffect}>Close</a>
+                  <a className='modal-close' {...buttonEffect}>
+                    <FontAwesome className='fa-fw' name='times' />Close</a>
                 </Col>
                 <Col xs={12} sm={8} smPull={4}>
                   <h1>{model.name}{' '}<small>{model.vendor}</small></h1>

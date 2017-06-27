@@ -1,5 +1,6 @@
 import React from 'react'
 import { findDOMNode } from 'react-dom'
+import AdminMenu from './AdminMenu'
 import FontAwesome from 'react-fontawesome'
 
 const { func } = React.PropTypes
@@ -21,7 +22,9 @@ const AdminOptions = React.createClass({
       switch (action) {
         case 'open':
           this.props.openMenu('admin')
-          elem.classList.add('admin-full-view')
+          setTimeout(() => {
+            elem.classList.add('admin-full-view')
+          }, 300)
           break
         case 'close':
           this.props.closeMenu('admin')
@@ -47,6 +50,7 @@ const AdminOptions = React.createClass({
         .forEach((elem) => {
           elem.classList.remove('active')
         })
+        this.setActiveMenu(event.target.getAttribute('data-target'))
         event.target.classList.add('active')
         event.preventDefault()
         this.controlAdminMenu('open')
@@ -66,7 +70,8 @@ const AdminOptions = React.createClass({
       <div className='admin-menu'>
         <div className='admin-options'>
           <div className='admin-menu-controls'>
-            <a className='admin-menu-close' {...closeEffect}>Close</a>
+            <a className='admin-menu-close' {...closeEffect}>
+              <FontAwesome className='fa-fw' name='times' />Close</a>
           </div>
           <h3>Administration</h3>
           <hr />
@@ -81,7 +86,9 @@ const AdminOptions = React.createClass({
           </ul>
         </div>
         <div className='admin-content'>
-          Test
+          {this.state.selectedMenu === 'general' ? <AdminMenu.GeneralSettings /> : undefined}
+          {this.state.selectedMenu === 'users' ? <AdminMenu.UserManagement /> : undefined}
+          {this.state.selectedMenu === 'stock' ? <AdminMenu.StockManagement /> : undefined}
         </div>
       </div>
     )

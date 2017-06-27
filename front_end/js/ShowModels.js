@@ -33,7 +33,8 @@ const ShowModels = React.createClass({
       query: shape({
         search: string
       })
-    })
+    }),
+    closeMenu: func
   },
   getInitialState () {
     return ({

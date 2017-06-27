@@ -1,0 +1,36 @@
+.admin-cell {
+  text-align: center;
+  .fa {
+    font-size: 2em;
+  }
+  a {
+    cursor: pointer;
+  }
+}
+
+.fixedDataTableRowLayout_rowWrapper:nth-child(even) {
+  .admin-cell {
+    background:lighten(rgb(255, 214, 51), 30%);
+  }
+}
+.fixedDataTableRowLayout_rowWrapper:nth-child(odd) {
+  .admin-cell {
+    background:lighten(rgb(255, 214, 51), 35%);
+  }
+}
+
+.confirm-modal {
+  .modal-content {
+    border-radius: 0!important;
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.4)!important;
+    -moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.4)!important;
+    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.4)!important;
+  }
+  .modal-header {
+    border-color: transparent;
+    background: #eee;
+  }
+  .modal-footer {
+    border-color: transparent;
+  }
+}
