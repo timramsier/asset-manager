@@ -50,6 +50,7 @@ const AssetTable = React.createClass({
           maxWidthPer: 15
         },
         { col: 'po',
+          subCol: 'poNumber',
           label: 'P.O.',
           type: 'text',
           minWidthPix: 80,
@@ -98,6 +99,7 @@ const AssetTable = React.createClass({
       searchString = `?search=${encodeURIComponent(this.state.searchTerm)}`
     }
     let url = `http://${apiSettings.uri}/assets/all/${shortId}${searchString}`
+    console.log(url)
     axios.get(url, {auth: apiSettings.auth})
       .then((response) => {
         // add DisplayName if possible
