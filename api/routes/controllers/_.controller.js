@@ -10,6 +10,7 @@ const _controller = (
   }
   Object.assign(_options, options)
   return ({
+
     getAll: (req, res, next, callback = (err, result) => {
       if (err) res.sendStatus(400)
       res.status(200).send(JSON.stringify(result))
@@ -53,6 +54,7 @@ const _controller = (
         callback(err, result)
       })
     },
+
     getOne: (req, res, next, callback = (err, result) => {
       if (err) res.sendStatus(400)
       res.status(200).send(JSON.stringify(result))
@@ -86,6 +88,7 @@ const _controller = (
         callback(err, result)
       })
     },
+
     add: (req, res, next, callback = (err, result) => {
       if (err) res.status(400).send(err)
       res.status(200).send(JSON.stringify(result))
@@ -98,6 +101,7 @@ const _controller = (
         callback(err, result)
       })
     },
+
     remove: (req, res, next, callback = (err, result) => {
       if (err) res.sendStatus(400)
       res.status(200).send(`Successfully Removed ${req.params.shortId}`)
@@ -111,6 +115,7 @@ const _controller = (
         })
       })
     },
+
     update: (req, res, next, callback = (err, result) => {
       if (err) res.sendStatus(400)
       res.status(200).send(`Successfully Updated ${req.params.shortId}`)
@@ -127,6 +132,7 @@ const _controller = (
         })
       })
     }
+
   })
 }
 

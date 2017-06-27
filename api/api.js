@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const logger = require('morgan')
 const passport = require('passport')
 const api = require('./routes/api.router')
+const seedData = require('./js/seedData')
 
 // database config
 const database = {
@@ -12,10 +13,14 @@ const database = {
     host: 'localhost'
   }
 }
+
+const seed = false
+
 mongoose.connect(`mongodb://${database.defaults.host}/${database.defaults.name}`)
 var dbConnection = mongoose.connection
 dbConnection.on('error', console.error.bind(console, 'MongoDB connection error:'))
-// require('./js/seed')
+
+seed ? seedData() : undefined
 
 const app = express()
 

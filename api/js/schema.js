@@ -10,7 +10,7 @@ const assetSchema = Schema({
   assignedTo: {type: String, ref: 'User'},
   status: {type: String, default: 'new'},
   sn: {type: String, required: true, default: ''},
-  po: {type: String, default: ''},
+  po: { type: String, ref: 'Po' },
   lastModifiedBy: { type: String, ref: 'User' },
   lastModified: { type: Date, default: Date.now }
 })
@@ -53,6 +53,17 @@ const modelSchema = Schema({
   lastModified: { type: Date, default: Date.now }
 })
 
+const poSchema = Schema({
+  _shortId: {type: String, unique: true, default: shortId.generate},
+  poNumber: {type: String, unique: true},
+  bu: String,
+  lastModifiedBy: { type: String, ref: 'User' },
+  lastModified: { type: Date, default: Date.now },
+  createdBy: { type: String, ref: 'User' },
+  created: { type: Date, default: Date.now },
+  assets: [ { type: Schema.Types.ObjectId, ref: 'Asset' } ]
+})
+
 // indexes
 
 assetSchema.index({
@@ -80,16 +91,24 @@ categorySchema.index({
   'config.api': 'text'
 })
 
+poSchema.index({
+  poNumber: 'text',
+  bu: 'text'
+})
+
 // add property to allow 'search' url query usage in _.controller.js
 assetSchema._custom = { textIndex: true }
 modelSchema._custom = { textIndex: true }
 categorySchema._custom = { textIndex: true }
+poSchema._custom = { textIndex: true }
 
 module.exports = {
   assetSchema,
   modelSchema,
   categorySchema,
+  poSchema,
   modelModel: mongoose.model('Model', modelSchema),
   assetModel: mongoose.model('Asset', assetSchema),
-  categoryModel: mongoose.model('Category', categorySchema)
+  categoryModel: mongoose.model('Category', categorySchema),
+  poModel: mongoose.model('Po', poSchema)
 }

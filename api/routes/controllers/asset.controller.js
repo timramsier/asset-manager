@@ -1,8 +1,9 @@
-const { modelModel, assetModel } = require('../../js/schema')
+const { modelModel, assetModel, poModel } = require('../../js/schema')
 const _controller = require('./_.controller')
 
 let Asset = assetModel
 let Model = modelModel
+let Po = poModel
 
 const addAsset = (req, res, next) => {
   _controller(Asset).add(req, res, next, (err, data) => {
@@ -33,21 +34,32 @@ const getAssetsByModelId = (req, res, next) => {
     if (!model) {
       res.status(400).send(`Model with _shortId ${req.params.shortId} not found.`)
     } else {
-      _controller(Asset,
-        {
-          populate: '_parent lastModifiedBy',
-          popFields: 'name firstName lastName email vendor name version description'
-        },
-      {_parent: model._id}
-    ).getAll(req, res, next)
+      let query = req.query
+      let poQuery = {null: true} // forces an empty set
+      if (query.search) { poQuery = { $text: { $search: query.search } } }
+      Po.find(poQuery).exec((err, results) => {
+        if (err) res.sendStatus(400)
+        results.forEach((po) => {
+          query.search += ` ${po._id}`
+        })
+        query._parent = model._id
+        console.log(query)
+        _controller(Asset,
+          {
+            populate: '_parent lastModifiedBy po',
+            popFields: 'name firstName lastName email vendor name version description poNumber'
+          },
+          query
+        ).getAll(req, res, next)
+      })
     }
   })
 }
 
 const getAssetByShortId = (req, res, next) => {
   _controller(Asset, {
-    populate: '_parent lastModifiedBy',
-    popFields: 'name firstName lastName email vendor name version description'
+    populate: '_parent lastModifiedBy po',
+    popFields: 'name firstName lastName email vendor name version description poNumber'
   }, {_shortId: req.params.shortId})
   .getOne(req, res, next)
 }
@@ -58,8 +70,8 @@ module.exports = {
   getAssetsByModelId,
   getAssetByShortId,
   getAllAssets: _controller(Asset, {
-    populate: '_parent assignedTo lastModifiedBy',
-    popFields: 'username accessLevel firstName lastName email vendor name category description active image _shortId'
+    populate: '_parent assignedTo lastModifiedBy po',
+    popFields: 'username accessLevel firstName lastName email vendor name category description active image _shortId poNumber'
   }).getAll,
   updateAsset: _controller(Asset).update
 }
