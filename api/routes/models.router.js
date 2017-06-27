@@ -1,5 +1,5 @@
 const express = require('express')
-const modelController = require('./controllers/models.controller')
+const modelController = require('./controllers/model.controller')
 const authController = require('../auth/controllers/auth.controller')
 const router = express.Router()
 const jsonParse = require('body-parser').json()
