@@ -15,6 +15,9 @@ router.route('/all')
 router.route('/:productType')
   .get(authController.isAuthenticated, modelController.getModelsByCategory)
 
+router.route('/all/meta')
+  .get(authController.isAuthenticated, modelController.getModelMeta)
+
 router.route('/all/:shortId')
   .get(authController.isAuthenticated, modelController.getModelByShortId)
   .put(authController.isAuthenticated, jsonParse, modelController.updateModel)

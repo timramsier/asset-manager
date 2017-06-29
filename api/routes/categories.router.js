@@ -14,4 +14,9 @@ router.route('/:shortId')
   .delete(authController.isAuthenticated, categoryController.removeCategory)
   .put(authController.isAuthenticated, jsonParse, categoryController.updateCategory)
 
+router.route('/all/:shortId')
+  .get(authController.isAuthenticated, categoryController.getCategory)
+  .delete(authController.isAuthenticated, categoryController.removeCategory)
+  .put(authController.isAuthenticated, jsonParse, categoryController.updateCategory)
+
 module.exports = router

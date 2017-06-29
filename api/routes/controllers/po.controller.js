@@ -25,5 +25,6 @@ module.exports = {
   }).getAll,
   addPo: _controller(Po).add,
   removePo: _controller(Po).remove,
-  updatePo: _controller(Po).update
+  updatePo: _controller(Po).update,
+  getPoMeta: _controller(Po).getMeta
 }

@@ -18,7 +18,6 @@ const addAsset = (req, res, next) => {
 const removeAsset = (req, res, next) => {
   _controller(Asset).remove(req, res, next, (err, data) => {
     if (err) res.sendStatus(400)
-    console.log(data)
     Model.findOneAndUpdate({_id: data._parent}, { $pull: { assets: data._id } }, (err, result) => {
       if (err) res.status(400).send(err)
       res.status(200).send(`Successfully Removed ${data._shortId}`)
@@ -43,7 +42,6 @@ const getAssetsByModelId = (req, res, next) => {
           query.search += ` ${po._id}`
         })
         query._parent = model._id
-        console.log(query)
         _controller(Asset,
           {
             populate: '_parent assignedTo lastModifiedBy po',
@@ -73,5 +71,6 @@ module.exports = {
     populate: '_parent assignedTo lastModifiedBy po',
     popFields: 'username accessLevel firstName lastName email vendor name category description active image _shortId poNumber'
   }).getAll,
-  updateAsset: _controller(Asset).update
+  updateAsset: _controller(Asset).update,
+  getAssetMeta: _controller(Asset).getMeta
 }
