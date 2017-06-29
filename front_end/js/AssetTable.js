@@ -137,11 +137,6 @@ const AssetTable = React.createClass({
             setSearchTerm={this.setSearchTerm}
             searchType='Assets'
           />
-          <div className='button-group'>
-            <a className='table-button' title='Add Asset'>
-              <FontAwesome name='plus' className='fa-fw' />
-            </a>
-          </div>
         </div>
         <Table
           rowHeight={rowHeight}

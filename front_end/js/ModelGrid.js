@@ -91,14 +91,14 @@ const ModelGrid = React.createClass({
       runOnMount: true,
       enter: {
         animation: {
-          scale: 1.0,
+          top: 0,
           opacity: 1.0
         },
         duration: 400
       },
       leave: {
         animation: {
-          scale: 0.5,
+          top: '100%',
           opacity: 0.0
         },
         duration: 400
