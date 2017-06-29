@@ -111,7 +111,7 @@ const ModelMenu = React.createClass({
     ]
     return (
       <div className='model-menu'>
-        <DataTable apiCall='models' columns={columns} />
+        <DataTable apiCall='models' columns={columns} showTotal />
       </div>
     )
   }
@@ -188,7 +188,7 @@ const POMenu = React.createClass({
     ]
     return (
       <div className='po-menu'>
-        <DataTable apiCall='pos' columns={columns} />
+        <DataTable apiCall='pos' columns={columns} showTotal />
       </div>
     )
   }
@@ -267,7 +267,7 @@ const AssetMenu = React.createClass({
     ]
     return (
       <div className='po-menu'>
-        <DataTable apiCall='assets' columns={columns} />
+        <DataTable apiCall='assets' columns={columns} showTotal />
       </div>
     )
   }
@@ -328,7 +328,7 @@ const UserMenu = React.createClass({
     ]
     return (
       <div className='user-menu'>
-        <DataTable apiCall='users' columns={columns} />
+        <DataTable apiCall='users' columns={columns} showTotal />
       </div>
     )
   }

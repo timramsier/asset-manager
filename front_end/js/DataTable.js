@@ -8,7 +8,7 @@ import Search from './Search'
 import apiSettings from '../config/apiSettings'
 import ReactResizeDetector from 'react-resize-detector'
 
-const { string, arrayOf, shape, number } = React.PropTypes
+const { string, arrayOf, shape, number, bool } = React.PropTypes
 
 const DataTable = React.createClass({
   propTypes: {
@@ -20,7 +20,8 @@ const DataTable = React.createClass({
       minWidthPix: number,
       maxWidthPer: number
     })),
-    targetCall: string
+    targetCall: string,
+    showTotal: bool
   },
   getInitialState () {
     return ({
@@ -160,7 +161,7 @@ const DataTable = React.createClass({
             searchType='Assets'
           />
         </div>
-        {this.state.metaData.count
+        {this.state.metaData.count && this.props.showTotal
           ? <div className='data-table-data'>
             <strong>Total Items:</strong> {this.state.metaData.count}
           </div>
