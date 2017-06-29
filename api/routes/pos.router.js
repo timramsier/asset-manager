@@ -9,8 +9,14 @@ router.route('/')
   .get(authController.isAuthenticated, poController.getPos)
   .post(authController.isAuthenticated, jsonParse, poController.addPo)
 
+router.route('/all')
+  .get(authController.isAuthenticated, poController.getPos)
+
 router.route('/:poNumber')
   .get(authController.isAuthenticated, poController.getByPONum)
+
+router.route('/all/:shortId')
+  .get(authController.isAuthenticated, poController.getPoByShortId)
   .delete(authController.isAuthenticated, poController.removePo)
   .put(authController.isAuthenticated, jsonParse, poController.updatePo)
 

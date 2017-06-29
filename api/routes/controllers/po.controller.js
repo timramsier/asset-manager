@@ -11,8 +11,14 @@ const getByPONum = (req, res, next) => {
   .getOne(req, res, next)
 }
 
+const getPoByShortId = (req, res, next) => {
+  _controller(Po, {}, {_shortId: req.params.shortId})
+  .getOne(req, res, next)
+}
+
 module.exports = {
   getByPONum,
+  getPoByShortId,
   getPos: _controller(Po, {
     populate: 'createdBy lastModifiedBy',
     popFields: 'name firstName lastName email username'

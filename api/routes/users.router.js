@@ -7,4 +7,8 @@ router.route('/')
   .post(userController.postUsers)
   .get(userController.getUsers)
 
+router.route('/all')
+  .post(userController.postUsers)
+  .get(userController.getUsers)
+
 module.exports = router
