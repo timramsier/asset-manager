@@ -55,6 +55,19 @@ const _controller = (
       })
     },
 
+    getMeta: (req, res, next, callback = (err, result) => {
+      if (err) res.sendStatus(400)
+      res.status(200).send(JSON.stringify(result))
+    }) => {
+      model.collection.stats((err, result) => {
+        let metaData = result
+        delete metaData.wiredTiger
+        delete metaData.indexDetails
+
+        callback(err, metaData)
+      })
+    },
+
     getOne: (req, res, next, callback = (err, result) => {
       if (err) res.sendStatus(400)
       res.status(200).send(JSON.stringify(result))

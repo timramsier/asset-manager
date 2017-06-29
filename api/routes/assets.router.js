@@ -15,6 +15,9 @@ router.route('/all')
 router.route('/:shortId')
   .get(authController.isAuthenticated, assetController.getAssetByShortId)
 
+router.route('/all/meta')
+  .get(authController.isAuthenticated, assetController.getAssetMeta)
+
 router.route('/all/:shortId')
   .get(authController.isAuthenticated, assetController.getAssetsByModelId)
   .put(authController.isAuthenticated, jsonParse, assetController.updateAsset)

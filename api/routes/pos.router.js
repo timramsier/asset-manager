@@ -15,6 +15,9 @@ router.route('/all')
 router.route('/:poNumber')
   .get(authController.isAuthenticated, poController.getByPONum)
 
+router.route('/all/meta')
+  .get(authController.isAuthenticated, poController.getPoMeta)
+
 router.route('/all/:shortId')
   .get(authController.isAuthenticated, poController.getPoByShortId)
   .delete(authController.isAuthenticated, poController.removePo)

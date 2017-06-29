@@ -38,5 +38,6 @@ module.exports = {
     }).getAll,
   addModel: _controller(Model).add,
   removeModel: _controller(Model).remove,
-  updateModel: _controller(Model).update
+  updateModel: _controller(Model).update,
+  getModelMeta: _controller(Model).getMeta
 }
