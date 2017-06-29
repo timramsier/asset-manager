@@ -46,8 +46,8 @@ const getAssetsByModelId = (req, res, next) => {
         console.log(query)
         _controller(Asset,
           {
-            populate: '_parent lastModifiedBy po',
-            popFields: 'name firstName lastName email vendor name version description poNumber'
+            populate: '_parent assignedTo lastModifiedBy po',
+            popFields: 'username accessLevel firstName lastName email vendor name category description active image _shortId poNumber'
           },
           query
         ).getAll(req, res, next)
