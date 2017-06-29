@@ -19,7 +19,8 @@ const DataTable = React.createClass({
       type: string,
       minWidthPix: number,
       maxWidthPer: number
-    }))
+    })),
+    targetCall: string
   },
   getInitialState () {
     return ({
@@ -67,7 +68,6 @@ const DataTable = React.createClass({
   refreshData (data) {
     //  allow update on refresh
     this.state.update = true
-
     let newState = this.state
     newState.data = data
     this.setState(newState)
@@ -80,12 +80,13 @@ const DataTable = React.createClass({
     this.setState(newState)
   },
   getData (updateType = 'refresh') {
-    console.log('update called')
     let searchString = ''
     if (this.state.searchTerm.length > 0) {
       searchString = `&search=${encodeURIComponent(this.state.searchTerm)}`
     }
-    let url = `http://${apiSettings.uri}/${this.props.apiCall}/all?limit=${this.state.limit}&skip=${this.state.skip}${searchString}`
+    let targetCall = ''
+    this.props.targetCall ? targetCall = `/${this.props.targetCall}` : undefined
+    let url = `http://${apiSettings.uri}/${this.props.apiCall}/all${targetCall}?limit=${this.state.limit}&skip=${this.state.skip}${searchString}`
     axios.get(url, {auth: apiSettings.auth})
       .then((response) => {
         // add DisplayName if possible
@@ -102,6 +103,7 @@ const DataTable = React.createClass({
         let responseData = response.data
         responseData = _addDisplayName(responseData, 'assignedTo')
         responseData = _addDisplayName(responseData, 'lastModifiedBy')
+        responseData = _addDisplayName(responseData, 'createdBy')
         if (updateType === 'refresh') {
           this.refreshData(responseData)
         } else if (updateType === 'push') {
@@ -113,7 +115,7 @@ const DataTable = React.createClass({
     let newState = this.state
     Object.assign(newState, {alert: {type, message}})
     this.setState(newState)
-    this.state.alert({type: '', message: ''})
+    this.state.alert = {type: '', message: ''}
   },
   handleTableScroll () {
     const innerTable = findDOMNode(findDOMNode(this)

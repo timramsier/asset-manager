@@ -80,14 +80,14 @@ const AdminOptions = React.createClass({
             <li><a className='admin-button' data-target='general' {...openEffect}>
               <FontAwesome className='fa-fw' name='gear' />General Settings</a></li>
             <li><a className='admin-button' data-target='users' {...openEffect}>
-              <FontAwesome className='fa-fw' name='user-o' />Manage Users</a></li>
+              <FontAwesome className='fa-fw' name='user-o' />Identity Management</a></li>
             <li><a className='admin-button' data-target='stock' {...openEffect}>
               <FontAwesome className='fa-fw' name='laptop' />Manage Stock</a></li>
           </ul>
         </div>
         <div className='admin-content'>
           {this.state.selectedMenu === 'general' ? <AdminMenu.GeneralSettings /> : undefined}
-          {this.state.selectedMenu === 'users' ? <AdminMenu.UserManagement /> : undefined}
+          {this.state.selectedMenu === 'users' ? <AdminMenu.IdentityManagement /> : undefined}
           {this.state.selectedMenu === 'stock' ? <AdminMenu.StockManagement /> : undefined}
         </div>
       </div>

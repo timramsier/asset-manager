@@ -1,5 +1,5 @@
 import React from 'react'
-import AssetTable from './AssetTable'
+import DataTable from './DataTable'
 import { Grid, Row, Col } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 
@@ -55,6 +55,51 @@ const ModelModal = React.createClass({
       thumbnailImage = model._parent.config.fallbackImage
       thumbnailClass = 'no-image'
     }
+    let columns = [
+      {
+        col: 'sn',
+        label: 'Serial',
+        type: 'modal',
+        minWidthPix: 100,
+        maxWidthPer: 18
+      },
+      {
+        col: 'assetTag',
+        label: 'Asset Tag',
+        type: 'text',
+        minWidthPix: 80,
+        maxWidthPer: 15
+      },
+      {
+        col: 'status',
+        label: 'Status',
+        type: 'text',
+        minWidthPix: 80,
+        maxWidthPer: 15
+      },
+      {
+        col: 'assignedTo',
+        subCol: 'displayName',
+        label: 'Assigned To',
+        type: 'text',
+        minWidthPix: 100,
+        maxWidthPer: 15
+      },
+      { col: 'po',
+        subCol: 'poNumber',
+        label: 'P.O.',
+        type: 'text',
+        minWidthPix: 80,
+        maxWidthPer: 15
+      },
+      {
+        col: 'lastModified',
+        label: 'Last Modified',
+        type: 'date',
+        minWidthPix: 80,
+        maxWidthPer: 22
+      }
+    ]
     return (
       <div className='asset-modal'>
         <Grid fluid>
@@ -110,7 +155,7 @@ const ModelModal = React.createClass({
                 <Col xs={12} sm={8} smPull={4}>
                   <div className='assets'>
                     <h3>Assets</h3>
-                    <AssetTable shortId={model._shortId} />
+                    <DataTable apiCall='assets' targetCall={model._shortId} columns={columns} />
                   </div>
                 </Col>
               </Row>

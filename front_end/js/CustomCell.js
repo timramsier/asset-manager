@@ -24,8 +24,13 @@ const DateCell = React.createClass({
   render () {
     const { data, rowIndex, col, subCol, height, width } = this.props
     let dimensons = { height, width }
-    let cellData = data[rowIndex][col]
-    subCol ? cellData = data[rowIndex][col][subCol] : undefined
+    let cellData = ''
+    if (data[rowIndex][col]) {
+      cellData = data[rowIndex][col]
+      if (subCol && data[rowIndex][col][subCol]) {
+        cellData = data[rowIndex][col][subCol]
+      }
+    }
     let date = new Date(cellData)
     let formattedDate = date.toLocaleString()
     return (
@@ -40,9 +45,14 @@ const TextCell = React.createClass({
   propTypes: propValidation,
   render () {
     const { data, rowIndex, col, subCol, height, width } = this.props
-    let cellData = data[rowIndex][col]
+    let cellData = ''
+    if (data[rowIndex][col]) {
+      cellData = data[rowIndex][col]
+      if (subCol && data[rowIndex][col][subCol]) {
+        cellData = data[rowIndex][col][subCol]
+      }
+    }
     let dimensons = { height, width }
-    subCol ? cellData = data[rowIndex][col][subCol] : undefined
     return (
       <Cell {...dimensons}>
         {cellData}
@@ -55,9 +65,14 @@ const ModalCell = React.createClass({
   propTypes: propValidation,
   render () {
     const { data, rowIndex, col, subCol, height, width } = this.props
-    let cellData = data[rowIndex][col]
+    let cellData = ''
+    if (data[rowIndex][col]) {
+      cellData = data[rowIndex][col]
+      if (subCol && data[rowIndex][col][subCol]) {
+        cellData = data[rowIndex][col][subCol]
+      }
+    }
     let dimensons = { height, width }
-    subCol ? cellData = data[rowIndex][col][subCol] : undefined
     return (
       <Cell {...dimensons}>
         <a className='cell-link'>{cellData}</a>
@@ -80,7 +95,7 @@ const RemoveCell = React.createClass({
         this.props.flashMessage('success',
           <span><strong>Success!</strong> <em>{cellData.name}</em> successfully removed.</span>)
       }
-      this.props.getData()
+      this.props.getData('refresh')
     })
   },
   close () {
@@ -101,7 +116,7 @@ const RemoveCell = React.createClass({
     }
     return (
       <Cell {...dimensons} className='admin-cell'>
-        <a title={`Remove ${cellData.name || ''}`} {...handleClick}>
+        <a title={`Remove ${cellData.name || cellData.poNumber || ''}`} {...handleClick}>
           <FontAwesome className='fa-fw' name='trash' />
           <Modal show={this.state.showModal} onHide={this.close}
             className='center-on-screen confirm-modal'>
@@ -109,7 +124,7 @@ const RemoveCell = React.createClass({
               Confirm
             </Modal.Header>
             <Modal.Body>
-              Are you sure that you want to delete <strong>{cellData.name}</strong>?
+              Are you sure that you want to delete <strong>{cellData.name || cellData.poNumber}</strong>?
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={() => {
@@ -137,7 +152,7 @@ const EditCell = React.createClass({
     let dimensons = { height, width }
     return (
       <Cell {...dimensons} className='admin-cell'>
-        <a title={`Edit ${cellData.name || ''}`}>
+        <a title={`Edit ${cellData.name || cellData.poNumber || ''}`}>
           <FontAwesome className='fa-fw' name='edit' />
         </a>
       </Cell>
