@@ -8,7 +8,7 @@ import Search from './Search'
 import apiSettings from '../config/apiSettings'
 import ReactResizeDetector from 'react-resize-detector'
 
-const { string, arrayOf, shape, number } = React.PropTypes
+const { string, arrayOf, shape, number, bool } = React.PropTypes
 
 const DataTable = React.createClass({
   propTypes: {
@@ -20,7 +20,8 @@ const DataTable = React.createClass({
       minWidthPix: number,
       maxWidthPer: number
     })),
-    targetCall: string
+    targetCall: string,
+    showTotal: bool
   },
   getInitialState () {
     return ({
@@ -36,7 +37,8 @@ const DataTable = React.createClass({
       },
       skip: 0,
       limit: 24,
-      update: true
+      update: true,
+      metaData: {}
     })
   },
   getCellType (type) {
@@ -78,6 +80,16 @@ const DataTable = React.createClass({
     let newState = this.state
     newState.data.push.apply(newState.data, data)
     this.setState(newState)
+  },
+  getMetaData () {
+    let url = `http://${apiSettings.uri}/${this.props.apiCall}/all/meta`
+    axios.get(url, {auth: apiSettings.auth})
+      .then((response) => {
+        const { count } = response.data
+        let newState = this.state
+        Object.assign(newState, {metaData: { count }})
+        this.setState(newState)
+      })
   },
   getData (updateType = 'refresh') {
     let searchString = ''
@@ -129,6 +141,7 @@ const DataTable = React.createClass({
   },
   componentDidMount () {
     this._thisElement = findDOMNode(this)
+    this.getMetaData()
     this.getData()
     this.resizeTable(this._thisElement)
 
@@ -148,6 +161,11 @@ const DataTable = React.createClass({
             searchType='Assets'
           />
         </div>
+        {this.state.metaData.count && this.props.showTotal
+          ? <div className='data-table-data'>
+            <strong>Total Items:</strong> {this.state.metaData.count}
+          </div>
+          : undefined}
         {this.state.alert.type && this.state.alert.message
           ? <div className='table-flash-alert'>
             <Alert bsStyle={this.state.alert.type}>
@@ -187,7 +205,9 @@ const DataTable = React.createClass({
             )
           })}
         </Table>
-        <ReactResizeDetector handleWidth handleHeight onResize={() => this.resizeTable(this._thisElement)} />
+        <ReactResizeDetector
+          handleWidth handleHeight
+          onResize={() => this.resizeTable(this._thisElement)} />
       </div>
     )
   }
