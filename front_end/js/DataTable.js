@@ -23,7 +23,14 @@ const DataTable = React.createClass({
       maxWidthPer: number
     })),
     targetCall: string,
-    showTotal: bool
+    showTotal: bool,
+    formStructure: arrayOf(shape({
+      label: string,
+      key: string,
+      type: string,
+      placeholder: string,
+      description: string
+    }))
   },
   getInitialState () {
     return ({
