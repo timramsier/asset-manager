@@ -5,7 +5,7 @@
   "main": "api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "echo 'Make sure mongod is running' && nodemon api.js"
+    "start": "echo \"Make sure that mongod is running\" && nodemon api.js"
   },
   "author": "",
   "license": "ISC",

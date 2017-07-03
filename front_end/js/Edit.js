@@ -3,7 +3,7 @@ import { Col, FormGroup, FormControl, ControlLabel, InputGroup } from 'react-boo
 import FontAwesome from 'react-fontawesome'
 import { findDOMNode } from 'react-dom'
 
-const { shape, string, arrayOf, func } = React.PropTypes
+const { shape, string, arrayOf, func, object } = React.PropTypes
 const Edit = React.createClass({
   propTypes: {
     formStructure: arrayOf(shape({
@@ -69,6 +69,9 @@ const _structureProps = {
 }
 
 const HelperText = React.createClass({
+  propTypes: {
+    children: object
+  },
   getInitialState () {
     return ({
       parentHover: false

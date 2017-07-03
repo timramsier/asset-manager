@@ -3,7 +3,7 @@ import FontAwesome from 'react-fontawesome'
 import { Grid, Row, Col } from 'react-bootstrap'
 import Edit from './Edit'
 
-const { object, string, arrayOf, shape } = React.PropTypes
+const { object, string, arrayOf, shape, func } = React.PropTypes
 
 const AdminModal = React.createClass({
   propTypes: {
@@ -14,7 +14,8 @@ const AdminModal = React.createClass({
       type: string,
       placeholder: string,
       description: string
-    }))
+    })),
+    setAdminModal: func
   },
   render () {
     let buttonEffect = {
