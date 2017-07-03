@@ -5,7 +5,7 @@ import FontAwesome from 'react-fontawesome'
 import axios from 'axios'
 import apiSettings from '../config/apiSettings'
 
-const { string, number, array, func } = React.PropTypes
+const { string, number, array, func, object } = React.PropTypes
 
 const propValidation = {
   data: array,
@@ -16,7 +16,9 @@ const propValidation = {
   width: number,
   apiCall: string,
   getData: func,
-  flashMessage: func
+  flashMessage: func,
+  setAdminModal: func,
+  component: object
 }
 
 const DateCell = React.createClass({
@@ -150,9 +152,17 @@ const EditCell = React.createClass({
     const { data, rowIndex, height, width } = this.props
     let cellData = data[rowIndex]
     let dimensons = { height, width }
+    const clickEffect = {
+      onClick: (event) => {
+        event.preventDefault()
+        this.props.setAdminModal(true, cellData)
+      }
+    }
     return (
       <Cell {...dimensons} className='admin-cell'>
-        <a title={`Edit ${cellData.name || cellData.poNumber || ''}`}>
+        <a title={`Edit ${cellData.name || cellData.poNumber || ''}`}
+          {...clickEffect}
+        >
           <FontAwesome className='fa-fw' name='edit' />
         </a>
       </Cell>
