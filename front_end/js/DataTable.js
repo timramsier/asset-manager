@@ -3,9 +3,11 @@ import axios from 'axios'
 import { Table, Column, Cell } from 'fixed-data-table'
 import { Alert } from 'react-bootstrap'
 import CustomCell from './CustomCell'
+import AdminModal from './AdminModal'
 import { findDOMNode } from 'react-dom'
 import Search from './Search'
 import apiSettings from '../config/apiSettings'
+import { VelocityTransitionGroup } from 'velocity-react'
 import ReactResizeDetector from 'react-resize-detector'
 
 const { string, arrayOf, shape, number, bool } = React.PropTypes
@@ -38,7 +40,11 @@ const DataTable = React.createClass({
       skip: 0,
       limit: 24,
       update: true,
-      metaData: {}
+      metaData: {},
+      adminModal: {
+        open: false,
+        data: {}
+      }
     })
   },
   getCellType (type) {
@@ -62,6 +68,25 @@ const DataTable = React.createClass({
     Object.assign(newState, {searchTerm})
     this.setState(newState)
     this.getData()
+  },
+  setAdminModal (open, data, formStructure) {
+    const newState = this.state
+    Object.assign(newState.adminModal, {
+      open,
+      data,
+      formStructure
+    })
+    this.setState(newState)
+    // locks .main-content from scrolling when modal is open
+    if (open) {
+      document.querySelectorAll('.main-content').forEach((element) => {
+        element.style.bottom = 0
+      })
+    } else {
+      document.querySelectorAll('.main-content').forEach((element) => {
+        element.style.bottom = 'auto'
+      })
+    }
   },
   resizeTable (element) {
     var tableWidth = element.offsetWidth
@@ -152,6 +177,23 @@ const DataTable = React.createClass({
   render () {
     const columns = this.state.columns
     const { tableWidth, rowHeight } = this.state
+    const modelModalAnimationProps = {
+      runOnMount: true,
+      enter: {
+        animation: {
+          top: 0,
+          opacity: 1.0
+        },
+        duration: 400
+      },
+      leave: {
+        animation: {
+          top: '100%',
+          opacity: 0.0
+        },
+        duration: 400
+      }
+    }
     return (
       <div className='data-table'>
         <div className='data-table-controls'>
@@ -193,6 +235,7 @@ const DataTable = React.createClass({
                 header={<Cell>{column.label}</Cell>}
                 cell={
                   <DataCell
+                    setAdminModal={this.setAdminModal}
                     flashMessage={this.flashMessage}
                     getData={this.getData}
                     apiCall={this.props.apiCall}
@@ -205,6 +248,12 @@ const DataTable = React.createClass({
             )
           })}
         </Table>
+        <VelocityTransitionGroup {...modelModalAnimationProps}>
+          {this.state.adminModal.open ? <AdminModal
+            formStructure={this.props.formStructure}
+            data={this.state.adminModal.data}
+            setAdminModal={this.setAdminModal} /> : undefined}
+        </VelocityTransitionGroup>
         <ReactResizeDetector
           handleWidth handleHeight
           onResize={() => this.resizeTable(this._thisElement)} />
