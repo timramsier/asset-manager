@@ -3,7 +3,7 @@ import FontAwesome from 'react-fontawesome'
 import { Grid, Row, Col } from 'react-bootstrap'
 import Edit from './Edit'
 
-const { object, string, arrayOf, shape, func } = React.PropTypes
+const { object, string, arrayOf, shape, func, number } = React.PropTypes
 
 const AdminModal = React.createClass({
   propTypes: {
@@ -13,7 +13,8 @@ const AdminModal = React.createClass({
       key: string,
       type: string,
       placeholder: string,
-      description: string
+      description: string,
+      colspan: number
     })),
     setAdminModal: func
   },
@@ -32,7 +33,7 @@ const AdminModal = React.createClass({
         </div>
         <Grid>
           <Row>
-            <Col xs={12}>
+            <Col md={12}>
               <Edit
                 data={this.props.data}
                 formStructure={this.props.formStructure}
