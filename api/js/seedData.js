@@ -197,7 +197,6 @@ const addAssets = (data) => {
       let asset = {
         _parent: models[mIndex]._id,
         assetTag: Math.round(Math.random() * 1000000),
-        assignedTo: '593833420757cb8be83dce82',
         status: 'deployed',
         sn: faker.random.uuid().slice(0, 16),
         po: pos[pIndex]._id,
