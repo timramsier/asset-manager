@@ -139,7 +139,7 @@ const DataTable = React.createClass({
             if (entry[key] && entry[key].firstName && entry[key].lastName) {
               entry[key].displayName = `${entry[key].firstName} ${entry[key].lastName}`
             } else {
-              Object.assign(entry, {[key]: {displayName: ''}})
+              Object.assign(entry, {[key]: {displayName: 'Unassigned'}})
             }
           })
           return data
