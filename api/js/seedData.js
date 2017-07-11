@@ -12,12 +12,6 @@ const categoriesJS = require('../data/categories.js')
 // run config
 const verbose = false
 
-let modifier
-User.findOne({username: '5503b8f9-d4ed-432d-b14a-3f061296f880'}).exec((err, result) => {
-  if (err) console.log(err)
-  modifier = result._id
-})
-
 const imageCategories = [
   'abstract', 'animals', 'business', 'cats', 'city', 'food', 'nightlife',
   'fashion', 'people', 'nature', 'sports', 'technics', 'transport'
@@ -30,7 +24,16 @@ const _coinFlip = () => {
 //   return Math.floor((1 + Math.random()) * 0x100000000).toString(16).substring(1)
 // }
 
-const clearData = () => {
+const getModifier = (key) => {
+  return new Promise((resolve, reject) => {
+    User.findOne({username: key}).exec((err, result) => {
+      if (err) console.log(err)
+      resolve(result._id)
+    })
+  })
+}
+
+const clearData = (modifier) => {
   return new Promise((resolve, reject) => {
     Category.collection.drop({}, (err) => {
       if (err) return console.log(err)
@@ -48,11 +51,11 @@ const clearData = () => {
       if (err) return console.log(err)
       if (verbose) console.log('Removing old po')
     })
-    setTimeout(() => resolve(true), 500)
+    setTimeout(() => resolve(modifier), 500)
   })
 }
 
-const addCategories = () => {
+const addCategories = (modifier) => {
   return new Promise((resolve, reject) => {
     var categories = []
     categoriesJS.forEach((asset) => {
@@ -68,11 +71,12 @@ const addCategories = () => {
         }
       })
     })
-    setTimeout(() => resolve(categories), 500)
+    setTimeout(() => resolve({categories, modifier}), 500)
   })
 }
 
-const addModels = (categories) => {
+const addModels = (data) => {
+  const { categories, modifier } = data
   const _createModels = (count) => {
     var returnData = []
     for (let i = 0; i < count; i++) {
@@ -150,11 +154,12 @@ const addModels = (categories) => {
         })
       })
     })
-    setTimeout(() => resolve(models), 500)
+    setTimeout(() => resolve({models, modifier}), 500)
   })
 }
 
-const addPOs = (models) => {
+const addPOs = (data) => {
+  const { models, modifier } = data
   return new Promise((resolve, reject) => {
     let pos = []
     for (let i = 0; i < 50; i++) {
@@ -175,7 +180,8 @@ const addPOs = (models) => {
     }
     let data = {
       pos,
-      models
+      models,
+      modifier
     }
     setTimeout(() => resolve(data), 500)
   })
@@ -183,7 +189,7 @@ const addPOs = (models) => {
 
 const addAssets = (data) => {
   return new Promise((resolve, reject) => {
-    const { models, pos } = data
+    const { models, pos, modifier } = data
     let assets = []
     for (let i = 0; i < 200; i++) {
       const mIndex = Math.floor(Math.random() * models.length)
@@ -235,12 +241,19 @@ const addAssets = (data) => {
   })
 }
 
-const seedData = () => {
-  clearData()
-  .then(addCategories)
-  .then(addModels)
-  .then(addPOs)
-  .then(addAssets)
+const seedData = (apiKey = false) => {
+  if (!apiKey) {
+    console.log('\x1b[31mMust provide API Key', '\x1b[0m')
+  } else {
+    getModifier(apiKey)
+    .then(clearData)
+    .then(addCategories)
+    .then(addModels)
+    .then(addPOs)
+    .then(addAssets).then(() => {
+      console.log('\x1b[32mSuccessfully seeded database', '\x1b[0m')
+    })
+  }
 }
 
 module.exports = seedData

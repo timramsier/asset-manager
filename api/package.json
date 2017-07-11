@@ -5,7 +5,8 @@
   "main": "api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "echo \"Make sure that mongod is running\" && nodemon api.js"
+    "setup": "APP_DATABASE_NAME=app_default_database APP_CREATE_API_KEY=true APP_DATABASE_SEED=true APP_CREATE_ADMIN_USER=true nodemon api.js",
+    "start": "nodemon api.js"
   },
   "author": "",
   "license": "ISC",

@@ -3,10 +3,13 @@ var User = require('../schema')
 
 // Create endpoint /api/users for POST
 exports.postUsers = function (req, res) {
-  console.log(req.body)
   var user = new User({
     username: req.body.username,
-    password: req.body.password
+    password: req.body.password,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    accessLevel: req.body.accessLevel
   })
 
   user.save(function (err) {
