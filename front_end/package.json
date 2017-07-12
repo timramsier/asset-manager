@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "lint": "eslint js/**/*.js webpack.config.js",
-    "build": "webpack",
+    "build": "APP_FRONTEND_API_KEY=ecfd0226-bce7-4737-c4f3-cdcff87bda68 webpack",
     "dev": "webpack-dev-server",
     "watch": "npm run build -- --watch",
     "test": "NODE_ENV=test jest",

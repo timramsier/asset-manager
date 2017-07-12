@@ -39,11 +39,16 @@ const App = React.createClass({
     }, 400)
   },
   componentDidMount () {
+    if (!(apiSettings.auth && apiSettings.auth.username)) {
+      console.warn('Supply an API key to APP_FRONTEND_API_KEY to connect to api')
+    }
+
     let componentConfig = new Promise((resolve, reject) => {
       let url = `http://${apiSettings.uri}/categories`
-      axios.get(url, {auth: apiSettings.auth}).then((response) => {
-        resolve(response)
-      })
+      axios.get(url, {auth: apiSettings.auth})
+        .then((response) => {
+          resolve(response)
+        })
     })
     componentConfig.then((result) => {
       const categories = result.data

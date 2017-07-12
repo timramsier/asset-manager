@@ -65,14 +65,16 @@ export default {
         key: 'name',
         type: 'text',
         placeholder: 'Enter the model name',
-        description: 'This is the name of the model.'
+        description: 'This is the name of the model.',
+        colspan: 6
       },
       {
         label: 'Manufacturer',
         key: 'vendor',
         type: 'text',
         placeholder: 'Enter the manufacturer name',
-        description: 'This manufacturer name of who made this model.'
+        description: 'This manufacturer name of who made this model.',
+        colspan: 6
       },
       {
         label: 'Version',
@@ -87,6 +89,12 @@ export default {
         type: 'textarea',
         placeholder: 'Enter the model description',
         description: 'Enter a short description for the model here.'
+      },
+      {
+        label: 'Specifications',
+        key: 'specs',
+        type: 'keyvalue',
+        description: 'Add specs for the model here'
       }
     ]
   },
