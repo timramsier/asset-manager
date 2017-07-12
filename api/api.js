@@ -8,6 +8,7 @@ const seedData = require('./js/seedData')
 const User = require('./auth/schema')
 const { guid } = require('./js/common')
 
+// set mongoose's promise library to es6 promise library
 mongoose.Promise = global.Promise
 
 // database config
@@ -16,13 +17,15 @@ const database = {
   host: process.env.APP_DATABASE_HOST || 'localhost',
   seed: process.env.APP_DATABASE_SEED || false,
   createAdminUser: process.env.APP_CREATE_ADMIN_USER || false,
-  createApiKey: process.env.APP_CREATE_API_KEY || false
+  createApiKey: process.env.APP_CREATE_API_KEY || false,
+  customApiKey: process.env.APP_CUSTOM_API_KEY
 }
 
 console.log('\x1b[33mConnecting to MongoDB:', database, '\x1b[0m')
 
 const dbUri = `mongodb://${database.host}/${database.name}`
 mongoose.connect(dbUri)
+
 var dbConnection = mongoose.connection
 dbConnection.on('error', console.error.bind(console, 'MongoDB connection error:'))
 dbConnection.on('connected', () => {
@@ -56,6 +59,7 @@ dbConnection.on('connected', () => {
       resolve(true)
     })
   }
+
   // create or find API key to bootstrap
   const createAppApiKey = () => {
     return new Promise((resolve, reject) => {
@@ -65,7 +69,12 @@ dbConnection.on('connected', () => {
           let apiKey
           if (!result) {
             console.log('\x1b[33mMain API Key does not exist, creating API Key', '\x1b[0m')
-            apiKey = guid()
+            // if APP_CUSTOM_API_KEY is provided, the created key will be supplied value
+            if (process.env.APP_CUSTOM_API_KEY) {
+              apiKey = process.env.APP_CUSTOM_API_KEY
+            } else {
+              apiKey = guid()
+            }
             User.create({
               username: apiKey,
               firstName: 'API',
