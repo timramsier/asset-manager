@@ -134,18 +134,18 @@ const DataTable = React.createClass({
     axios.get(url, {auth: apiSettings.auth})
       .then((response) => {
         // add DisplayName if possible
-        const _addDisplayName = (data, key) => {
+        const _addDisplayName = (data, key, emptyValue = 'null') => {
           data.map((entry) => {
             if (entry[key] && entry[key].firstName && entry[key].lastName) {
               entry[key].displayName = `${entry[key].firstName} ${entry[key].lastName}`
             } else {
-              Object.assign(entry, {[key]: {displayName: ''}})
+              Object.assign(entry, {[key]: {displayName: emptyValue}})
             }
           })
           return data
         }
         let responseData = response.data
-        responseData = _addDisplayName(responseData, 'assignedTo')
+        responseData = _addDisplayName(responseData, 'assignedTo', 'Unassigned')
         responseData = _addDisplayName(responseData, 'lastModifiedBy')
         responseData = _addDisplayName(responseData, 'createdBy')
         if (updateType === 'refresh') {
