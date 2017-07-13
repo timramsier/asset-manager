@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "lint": "eslint js/**/*.js webpack.config.js",
-    "build": "APP_FRONTEND_API_KEY=ecfd0226-bce7-4737-c4f3-cdcff87bda68 webpack",
+    "start": "NODE_ENV=server nodemon server.js",
+    "build": "webpack",
     "dev": "webpack-dev-server",
     "watch": "npm run build -- --watch",
     "test": "NODE_ENV=test jest",
@@ -14,8 +15,10 @@
   },
   "dependencies": {
     "axios": "0.15.2",
+    "babel-plugin-transform-require-ignore": "^0.1.0",
     "bootstrap": "^3.3.7",
     "express": "4.14.0",
+    "express-less": "^0.1.0",
     "file-loader": "^0.11.1",
     "fixed-data-table": "^0.6.4",
     "font-awesome": "^4.7.0",

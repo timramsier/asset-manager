@@ -672,6 +672,10 @@ babel-plugin-transform-regenerator@^6.16.0:
   dependencies:
     regenerator-transform "0.9.11"
 
+babel-plugin-transform-require-ignore@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-require-ignore/-/babel-plugin-transform-require-ignore-0.1.0.tgz#682a9b761de25a0c5122680b8a7f784360b605be"
+
 babel-plugin-transform-strict-mode@^6.24.1:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-strict-mode/-/babel-plugin-transform-strict-mode-6.24.1.tgz#d5faf7aa578a65bbe591cf5edae04a0c67020758"
@@ -2228,6 +2232,12 @@ expand-range@^1.8.1:
   dependencies:
     fill-range "^2.1.0"
 
+express-less@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/express-less/-/express-less-0.1.0.tgz#4b8d58cb9f9957e855e0a676515aa19652e4d247"
+  dependencies:
+    less ">=2.0.0"
+
 express@4.14.0, express@^4.13.3:
   version "4.14.0"
   resolved "https://registry.yarnpkg.com/express/-/express-4.14.0.tgz#c1ee3f42cdc891fb3dc650a8922d51ec847d0d66"
@@ -3776,7 +3786,7 @@ less-loader@^4.0.2:
     loader-utils "^1.1.0"
     pify "^2.3.0"
 
-less@^2.7.2:
+less@>=2.0.0, less@^2.7.2:
   version "2.7.2"
   resolved "https://registry.yarnpkg.com/less/-/less-2.7.2.tgz#368d6cc73e1fb03981183280918743c5dcf9b3df"
   optionalDependencies:
