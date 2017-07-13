@@ -1,0 +1,1668 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,600,700|Titillium+Web:200,300,400,600,700);/**
+ * FixedDataTable v0.6.4 
+ *
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableCellGroupLayout
+ */
+
+.fixedDataTableCellGroupLayout_cellGroup {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.fixedDataTableCellGroupLayout_cellGroup > .public_fixedDataTableCell_main {
+  display: inline-block;
+  vertical-align: top;
+  white-space: normal;
+}
+
+.fixedDataTableCellGroupLayout_cellGroupWrapper {
+  position: absolute;
+  top: 0;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableCellLayout
+ */
+
+.fixedDataTableCellLayout_main {
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-width: 0 1px 0 0;
+  box-sizing: border-box;
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  white-space: normal;
+}
+
+.fixedDataTableCellLayout_lastChild {
+  border-width: 0 1px 1px 0;
+}
+
+.fixedDataTableCellLayout_alignRight {
+  text-align: right;
+}
+
+.fixedDataTableCellLayout_alignCenter {
+  text-align: center;
+}
+
+.fixedDataTableCellLayout_wrap1 {
+  display: table;
+}
+
+.fixedDataTableCellLayout_wrap2 {
+  display: table-row;
+}
+
+.fixedDataTableCellLayout_wrap3 {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.fixedDataTableCellLayout_columnResizerContainer {
+  position: absolute;
+  right: 0px;
+  width: 6px;
+  z-index: 1;
+}
+
+.fixedDataTableCellLayout_columnResizerContainer:hover {
+  cursor: ew-resize;
+}
+
+.fixedDataTableCellLayout_columnResizerContainer:hover .fixedDataTableCellLayout_columnResizerKnob {
+  visibility: visible;
+}
+
+.fixedDataTableCellLayout_columnResizerKnob {
+  position: absolute;
+  right: 0px;
+  visibility: hidden;
+  width: 4px;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableColumnResizerLineLayout
+ */
+
+.fixedDataTableColumnResizerLineLayout_mouseArea {
+  cursor: ew-resize;
+  position: absolute;
+  right: -5px;
+  width: 12px;
+}
+
+.fixedDataTableColumnResizerLineLayout_main {
+  border-right-style: solid;
+  border-right-width: 1px;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 10;
+}
+
+body[dir="rtl"] .fixedDataTableColumnResizerLineLayout_main {
+  /* the resizer line is in the wrong position in RTL with no easy fix.
+   * Disabling is more useful than displaying it.
+   * #167 (github) should look into this and come up with a permanent fix.
+   */
+  display: none !important;
+}
+
+.fixedDataTableColumnResizerLineLayout_hiddenElem {
+  display: none !important;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableLayout
+ */
+
+.fixedDataTableLayout_main {
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+.fixedDataTableLayout_header,
+.fixedDataTableLayout_hasBottomBorder {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+.fixedDataTableLayout_footer .public_fixedDataTableCell_main {
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+
+.fixedDataTableLayout_topShadow,
+.fixedDataTableLayout_bottomShadow {
+  height: 4px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
+.fixedDataTableLayout_bottomShadow {
+  margin-top: -4px;
+}
+
+.fixedDataTableLayout_rowsContainer {
+  overflow: hidden;
+  position: relative;
+}
+
+.fixedDataTableLayout_horizontalScrollbar {
+  bottom: 0;
+  position: absolute;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableRowLayout
+ */
+
+.fixedDataTableRowLayout_main {
+  box-sizing: border-box;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+}
+
+.fixedDataTableRowLayout_body {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.fixedDataTableRowLayout_fixedColumnsDivider {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  border-left-style: solid;
+  border-left-width: 1px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 0;
+}
+
+.fixedDataTableRowLayout_columnsShadow {
+  width: 4px;
+}
+
+.fixedDataTableRowLayout_rowWrapper {
+  position: absolute;
+  top: 0;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule ScrollbarLayout
+ */
+
+.ScrollbarLayout_main {
+  box-sizing: border-box;
+  outline: none;
+  overflow: hidden;
+  position: absolute;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.ScrollbarLayout_mainVertical {
+  bottom: 0;
+  right: 0;
+  top: 0;
+  transition-property: background-color width;
+  width: 15px;
+}
+
+.ScrollbarLayout_mainVertical.public_Scrollbar_mainActive,
+.ScrollbarLayout_mainVertical:hover {
+  width: 17px;
+}
+
+.ScrollbarLayout_mainHorizontal {
+  bottom: 0;
+  height: 15px;
+  left: 0;
+  transition-property: background-color height;
+}
+
+/* Touching the scroll-track directly makes the scroll-track bolder */
+.ScrollbarLayout_mainHorizontal.public_Scrollbar_mainActive,
+.ScrollbarLayout_mainHorizontal:hover {
+  height: 17px;
+}
+
+.ScrollbarLayout_face {
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+}
+
+/**
+ * This selector renders the "nub" of the scrollface. The nub must
+ * be rendered as pseudo-element so that it won't receive any UI events then
+ * we can get the correct `event.offsetX` and `event.offsetY` from the
+ * scrollface element while dragging it.
+ */
+.ScrollbarLayout_face:after {
+  border-radius: 6px;
+  content: '';
+  display: block;
+  position: absolute;
+  transition: background-color 250ms ease;
+}
+
+.ScrollbarLayout_faceHorizontal {
+  bottom: 0;
+  left: 0;
+  top: 0;
+}
+
+.ScrollbarLayout_faceHorizontal:after {
+  bottom: 4px;
+  left: 0;
+  top: 4px;
+  width: 100%;
+}
+
+.ScrollbarLayout_faceVertical {
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.ScrollbarLayout_faceVertical:after {
+  height: 100%;
+  left: 4px;
+  right: 4px;
+  top: 0;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTable
+ *
+ */
+
+/**
+ * Table.
+ */
+.public_fixedDataTable_main {
+  border-color: #d3d3d3;
+}
+
+.public_fixedDataTable_header,
+.public_fixedDataTable_hasBottomBorder {
+  border-color: #d3d3d3;
+}
+
+.public_fixedDataTable_header .public_fixedDataTableCell_main {
+  font-weight: bold;
+}
+
+.public_fixedDataTable_header,
+.public_fixedDataTable_header .public_fixedDataTableCell_main {
+  background-color: #f6f7f8;
+  background-image: linear-gradient(#fff, #efefef);
+}
+
+.public_fixedDataTable_footer .public_fixedDataTableCell_main {
+  background-color: #f6f7f8;
+  border-color: #d3d3d3;
+}
+
+.public_fixedDataTable_topShadow {
+  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAF0lEQVR4AWPUkNeSBhHCjJoK2twgFisAFagCCp3pJlAAAAAASUVORK5CYII=) repeat-x;
+}
+
+.public_fixedDataTable_bottomShadow {
+  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAHElEQVQI12MwNjZmZdAT1+Nm0JDWEGZQk1GTBgAWkwIeAEp52AAAAABJRU5ErkJggg==) repeat-x;
+}
+
+.public_fixedDataTable_horizontalScrollbar .public_Scrollbar_mainHorizontal {
+  background-color: #fff;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableCell
+ */
+
+/**
+ * Table cell.
+ */
+.public_fixedDataTableCell_main {
+  background-color: #fff;
+  border-color: #d3d3d3;
+}
+
+.public_fixedDataTableCell_highlighted {
+  background-color: #f4f4f4;
+}
+
+.public_fixedDataTableCell_cellContent {
+  padding: 8px;
+}
+
+.public_fixedDataTableCell_columnResizerKnob {
+  background-color: #0284ff;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableColumnResizerLine
+ *
+ */
+
+/**
+ * Column resizer line.
+ */
+.public_fixedDataTableColumnResizerLine_main {
+  border-color: #0284ff;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableRow
+ */
+
+/**
+ * Table row.
+ */
+.public_fixedDataTableRow_main {
+  background-color: #fff;
+}
+
+.public_fixedDataTableRow_highlighted,
+.public_fixedDataTableRow_highlighted .public_fixedDataTableCell_main {
+  background-color: #f6f7f8;
+}
+
+.public_fixedDataTableRow_fixedColumnsDivider {
+  border-color: #d3d3d3;
+}
+
+.public_fixedDataTableRow_columnsShadow {
+  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABCAYAAAD5PA/NAAAAFklEQVQIHWPSkNeSBmJhTQVtbiDNCgASagIIuJX8OgAAAABJRU5ErkJggg==) repeat-y;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule Scrollbar
+ *
+ */
+
+/**
+ * Scrollbars.
+ */
+
+/* Touching the scroll-track directly makes the scroll-track bolder */
+.public_Scrollbar_main.public_Scrollbar_mainActive,
+.public_Scrollbar_main:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.public_Scrollbar_mainOpaque,
+.public_Scrollbar_mainOpaque.public_Scrollbar_mainActive,
+.public_Scrollbar_mainOpaque:hover {
+  background-color: #fff;
+}
+
+.public_Scrollbar_face:after {
+  background-color: #c2c2c2;
+}
+
+.public_Scrollbar_main:hover .public_Scrollbar_face:after,
+.public_Scrollbar_mainActive .public_Scrollbar_face:after,
+.public_Scrollbar_faceActive:after {
+  background-color: #7d7d7d;
+}
+.landing {
+  background: #f2f2f2;
+}
+.side-bar {
+  height: 100vh;
+}
+.top-notification {
+  margin: 0;
+}
+.hero-section {
+  position: relative;
+  background-color: #909090;
+  background-image: url(/public/img/hero.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+  color: #fff;
+}
+.hero-section h1,
+.hero-section h2,
+.hero-section h3,
+.hero-section h4,
+.hero-section h5 {
+  font-weight: 600;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
+}
+.hero-section p {
+  font-size: 1.5em;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
+}
+.hero-section .hero-content {
+  background: rgba(0, 0, 0, 0.3);
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 15px;
+  margin: auto;
+  max-width: 600px;
+  width: 100%;
+}
+.hero-section .hero-content input {
+  height: 3em;
+  border: none;
+}
+.hero-section .hero-content .input-group {
+  border: 2px solid #5cd65c;
+  border-radius: 5px;
+}
+.hero-section .hero-content .input-group-btn {
+  background: #5cd65c;
+  border: none;
+}
+.hero-section .hero-content .input-group-btn:hover {
+  background: #70c270;
+}
+.hero-section .hero-content .input-group-btn .btn {
+  background: none;
+  border-color: transparent;
+}
+.hero-section .hero-content .input-group-btn .btn:hover {
+  outline: none;
+  border-color: transparent;
+}
+.hero-section .hero-content .input-group-btn .fa {
+  font-size: 1.5em;
+  color: #fff;
+}
+.categories {
+  padding: 0 60px;
+  position: relative;
+  top: -60px;
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.categories .category {
+  margin-bottom: 30px;
+  padding: 15px;
+}
+.categories .category-card {
+  word-wrap: break-word;
+  word-break: break-all;
+  height: 100%;
+  border: solid 2px;
+  padding: 15px;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(163, 163, 163, 0.4);
+  -moz-box-shadow: 0px 1px 1px 0px rgba(163, 163, 163, 0.4);
+  box-shadow: 0px 1px 1px 0px rgba(163, 163, 163, 0.4);
+}
+.categories .category-card .icon {
+  text-align: center;
+  font-size: 5em;
+  text-shadow: 1px 1px #fff, 2px 2px rgba(0, 0, 0, 0.2);
+}
+.categories .category-card .actions {
+  padding: 10px 0;
+}
+.navbar-side {
+  -webkit-box-shadow: 1px 0px 1px 0px rgba(163, 163, 163, 0.4);
+  -moz-box-shadow: 1px 0px 1px 0px rgba(163, 163, 163, 0.4);
+  box-shadow: 1px 0px 1px 0px rgba(163, 163, 163, 0.4);
+  position: fixed;
+  z-index: 100;
+  display: inline-block;
+  top: 56px;
+  left: 0;
+  bottom: 0;
+  background-color: #2e3137;
+  color: #f2f2f2;
+  text-align: left;
+  transition: all 400ms cubic-bezier(0.495, 0, 0.51, 0.995);
+  width: 50px;
+}
+.navbar-side.open-true {
+  width: 200px;
+}
+.navbar-side.admin-open {
+  width: 50px!important;
+  left: -50px;
+}
+.navbar-side .nav-list {
+  list-style: none;
+  padding: 0;
+}
+.navbar-side .nav-button {
+  margin: 5px 7px;
+  padding: 3px 0;
+  font-size: 2em;
+}
+.navbar-side .nav-brand {
+  display: block;
+  padding: 10px 5px;
+}
+.navbar-side li a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.navbar-side li a .fa {
+  position: relative;
+  z-index: 2;
+}
+span.menu-toggle {
+  display: inline-block;
+  width: 100%;
+  height: 40px;
+  color: white;
+  position: relative;
+}
+span.menu-toggle .line {
+  width: 15px;
+  height: 5px;
+  display: inline-block;
+  border-radius: 2px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+span.menu-toggle .line.upper-line {
+  top: -8px;
+}
+span.menu-toggle .line.lower-line {
+  top: 8px;
+}
+.navbar {
+  border: none;
+  border-top: solid 5px #33adff;
+  border-bottom: solid 1px #ddd;
+  z-index: 1000;
+  margin-bottom: 0!important;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(163, 163, 163, 0.4);
+  -moz-box-shadow: 0px 1px 1px 0px rgba(163, 163, 163, 0.4);
+  box-shadow: 0px 1px 1px 0px rgba(163, 163, 163, 0.4);
+}
+.navbar-header {
+  display: inline-block;
+}
+.navbar-nav li {
+  padding-top: 1px;
+  border-left: rgba(0, 0, 0, 0.2) solid 1px;
+  border-right: rgba(0, 0, 0, 0.2) solid 1px;
+}
+.navbar-brand {
+  border-left: rgba(0, 0, 0, 0.2) solid 1px;
+  border-right: rgba(0, 0, 0, 0.2) solid 1px;
+  font-family: 'Titillium Web', sans-serif;
+}
+.navbar-brand img {
+  height: 100%;
+  display: inline-block;
+  position: relative;
+  left: -5px;
+}
+.navbar-brand .brand-text {
+  color: #5cd65c;
+}
+.navbar-form {
+  margin: 0;
+  padding: 8px;
+  border-left: rgba(0, 0, 0, 0.2) solid 1px;
+  border-right: rgba(0, 0, 0, 0.2) solid 1px;
+}
+.navbar-text {
+  margin: 0;
+  padding: 15px;
+  border-left: rgba(0, 0, 0, 0.2) solid 1px;
+  border-right: rgba(0, 0, 0, 0.2) solid 1px;
+}
+.navbar .nav-text {
+  font-size: 1.3em;
+}
+.navbar-nav > li > a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+@media (min-width: 768px) {
+  li.nav-text {
+    font-size: 2em!important;
+  }
+}
+@media (max-width: 768px) {
+  .navbar-side {
+    top: 61px;
+  }
+  .navbar-brand {
+    border-color: transparent!important;
+  }
+}
+.button {
+  position: relative;
+}
+.button a {
+  background: inherit;
+}
+.button-label {
+  border-radius: 5px;
+  overflow: hidden;
+  background: inherit;
+  text-align: right;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  line-height: 44px;
+  padding-right: 10px;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(163, 163, 163, 0.4);
+  -moz-box-shadow: 0px 1px 1px 0px rgba(163, 163, 163, 0.4);
+  box-shadow: 0px 1px 1px 0px rgba(163, 163, 163, 0.4);
+  font-weight: 700;
+}
+.button-terminate {
+  height: 5px;
+  width: 100%;
+  display: block;
+  background: #2e3137;
+}
+.button-expanded {
+  transition: filter .2s;
+}
+.button-expanded:hover {
+  filter: brightness(85%);
+}
+.show-models {
+  background: none;
+}
+.show-models .type-header {
+  position: relative;
+  margin-left: -30px;
+  margin-right: -30px;
+  color: #fff;
+  padding: 0;
+  background: #2e3137;
+  min-height: 133px;
+  border-bottom: solid 2px;
+  transition: border .4s;
+}
+.show-models .type-header h1 {
+  margin: 5px 0;
+  padding: 0px 15px;
+}
+.show-models .location-path {
+  display: inline-block;
+  padding-top: 30px;
+  padding-left: 15px;
+  font-size: 0.9em;
+  font-weight: 300;
+}
+.show-models .location-path a {
+  color: inherit;
+}
+.show-models .asset-search {
+  padding-top: 15px;
+  text-align: right;
+  position: relative;
+  right: -15px;
+}
+.show-models nav.product-nav {
+  margin-left: -10px;
+}
+.show-models nav.product-nav li.button:hover {
+  cursor: pointer;
+}
+.show-models nav.product-nav ul {
+  padding: 0;
+  list-style-type: none;
+}
+.show-models nav.product-nav ul li {
+  padding: 0;
+  padding-left: 10px;
+  float: left;
+  margin-right: 25px;
+  margin-left: 5px;
+  bottom: -5px;
+}
+.show-models nav.product-nav ul li a {
+  font-size: 1.1em;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  display: inline-block;
+}
+.show-models nav.product-nav ul li:hover a,
+.show-models nav.product-nav ul li:focus a,
+.show-models nav.product-nav ul li:active a {
+  color: #fff;
+}
+.show-models .nav-active .nav-label {
+  color: #fff!important;
+}
+.show-models .nav-active .nav-highlight {
+  width: 100%;
+}
+.show-models .nav-label {
+  padding: 10px;
+}
+.show-models .nav-highlight {
+  width: 0%;
+  display: block;
+  height: 7px;
+  position: relative;
+  bottom: 2px;
+  transition: background .4s;
+}
+@media (min-width: 576px) {
+  .asset-grid {
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: wrap;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+}
+.asset {
+  padding: 15px;
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.asset:hover {
+  z-index: 2;
+}
+.asset-card {
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  text-decoration: none;
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  color: inherit;
+}
+.asset-card .thumbnail {
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 1;
+  position: relative;
+  border-radius: 0;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(163, 163, 163, 0.4);
+  -moz-box-shadow: 0px 1px 1px 0px rgba(163, 163, 163, 0.4);
+  box-shadow: 0px 1px 1px 0px rgba(163, 163, 163, 0.4);
+  margin: 0;
+  transition: filter .4s, border .4s;
+}
+.asset-card .thumbnail .image {
+  background: #404040;
+}
+.asset-card .thumbnail .asset-img {
+  overflow: hidden;
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 30vh;
+}
+.asset-card .thumbnail.with-image .asset-img {
+  background-size: cover;
+}
+.asset-card .thumbnail.no-image .asset-img {
+  background-size: contain;
+  margin: 0 20%;
+}
+.asset-card .thumbnail:hover {
+  border-color: rgba(0, 0, 0, 0.3);
+  filter: brightness(70%);
+}
+.asset-card .thumbnail h3 {
+  margin-bottom: 2px;
+}
+.asset-card .thumbnail h5 {
+  margin-top: 2px;
+}
+.asset .details-card {
+  position: absolute;
+  top: -15%;
+  bottom: 0;
+  width: 100%;
+  max-width: 320px;
+  min-height: 130%;
+  z-index: -1;
+  padding: 15px;
+}
+.asset .details-card.orientation-left {
+  left: 95%;
+}
+.asset .details-card.orientation-left::before {
+  left: 12px;
+  top: 50%;
+  transform: rotateZ(45deg) translateX(-50%);
+  position: absolute;
+  z-index: 10;
+  display: inline-block;
+  content: " ";
+  background: #fff;
+  width: 20px;
+  height: 20px;
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+.asset .details-card.orientation-right {
+  right: 95%;
+}
+.asset .details-card.orientation-right::before {
+  right: -2px;
+  top: 50%;
+  transform: rotateZ(45deg) translateX(-50%);
+  position: absolute;
+  z-index: 10;
+  display: inline-block;
+  content: " ";
+  background: #fff;
+  width: 20px;
+  height: 20px;
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+.asset .details-card-container {
+  position: relative;
+  background: #fff;
+  -webkit-box-shadow: 0px 0px 4px 2px rgba(163, 163, 163, 0.4);
+  -moz-box-shadow: 0px 0px 4px 2px rgba(163, 163, 163, 0.4);
+  box-shadow: 0px 0px 4px 2px rgba(163, 163, 163, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  height: 100%;
+}
+.asset .details-card-container .content {
+  padding: 15px;
+  position: relative;
+  z-index: 101;
+  color: #333;
+}
+.asset .details-card-container .content hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.asset .details-card-container .content .title {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+.asset .details-card-container .content .tags .tag {
+  display: inline-block;
+  margin: 2px;
+  padding: 2px;
+  line-height: 0.9em;
+}
+.asset .details-card-container .content .tags .tag p {
+  margin: 0 10px;
+  display: inline-block;
+  color: #fff;
+  font-size: 0.7em;
+}
+.asset .details-card-container .content .description {
+  font-weight: 300;
+  font-size: .6;
+}
+.asset .details-card-container .content .specs table {
+  width: 100%;
+}
+.asset .details-card-container .content .specs table tr td:nth-child(1) {
+  font-weight: 600;
+}
+.asset .details-card-container .content .specs table tr td:nth-child(2) {
+  font-weight: 300;
+}
+.asset a {
+  text-decoration: none!important;
+}
+@media (max-width: 577px) {
+  .asset {
+    width: 100%;
+  }
+}
+@media (min-width: 576px) {
+  .asset-img {
+    height: 20vh!important;
+  }
+}
+.search {
+  float: none!important;
+  display: inline-block;
+  padding: 0;
+}
+.search .form-group {
+  margin: 0;
+}
+.search input[type='text'] {
+  border-right: 0;
+}
+.search .input-group-btn button,
+.search .input-group-btn button:focus,
+.search .input-group-btn button:active {
+  outline: none;
+  margin-right: 0px;
+}
+.search .input-group-btn:last-child button {
+  border-top-right-radius: 5px!important;
+  border-bottom-right-radius: 5px!important;
+}
+.asset-modal {
+  background-color: #f2f2f2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+  color: #404040;
+  overflow-y: scroll;
+}
+.asset-modal .header {
+  background: #2e3137;
+  font-weight: 300;
+  min-height: 200px;
+  color: #f2f2f2;
+}
+.asset-modal .header h1 {
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+.asset-modal .header h3 {
+  margin-top: 5px;
+  font-weight: 200;
+  margin-bottom: 15px;
+}
+.asset-modal .header .details {
+  margin-bottom: 15px;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+.asset-modal .header .details .detail {
+  padding: 5px 10px;
+  line-height: 1em;
+  margin: 0 5px;
+}
+.asset-modal .header .details .detail.active-true {
+  background: #00cca3;
+}
+.asset-modal .header .details .detail.active-false {
+  background: #b3b3b3;
+  color: #404040;
+}
+.asset-modal .body .assets {
+  margin: 15px;
+  padding: 15px;
+  background: #fff;
+  border: rgba(0, 0, 0, 0.2) solid 1px;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(163, 163, 163, 0.4);
+  -moz-box-shadow: 0px 1px 1px 0px rgba(163, 163, 163, 0.4);
+  box-shadow: 0px 1px 1px 0px rgba(163, 163, 163, 0.4);
+}
+.asset-modal .body .assets h3 {
+  margin-top: 5px;
+}
+.asset-modal .info-card {
+  margin: 15px;
+  display: block;
+  position: relative;
+  background-color: #5c626f;
+  padding: 5px;
+  color: #f2f2f2;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(100, 100, 100, 0.7);
+  -moz-box-shadow: 0px 1px 1px 0px rgba(100, 100, 100, 0.7);
+  box-shadow: 0px 1px 1px 0px rgba(100, 100, 100, 0.7);
+}
+.asset-modal .info-card .image {
+  background: rgba(46, 49, 55, 0.5);
+}
+.asset-modal .info-card .image .no-image {
+  padding: 30px;
+}
+.asset-modal .info-card .specs {
+  padding: 10px;
+}
+.asset-modal .info-card .specs h3 {
+  font-weight: 600;
+}
+.asset-modal .info-card .specs-table {
+  font-weight: 300;
+}
+.asset-modal .info-card .specs-table tr td:first-child {
+  font-weight: 600;
+}
+.asset-modal .info-card .specs-table tr td:last-child {
+  padding-left: 15px;
+}
+.asset-modal .modal-close {
+  display: inline-block;
+  float: right;
+  margin-top: 15px;
+  padding: 5px 15px;
+  border: 2px solid #f2f2f2;
+  color: #f2f2f2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.asset-modal .modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.asset-modal .controls {
+  text-align: right;
+  padding: 0 15px;
+}
+.asset-modal .controls .modal-control-button {
+  display: inline-block;
+  margin: 0 10px;
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+}
+.asset-modal .controls .modal-control-button:hover {
+  filter: brightness(80%);
+}
+@media (max-width: 992px) {
+  .fluid-at-lg {
+    width: 100%;
+  }
+}
+@media (min-width: 576px) {
+  .info-card {
+    display: inline-block;
+  }
+  .info-card .image {
+    width: 50%;
+    display: inline-block;
+  }
+  .info-card .specs {
+    display: inline-block;
+    position: absolute;
+  }
+}
+@media (min-width: 768px) {
+  .info-card {
+    margin: 0;
+    top: -100px;
+  }
+  .info-card .image {
+    width: 100%;
+    display: block;
+  }
+  .info-card .specs {
+    display: block;
+    position: relative;
+  }
+  .specs-table {
+    font-size: 0.8em;
+  }
+}
+@media (min-width: 992px) {
+  .specs-table {
+    font-size: 1.0em;
+  }
+}
+.public_fixedDataTable_header,
+.public_fixedDataTable_header .public_fixedDataTableCell_main {
+  background: #fff;
+}
+.public_fixedDataTableCell_cellContent {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.asset-table {
+  font-size: .75em;
+}
+.asset-table .search {
+  padding: 0 5px;
+}
+.asset-table-controls {
+  margin-left: -5px;
+  margin-right: -5px;
+  padding: 10px 0;
+  text-align: right;
+}
+.asset-table-controls .button-group {
+  display: block;
+  position: relative;
+  top: 0;
+}
+.asset-table-controls .table-button {
+  border-radius: 5px;
+  background: #fff;
+  display: inline-block;
+  font-size: 14px;
+  text-decoration: none;
+  color: inherit;
+  padding: 6px 10px;
+  border: #cccccc 1px solid;
+  margin: 0 5px;
+}
+.asset-table-controls .table-button:hover {
+  border-color: #adadad;
+  background: #e6e6e6;
+  cursor: pointer;
+}
+.asset-table .fixedDataTableCellGroupLayout_cellGroupWrapper > div:hover {
+  filter: brightness(90%);
+  transition: filter .3s;
+}
+.asset-table .cell-link {
+  cursor: pointer;
+}
+.asset-table .cell-link:hover {
+  text-decoration: none;
+}
+@media (min-width: 768px) {
+  .asset-table-controls .button-group {
+    display: inline-block;
+    position: relative;
+    top: -12px;
+  }
+}
+.public_fixedDataTable_header,
+.public_fixedDataTable_header .public_fixedDataTableCell_main {
+  background: #fff;
+}
+.public_fixedDataTableCell_cellContent {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.data-table {
+  font-size: .75em;
+}
+.data-table .search {
+  padding: 0 5px;
+}
+.data-table-data {
+  display: inline-block;
+}
+.data-table-controls {
+  margin-left: -5px;
+  margin-right: -5px;
+  padding: 10px 0;
+  text-align: right;
+}
+.data-table-controls .button-group {
+  display: block;
+  position: relative;
+  top: 0;
+}
+.data-table-controls .table-button {
+  border-radius: 5px;
+  background: #fff;
+  display: inline-block;
+  font-size: 14px;
+  text-decoration: none;
+  color: inherit;
+  padding: 6px 10px;
+  border: #cccccc 1px solid;
+  margin: 0 5px;
+}
+.data-table-controls .table-button:hover {
+  border-color: #adadad;
+  background: #e6e6e6;
+  cursor: pointer;
+}
+.data-table .table-flash-alert {
+  padding-top: 15px;
+  text-align: center;
+}
+.data-table .fixedDataTableCellGroupLayout_cellGroupWrapper > div:hover {
+  filter: brightness(90%);
+  transition: filter .3s;
+}
+.data-table .cell-link {
+  cursor: pointer;
+}
+.data-table .cell-link:hover {
+  text-decoration: none;
+}
+@media (min-width: 768px) {
+  .data-table-controls .button-group {
+    display: inline-block;
+    position: relative;
+    top: -12px;
+  }
+}
+.admin-cell {
+  text-align: center;
+}
+.admin-cell .fa {
+  font-size: 2em;
+}
+.admin-cell a {
+  cursor: pointer;
+}
+.fixedDataTableRowLayout_rowWrapper:nth-child(even) .admin-cell {
+  background: #fff5cc;
+}
+.fixedDataTableRowLayout_rowWrapper:nth-child(odd) .admin-cell {
+  background: #fffae5;
+}
+.confirm-modal .modal-content {
+  border-radius: 0!important;
+  -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4) !important;
+  -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4) !important;
+}
+.confirm-modal .modal-header {
+  border-color: transparent;
+  background: #eee;
+}
+.confirm-modal .modal-footer {
+  border-color: transparent;
+}
+.admin-menu .admin-options {
+  transition: all 400ms cubic-bezier(0.495, 0, 0.51, 0.995);
+  display: inline-block;
+  position: fixed;
+  right: 0;
+  left: calc(100% - 300px);
+  top: 0;
+  width: 100%;
+  max-width: 300px;
+  padding: 75px 15px 15px 15px;
+  text-align: left;
+  height: 100%;
+  border-right: 2px solid #eee;
+  background: #fff;
+}
+.admin-menu .admin-options h3 {
+  margin-top: 5px;
+}
+.admin-menu.admin-full-view .admin-options {
+  left: 0;
+  right: auto;
+}
+.admin-menu.admin-full-view .admin-content {
+  left: 300px;
+}
+.admin-menu.admin-full-view .admin-menu-controls {
+  visibility: visible;
+}
+.admin-menu .admin-content {
+  transition: all 400ms cubic-bezier(0.495, 0, 0.51, 0.995);
+  position: absolute;
+  top: 0;
+  left: 100%;
+  right: 0;
+  bottom: 0;
+  padding: 75px 15px 15px 15px;
+  display: inline-block;
+  background: #f2f2f2;
+  height: 100%;
+}
+.admin-menu .admin-menu-controls {
+  visibility: hidden;
+}
+.admin-menu .admin-menu-controls .admin-menu-close {
+  position: relative;
+  top: -20px;
+  display: inline-block;
+  margin-top: 15px;
+  padding: 5px 15px;
+  border: 2px solid #bebebe;
+  color: #bebebe;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border 0.2s, color 0.2s;
+}
+.admin-menu .admin-menu-controls .admin-menu-close:hover {
+  border-color: #999;
+  color: #999;
+}
+.admin-content h1,
+.admin-content h2,
+.admin-content h3,
+.admin-content h4,
+.admin-content h5 {
+  padding-bottom: 30px;
+  color: #2e3137;
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:focus,
+.nav-pills > li.active > a:hover {
+  background: #ccc;
+  border-radius: 0;
+}
+.nav-pills > li > a:hover {
+  background: #e9e9e9;
+  border-radius: 0;
+}
+.admin-modal {
+  padding: 15px;
+  background-color: #f2f2f2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+  color: #404040;
+  overflow-y: scroll;
+}
+.admin-modal-content {
+  background: #fff;
+  border: 1px solid #d3d3d3;
+  text-align: left;
+}
+.admin-modal-controls {
+  text-align: right;
+}
+.admin-modal-controls .admin-modal-close {
+  position: relative;
+  display: inline-block;
+  padding: 5px 15px;
+  border: 2px solid #bebebe;
+  color: #bebebe;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border 0.2s, color 0.2s;
+}
+.admin-modal-controls .admin-modal-close:hover {
+  border-color: #999;
+  color: #999;
+}
+.admin-edit-modal form {
+  border: 1px solid #d3d3d3;
+  background: #fff;
+  display: inline-block;
+  padding: 15px;
+  -webkit-box-shadow: 1px 0px 1px 0px rgba(163, 163, 163, 0.4);
+  -moz-box-shadow: 1px 0px 1px 0px rgba(163, 163, 163, 0.4);
+  box-shadow: 1px 0px 1px 0px rgba(163, 163, 163, 0.4);
+}
+.admin-edit-modal form .form-buttons {
+  padding: 10px;
+  text-align: right;
+}
+.admin-edit-modal form .form-buttons button {
+  margin: 0 5px;
+}
+.admin-edit-modal .form-item .helper.input-group-addon {
+  background: #337ab7;
+  color: #fff;
+  border-color: #285f8f;
+}
+.admin-edit-modal .multi-keyvalue-box .keyvalue-group {
+  padding: 5px;
+  margin: 0 -5px;
+}
+.admin-edit-modal .multi-keyvalue-box .keyvalue-group.new-entry-true {
+  border-radius: 3px!important;
+  margin-bottom: 15px;
+  background: #d8eed8;
+}
+.admin-edit-modal .helper-text {
+  transition: opacity .5s;
+  width: 200px;
+  margin-left: 10px;
+  color: #666;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  -webkit-box-shadow: 0px 0px 4px 2px rgba(163, 163, 163, 0.4);
+  -moz-box-shadow: 0px 0px 4px 2px rgba(163, 163, 163, 0.4);
+  box-shadow: 0px 0px 4px 2px rgba(163, 163, 163, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  display: inline-block;
+}
+.admin-edit-modal .helper-text p {
+  text-align: left;
+  margin: 0;
+  word-wrap: normal;
+  white-space: normal;
+}
+.admin-edit-modal .helper-text::before {
+  transition: opacity .5s;
+  left: -2px;
+  top: 50%;
+  transform: rotateZ(45deg) translateX(-50%);
+  position: absolute;
+  z-index: 0;
+  display: inline-block;
+  content: " ";
+  background: #fff;
+  width: 10px;
+  height: 10px;
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+html,
+body {
+  font-family: 'Open Sans', sans-serif;
+  overflow-x: hidden;
+  height: 100%;
+  background: #f2f2f2;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 300;
+}
+.side-bar {
+  background: #fff;
+}
+.main-content {
+  position: absolute;
+  top: 56px;
+  right: 0;
+  left: 50px;
+  display: block;
+  overflow: hidden;
+  transition: all 400ms cubic-bezier(0.495, 0, 0.51, 0.995);
+  -webkit-box-shadow: 1px 0px 1px 0px rgba(163, 163, 163, 0.4);
+  -moz-box-shadow: 1px 0px 1px 0px rgba(163, 163, 163, 0.4);
+  box-shadow: 1px 0px 1px 0px rgba(163, 163, 163, 0.4);
+}
+.main-content.left-open {
+  left: 200px;
+}
+.main-content.right-open {
+  right: 300px;
+}
+.main-content.admin-open {
+  z-index: 1000;
+  right: 100%;
+  visibility: hidden;
+}
+.center {
+  background: #f2f2f2;
+  border-right: solid 1px #bbb;
+  padding: 0 15px;
+  padding-bottom: 100px;
+  min-height: 100vh;
+}
+.width-override {
+  width: 100%!important;
+}
+.btn {
+  border-radius: 0!important;
+}
+.thin-text {
+  font-weight: 300;
+}
+.alert {
+  border-radius: 0!important;
+}
+ul.button-list {
+  list-style: none;
+  padding: 0;
+}
+ul.button-list li {
+  margin: 0;
+  padding: 0;
+}
+ul.button-list li .fa {
+  color: #747b8a;
+  margin-right: 15px;
+  font-size: 1.5em;
+  position: relative;
+  bottom: -0.125em;
+}
+ul.button-list li a {
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  color: #2e3137;
+  padding: 7px 5px;
+  transition: background 200ms;
+}
+ul.button-list li a:hover,
+ul.button-list li a.active {
+  background: #f2f2f2;
+}
+ul.button-list li a.active .fa {
+  color: #5cd65c;
+}
+button,
+button:focus,
+button:active {
+  outline: none!important;
+}
+a {
+  color: #5c626f;
+  text-decoration: none;
+}
+a:hover {
+  color: #2e3237;
+}
+.center-on-screen {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.button-round-right {
+  border-top-right-radius: 3px!important;
+  border-bottom-right-radius: 3px!important;
+}

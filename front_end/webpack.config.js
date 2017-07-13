@@ -1,9 +1,8 @@
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-
 const extractLess = new ExtractTextPlugin({
-  filename: '[name].[contenthash].css',
+  filename: 'styles.css',
   disable: process.env.NODE_ENV === 'development'
 })
 
@@ -58,6 +57,13 @@ module.exports = {
         ]
       },
       {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: [
+          'file?hash=sha512&digest=hex&name=[hash].[ext]',
+          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+        ]
+      },
+      {
         test: /\.less$/,
         use: extractLess.extract({
           use: [{
@@ -65,24 +71,18 @@ module.exports = {
           }, {
             loader: 'less-loader'
           }],
-                // use style-loader in development
+          // use style-loader in development
           fallback: 'style-loader'
         })
-      },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: [
-          'file?hash=sha512&digest=hex&name=[hash].[ext]',
-          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-        ]
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin('style.css')
-  // if you want to pass in options, you can do so:
-  // new ExtractTextPlugin({
-  //  filename: 'style.css'
-  // })
+    // new ExtractTextPlugin('style.css')
+    extractLess
+    // if you want to pass in options, you can do so:
+    // new ExtractTextPlugin({
+    //  filename: 'style.css'
+    // })
   ]
 }
