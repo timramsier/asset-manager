@@ -6,7 +6,6 @@ import ModelGrid from './ModelGrid'
 import Search from './Search'
 import apiSettings from '../config/apiSettings'
 import { Row } from 'react-bootstrap'
-import { List } from 'immutable'
 
 const { string, shape, array, bool, func } = React.PropTypes
 
@@ -38,10 +37,12 @@ const ShowModels = React.createClass({
   },
   getInitialState () {
     return ({
-      models: List([]),
+      models: [],
       view: 'active',
       headerAccentColor: 'rgb(102, 102, 102)',
       searchTerm: '',
+      update: true,
+      skip: 0,
       limit: 12,
       loading: true
     })
@@ -58,8 +59,23 @@ const ShowModels = React.createClass({
     this.setState(newState)
     this.updateModelData()
   },
-  updateModelData () {
-    this.reset
+  refreshData (data) {
+    if (this._isMounted) {
+      let newState = this.state
+      Object.assign(newState, {models: data})
+      this.setState(newState)
+    }
+  },
+  pushData (data) {
+    if (this._isMounted) {
+      // disable updating if response array is smaller than limit
+      let newState = this.state
+      data.length < this.state.limit ? newState.update = false : undefined
+      newState.models.push.apply(newState.models, data)
+      this.setState(newState)
+    }
+  },
+  updateModelData (updateType = 'refresh') {
     let queryString
     let category = this.props.params.productType.toLowerCase()
     switch (this.state.view) {
@@ -74,15 +90,20 @@ const ShowModels = React.createClass({
         break
     }
     let searchString = ''
-    let pre = `?limit=${this.state.limit}`
+    let pre = `?limit=${this.state.limit}&skip=${this.state.skip}`
     if (this.state.searchTerm.length > 0) {
       searchString = `&search=${encodeURIComponent(this.state.searchTerm)}`
     }
     let url = `http://${apiSettings.uri}/models/${category}${pre}${queryString}${searchString}`
     axios.get(url, {auth: apiSettings.auth})
       .then((response) => {
-        this.updateModels(response.data)
-        this.updateHeaderAccentColor()
+        if (updateType === 'refresh') {
+          this.refreshData(response.data)
+          this.updateHeaderAccentColor()
+        } else if (updateType === 'push') {
+          this.pushData(response.data)
+        }
+        // this.updateModels(response.data)
         this.state.loading = false
       })
   },
@@ -101,18 +122,11 @@ const ShowModels = React.createClass({
       this.setState(newState)
     }
   },
-  updateModels (models) {
-    if (this._isMounted) {
-      let newState = this.state
-      Object.assign(newState, {models: List(models)})
-      this.setState(newState)
-    }
-  },
   componentDidUpdate (prevProps) {
     if (this.props.params.productType !== prevProps.params.productType) {
       window.scrollTo(0, 0)
       this.state.limit = 12
-      this.updateModelData()
+      this.updateModelData('refresh')
       // this.props.closeMenu('admin')
     }
   },
@@ -127,7 +141,7 @@ const ShowModels = React.createClass({
       this.setSearchTerm('')
     }
     window.addEventListener('scroll', (event) => {
-      if (!this.state.loading) {
+      if (!this.state.loading && this.state.update) {
         let last = document.querySelectorAll('.asset').length - 1
         last < 0 ? last = 0 : undefined
         let elems = document.querySelectorAll('.asset-card')
@@ -135,9 +149,9 @@ const ShowModels = React.createClass({
         var st = window.pageYOffset || document.documentElement.scrollTop
         if (st > lastScrollTop) {
           if (checkVisible(lastElem)) {
-            this.state.limit += 12
+            this.state.skip += 12
             this.state.loading = true
-            this.updateModelData()
+            this.updateModelData('push')
           }
         }
         lastScrollTop = st
