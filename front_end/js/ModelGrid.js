@@ -2,14 +2,13 @@ import React from 'react'
 import { Row } from 'react-bootstrap'
 import ModelCard from './ModelCard'
 import ModelModal from './ModelModal'
-import { contains } from 'react-immutable-proptypes'
 import { VelocityTransitionGroup } from 'velocity-react'
 
-const { string, shape, array, bool, func } = React.PropTypes
+const { string, shape, array, bool, func, arrayOf } = React.PropTypes
 
 const ModelGrid = React.createClass({
   propTypes: {
-    models: contains({
+    models: arrayOf(shape({
       _id: string,
       vendor: string,
       active: bool,
@@ -31,7 +30,7 @@ const ModelGrid = React.createClass({
         }),
         _shortId: string
       })
-    }),
+    })),
     modelModal: shape({
       open: bool,
       data: shape({
