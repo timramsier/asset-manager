@@ -47,6 +47,9 @@ const App = React.createClass({
       axios.get(url, {auth: apiSettings.auth})
         .then((response) => {
           resolve(response)
+        }).catch((error) => {
+          console.error(error)
+          reject(error)
         })
     })
     componentConfig.then((result) => {

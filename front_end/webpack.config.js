@@ -1,9 +1,15 @@
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const webpack = require('webpack')
 
 const extractLess = new ExtractTextPlugin({
   filename: 'styles.css',
   disable: process.env.NODE_ENV === 'development'
+})
+
+const definePlugin = new webpack.DefinePlugin({
+  'process.env.APP_FRONTEND_API_URI': JSON.stringify(process.env.APP_FRONTEND_API_URI),
+  'process.env.APP_DATABASE_API_KEY': JSON.stringify(process.env.APP_DATABASE_API_KEY)
 })
 
 module.exports = {
@@ -79,10 +85,7 @@ module.exports = {
   },
   plugins: [
     // new ExtractTextPlugin('style.css')
-    extractLess
-    // if you want to pass in options, you can do so:
-    // new ExtractTextPlugin({
-    //  filename: 'style.css'
-    // })
+    extractLess,
+    definePlugin
   ]
 }

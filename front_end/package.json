@@ -5,9 +5,9 @@
   "main": "app.js",
   "scripts": {
     "lint": "eslint js/**/*.js webpack.config.js",
-    "start": "NODE_ENV=server nodemon server.js",
+    "start": "NODE_ENV=server node server.js",
     "build": "webpack",
-    "dev": "webpack-dev-server",
+    "dev": "NODE_ENV=server nodemon server.js",
     "watch": "npm run build -- --watch",
     "test": "NODE_ENV=test jest",
     "update-test": "npm run test -- -u",
