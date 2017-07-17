@@ -39,8 +39,10 @@ const App = React.createClass({
   },
   componentDidMount () {
     if (!(apiSettings.auth && apiSettings.auth.username)) {
-      console.warn('Supply an API key to APP_FRONTEND_API_KEY to connect to api')
+      console.warn('Supply an API key to APP_DATABASE_API_KEY to connect to api')
     }
+
+    console.log('DEBUG:', apiSettings)
 
     let componentConfig = new Promise((resolve, reject) => {
       let url = `http://${apiSettings.uri}/categories`

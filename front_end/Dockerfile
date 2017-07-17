@@ -6,6 +6,7 @@ RUN mkdir /var/www
 WORKDIR /var/www
 
 COPY . .
-RUN npm install && npm install -g nodemon && npm run build && npm cache clear --force
 
-CMD ["npm", "run", "dev"]
+RUN npm install && npm install -g nodemon && npm cache clear --force
+
+CMD ["npm", "run", "container"]
