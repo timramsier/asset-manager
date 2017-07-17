@@ -3,12 +3,13 @@ services:
   database:
     image: mongo:3.0.15
     volumes:
-      - /data/docker/db:/data/db
+      - ~/app_data/asset_manager/db:/data/db
   api-server:
     build: ./api
     ports:
       - "3000:3000"
     environment:
+      - APP_CUSTOM_API_KEY=707c1e06-9b6d-3a06-6006-44649231a26f
       - APP_DATABASE_NAME=app_default_database
       - APP_CREATE_API_KEY=true
       - APP_DATABASE_SEED=true
@@ -18,12 +19,12 @@ services:
       - database
   front-server:
     build: ./front_end
-    volumes:
-      - ./front_end:/var/www
+    # volumes:
+    #   - ./front_end:/var/www
     ports:
       - "80:80"
     environment:
-      - APP_DATABASE_API_KEY=75ea65fc-3ec7-5ca4-69af-d727e9e30875
+      - APP_DATABASE_API_KEY=707c1e06-9b6d-3a06-6006-44649231a26f
     depends_on:
       - api-server
       - database

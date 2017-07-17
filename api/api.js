@@ -60,6 +60,22 @@ dbConnection.on('connected', () => {
     })
   }
 
+  const handlePreviousAPIKey = () => {
+    return new Promise((resolve, reject) => {
+      if (database.customApiKey) {
+        User.findOne({accessLevel: 'Main API'}).remove().exec((error) => {
+          if (error) {
+            console.log(`\x1b[31m${error}\x1b[0m`)
+            resolve(false)
+          } else {
+            console.log('\x1b[32mSuccessfully remove stale API key', '\x1b[0m')
+            resolve(true)
+          }
+        })
+      }
+    })
+  }
+
   // create or find API key to bootstrap
   const createAppApiKey = () => {
     return new Promise((resolve, reject) => {
@@ -102,7 +118,9 @@ dbConnection.on('connected', () => {
     })
   }
 
-  createAppApiKey().then(createAppAdminUser)
+  handlePreviousAPIKey()
+    .then(createAppApiKey)
+    .then(createAppAdminUser)
   const app = express()
 
   app.use(logger('dev'))

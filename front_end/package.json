@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint js/**/*.js webpack.config.js",
     "start": "NODE_ENV=server node server.js",
+    "container": "webpack && NODE_ENV=server nodemon server.js",
     "build": "webpack",
     "dev": "NODE_ENV=server nodemon server.js",
     "watch": "npm run build -- --watch",
