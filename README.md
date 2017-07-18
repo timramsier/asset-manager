@@ -4,7 +4,9 @@
 
 ## Overview
 
-**stockbase** is an "in-development" asset management system being designed to be adaptive and easy to use.  It is being designed to track IT assets such as laptops, desktops, and software.
+**stockbase** is an "in-development" asset management system being designed to
+be adaptive and easy to use.  It is being designed to track IT assets such as
+laptops, desktops, and software.
 
 ## Usage
 
@@ -12,43 +14,56 @@
 
 To install **stockbase** simply clone the repository:
 
-```
-git clone git@github.com:timramsier/asset-manager.git
-```
+`git clone git@github.com:timramsier/asset-manager.git`
 
 ### Running
 
-### Docker Compose
+#### Docker Compose
 
 If you have Docker Compose installed, you can use the included `runServer.sh`
-script.  This will handle the creation of the necessary containers and initialization of a MongoDB solution (via Docker).
-```
-bash runServer.sh
-```
+script.  This will handle the creation of the necessary containers and
+initialization of a MongoDB solution (via Docker).
 
-### Local
+##### Easy Way
+The easy way to run this application is by running the `runServer.sh` which will
+use the default `docker-compose.yml` file.  If you make changes to the source code,
+you will need to
+
+`bash runServer`
+
+##### Development Way
+If you want to run the application with the ability to make edits and have the
+bundle update use the following commands.
+1. `bash runServer --dev`
+*  `APP_DATABASE_API_KEY=not-secure-api-key npm run watch`
+
+This will start the server with the local front end files bind mounted into the
+the front end container and then start **Webpack** watch on the local files,
+updating the `styles.css` and `bundle.js` files as they are changed.
+#### Local
 
 <div style='border:2px solid #333;padding:5px;border-radius:3px;'>
 <h4 style='margin-top:5px'>:exclamation: Important <br></h4>
-You will need to have [MongoDB](https://docs.mongodb.com/manual/installation/) installed locally to be able to run this application.
+You will need to have [MongoDB](https://docs.mongodb.com/manual/installation/)
+installed locally to be able to run this application.
 </div>
 
-#### Starting the app
+##### Starting the app
 
-##### Start Database
+###### Start Database
 1. Install MongoDB if you haven't already
 
 1. Start up mongodb by running <br>
   `mongod`
 
-##### Start API Server
+###### Start API Server
 1. Install API server dependencies <br>
   `npm install --prefix /path/to/asset_manager/api`
 
 1. Start up the API server <br>
   `npm run start --prefix /path/to/asset_manager/api`
 
-##### Start Front End Server
+###### Start Front End Server
 1. Install Front End dependencies <br>
   `npm install --prefix /path/to/asset_manager/front_end`
 
