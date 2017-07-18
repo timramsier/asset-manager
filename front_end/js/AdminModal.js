@@ -37,6 +37,7 @@ const AdminModal = React.createClass({
               <Edit
                 data={this.props.data}
                 formStructure={this.props.formStructure}
+                setAdminModal={this.props.setAdminModal}
               />
             </Col>
           </Row>
