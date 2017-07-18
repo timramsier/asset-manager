@@ -6,6 +6,7 @@ import ShowModels from './ShowModels'
 import LeftNavigation from './LeftNavigation'
 import defaultLeftNavButtons from '../config/defaultLeftNavButtons'
 import TopNavigation from './TopNavigation'
+import UnderDevelopment from './UnderDevelopment'
 import apiSettings from '../config/apiSettings'
 import '../public/less/main.less'
 
@@ -116,6 +117,9 @@ const App = React.createClass({
                 checkVisible={this.checkVisible}
                 {...props} />
             }} />
+          <Match pattern='/admin/:page'
+            component={() => <UnderDevelopment />}
+          />
         </div>
       </div>
     )
