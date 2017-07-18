@@ -45,19 +45,19 @@ const ModelCard = React.createClass({
     Object.assign(newState, {orientation})
     this.setState(newState)
   },
+  orient () {
+    if (this.testOnRightEdge(ReactDOM.findDOMNode(this))) {
+      this.setOrientation('right')
+    } else {
+      this.setOrientation('left')
+    }
+    setGridProps(this)
+  },
   componentDidMount () {
     this._isMounted = true
-    const _orient = () => {
-      if (this.testOnRightEdge(ReactDOM.findDOMNode(this))) {
-        this.setOrientation('right')
-      } else {
-        this.setOrientation('left')
-      }
-      setGridProps(this)
-    }
-    _orient()
+    this.orient()
     window.addEventListener('resize', (event) => {
-      _orient()
+      this.orient()
     })
   },
   componentWillUnmount () {
@@ -210,7 +210,7 @@ const ModelCard = React.createClass({
             </div>
           </div>
         </VelocityComponent>
-        <ReactResizeDetector handleWidth handleHeight onResize={() => setGridProps(this)} />
+        <ReactResizeDetector handleWidth handleHeight onResize={() => this.orient()} />
       </div>
     )
   }
