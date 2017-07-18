@@ -1,15 +1,16 @@
 import React from 'react'
 import { Match } from 'react-router'
 import axios from 'axios'
-import Landing from './Landing'
-import ShowModels from './ShowModels'
+import AsyncRoute from './AsyncRoute'
 import LeftNavigation from './LeftNavigation'
 import defaultLeftNavButtons from '../config/defaultLeftNavButtons'
 import TopNavigation from './TopNavigation'
 import UnderDevelopment from './UnderDevelopment'
 import apiSettings from '../config/apiSettings'
 import '../public/less/main.less'
-
+if (global) {
+  global.System = { import () {} }
+}
 const App = React.createClass({
   getInitialState () {
     return ({
@@ -42,8 +43,6 @@ const App = React.createClass({
     if (!(apiSettings.auth && apiSettings.auth.username)) {
       console.warn('Supply an API key to APP_DATABASE_API_KEY to connect to api')
     }
-
-    console.log('DEBUG:', apiSettings)
 
     let componentConfig = new Promise((resolve, reject) => {
       let url = `http://${apiSettings.uri}/categories`
@@ -106,17 +105,28 @@ const App = React.createClass({
           closeMenu={this.closeMenu}
         />
         <div className='main-content'>
-          <Match exactly pattern='/' component={() => {
-            return <Landing categories={categories}
-              alertMessage={alertMessage} />
-          }} />
-          <Match pattern='/show/:productType'
-            component={(props) => {
-              return <ShowModels categories={categories}
-                assetModal={this.state.assetModal}
-                checkVisible={this.checkVisible}
-                {...props} />
-            }} />
+          <Match
+            exactly pattern='/'
+            component={(props) => <AsyncRoute
+              props={Object.assign({
+                categories,
+                alertMessage
+              }, props)}
+              loadingPromise={System.import('./Landing')}
+            />}
+          />
+          <Match
+            exactly pattern='/show/:productType'
+            component={(props) => <AsyncRoute
+              props={Object.assign({
+                categories,
+                assetModal: this.state.assetModal,
+                checkVisible: this.checkVisible
+              }, props)}
+              loadingPromise={System.import('./ShowModels')}
+            />}
+          />
+          {/* Temporary Route */}
           <Match pattern='/admin/:page'
             component={() => <UnderDevelopment />}
           />
