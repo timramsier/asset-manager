@@ -14,7 +14,8 @@ const Edit = React.createClass({
       placeholder: string,
       description: string
     })),
-    data: object
+    data: object,
+    setAdminModal: func
   },
   getInitialState () {
     return ({
@@ -38,6 +39,12 @@ const Edit = React.createClass({
   },
   render () {
     const formStructure = this.props.formStructure || []
+    let cancelEffect = {
+      onClick: (event) => {
+        event.preventDefault()
+        this.props.setAdminModal(false)
+      }
+    }
     return (
       <div className='admin-edit-modal'>
         <Col md={8} className='col-md-offset-2'>
@@ -56,7 +63,7 @@ const Edit = React.createClass({
               )
             })}
             <div className='form-buttons'>
-              <Button bsStyle='danger'>
+              <Button bsStyle='danger' {...cancelEffect}>
                 <FontAwesome className='fa-fw' name='times' />Cancel
               </Button>
               <Button bsStyle='success'>
@@ -220,7 +227,7 @@ const FormInput = React.createClass({
         inputType = (
           <InputGroup>
             <FormControl
-              style={{height: '100px'}}
+              style={{height: '100px', resize: 'vertical'}}
               componentClass='textarea'
               // placeholder={this.props.structure.placeholder}
               value={this.props.value}
