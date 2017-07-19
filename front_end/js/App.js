@@ -1,8 +1,7 @@
 import React from 'react'
 import { Match } from 'react-router'
 import axios from 'axios'
-import AsyncRoute from './AsyncRoute'
-import LeftNavigation from './LeftNavigation'
+import AsyncLoad from './AsyncLoad'
 import defaultLeftNavButtons from '../config/defaultLeftNavButtons'
 import TopNavigation from './TopNavigation'
 import UnderDevelopment from './UnderDevelopment'
@@ -99,15 +98,29 @@ const App = React.createClass({
           closeMenu={this.closeMenu}
           openMenu={this.openMenu}
         />
-        <LeftNavigation categories={categories}
-          menuOptions={adminOptions}
-          toggleMenuOpen={this.toggleMenuOpen}
-          closeMenu={this.closeMenu}
+        <AsyncLoad
+          loadingView={() => {
+            return (
+              <div style={{
+                boxShadow: '1px 0 1px 0 hsla(0,0%,64%,.4)',
+                background: '#2e3137',
+                width: '100%',
+                height: '100vh'
+              }} />
+            )
+          }}
+          props={{
+            categories: categories,
+            menuOptions: adminOptions,
+            toggleMenuOpen: this.toggleMenuOpen,
+            closeMenu: this.closeMenu
+          }}
+          loadingPromise={System.import('./LeftNavigation')}
         />
         <div className='main-content'>
           <Match
             exactly pattern='/'
-            component={(props) => <AsyncRoute
+            component={(props) => <AsyncLoad
               props={Object.assign({
                 categories,
                 alertMessage
@@ -117,7 +130,7 @@ const App = React.createClass({
           />
           <Match
             exactly pattern='/show/:productType'
-            component={(props) => <AsyncRoute
+            component={(props) => <AsyncLoad
               props={Object.assign({
                 categories,
                 assetModal: this.state.assetModal,
