@@ -30,14 +30,16 @@ const Landing = React.createClass({
     let alertMessage
     if (this.props.alertMessage) {
       alertMessage = (
-        <PageAlert title={this.props.alertMessage.title}
+        <PageAlert
+          title={this.props.alertMessage.title}
           message={this.props.alertMessage.message}
-          type={this.props.alertMessage.type} />
+          type={this.props.alertMessage.type}
+        />
       )
     }
     return (
       <div className='landing'>
-        <div className='content'>
+        <div className='content center no-gutter'>
           {alertMessage}
           <div className='hero-section'>
             <div className='hero-content'>

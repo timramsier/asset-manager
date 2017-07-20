@@ -20,7 +20,7 @@ const Edit = React.createClass({
   getInitialState () {
     return ({
       form: {
-        data: this.props.data
+        data: this.props.data || []
       }
     })
   },
@@ -29,8 +29,11 @@ const Edit = React.createClass({
     Object.assign(newState.form.data, {[key]: event.target.value})
     this.setState(newState)
   },
-  pushNewEntry (event, key) {
-
+  pushNewEntry (key, data) {
+    console.log(this)
+    let newState = this.state
+    newState.form.data[key].push({key: data.key, value: data.value})
+    this.setState(newState)
   },
   handleKeyValueChange (event, key, keyName, index) {
     let newState = this.state
@@ -122,7 +125,8 @@ const KeyValuePair = React.createClass({
       placeholder: string,
       description: string
     }),
-    handleKeyValueChange: func
+    handleKeyValueChange: func,
+    buttonEffect: func
   },
   getInitialState () {
     return ({
@@ -145,14 +149,22 @@ const KeyValuePair = React.createClass({
     this.setState(newState)
   },
   render () {
+    const buttonEffect = {
+      onClick: (event) => {
+        event.preventDefault()
+        if (this.props.buttonEffect) {
+          this.props.buttonEffect(this.props.structure.key, this.state)
+        }
+      }
+    }
     let buttonElement = (
-      <Button bsStyle='danger' className='button-round-right'>
+      <Button bsStyle='danger' className='button-round-right' {...buttonEffect}>
         <FontAwesome className='fa-fw' name='trash' />
       </Button>
     )
     if (this.state.newEntry) {
       buttonElement = (
-        <Button bsStyle='success' className='button-round-right'>
+        <Button bsStyle='success' className='button-round-right' {...buttonEffect}>
           <FontAwesome className='fa-fw' name='plus' />
         </Button>
       )
@@ -190,6 +202,7 @@ const KeyValuePair = React.createClass({
 const FormInput = React.createClass({
   propTypes: {
     handleChange: func,
+    pushNewEntry: func,
     structure: shape({
       label: string,
       key: string,
@@ -256,6 +269,7 @@ const FormInput = React.createClass({
             })}
             <KeyValuePair
               newEntry
+              buttonEffect={this.props.pushNewEntry}
               structure={structure}
               index={i++}
             />
