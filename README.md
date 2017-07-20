@@ -42,10 +42,7 @@ the front end container and then start **Webpack** watch on the local files,
 updating the `styles.css` and `bundle.js` files as they are changed.
 #### Local
 
-#### :exclamation: Important
-
-You will need to have [MongoDB](https://docs.mongodb.com/manual/installation/)
-installed locally to be able to run this application.
+#### :exclamation: Important - You will need to have [MongoDB](https://docs.mongodb.com/manual/installation/) installed locally to be able to run this application.
 
 ##### Starting the app
 
