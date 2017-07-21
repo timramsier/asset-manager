@@ -3,7 +3,7 @@ import { Col, FormGroup, FormControl, ControlLabel, InputGroup, Button } from 'r
 import FontAwesome from 'react-fontawesome'
 import { findDOMNode } from 'react-dom'
 
-const { shape, string, arrayOf, func, oneOfType, array, object, bool } = React.PropTypes
+const { shape, string, arrayOf, func, oneOfType, array, object, bool, number } = React.PropTypes
 
 const Edit = React.createClass({
   propTypes: {
@@ -29,10 +29,16 @@ const Edit = React.createClass({
     Object.assign(newState.form.data, {[key]: event.target.value})
     this.setState(newState)
   },
-  pushNewEntry (key, data) {
-    console.log(this)
+  pushNewKeyValueEntry (key, component) {
+    const data = component.state
     let newState = this.state
     newState.form.data[key].push({key: data.key, value: data.value})
+    this.setState(newState)
+  },
+  removeKeyValueEntry (key, component) {
+    const data = component.state
+    let newState = this.state
+    newState.form.data[key].splice(data.index, 1)
     this.setState(newState)
   },
   handleKeyValueChange (event, key, keyName, index) {
@@ -59,7 +65,8 @@ const Edit = React.createClass({
                   key={`input_${input.key}`}
                   value={this.state.form.data[input.key]}
                   structure={input}
-                  pushNewEntry={this.pushNewEntry}
+                  removeKeyValueEntry={this.removeKeyValueEntry}
+                  pushNewKeyValueEntry={this.pushNewKeyValueEntry}
                   handleChange={this.handleChange}
                   handleKeyValueChange={this.handleKeyValueChange}
                 />
@@ -118,6 +125,7 @@ const KeyValuePair = React.createClass({
   propTypes: {
     data: object,
     newEntry: bool,
+    index: number,
     structure: shape({
       label: string,
       key: string,
@@ -132,6 +140,7 @@ const KeyValuePair = React.createClass({
     return ({
       key: '',
       value: '',
+      index: '',
       newEntry: this.props.newEntry || false
     })
   },
@@ -145,6 +154,7 @@ const KeyValuePair = React.createClass({
     if (this.props.data) {
       this.props.data.key ? newState.key = this.props.data.key : undefined
       this.props.data.value ? newState.value = this.props.data.value : undefined
+      this.props.index >= 0 ? newState.index = this.props.index : undefined
     }
     this.setState(newState)
   },
@@ -153,21 +163,19 @@ const KeyValuePair = React.createClass({
       onClick: (event) => {
         event.preventDefault()
         if (this.props.buttonEffect) {
-          this.props.buttonEffect(this.props.structure.key, this.state)
+          this.props.buttonEffect(this.props.structure.key, this)
         }
       }
     }
-    let buttonElement = (
-      <Button bsStyle='danger' className='button-round-right' {...buttonEffect}>
-        <FontAwesome className='fa-fw' name='trash' />
-      </Button>
-    )
+    let buttonStyle = {
+      bsStyle: 'danger',
+      faIcon: 'trash'
+    }
     if (this.state.newEntry) {
-      buttonElement = (
-        <Button bsStyle='success' className='button-round-right' {...buttonEffect}>
-          <FontAwesome className='fa-fw' name='plus' />
-        </Button>
-      )
+      buttonStyle = {
+        bsStyle: 'success',
+        faIcon: 'plus'
+      }
     }
     return (
       <div className={`keyvalue-group new-entry-${this.state.newEntry}`}>
@@ -191,7 +199,12 @@ const KeyValuePair = React.createClass({
             onChange={(event) => this.handleChange(event, 'value')}
           />
           <InputGroup.Button>
-            {buttonElement}
+            <Button
+              bsStyle={buttonStyle.bsStyle}
+              className='button-round-right'
+              {...buttonEffect}>
+              <FontAwesome className='fa-fw' name={buttonStyle.faIcon} />
+            </Button>
           </InputGroup.Button>
         </InputGroup>
       </div>
@@ -202,7 +215,8 @@ const KeyValuePair = React.createClass({
 const FormInput = React.createClass({
   propTypes: {
     handleChange: func,
-    pushNewEntry: func,
+    pushNewKeyValueEntry: func,
+    removeKeyValueEntry: func,
     structure: shape({
       label: string,
       key: string,
@@ -260,6 +274,7 @@ const FormInput = React.createClass({
             {this.props.value.map((entry) => {
               return (
                 <KeyValuePair
+                  buttonEffect={this.props.removeKeyValueEntry}
                   structure={structure}
                   key={entry._shortId}
                   data={entry}
@@ -269,7 +284,7 @@ const FormInput = React.createClass({
             })}
             <KeyValuePair
               newEntry
-              buttonEffect={this.props.pushNewEntry}
+              buttonEffect={this.props.pushNewKeyValueEntry}
               structure={structure}
               index={i++}
             />
