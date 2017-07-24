@@ -25,6 +25,7 @@ const AdminModal = React.createClass({
         this.props.setAdminModal(false)
       }
     }
+    const { data } = this.props
     return (
       <div className='admin-modal'>
         <div className='admin-modal-controls'>
@@ -35,7 +36,7 @@ const AdminModal = React.createClass({
           <Row>
             <Col md={12}>
               <Edit
-                data={this.props.data}
+                data={data}
                 formStructure={this.props.formStructure}
                 setAdminModal={this.props.setAdminModal}
               />

@@ -50,7 +50,8 @@ const DataTable = React.createClass({
       metaData: {},
       adminModal: {
         open: false,
-        data: {}
+        data: {},
+        _reset: {}
       }
     })
   },
@@ -77,6 +78,7 @@ const DataTable = React.createClass({
     this.getData()
   },
   setAdminModal (open, data, formStructure) {
+    console.log(this.state)
     const newState = this.state
     Object.assign(newState.adminModal, {
       open,
@@ -103,7 +105,7 @@ const DataTable = React.createClass({
     //  allow update on refresh
     this.state.update = true
     let newState = this.state
-    newState.data = data
+    Object.assign(newState.data, data)
     this.setState(newState)
   },
   pushData (data) {
