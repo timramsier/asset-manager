@@ -38,8 +38,5 @@ server.use((req, res) => {
   res.end()
 })
 
-console.log('\x1b[33mUsing API uri:', apiSettings.uri, '\x1b[0m')
-console.log('\x1b[33mUsing API key:', apiSettings.auth.username, '\x1b[0m')
-
 console.log('listening on port', PORT)
 server.listen(PORT)
