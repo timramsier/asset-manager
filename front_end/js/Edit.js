@@ -36,10 +36,12 @@ const Edit = React.createClass({
     this.setState(newState)
   },
   removeKeyValueEntry (key, component) {
-    const data = component.state
     let newState = this.state
-    newState.form.data[key].splice(data.index, 1)
-    this.setState(newState)
+    let index = newState.form.data[key].findIndex(i => i._shortId === component.props.shortId)
+    if (index > -1) {
+      newState.form.data[key].splice(index, 1)
+      index > -1 ? this.setState(newState) : undefined
+    }
   },
   handleKeyValueChange (event, key, keyName, index) {
     let newState = this.state
@@ -126,6 +128,7 @@ const KeyValuePair = React.createClass({
     data: object,
     newEntry: bool,
     index: number,
+    shortId: string,
     structure: shape({
       label: string,
       key: string,
@@ -268,7 +271,7 @@ const FormInput = React.createClass({
         )
         break
       case 'keyvalue':
-        let i = 0
+        // let i = 0
         inputType = (
           <div className='multi-keyvalue-box'>
             {this.props.value.map((entry) => {
@@ -278,7 +281,7 @@ const FormInput = React.createClass({
                   structure={structure}
                   key={entry._shortId}
                   data={entry}
-                  index={i++}
+                  shortId={entry._shortId}
                 />
               )
             })}
@@ -286,7 +289,6 @@ const FormInput = React.createClass({
               newEntry
               buttonEffect={this.props.pushNewKeyValueEntry}
               structure={structure}
-              index={i++}
             />
           </div>
         )
