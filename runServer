@@ -20,11 +20,22 @@ if [[ $* == *--dev* ]]
     message="Watching the Docker Compose logs"
 fi
 
+if [[ $* == *--build* ]]
+  then
+    preMessage="TRUE"
+    preCMD=("docker-compose build")
+  else
+    preMessage="FALSE"
+    preCMD=("printf '...\n'")
+fi
+
 printf '\e[34m==========Initializing \e[1mstockbase\e[0m\e[34m application==========\e[0m\n'
 printf '\e[94m  ==> Create App Data directory...\e[0m\n'
 mkdir -p ~/app-data/asset-manager/db
 
 printf '\e[94m  ==> Running Docker Compose...\e[0m\n' \
+  && printf "\e[94m  ==> Building images (${preMessage})...\e[0m\n" \
+  && $preCMD \
   && docker-compose -f $file up -d \
   && printf "\e[94m  ==> ${message}...\e[0m\n" \
   && $finalCMD

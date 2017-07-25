@@ -40,6 +40,11 @@ bundle update use the following commands.
 This will start the server with the local front end files bind mounted into the
 the front end container and then start **Webpack** watch on the local files,
 updating the `styles.css` and `bundle.js` files as they are changed.
+
+#### Rebuilding Container Images
+If you need to rebuild the container images you can use the following command:
+`bash runServer --build`
+
 #### Local
 
 #### :exclamation: Important - You will need to have [MongoDB](https://docs.mongodb.com/manual/installation/) installed locally to be able to run this application.
