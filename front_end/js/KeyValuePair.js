@@ -24,22 +24,12 @@ const KeyValuePair = React.createClass({
     return ({
       key: '',
       value: '',
-      index: '',
       newEntry: this.props.newEntry || false
     })
   },
   handleChange (event, key) {
     let newState = this.state
     Object.assign(newState, {[key]: event.target.value})
-    this.setState(newState)
-  },
-  componentWillMount () {
-    let newState = this.state
-    if (this.props.data) {
-      this.props.data.key ? newState.key = this.props.data.key : undefined
-      this.props.data.value ? newState.value = this.props.data.value : undefined
-      this.props.index >= 0 ? newState.index = this.props.index : undefined
-    }
     this.setState(newState)
   },
   render () {
@@ -61,6 +51,20 @@ const KeyValuePair = React.createClass({
         faIcon: 'plus'
       }
     }
+    let inputHandler
+    let key = ''
+    let value = ''
+    if (this.state.newEntry) {
+      inputHandler = (event, keyName) => this.handleChange(event, keyName)
+      key = this.state.key
+      value = this.state.value
+    } else {
+      inputHandler = (event, keyName) => this.props.handleKeyValueChange(event, this.props.structure.key, keyName, this.props.shortId)
+      if (this.props.data) {
+        this.props.data.key ? key = this.props.data.key : undefined
+        this.props.data.value ? value = this.props.data.value : undefined
+      }
+    }
     return (
       <div className={`keyvalue-group new-entry-${this.state.newEntry}`}>
         <InputGroup>
@@ -70,8 +74,8 @@ const KeyValuePair = React.createClass({
           <FormControl
             type='text'
             placeholder='Enter label'
-            value={this.state.key}
-            onChange={(event) => this.handleChange(event, 'key')}
+            value={key || ''}
+            onChange={(event) => inputHandler(event, 'key')}
           />
           <InputGroup.Addon>
             Value:
@@ -79,8 +83,8 @@ const KeyValuePair = React.createClass({
           <FormControl
             type='text'
             placeholder='Enter value'
-            value={this.state.value}
-            onChange={(event) => this.handleChange(event, 'value')}
+            value={value || ''}
+            onChange={(event) => inputHandler(event, 'value')}
           />
           <InputGroup.Button>
             <Button

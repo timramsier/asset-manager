@@ -18,6 +18,25 @@ const AdminModal = React.createClass({
     })),
     setAdminModal: func
   },
+  getInitialState () {
+    return ({
+      data: {},
+      _reset: {}
+    })
+  },
+  resetData () {
+    let newState = this.state
+    Object.assign(newState.data, this.state._reset)
+    this.setState(newState)
+  },
+  componentWillMount () {
+    const { data } = this.props
+    const _reset = JSON.parse(JSON.stringify(data))
+    this.setState({ data, _reset })
+  },
+  componentWillUnmount () {
+    this.resetData()
+  },
   render () {
     let buttonEffect = {
       onClick: (event) => {
@@ -25,7 +44,7 @@ const AdminModal = React.createClass({
         this.props.setAdminModal(false)
       }
     }
-    const { data } = this.props
+    const { data } = this.state
     return (
       <div className='admin-modal'>
         <div className='admin-modal-controls'>
@@ -37,6 +56,7 @@ const AdminModal = React.createClass({
             <Col md={12}>
               <Edit
                 data={data}
+                resetArray={this.resetArray}
                 formStructure={this.props.formStructure}
                 setAdminModal={this.props.setAdminModal}
               />

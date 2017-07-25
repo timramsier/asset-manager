@@ -1,8 +1,8 @@
 import React from 'react'
-import HelperText from './HelperText'
-import KeyValuePair from './KeyValuePair'
-import { Col, FormGroup, FormControl, ControlLabel, InputGroup } from 'react-bootstrap'
-import FontAwesome from 'react-fontawesome'
+import InputKeyValueGroup from './InputKeyValueGroup'
+import InputText from './InputText'
+import InputTextArea from './InputTextArea'
+import { Col, FormGroup, ControlLabel } from 'react-bootstrap'
 import { findDOMNode } from 'react-dom'
 
 const { shape, string, func, oneOfType, array } = React.PropTypes
@@ -22,69 +22,32 @@ const FormInput = React.createClass({
     value: oneOfType([string, array]),
     handleKeyValueChange: func
   },
+  getInitialState () {
+    return ({
+      thisElement: null
+    })
+  },
   componentDidMount () {
-    this.setState = {thisElement: findDOMNode(this)}
+    let newState = this.state
+    Object.assign({thisElement: findDOMNode(this)})
+    this.setState(newState)
   },
   render () {
     let { structure } = this.props
-    let inputType
+    let InputType
     switch (structure.type) {
       case 'text':
-        inputType = (
-          <InputGroup>
-            <FormControl
-              type='text'
-              // placeholder={this.props.structure.placeholder}
-              value={this.props.value}
-              onChange={(event) => this.props.handleChange(event, this.props.structure.key)}
-            />
-            <div className='input-group-addon helper'>
-              <FontAwesome className='fa-fw' name='info-circle' />
-              <HelperText>{this.props.structure.description}</HelperText>
-            </div>
-          </InputGroup>
-        )
+        InputType = InputText
         break
       case 'textarea':
-        inputType = (
-          <InputGroup>
-            <FormControl
-              style={{height: '100px', resize: 'vertical'}}
-              componentClass='textarea'
-              // placeholder={this.props.structure.placeholder}
-              value={this.props.value}
-              onChange={(event) => this.props.handleChange(event, this.props.structure.key)}
-            />
-            <div className='input-group-addon helper'>
-              <FontAwesome className='fa-fw' name='info-circle' />
-              <HelperText>{this.props.structure.description}</HelperText>
-            </div>
-          </InputGroup>
-        )
+        InputType = InputTextArea
         break
       case 'keyvalue':
         // let i = 0
-        inputType = (
-          <div className='multi-keyvalue-box'>
-            {this.props.value.map((entry) => {
-              return (
-                <KeyValuePair
-                  buttonEffect={this.props.removeKeyValueEntry}
-                  structure={structure}
-                  key={entry._shortId}
-                  data={entry}
-                  shortId={entry._shortId}
-                />
-              )
-            })}
-            <KeyValuePair
-              newEntry
-              buttonEffect={this.props.pushNewKeyValueEntry}
-              structure={structure}
-            />
-          </div>
-        )
+        InputType = InputKeyValueGroup
         break
+      default:
+        InputType = () => <span />
     }
 
     return (
@@ -93,7 +56,7 @@ const FormInput = React.createClass({
           <ControlLabel>
             {structure.label}
           </ControlLabel>
-          {inputType}
+          <InputType {...this.props} />
         </FormGroup>
       </Col>
     )

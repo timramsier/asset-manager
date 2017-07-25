@@ -78,7 +78,6 @@ const DataTable = React.createClass({
     this.getData()
   },
   setAdminModal (open, data, formStructure) {
-    console.log(this.state)
     const newState = this.state
     Object.assign(newState.adminModal, {
       open,
@@ -261,6 +260,7 @@ const DataTable = React.createClass({
           {this.state.adminModal.open ? <AdminModal
             formStructure={this.props.formStructure}
             data={this.state.adminModal.data}
+            _reset={this.state.adminModal._reset}
             setAdminModal={this.setAdminModal} /> : undefined}
         </VelocityTransitionGroup>
         <ReactResizeDetector

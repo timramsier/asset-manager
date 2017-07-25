@@ -2,6 +2,7 @@ import React from 'react'
 import FormInput from './FormInput'
 import { Col, Button } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
+import shortid from 'shortid'
 
 const { shape, string, arrayOf, func, object } = React.PropTypes
 
@@ -32,7 +33,11 @@ const Edit = React.createClass({
   pushNewKeyValueEntry (key, component) {
     const data = component.state
     let newState = this.state
-    newState.form.data[key].push({key: data.key, value: data.value})
+    newState.form.data[key].push({
+      _shortId: `temp_${shortid()}`,
+      key: data.key,
+      value: data.value
+    })
     this.setState(newState)
   },
   removeKeyValueEntry (key, component) {
@@ -43,10 +48,13 @@ const Edit = React.createClass({
       index > -1 ? this.setState(newState) : undefined
     }
   },
-  handleKeyValueChange (event, key, keyName, index) {
+  handleKeyValueChange (event, key, keyName, shortId) {
     let newState = this.state
-    Object.assign(newState.form.data[key][index], {[keyName]: event.target.value})
-    this.setState(newState)
+    let index = newState.form.data[key].findIndex(i => i._shortId === shortId)
+    if (index > -1) {
+      Object.assign(newState.form.data[key][index], {[keyName]: event.target.value})
+      this.setState(newState)
+    }
   },
   componentWillMount () {
     this.setState({form: { data: this.props.data }})
