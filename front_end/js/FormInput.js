@@ -1,7 +1,9 @@
 import React from 'react'
+import FontAwesome from 'react-fontawesome'
 import InputKeyValueGroup from './InputKeyValueGroup'
 import InputText from './InputText'
 import InputTextArea from './InputTextArea'
+import HelperText from './HelperText'
 import { Col, FormGroup, ControlLabel } from 'react-bootstrap'
 import { findDOMNode } from 'react-dom'
 
@@ -55,6 +57,10 @@ const FormInput = React.createClass({
         <FormGroup className='form-item'>
           <ControlLabel>
             {structure.label}
+            <span className='helper'>
+              <FontAwesome className='fa-fw' name='info-circle' />
+              <HelperText>{this.props.structure.description}</HelperText>
+            </span>
           </ControlLabel>
           <InputType {...this.props} />
         </FormGroup>

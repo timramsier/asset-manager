@@ -19,11 +19,12 @@ const HelperText = React.createClass({
     parent.addEventListener('mouseout', (event) => {
       this.setState({parentHover: false})
     })
+    this._height = findDOMNode(this).clientHeight
   },
   render () {
     let style
     if (this.state.parentHover) {
-      style = {opacity: 1.0, zIndex: 1000}
+      style = {opacity: 1.0, zIndex: 1000, top: `-${this._height / 2 - 5}`}
     } else {
       style = {opacity: 0.0, zIndex: -1}
     }
