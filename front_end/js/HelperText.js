@@ -24,7 +24,7 @@ const HelperText = React.createClass({
   render () {
     let style
     if (this.state.parentHover) {
-      style = {opacity: 1.0, zIndex: 1000, top: `-${this._height / 2 - 5}`}
+      style = {opacity: 1.0, zIndex: 1000, top: `-${this._height / 2 - 5}px`}
     } else {
       style = {opacity: 0.0, zIndex: -1}
     }
