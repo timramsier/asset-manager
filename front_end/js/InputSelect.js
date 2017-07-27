@@ -18,7 +18,12 @@ const InputSelect = React.createClass({
   },
   render () {
     return (
-      <FormControl componentClass='select' placeholder='select' defaultValue={this.props.value}>
+      <FormControl
+        componentClass='select'
+        placeholder='select'
+        defaultValue={this.props.value}
+        onChange={(event) => this.props.handleChange(event, this.props.structure.key)}
+      >
         {this.props.structure.options.map((option) => {
           return (
             <option key={`key_${option}`} value={option}>
