@@ -61,6 +61,16 @@ export default {
     ],
     formStructure: [
       {
+        label: 'Active',
+        key: 'active',
+        type: 'select',
+        description: 'Set whether this is an active model or not',
+        options: [
+          true,
+          false
+        ]
+      },
+      {
         label: 'Model Name',
         key: 'name',
         type: 'text',

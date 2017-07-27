@@ -2,12 +2,13 @@ import React from 'react'
 import FontAwesome from 'react-fontawesome'
 import InputKeyValueGroup from './InputKeyValueGroup'
 import InputText from './InputText'
+import InputSelect from './InputSelect'
 import InputTextArea from './InputTextArea'
 import HelperText from './HelperText'
 import { Col, FormGroup, ControlLabel } from 'react-bootstrap'
 import { findDOMNode } from 'react-dom'
 
-const { shape, string, func, oneOfType, array } = React.PropTypes
+const { shape, string, func, oneOfType, array, bool } = React.PropTypes
 
 const FormInput = React.createClass({
   propTypes: {
@@ -19,9 +20,10 @@ const FormInput = React.createClass({
       key: string,
       type: string,
       placeholder: string,
-      description: string
+      description: string,
+      options: array
     }),
-    value: oneOfType([string, array]),
+    value: oneOfType([string, array, bool]),
     handleKeyValueChange: func
   },
   getInitialState () {
@@ -47,6 +49,10 @@ const FormInput = React.createClass({
       case 'keyvalue':
         // let i = 0
         InputType = InputKeyValueGroup
+        break
+      case 'select':
+        // let i = 0
+        InputType = InputSelect
         break
       default:
         InputType = () => <span />
