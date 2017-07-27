@@ -26,8 +26,8 @@ const TopNavigation = React.createClass({
             <Navbar.Header>
               <Navbar.Brand>
                 <Link className='fill' to='/'>
-                  <img className='img-responsive' src='/public/img/barcode_dark.png' />
-                  <span className='brand-text'>stockbase</span>
+                  <img className='img-responsive' src='/public/img/openstack_logo@0.5x.png' />
+                  {/* <span className='brand-text'>stockbase</span> */}
                 </Link>
               </Navbar.Brand>
             </Navbar.Header>
