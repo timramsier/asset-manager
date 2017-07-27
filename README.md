@@ -1,18 +1,19 @@
-# stockbase
-
-<img src='demo.png' alt='Demo Image' style='max-width=600px'>
-
+<center>
+  <img src='source-img\openstack_logo@0.5x.png' alt='Demo Image' style='max-width=400px'>
+</center>
 ## Overview
 
-**stockbase** is an "in-development" asset management system being designed to
+**OpenStock** is an "in-development" asset management system being designed to
 be adaptive and easy to use.  It is being designed to track IT assets such as
 laptops, desktops, and software.
+
+<img src='demo.png' alt='Demo Image' style='max-width=600px'>
 
 ## Usage
 
 ### Installation
 
-To install **stockbase** simply clone the repository:
+To install **OpenStock** simply clone the repository:
 
 `git clone git@github.com:timramsier/asset-manager.git`
 
