@@ -1,9 +1,6 @@
 import React from 'react'
 import FontAwesome from 'react-fontawesome'
-import InputKeyValueGroup from './InputKeyValueGroup'
-import InputText from './InputText'
-import InputSelect from './InputSelect'
-import InputTextArea from './InputTextArea'
+import InputType from './InputTypes/InputType'
 import HelperText from './HelperText'
 import { Col, FormGroup, ControlLabel } from 'react-bootstrap'
 import { findDOMNode } from 'react-dom'
@@ -38,24 +35,24 @@ const FormInput = React.createClass({
   },
   render () {
     let { structure } = this.props
-    let InputType
+    let Input
     switch (structure.type) {
       case 'text':
-        InputType = InputText
+        Input = InputType.Text
         break
       case 'textarea':
-        InputType = InputTextArea
+        Input = InputType.TextArea
         break
       case 'keyvalue':
         // let i = 0
-        InputType = InputKeyValueGroup
+        Input = InputType.KeyValueGroup
         break
       case 'select':
         // let i = 0
-        InputType = InputSelect
+        Input = InputType.Select
         break
       default:
-        InputType = () => <span />
+        Input = () => <span />
     }
 
     return (
@@ -68,7 +65,7 @@ const FormInput = React.createClass({
               <HelperText>{this.props.structure.description}</HelperText>
             </span>
           </ControlLabel>
-          <InputType {...this.props} />
+          <Input {...this.props} />
         </FormGroup>
       </Col>
     )
