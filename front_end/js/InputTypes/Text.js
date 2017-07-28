@@ -7,6 +7,8 @@ const InputText = React.createClass({
   propTypes: {
     handleChange: func,
     setValidationState: func,
+    addValidationError: func,
+    removeValidationError: func,
     structure: shape({
       label: string,
       key: string,
@@ -17,11 +19,19 @@ const InputText = React.createClass({
     value: oneOfType([string, array])
   },
   render () {
+    const { structure, value } = this.props
     const inputBehavior = {
-      onChange: (event) => this.props.handleChange(event, this.props.structure.key),
+      onChange: (event) => this.props.handleChange(event, structure.key),
       onBlur: () => {
         let valid
-        this.props.value.length < 3 ? valid = 'error' : valid = null
+        let inputName = `input_${structure.type}_${structure.key}`
+        if (value.length < 3) {
+          valid = 'error'
+          this.props.addValidationError(inputName)
+        } else {
+          valid = null
+          this.props.removeValidationError(inputName)
+        }
         this.props.setValidationState(valid)
       }
     }

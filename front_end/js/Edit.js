@@ -21,7 +21,8 @@ const Edit = React.createClass({
   getInitialState () {
     return ({
       form: {
-        data: []
+        data: {},
+        validationError: []
       }
     })
   },
@@ -56,6 +57,27 @@ const Edit = React.createClass({
       this.setState(newState)
     }
   },
+  addValidationError (inputName) {
+    let newState = this.state
+    if (!this.state.form.validationError || this.state.form.validationError.indexOf(inputName) < 0) {
+      let validationError = newState.form.validationError || []
+      validationError.push(inputName)
+      Object.assign(newState.form, { validationError })
+      this.setState(newState)
+    }
+  },
+  removeValidationError (inputName) {
+    let newState = this.state
+    if (this.state.form.validationError) {
+      let validationError = newState.form.validationError || []
+      let index = validationError.indexOf(inputName)
+      if (index >= 0) {
+        validationError.splice(index, 1)
+        Object.assign(newState.form, { validationError })
+        this.setState(newState)
+      }
+    }
+  },
   componentWillMount () {
     this.setState({form: { data: this.props.data }})
   },
@@ -82,6 +104,8 @@ const Edit = React.createClass({
                   pushNewKeyValueEntry={this.pushNewKeyValueEntry}
                   handleChange={this.handleChange}
                   handleKeyValueChange={this.handleKeyValueChange}
+                  addValidationError={this.addValidationError}
+                  removeValidationError={this.removeValidationError}
                 />
               )
             })}

@@ -12,6 +12,8 @@ const FormInput = React.createClass({
     handleChange: func,
     pushNewKeyValueEntry: func,
     removeKeyValueEntry: func,
+    addValidationError: func,
+    removeValidationError: func,
     structure: shape({
       label: string,
       key: string,
