@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormControl, InputGroup, Button } from 'react-bootstrap'
+import { FormControl, FormGroup, InputGroup, Button } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 
 const { shape, string, func, object, bool, number } = React.PropTypes
@@ -18,18 +18,25 @@ const KeyValuePair = React.createClass({
       description: string
     }),
     handleKeyValueChange: func,
-    buttonEffect: func
+    buttonEffect: func,
+    setValidationState: func
   },
   getInitialState () {
     return ({
       key: '',
       value: '',
+      validationState: null,
       newEntry: this.props.newEntry || false
     })
   },
   handleChange (event, key) {
     let newState = this.state
     Object.assign(newState, {[key]: event.target.value})
+    this.setState(newState)
+  },
+  setValidationState (validationState) {
+    let newState = this.state
+    Object.assign(newState, { validationState })
     this.setState(newState)
   },
   render () {
@@ -65,36 +72,45 @@ const KeyValuePair = React.createClass({
         this.props.data.value ? value = this.props.data.value : undefined
       }
     }
+    const blurHandler = (value) => {
+      let valid
+      value.length < 2 ? valid = 'error' : valid = null
+      this.setValidationState(valid)
+    }
     return (
       <div className={`keyvalue-group new-entry-${this.state.newEntry}`}>
-        <InputGroup>
-          <InputGroup.Addon>
-            Label:
-          </InputGroup.Addon>
-          <FormControl
-            type='text'
-            placeholder='Enter label'
-            value={key || ''}
-            onChange={(event) => inputHandler(event, 'key')}
-          />
-          <InputGroup.Addon>
-            Value:
-          </InputGroup.Addon>
-          <FormControl
-            type='text'
-            placeholder='Enter value'
-            value={value || ''}
-            onChange={(event) => inputHandler(event, 'value')}
-          />
-          <InputGroup.Button>
-            <Button
-              bsStyle={buttonStyle.bsStyle}
-              className='button-round-right'
-              {...buttonEffect}>
-              <FontAwesome className='fa-fw' name={buttonStyle.faIcon} />
-            </Button>
-          </InputGroup.Button>
-        </InputGroup>
+        <FormGroup bsClass='clear-formatting' validationState={this.state.validationState}>
+          <InputGroup>
+            <InputGroup.Addon>
+              Label:
+            </InputGroup.Addon>
+            <FormControl
+              type='text'
+              placeholder='Enter label'
+              value={key || ''}
+              onChange={(event) => inputHandler(event, 'key')}
+              onBlur={(event) => blurHandler(key)}
+            />
+            <InputGroup.Addon>
+              Value:
+            </InputGroup.Addon>
+            <FormControl
+              type='text'
+              placeholder='Enter value'
+              value={value || ''}
+              onChange={(event) => inputHandler(event, 'value')}
+              onBlur={(event) => blurHandler(value)}
+            />
+            <InputGroup.Button>
+              <Button
+                bsStyle={buttonStyle.bsStyle}
+                className='button-round-right'
+                {...buttonEffect}>
+                <FontAwesome className='fa-fw' name={buttonStyle.faIcon} />
+              </Button>
+            </InputGroup.Button>
+          </InputGroup>
+        </FormGroup>
       </div>
     )
   }
