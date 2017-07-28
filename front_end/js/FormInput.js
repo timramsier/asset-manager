@@ -25,8 +25,14 @@ const FormInput = React.createClass({
   },
   getInitialState () {
     return ({
-      thisElement: null
+      thisElement: null,
+      validationState: null
     })
+  },
+  setValidationState (validationState) {
+    let newState = this.state
+    Object.assign(newState, { validationState })
+    this.setState(newState)
   },
   componentDidMount () {
     let newState = this.state
@@ -54,10 +60,9 @@ const FormInput = React.createClass({
       default:
         Input = () => <span />
     }
-
     return (
       <Col md={structure.colspan || 12}>
-        <FormGroup className='form-item'>
+        <FormGroup className='form-item' validationState={this.state.validationState}>
           <ControlLabel>
             {structure.label}
             <span className='helper'>
@@ -65,7 +70,7 @@ const FormInput = React.createClass({
               <HelperText>{this.props.structure.description}</HelperText>
             </span>
           </ControlLabel>
-          <Input {...this.props} />
+          <Input setValidationState={this.setValidationState} {...this.props} />
         </FormGroup>
       </Col>
     )

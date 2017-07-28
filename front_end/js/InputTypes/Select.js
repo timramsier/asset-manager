@@ -6,6 +6,7 @@ const { shape, string, func, oneOfType, bool, array } = React.PropTypes
 const InputSelect = React.createClass({
   propTypes: {
     handleChange: func,
+    setValidationState: func,
     structure: shape({
       label: string,
       key: string,
@@ -17,12 +18,20 @@ const InputSelect = React.createClass({
     value: oneOfType([string, bool])
   },
   render () {
+    const inputBehavior = {
+      onChange: (event) => this.props.handleChange(event, this.props.structure.key),
+      onBlur: () => {
+        let valid
+        this.props.value === null ? valid = 'error' : valid = null
+        this.props.setValidationState(valid)
+      }
+    }
     return (
       <FormControl
         componentClass='select'
         placeholder='select'
         defaultValue={this.props.value}
-        onChange={(event) => this.props.handleChange(event, this.props.structure.key)}
+        {...inputBehavior}
       >
         {this.props.structure.options.map((option) => {
           return (

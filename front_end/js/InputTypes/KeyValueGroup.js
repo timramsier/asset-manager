@@ -17,6 +17,7 @@ const InputKeyValueGroup = React.createClass({
     }),
     value: array,
     handleKeyValueChange: func,
+    setValidationState: func,
     resetArray: func
   },
   // getInitialState () {
@@ -43,6 +44,7 @@ const InputKeyValueGroup = React.createClass({
               key={entry._shortId}
               data={entry}
               shortId={entry._shortId}
+              setValidationState={this.props.setValidationState}
             />
           )
         })}
@@ -50,6 +52,7 @@ const InputKeyValueGroup = React.createClass({
           newEntry
           buttonEffect={this.props.pushNewKeyValueEntry}
           structure={structure}
+          setValidationState={this.props.setValidationState}
         />
       </div>
     )
