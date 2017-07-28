@@ -18,19 +18,10 @@ const InputKeyValueGroup = React.createClass({
     value: array,
     handleKeyValueChange: func,
     setValidationState: func,
+    addValidationError: func,
+    removeValidationError: func,
     resetArray: func
   },
-  // getInitialState () {
-  //   return ({
-  //     _array: []
-  //   })
-  // },
-  // componentDidMount () {
-  //   if (this.props.value instanceof Array) {
-  //     // clone the array for form reset
-  //     this.state._array = this.props.value.slice(0)
-  //   }
-  // },
   render () {
     let { structure } = this.props
     return (
