@@ -26,7 +26,7 @@ const LeftNavigation = React.createClass({
           <ExpandButton toggleMenu={this.toggleMenu} expanded={this.state.expanded} />
           <ul className='nav-list'>
             <MenuButton bgColor='#666' linkTo='/show/all' label='All'
-              name='All' faIcon='home' expanded={this.state.expanded} />
+              name='All' faIcon='globe' expanded={this.state.expanded} />
             {categories.map((category) => {
               const {name, label, _id} = category
               const {color, faIcon, api} = category.config

@@ -56,6 +56,7 @@ const AdminModal = React.createClass({
             <Col md={12}>
               <Edit
                 data={data}
+                _reset={this.state._reset}
                 resetArray={this.resetArray}
                 formStructure={this.props.formStructure}
                 setAdminModal={this.props.setAdminModal}
