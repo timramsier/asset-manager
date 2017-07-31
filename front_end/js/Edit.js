@@ -1,5 +1,6 @@
 import React from 'react'
 import FormInput from './FormInput'
+import addConfirmModal from './addConfirmModal'
 import { Col, Button } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 import shortid from 'shortid'
@@ -16,13 +17,16 @@ const Edit = React.createClass({
       description: string
     })),
     data: object,
-    setAdminModal: func
+    _reset: object,
+    setAdminModal: func,
+    openConfirmModal: func
   },
   getInitialState () {
     return ({
       form: {
         data: {},
-        validationError: []
+        validationError: [],
+        canSave: true
       }
     })
   },
@@ -83,10 +87,24 @@ const Edit = React.createClass({
   },
   render () {
     const formStructure = this.props.formStructure || []
-    let cancelEffect = {
-      onClick: (event) => {
-        event.preventDefault()
-        this.props.setAdminModal(false)
+    let buttonEffects = {
+      cancel: {
+        onClick: (event) => {
+          event.preventDefault()
+          this.props.openConfirmModal({
+            header: 'Cancel and Leave',
+            body: 'If you leave this page, you will lose any unsaved changes'
+          })
+        }
+      },
+      save: {
+        onClick: (event) => {
+          event.preventDefault()
+          this.props.openConfirmModal({
+            header: 'Save Changes',
+            body: 'Are you sure you want to save your changes?'
+          })
+        }
       }
     }
     return (
@@ -110,10 +128,13 @@ const Edit = React.createClass({
               )
             })}
             <div className='form-buttons'>
-              <Button bsStyle='danger' {...cancelEffect}>
+              <Button bsStyle='danger' {...buttonEffects.cancel}>
                 <FontAwesome className='fa-fw' name='times' />Cancel
               </Button>
-              <Button bsStyle='success'>
+              <Button bsStyle='success'
+                disabled={this.state.form.canSave}
+                {...buttonEffects.save}
+              >
                 <FontAwesome className='fa-fw' name='check' />Save
               </Button>
             </div>
@@ -124,4 +145,4 @@ const Edit = React.createClass({
   }
 })
 
-export default Edit
+export default addConfirmModal(Edit)
