@@ -4,6 +4,8 @@ import addConfirmModal from './addConfirmModal'
 import { Col, Button } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 import shortid from 'shortid'
+import axios from 'axios'
+import apiSettings from '../config/apiSettings'
 
 const { shape, string, arrayOf, func, object } = React.PropTypes
 
@@ -82,6 +84,28 @@ const Edit = React.createClass({
       }
     }
   },
+  postData () {
+    let postObj = {}
+    this.props.formStructure.map(entry => {
+      if (entry.type === 'keyvalue') {
+        postObj[entry.key] = this.state.form.data[entry.key].map(keyvalue => {
+          let { key, value } = keyvalue
+          return { key, value }
+        })
+      } else {
+        postObj[entry.key] = this.state.form.data[entry.key]
+      }
+    })
+    let url = `http://${apiSettings.uri}/models/all/${this.props.data._shortId}`
+    axios({
+      url,
+      method: 'put',
+      auth: apiSettings.auth,
+      data: postObj
+    }).then((response) => {
+      console.log(response)
+    })
+  },
   componentWillMount () {
     this.setState({form: { data: this.props.data }})
   },
@@ -93,7 +117,8 @@ const Edit = React.createClass({
           event.preventDefault()
           this.props.openConfirmModal({
             header: 'Cancel and Leave',
-            body: 'If you leave this page, you will lose any unsaved changes'
+            body: 'If you leave this page, you will lose any unsaved changes',
+            onConfirm: () => this.props.setAdminModal(false)
           })
         }
       },
@@ -102,7 +127,8 @@ const Edit = React.createClass({
           event.preventDefault()
           this.props.openConfirmModal({
             header: 'Save Changes',
-            body: 'Are you sure you want to save your changes?'
+            body: 'Are you sure you want to save your changes?',
+            onConfirm: this.postData
           })
         }
       }

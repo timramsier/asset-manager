@@ -18,7 +18,7 @@ const addConfirmModal = (WrappedComponent) => {
         header: 'Confirm',
         body: 'No body provided',
         onConfirm: () => console.warn('Please provide onConfirm action'),
-        onCancel: () => console.warn('Please provide onCancel action')
+        onCancel: null
       })
     },
     closeConfirmModal () {
