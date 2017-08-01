@@ -16,7 +16,8 @@ const AdminModal = React.createClass({
       description: string,
       colspan: number
     })),
-    setAdminModal: func
+    setAdminModal: func,
+    resetTable: func
   },
   getInitialState () {
     return ({
@@ -60,6 +61,7 @@ const AdminModal = React.createClass({
                 resetArray={this.resetArray}
                 formStructure={this.props.formStructure}
                 setAdminModal={this.props.setAdminModal}
+                resetTable={this.props.resetTable}
               />
             </Col>
           </Row>

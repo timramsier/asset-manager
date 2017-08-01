@@ -21,7 +21,8 @@ const Edit = React.createClass({
     data: object,
     _reset: object,
     setAdminModal: func,
-    openConfirmModal: func
+    openConfirmModal: func,
+    resetTable: func
   },
   getInitialState () {
     return ({
@@ -85,25 +86,29 @@ const Edit = React.createClass({
     }
   },
   postData () {
-    let postObj = {}
-    this.props.formStructure.map(entry => {
-      if (entry.type === 'keyvalue') {
-        postObj[entry.key] = this.state.form.data[entry.key].map(keyvalue => {
-          let { key, value } = keyvalue
-          return { key, value }
-        })
-      } else {
-        postObj[entry.key] = this.state.form.data[entry.key]
-      }
-    })
-    let url = `http://${apiSettings.uri}/models/all/${this.props.data._shortId}`
-    axios({
-      url,
-      method: 'put',
-      auth: apiSettings.auth,
-      data: postObj
-    }).then((response) => {
-      console.log(response)
+    return new Promise((resolve, reject) => {
+      let postObj = {}
+      this.props.formStructure.map(entry => {
+        if (entry.type === 'keyvalue') {
+          postObj[entry.key] = this.state.form.data[entry.key].map(keyvalue => {
+            let { key, value } = keyvalue
+            return { key, value }
+          })
+        } else {
+          postObj[entry.key] = this.state.form.data[entry.key]
+        }
+      })
+      let url = `http://${apiSettings.uri}/models/all/${this.props.data._shortId}`
+      axios({
+        url,
+        method: 'put',
+        auth: apiSettings.auth,
+        data: postObj
+      }).then((response) => {
+        resolve(response)
+      }).catch((error) => {
+        reject(error)
+      })
     })
   },
   componentWillMount () {
@@ -128,7 +133,10 @@ const Edit = React.createClass({
           this.props.openConfirmModal({
             header: 'Save Changes',
             body: 'Are you sure you want to save your changes?',
-            onConfirm: this.postData
+            onConfirm: () => {
+              this.postData().then(this.props.resetTable)
+              this.props.setAdminModal(false)
+            }
           })
         }
       }

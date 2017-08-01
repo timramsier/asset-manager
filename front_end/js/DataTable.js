@@ -9,6 +9,7 @@ import Search from './Search'
 import apiSettings from '../config/apiSettings'
 import { VelocityTransitionGroup } from 'velocity-react'
 import ReactResizeDetector from 'react-resize-detector'
+import shortid from 'shortid'
 
 const { string, arrayOf, shape, number, bool } = React.PropTypes
 
@@ -34,6 +35,7 @@ const DataTable = React.createClass({
   },
   getInitialState () {
     return ({
+      key: shortid(),
       tableWidth: 0,
       rowHeight: 50,
       minColumnWidth: 80,
@@ -100,11 +102,14 @@ const DataTable = React.createClass({
     var tableWidth = element.offsetWidth
     this.setState({tableWidth})
   },
+  resetTable () {
+    this.getData('refresh')
+  },
   refreshData (data) {
     //  allow update on refresh
     this.state.update = true
     let newState = this.state
-    Object.assign(newState.data, data)
+    Object.assign(newState, { data })
     this.setState(newState)
   },
   pushData (data) {
@@ -203,7 +208,7 @@ const DataTable = React.createClass({
       }
     }
     return (
-      <div className='data-table'>
+      <div className='data-table' key={this.state.key}>
         <div className='data-table-controls'>
           <Search
             xs={12} sm={7} md={6} lg={4}
@@ -258,6 +263,7 @@ const DataTable = React.createClass({
         </Table>
         <VelocityTransitionGroup {...modelModalAnimationProps}>
           {this.state.adminModal.open ? <AdminModal
+            resetTable={this.resetTable}
             formStructure={this.props.formStructure}
             data={this.state.adminModal.data}
             _reset={this.state.adminModal._reset}
