@@ -2,13 +2,13 @@ import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 
-const { string, func } = React.PropTypes
+const { string, func, object, oneOfType } = React.PropTypes
 
 const addConfirmModal = (WrappedComponent) => {
   return React.createClass({
     propTypes: {
       header: string,
-      body: string,
+      body: oneOfType([string, func, object]),
       onCancel: func,
       onConfirm: func
     },

@@ -1,9 +1,10 @@
 import React from 'react'
 import { Cell } from 'fixed-data-table'
-import { Modal, Button } from 'react-bootstrap'
+// import { Modal, Button } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 import axios from 'axios'
 import apiSettings from '../config/apiSettings'
+import addConfirmModal from './addConfirmModal'
 
 const { string, number, array, func, object } = React.PropTypes
 
@@ -18,7 +19,9 @@ const propValidation = {
   getData: func,
   flashMessage: func,
   setAdminModal: func,
-  component: object
+  component: object,
+  openConfirmModal: func,
+  closeConfirmModal: func
 }
 
 const DateCell = React.createClass({
@@ -100,12 +103,6 @@ const RemoveCell = React.createClass({
       this.props.getData('refresh')
     })
   },
-  close () {
-    this.setState({ showModal: false })
-  },
-  open () {
-    this.setState({ showModal: true })
-  },
   render () {
     const { data, rowIndex, height, width } = this.props
     let cellData = data[rowIndex]
@@ -113,33 +110,20 @@ const RemoveCell = React.createClass({
     const handleClick = {
       onClick: (event) => {
         event.preventDefault()
-        this.open()
+        this.props.openConfirmModal({
+          header: 'Delete Entry',
+          body: <span>Are you sure that you want to delete <strong>{cellData.name || cellData.poNumber}</strong>?</span>,
+          onConfirm: () => {
+            this.removeData(cellData)
+            this.props.closeConfirmModal()
+          }
+        })
       }
     }
     return (
       <Cell {...dimensons} className='admin-cell'>
         <a title={`Remove ${cellData.name || cellData.poNumber || ''}`} {...handleClick}>
           <FontAwesome className='fa-fw' name='trash' />
-          <Modal show={this.state.showModal} onHide={this.close}
-            className='center-on-screen confirm-modal'>
-            <Modal.Header>
-              Confirm
-            </Modal.Header>
-            <Modal.Body>
-              Are you sure that you want to delete <strong>{cellData.name || cellData.poNumber}</strong>?
-            </Modal.Body>
-            <Modal.Footer>
-              <Button onClick={() => {
-                this.removeData(cellData)
-                this.close()
-              }}>
-                <FontAwesome className='fa-fw' name='check' />Okay
-              </Button>
-              <Button onClick={this.close}>
-                <FontAwesome className='fa-fw' name='times' />Cancel
-              </Button>
-            </Modal.Footer>
-          </Modal>
         </a>
       </Cell>
     )
@@ -174,6 +158,6 @@ export default {
   Modal: ModalCell,
   Date: DateCell,
   Text: TextCell,
-  Remove: RemoveCell,
+  Remove: addConfirmModal(RemoveCell),
   Edit: EditCell
 }
