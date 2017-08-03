@@ -165,7 +165,7 @@ const DataTable = React.createClass({
     let newState = this.state
     Object.assign(newState, {alert: {type, message}})
     this.setState(newState)
-    this.state.alert = {type: '', message: ''}
+    // setTimeout(() => { this.state.alert = {type: '', message: ''} }, 0)
   },
   handleTableScroll () {
     const innerTable = findDOMNode(findDOMNode(this)
@@ -263,6 +263,7 @@ const DataTable = React.createClass({
         </Table>
         <VelocityTransitionGroup {...modelModalAnimationProps}>
           {this.state.adminModal.open ? <AdminModal
+            flashMessage={this.flashMessage}
             resetTable={this.resetTable}
             formStructure={this.props.formStructure}
             data={this.state.adminModal.data}

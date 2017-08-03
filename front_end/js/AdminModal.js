@@ -17,7 +17,8 @@ const AdminModal = React.createClass({
       colspan: number
     })),
     setAdminModal: func,
-    resetTable: func
+    resetTable: func,
+    flashMessage: func
   },
   getInitialState () {
     return ({
@@ -59,6 +60,7 @@ const AdminModal = React.createClass({
                 data={data}
                 _reset={this.state._reset}
                 resetArray={this.resetArray}
+                flashMessage={this.props.flashMessage}
                 formStructure={this.props.formStructure}
                 setAdminModal={this.props.setAdminModal}
                 resetTable={this.props.resetTable}

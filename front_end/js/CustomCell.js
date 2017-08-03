@@ -1,6 +1,5 @@
 import React from 'react'
 import { Cell } from 'fixed-data-table'
-// import { Modal, Button } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 import axios from 'axios'
 import apiSettings from '../config/apiSettings'
