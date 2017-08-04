@@ -88,6 +88,9 @@ const Edit = React.createClass({
       }
     }
   },
+  checkValidation () {
+    return !this.state.form.validationError || this.state.form.validationError.length === 0
+  },
   sendData () {
     return new Promise((resolve, reject) => {
       let data = {}
@@ -142,7 +145,8 @@ const Edit = React.createClass({
         onClick: (event) => {
           event.preventDefault()
           this.props.openConfirmModal({
-            header: 'Cancel and Leave',
+            modalType: 'warning',
+            header: 'Cancel',
             body: 'If you leave this page, you will lose any unsaved changes',
             onConfirm: () => this.props.setAdminModal(false)
           })
@@ -151,19 +155,31 @@ const Edit = React.createClass({
       save: {
         onClick: (event) => {
           event.preventDefault()
-          this.props.openConfirmModal({
-            header: 'Save Changes',
-            body: 'Are you sure you want to save your changes?',
-            onConfirm: () => {
-              this.sendData()
-              .then(this.props.resetTable)
-              .then(() => {
-                this.props.flashMessage('success', <span>Successfully updated <strong>{this.state.form.data.name}</strong>.</span>)
-              })
-
-              this.props.setAdminModal(false)
-            }
-          })
+          if (this.checkValidation()) {
+            this.props.openConfirmModal({
+              modalType: 'info',
+              header: 'Save',
+              body: 'Are you sure you want to save your changes?',
+              onConfirm: () => {
+                this.sendData()
+                .then(this.props.resetTable)
+                .then(() => {
+                  this.props.flashMessage(
+                    'success',
+                    <span>Successfully updated <strong>{this.state.form.data.name}</strong>.</span>
+                  )
+                })
+                this.props.setAdminModal(false)
+              }
+            })
+          } else {
+            this.props.openConfirmModal({
+              modalType: 'danger',
+              header: 'Oops',
+              body: 'Make sure that you have the from filled out completely.',
+              noCancel: true
+            })
+          }
         }
       }
     }

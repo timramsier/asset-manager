@@ -2,38 +2,44 @@ import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 
-const { string, func, object, oneOfType } = React.PropTypes
+const { string, func, object, oneOfType, bool } = React.PropTypes
+
+const defaultState = {
+  showModal: false,
+  header: 'Confirm',
+  body: 'No body provided',
+  onConfirm: '',
+  onCancel: null,
+  noCancel: false,
+  modalType: ''
+}
 
 const addConfirmModal = (WrappedComponent) => {
   return React.createClass({
     propTypes: {
+      modalType: string,
       header: string,
       body: oneOfType([string, func, object]),
       onCancel: func,
-      onConfirm: func
+      onConfirm: func,
+      noCancel: bool
     },
     getInitialState () {
-      return ({
-        showModal: false,
-        header: 'Confirm',
-        body: 'No body provided',
-        onConfirm: () => console.warn('Please provide onConfirm action'),
-        onCancel: null
-      })
+      return (JSON.parse(JSON.stringify(defaultState)))
     },
     closeConfirmModal () {
-      let newState = this.state
-      Object.assign(newState, { showModal: false })
-      this.setState(newState)
+      this.setState(defaultState)
     },
     openConfirmModal (props) {
       let newState = this.state
-      let { header, body, onCancel, onConfirm } = this.state
+      let { header, body, onCancel, onConfirm, modalType, noCancel } = this.state
       if (props) {
-        header = props.header || this.state.header
-        body = props.body || this.state.body
-        onCancel = props.onCancel || this.state.onCancel
-        onConfirm = props.onConfirm || this.state.onConfirm
+        header = props.header || header
+        body = props.body || body
+        onCancel = props.onCancel || onCancel
+        onConfirm = props.onConfirm || onConfirm
+        noCancel = props.noCancel || noCancel
+        modalType = props.modalType || modalType
       }
       Object.assign(newState,
         {
@@ -41,12 +47,48 @@ const addConfirmModal = (WrappedComponent) => {
           header,
           body,
           onConfirm,
-          onCancel
+          onCancel,
+          noCancel,
+          modalType
         }
       )
       this.setState(newState)
     },
     render () {
+      let cancel
+      if (!this.state.noCancel) {
+        cancel =
+          <Button onClick={() => {
+            if (this.state.onCancel instanceof Function) {
+              this.state.onCancel()
+            }
+            this.closeConfirmModal()
+          }}>
+            <FontAwesome className='fa-fw' name='times' />Cancel
+          </Button>
+      }
+
+      const modalType = {
+        success: {
+          color: '#3c763d',
+          background: '#dff0d8'
+        },
+        info: {
+          color: '#31708f',
+          background: '#d9edf7'
+        },
+        warning: {
+          color: '#8a6d3b',
+          background: '#fcf8e3'
+        },
+        danger: {
+          color: '#a94442',
+          background: '#f2dede'
+        }
+      }
+
+      let style
+      this.state.modalType && (style = modalType[this.state.modalType])
       return (
         <div className='confirmModal-wrapped-component'>
           <WrappedComponent
@@ -56,7 +98,7 @@ const addConfirmModal = (WrappedComponent) => {
           />
           <Modal show={this.state.showModal} onHide={this.close}
             className='center-on-screen confirm-modal'>
-            <Modal.Header>
+            <Modal.Header style={style}>
               {this.state.header}
             </Modal.Header>
             <Modal.Body>
@@ -71,14 +113,7 @@ const addConfirmModal = (WrappedComponent) => {
               }}>
                 <FontAwesome className='fa-fw' name='check' />Okay
               </Button>
-              <Button onClick={() => {
-                if (this.state.onCancel instanceof Function) {
-                  this.state.onCancel()
-                }
-                this.closeConfirmModal()
-              }}>
-                <FontAwesome className='fa-fw' name='times' />Cancel
-              </Button>
+              {cancel}
             </Modal.Footer>
           </Modal>
         </div>

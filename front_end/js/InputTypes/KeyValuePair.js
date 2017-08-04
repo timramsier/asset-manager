@@ -41,11 +41,18 @@ const KeyValuePair = React.createClass({
     Object.assign(newState, { validationState })
     this.setState(newState)
   },
-  updateValidationError (value) {
+  updateValidationError () {
     const { structure } = this.props
+    let { key, value } = this.state
     let valid
-    let inputName = `input_${structure.type}_${structure.key}`
-    if (value.length < 2) {
+    let suffix = 'new'
+    if (!this.state.newEntry) {
+      key = this.props.data.key
+      value = this.props.data.value
+      suffix = this.props.data._shortId
+    }
+    let inputName = `input_${structure.type}_${structure.key}_${suffix}`
+    if (value.length < 2 || key.length < 2) {
       valid = 'error'
       this.props.addValidationError(inputName)
     } else {
@@ -56,8 +63,7 @@ const KeyValuePair = React.createClass({
   },
   componentDidMount () {
     if (!this.state.newEntry) {
-      this.updateValidationError(this.state.key)
-      this.updateValidationError(this.state.value)
+      this.updateValidationError()
     }
   },
   render () {
@@ -72,14 +78,25 @@ const KeyValuePair = React.createClass({
       }
     }
     let inputHandler
+    let blurHandler
     let key = ''
     let value = ''
     if (this.state.newEntry) {
       inputHandler = (event, keyName) => this.handleChange(event, keyName)
+      blurHandler = () => {
+        let valid = null
+        if (value.length < 2 || key.length < 2) {
+          valid = 'error'
+        }
+        this.setValidationState(valid)
+      }
       key = this.state.key
       value = this.state.value
     } else {
       inputHandler = (event, keyName) => this.props.handleKeyValueChange(event, this.props.structure.key, keyName, this.props.shortId)
+      blurHandler = () => {
+        this.setValidationState(this.updateValidationError())
+      }
       if (this.props.data) {
         this.props.data.key && (key = this.props.data.key)
         this.props.data.value && (value = this.props.data.value)
@@ -98,9 +115,6 @@ const KeyValuePair = React.createClass({
           }
         }
       }
-    }
-    const blurHandler = (value) => {
-      this.setValidationState(this.updateValidationError(value))
     }
     return (
       <div className={`keyvalue-group new-entry-${this.state.newEntry}`}>
