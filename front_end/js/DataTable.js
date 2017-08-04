@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import { Table, Column, Cell } from 'fixed-data-table'
-import { Alert } from 'react-bootstrap'
+import { Alert, Button } from 'react-bootstrap'
+import FontAwesome from 'react-fontawesome'
 import CustomCell from './CustomCell'
 import AdminModal from './AdminModal'
 import { findDOMNode } from 'react-dom'
@@ -210,6 +211,9 @@ const DataTable = React.createClass({
     return (
       <div className='data-table' key={this.state.key}>
         <div className='data-table-controls'>
+          <Button className='add-new-entry' title='Add New'>
+            <FontAwesome name='plus' />
+          </Button>
           <Search
             xs={12} sm={7} md={6} lg={4}
             setSearchTerm={this.setSearchTerm}
