@@ -70,7 +70,7 @@ const ShowModels = React.createClass({
     if (this._isMounted) {
       // disable updating if response array is smaller than limit
       let newState = this.state
-      data.length < this.state.limit ? newState.update = false : undefined
+      data.length < this.state.limit && (newState.update = false)
       newState.models.push.apply(newState.models, data)
       this.setState(newState)
     }
@@ -143,7 +143,7 @@ const ShowModels = React.createClass({
     window.addEventListener('scroll', (event) => {
       if (!this.state.loading && this.state.update) {
         let last = document.querySelectorAll('.asset').length - 1
-        last < 0 ? last = 0 : undefined
+        last < 0 && (last = 0)
         let elems = document.querySelectorAll('.asset-card')
         let lastElem = elems[last]
         var st = window.pageYOffset || document.documentElement.scrollTop

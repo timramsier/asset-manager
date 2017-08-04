@@ -14,7 +14,6 @@ const React = require('react')
 const ReactDOMServer = require('react-dom/server')
 const ReactRouter = require('react-router')
 const ServerRouter = ReactRouter.ServerRouter
-const apiSettings = require('./config/apiSettings')
 const _ = require('lodash')
 const fs = require('fs')
 

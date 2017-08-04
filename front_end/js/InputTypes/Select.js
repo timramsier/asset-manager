@@ -7,6 +7,8 @@ const InputSelect = React.createClass({
   propTypes: {
     handleChange: func,
     setValidationState: func,
+    addValidationError: func,
+    removeValidationError: func,
     structure: shape({
       label: string,
       key: string,
@@ -17,13 +19,27 @@ const InputSelect = React.createClass({
     }),
     value: oneOfType([string, bool])
   },
+  updateValidationError () {
+    const { structure, value } = this.props
+    let valid
+    let inputName = `input_${structure.type}_${structure.key}`
+    if (value === 'null' || value === '') {
+      valid = 'error'
+      this.props.addValidationError(inputName)
+    } else {
+      valid = null
+      this.props.removeValidationError(inputName)
+    }
+    return valid
+  },
+  componentDidMount () {
+    this.updateValidationError()
+  },
   render () {
     const inputBehavior = {
       onChange: (event) => this.props.handleChange(event, this.props.structure.key),
       onBlur: () => {
-        let valid
-        this.props.value === null ? valid = 'error' : valid = null
-        this.props.setValidationState(valid)
+        this.props.setValidationState(this.updateValidationError())
       }
     }
     return (
@@ -33,6 +49,9 @@ const InputSelect = React.createClass({
         defaultValue={this.props.value}
         {...inputBehavior}
       >
+        <option key={`key_null`} value='null'>
+          --- Select One ---
+        </option>
         {this.props.structure.options.map((option) => {
           return (
             <option key={`key_${option}`} value={option}>

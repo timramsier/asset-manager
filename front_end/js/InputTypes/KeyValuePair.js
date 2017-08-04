@@ -19,7 +19,9 @@ const KeyValuePair = React.createClass({
     }),
     handleKeyValueChange: func,
     buttonEffect: func,
-    setValidationState: func
+    setValidationState: func,
+    addValidationError: func,
+    removeValidationError: func
   },
   getInitialState () {
     return ({
@@ -39,15 +41,26 @@ const KeyValuePair = React.createClass({
     Object.assign(newState, { validationState })
     this.setState(newState)
   },
-  render () {
-    const buttonEffect = {
-      onClick: (event) => {
-        event.preventDefault()
-        if (this.props.buttonEffect) {
-          this.props.buttonEffect(this.props.structure.key, this)
-        }
-      }
+  updateValidationError (value) {
+    const { structure } = this.props
+    let valid
+    let inputName = `input_${structure.type}_${structure.key}`
+    if (value.length < 2) {
+      valid = 'error'
+      this.props.addValidationError(inputName)
+    } else {
+      valid = null
+      this.props.removeValidationError(inputName)
     }
+    return valid
+  },
+  componentDidMount () {
+    if (!this.state.newEntry) {
+      this.updateValidationError(this.state.key)
+      this.updateValidationError(this.state.value)
+    }
+  },
+  render () {
     let buttonStyle = {
       bsStyle: 'danger',
       faIcon: 'trash'
@@ -68,14 +81,26 @@ const KeyValuePair = React.createClass({
     } else {
       inputHandler = (event, keyName) => this.props.handleKeyValueChange(event, this.props.structure.key, keyName, this.props.shortId)
       if (this.props.data) {
-        this.props.data.key ? key = this.props.data.key : undefined
-        this.props.data.value ? value = this.props.data.value : undefined
+        this.props.data.key && (key = this.props.data.key)
+        this.props.data.value && (value = this.props.data.value)
+      }
+    }
+    const buttonEffect = {
+      onClick: (event) => {
+        event.preventDefault()
+        if ((this.state.newEntry &&
+          this.state.validationState !== 'error' &&
+          this.state.key.length >= 2 &&
+          this.state.value.length >= 2) ||
+          !this.state.newEntry) {
+          if (this.props.buttonEffect) {
+            this.props.buttonEffect(this.props.structure.key, this)
+          }
+        }
       }
     }
     const blurHandler = (value) => {
-      let valid
-      value.length < 2 ? valid = 'error' : valid = null
-      this.setValidationState(valid)
+      this.setValidationState(this.updateValidationError(value))
     }
     return (
       <div className={`keyvalue-group new-entry-${this.state.newEntry}`}>

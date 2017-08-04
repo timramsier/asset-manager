@@ -92,7 +92,7 @@ const UserMenu = React.createClass({
     const { columns } = config.user
     return (
       <div className='user-menu'>
-        <DataTable apiCall='users' columns={columns} showTotal />
+        <DataTable apiCall='users' columns={columns} />
       </div>
     )
   }
