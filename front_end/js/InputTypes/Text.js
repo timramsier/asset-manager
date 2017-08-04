@@ -18,21 +18,28 @@ const InputText = React.createClass({
     }),
     value: oneOfType([string, array])
   },
-  render () {
+  updateValidationError () {
     const { structure, value } = this.props
+    let valid
+    let inputName = `input_${structure.type}_${structure.key}`
+    if (value.length < 3) {
+      valid = 'error'
+      this.props.addValidationError(inputName)
+    } else {
+      valid = null
+      this.props.removeValidationError(inputName)
+    }
+    return valid
+  },
+  componentDidMount () {
+    this.updateValidationError()
+  },
+  render () {
+    const { structure } = this.props
     const inputBehavior = {
       onChange: (event) => this.props.handleChange(event, structure.key),
       onBlur: () => {
-        let valid
-        let inputName = `input_${structure.type}_${structure.key}`
-        if (value.length < 3) {
-          valid = 'error'
-          this.props.addValidationError(inputName)
-        } else {
-          valid = null
-          this.props.removeValidationError(inputName)
-        }
-        this.props.setValidationState(valid)
+        this.props.setValidationState(this.updateValidationError())
       }
     }
     return (

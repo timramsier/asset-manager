@@ -4,7 +4,7 @@ import addConfirmModal from './addConfirmModal'
 import { Col, Button } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 import shortid from 'shortid'
-import axios from 'axios'
+// import axios from 'axios'
 import apiSettings from '../config/apiSettings'
 
 const { shape, string, arrayOf, func, object } = React.PropTypes
@@ -27,6 +27,8 @@ const Edit = React.createClass({
   },
   getInitialState () {
     return ({
+      shortId: '',
+      method: 'put',
       form: {
         data: {},
         validationError: [],
@@ -54,7 +56,7 @@ const Edit = React.createClass({
     let index = newState.form.data[key].findIndex(i => i._shortId === component.props.shortId)
     if (index > -1) {
       newState.form.data[key].splice(index, 1)
-      index > -1 ? this.setState(newState) : undefined
+      index > -1 && (this.setState(newState))
     }
   },
   handleKeyValueChange (event, key, keyName, shortId) {
@@ -86,34 +88,52 @@ const Edit = React.createClass({
       }
     }
   },
-  putData () {
+  sendData () {
     return new Promise((resolve, reject) => {
-      let postObj = {}
+      let data = {}
       this.props.formStructure.map(entry => {
         if (entry.type === 'keyvalue') {
-          postObj[entry.key] = this.state.form.data[entry.key].map(keyvalue => {
+          data[entry.key] = this.state.form.data[entry.key].map(keyvalue => {
             let { key, value } = keyvalue
             return { key, value }
           })
         } else {
-          postObj[entry.key] = this.state.form.data[entry.key]
+          data[entry.key] = this.state.form.data[entry.key]
         }
       })
-      let url = `http://${apiSettings.uri}/models/all/${this.props.data._shortId}`
-      axios({
-        url,
-        method: 'put',
-        auth: apiSettings.auth,
-        data: postObj
-      }).then((response) => {
-        resolve(response)
-      }).catch((error) => {
-        reject(error)
-      })
+      let { method, shortId } = this.state
+      let url = `http://${apiSettings.uri}/models/all/${shortId}`
+      console.log({ method, shortId, url, data })
+      // axios({
+      //   url,
+      //   data,
+      //   this.state.method,
+      //   auth: apiSettings.auth,
+      // }).then((response) => {
+      //   resolve(response)
+      // }).catch((error) => {
+      //   reject(error)
+      // })
     })
   },
   componentWillMount () {
-    this.setState({form: { data: this.props.data }})
+    let { data } = this.props
+    let title = 'Edit'
+    let method = 'put'
+    let shortId = this.props.data._shortId
+    if (Object.keys(data).length === 0 && data.constructor === Object) {
+      title = 'New'
+      method = 'post'
+      shortId = ''
+      this.props.formStructure.map(entry => {
+        if (entry.type === 'keyvalue') {
+          data[entry.key] = []
+        } else {
+          data[entry.key] = ''
+        }
+      })
+    }
+    this.setState({ title, method, shortId, form: { data } })
   },
   render () {
     const formStructure = this.props.formStructure || []
@@ -135,7 +155,7 @@ const Edit = React.createClass({
             header: 'Save Changes',
             body: 'Are you sure you want to save your changes?',
             onConfirm: () => {
-              this.putData()
+              this.sendData()
               .then(this.props.resetTable)
               .then(() => {
                 this.props.flashMessage('success', <span>Successfully updated <strong>{this.state.form.data.name}</strong>.</span>)
@@ -150,7 +170,7 @@ const Edit = React.createClass({
     return (
       <div className='admin-edit-modal'>
         <Col md={8} className='col-md-offset-2'>
-          <h1>Edit <small title='shortId'>{this.props.data._shortId}</small></h1>
+          <h1>{this.state.title}<small title='shortId'>{this.props.data._shortId}</small></h1>
           <form>
             {formStructure.map((input) => {
               return (

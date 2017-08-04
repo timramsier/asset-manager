@@ -114,7 +114,7 @@ const DataTable = React.createClass({
   },
   pushData (data) {
     // disable updating if response array is smaller than limit
-    data.length < this.state.limit ? this.state.update = false : undefined
+    data.length < this.state.limit && (this.state.update = false)
     let newState = this.state
     newState.data.push.apply(newState.data, data)
     this.setState(newState)
@@ -135,7 +135,7 @@ const DataTable = React.createClass({
       searchString = `&search=${encodeURIComponent(this.state.searchTerm)}`
     }
     let targetCall = ''
-    this.props.targetCall ? targetCall = `/${this.props.targetCall}` : undefined
+    this.props.targetCall && (targetCall = `/${this.props.targetCall}`)
     let url = `http://${apiSettings.uri}/${this.props.apiCall}/all${targetCall}?limit=${this.state.limit}&skip=${this.state.skip}${searchString}`
     axios.get(url, {auth: apiSettings.auth})
       .then((response) => {

@@ -24,9 +24,10 @@ const InputKeyValueGroup = React.createClass({
   },
   render () {
     let { structure } = this.props
+    let value = this.props.value || []
     return (
       <div className='multi-keyvalue-box'>
-        {this.props.value.map((entry) => {
+        {value.map((entry) => {
           return (
             <KeyValuePair
               handleKeyValueChange={this.props.handleKeyValueChange}
@@ -36,6 +37,8 @@ const InputKeyValueGroup = React.createClass({
               data={entry}
               shortId={entry._shortId}
               setValidationState={this.props.setValidationState}
+              addValidationError={this.props.addValidationError}
+              removeValidationError={this.props.removeValidationError}
             />
           )
         })}
@@ -44,6 +47,8 @@ const InputKeyValueGroup = React.createClass({
           buttonEffect={this.props.pushNewKeyValueEntry}
           structure={structure}
           setValidationState={this.props.setValidationState}
+          addValidationError={this.props.addValidationError}
+          removeValidationError={this.props.removeValidationError}
         />
       </div>
     )

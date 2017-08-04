@@ -1,5 +1,4 @@
 import React from 'react'
-import FontAwesome from 'react-fontawesome'
 import { Grid, Row, Col } from 'react-bootstrap'
 import Edit from './Edit'
 
@@ -32,27 +31,19 @@ const AdminModal = React.createClass({
     this.setState(newState)
   },
   componentWillMount () {
-    const { data } = this.props
-    const _reset = JSON.parse(JSON.stringify(data))
-    this.setState({ data, _reset })
+    if (this.props.data) {
+      const { data } = this.props
+      const _reset = JSON.parse(JSON.stringify(data))
+      this.setState({ data, _reset })
+    }
   },
   componentWillUnmount () {
     this.resetData()
   },
   render () {
-    let buttonEffect = {
-      onClick: (event) => {
-        event.preventDefault()
-        this.props.setAdminModal(false)
-      }
-    }
     const { data } = this.state
     return (
       <div className='admin-modal'>
-        <div className='admin-modal-controls'>
-          <a className='admin-modal-close' {...buttonEffect}>
-            <FontAwesome className='fa-fw' name='times' />Close</a>
-        </div>
         <Grid>
           <Row>
             <Col md={12}>
