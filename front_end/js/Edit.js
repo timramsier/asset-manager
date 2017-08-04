@@ -22,7 +22,8 @@ const Edit = React.createClass({
     _reset: object,
     setAdminModal: func,
     openConfirmModal: func,
-    resetTable: func
+    resetTable: func,
+    flashMessage: func
   },
   getInitialState () {
     return ({
@@ -85,7 +86,7 @@ const Edit = React.createClass({
       }
     }
   },
-  postData () {
+  putData () {
     return new Promise((resolve, reject) => {
       let postObj = {}
       this.props.formStructure.map(entry => {
@@ -134,7 +135,12 @@ const Edit = React.createClass({
             header: 'Save Changes',
             body: 'Are you sure you want to save your changes?',
             onConfirm: () => {
-              this.postData().then(this.props.resetTable)
+              this.putData()
+              .then(this.props.resetTable)
+              .then(() => {
+                this.props.flashMessage('success', <span>Successfully updated <strong>{this.state.form.data.name}</strong>.</span>)
+              })
+
               this.props.setAdminModal(false)
             }
           })
