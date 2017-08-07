@@ -8,9 +8,9 @@ const getModelsByCategory = (req, res, next) => {
   _controller(Category, {}, {
     label: req.params.productType.toLowerCase()
   }).getOne(req, res, next, (err, category) => {
-    if (err) res.status(400).send(err)
+    if (err) return res.status(400).send(err)
     if (!category) {
-      res.status(400).send(`Category with name ${req.params.productType} not found.`)
+      return res.status(400).send(`Category with name ${req.params.productType} not found.`)
     } else {
       let query = req.query
       Object.assign(query, {_parent: category._id})

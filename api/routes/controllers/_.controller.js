@@ -12,7 +12,7 @@ const _controller = (
   return ({
 
     getAll: (req, res, next, callback = (err, result) => {
-      if (err) res.sendStatus(400)
+      if (err) return res.status(400).send(err)
       res.status(200).send(JSON.stringify(result))
     }) => {
       var score = {}
@@ -50,13 +50,13 @@ const _controller = (
       .limit(_options.limit)
       .populate(_options.populate, _options.popFields)
       .exec((err, result) => {
-        if (err) res.send(err)
+        if (err) return res.send(err)
         callback(err, result)
       })
     },
 
     getMeta: (req, res, next, callback = (err, result) => {
-      if (err) res.sendStatus(400)
+      if (err) return res.status(400).send(err)
       res.status(200).send(JSON.stringify(result))
     }) => {
       model.collection.stats((err, result) => {
@@ -69,7 +69,7 @@ const _controller = (
     },
 
     getOne: (req, res, next, callback = (err, result) => {
-      if (err) res.sendStatus(400)
+      if (err) return res.status(400).send(err)
       res.status(200).send(JSON.stringify(result))
     }) => {
       var score = {}
@@ -97,50 +97,49 @@ const _controller = (
       .sort(sort)
       .populate(_options.populate, _options.popFields)
       .exec((err, result) => {
-        if (err) res.send(err)
+        if (err) return res.send(err)
         callback(err, result)
       })
     },
 
     add: (req, res, next, callback = (err, result) => {
-      if (err) res.status(400).send(err)
+      if (err) return res.status(400).send(err)
       res.status(200).send(JSON.stringify(result))
     }) => {
-      if (!req.body) return res.sendStatus(400)
+      if (!req.body) return res.status(400).send('No request body found!')
       let data = req.body
       Object.assign(data, {lastModifiedBy: req.user._id, lastModified: new Date()})
       model.create(data, (err, result) => {
-        if (err) res.sendStatus(400)
         callback(err, result)
       })
     },
 
     remove: (req, res, next, callback = (err, result) => {
-      if (err) res.sendStatus(400)
+      if (err) return res.status(400).send(err)
       res.status(200).send(`Successfully Removed ${req.params.shortId}`)
     }) => {
       model.findOne({_shortId: req.params.shortId}).exec((err, result) => {
-        if (err) res.status(400).send(err)
+        if (err) return res.status(400).send(err)
         if (!result) res.status(200).send(`${req.params.shortId} not found.`)
         model.remove({_id: result._id}, (err) => {
-          if (err) res.sendStatus(400)
+          if (err) return res.status(400).send(err)
           callback(err, result)
         })
       })
     },
 
     update: (req, res, next, callback = (err, result) => {
-      if (err) res.sendStatus(400)
+      if (err) return res.status(400).send(err)
       res.status(200).send(`Successfully Updated ${req.params.shortId}`)
     }) => {
       if (!req.body) return res.sendStatus(400)
       let data = req.body
       Object.assign(data, {lastModifiedBy: req.user._id, lastModified: new Date()})
       model.findOne({_shortId: req.params.shortId}).exec((err, result) => {
-        if (err) res.status(400).send(err)
+        if (err) return res.status(400).send(err)
         if (!result) res.status(200).send(`${req.params.shortId} not found.`)
         model.findOneAndUpdate({_shortId: req.params.shortId}, data, (err, category) => {
-          if (err) res.sendStatus(400)
+          if (err) return res.status(400).send(err)
           callback(err, result)
         })
       })

@@ -7,9 +7,9 @@ let Po = poModel
 
 const addAsset = (req, res, next) => {
   _controller(Asset).add(req, res, next, (err, data) => {
-    if (err) res.sendStatus(400)
+    if (err) return res.status(400).send(err)
     Model.findOneAndUpdate({_id: data._parent}, { $push: { assets: data._id } }, (err, result) => {
-      if (err) res.status(400).send(err)
+      if (err) return res.status(400).send(err)
       res.status(200).send(result)
     })
   })
@@ -17,9 +17,9 @@ const addAsset = (req, res, next) => {
 
 const removeAsset = (req, res, next) => {
   _controller(Asset).remove(req, res, next, (err, data) => {
-    if (err) res.sendStatus(400)
+    if (err) return res.status(400).send(err)
     Model.findOneAndUpdate({_id: data._parent}, { $pull: { assets: data._id } }, (err, result) => {
-      if (err) res.status(400).send(err)
+      if (err) return res.status(400).send(err)
       res.status(200).send(`Successfully Removed ${data._shortId}`)
     })
   })
@@ -29,7 +29,7 @@ const getAssetsByModelId = (req, res, next) => {
   _controller(Model, {}, {
     _shortId: req.params.shortId
   }).getOne(req, res, next, (err, model) => {
-    if (err) res.status(400).send(err)
+    if (err) return res.status(400).send(err)
     if (!model) {
       res.status(400).send(`Model with _shortId ${req.params.shortId} not found.`)
     } else {
@@ -37,7 +37,7 @@ const getAssetsByModelId = (req, res, next) => {
       let poQuery = {null: true} // forces an empty set
       if (query.search) { poQuery = { $text: { $search: query.search } } }
       Po.find(poQuery).exec((err, results) => {
-        if (err) res.sendStatus(400)
+        if (err) return res.status(400).send(err)
         results.forEach((po) => {
           query.search += ` ${po._id}`
         })

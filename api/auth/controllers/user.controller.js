@@ -13,7 +13,7 @@ exports.postUsers = function (req, res) {
   })
 
   user.save(function (err) {
-    if (err) { res.send(err) }
+    if (err) return res.send(err)
 
     res.json({ message: 'New User Added' })
   })
@@ -22,7 +22,7 @@ exports.postUsers = function (req, res) {
 // Create endpoint /api/users for GET
 exports.getUsers = function (req, res) {
   User.find(function (err, users) {
-    if (err) { res.send(err) }
+    if (err) return res.send(err)
 
     res.json(users)
   })
