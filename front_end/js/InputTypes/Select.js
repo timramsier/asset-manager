@@ -15,9 +15,11 @@ const InputSelect = React.createClass({
       type: string,
       placeholder: string,
       description: string,
-      options: oneOfType([array, func])
+      options: oneOfType([array, func]),
+      onChange: func
     }),
-    value: oneOfType([string, bool])
+    value: oneOfType([string, bool]),
+    updateFormDate: func
   },
   getInitialState () {
     return ({
@@ -46,8 +48,13 @@ const InputSelect = React.createClass({
     this.updateValidationError()
   },
   render () {
+    let onChange = (event) => this.props.handleChange(event, this.props.structure.key)
+    if (this.props.structure.onChange &&
+      this.props.structure.onChange instanceof Function) {
+      onChange = (event) => this.props.structure.onChange(event, this)
+    }
     const inputBehavior = {
-      onChange: (event) => this.props.handleChange(event, this.props.structure.key),
+      onChange,
       onBlur: () => {
         this.props.setValidationState(this.updateValidationError())
       }

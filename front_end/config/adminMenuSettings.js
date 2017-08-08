@@ -72,6 +72,15 @@ export default {
             let options = categories.map(i => i.name)
             component.setState({ options })
           })
+        },
+        onChange: (event, component) => {
+          let value = event.target.value
+          api.getCategories({ name: value }).then((category) => {
+            component.props.updateFormData({
+              category: value,
+              _parent: category[0]._id
+            })
+          })
         }
       },
       {
