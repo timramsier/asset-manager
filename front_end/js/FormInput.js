@@ -20,10 +20,12 @@ const FormInput = React.createClass({
       type: string,
       placeholder: string,
       description: string,
-      options: array
+      options: oneOfType([array, func]),
+      onChange: func
     }),
     value: oneOfType([string, array, bool]),
-    handleKeyValueChange: func
+    handleKeyValueChange: func,
+    updateFormData: func
   },
   getInitialState () {
     return ({

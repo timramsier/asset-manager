@@ -1,3 +1,5 @@
+import api from '../js/api'
+
 export default {
   model: {
     columns: [
@@ -60,6 +62,27 @@ export default {
       }
     ],
     formStructure: [
+      {
+        label: 'Category',
+        key: 'category',
+        type: 'select',
+        description: 'Select the model category',
+        options: (component) => {
+          api.getCategories().then((categories) => {
+            let options = categories.map(i => i.name)
+            component.setState({ options })
+          })
+        },
+        onChange: (event, component) => {
+          let value = event.target.value
+          api.getCategories({ name: value }).then((category) => {
+            component.props.updateFormData({
+              category: value,
+              _parent: category[0]._id
+            })
+          })
+        }
+      },
       {
         label: 'Active',
         key: 'active',

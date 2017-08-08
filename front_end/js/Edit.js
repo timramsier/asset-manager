@@ -40,6 +40,11 @@ const Edit = React.createClass({
     Object.assign(newState.form.data, {[key]: event.target.value})
     this.setState(newState)
   },
+  updateFormData (state) {
+    let newState = this.state
+    Object.assign(newState.form.data, state)
+    this.setState(newState)
+  },
   pushNewKeyValueEntry (key, component) {
     const data = component.state
     let newState = this.state
@@ -192,6 +197,7 @@ const Edit = React.createClass({
                   key={`input_${input.key}`}
                   value={this.state.form.data[input.key]}
                   structure={input}
+                  updateFormData={this.updateFormData}
                   removeKeyValueEntry={this.removeKeyValueEntry}
                   pushNewKeyValueEntry={this.pushNewKeyValueEntry}
                   handleChange={this.handleChange}

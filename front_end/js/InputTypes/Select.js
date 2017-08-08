@@ -15,9 +15,16 @@ const InputSelect = React.createClass({
       type: string,
       placeholder: string,
       description: string,
-      options: array
+      options: oneOfType([array, func]),
+      onChange: func
     }),
-    value: oneOfType([string, bool])
+    value: oneOfType([string, bool]),
+    updateFormDate: func
+  },
+  getInitialState () {
+    return ({
+      options: []
+    })
   },
   updateValidationError () {
     const { structure, value } = this.props
@@ -33,11 +40,21 @@ const InputSelect = React.createClass({
     return valid
   },
   componentDidMount () {
+    if (this.props.structure.options instanceof Function) {
+      this.props.structure.options(this)
+    } else {
+      this.setState({options: this.props.structure.options})
+    }
     this.updateValidationError()
   },
   render () {
+    let onChange = (event) => this.props.handleChange(event, this.props.structure.key)
+    if (this.props.structure.onChange &&
+      this.props.structure.onChange instanceof Function) {
+      onChange = (event) => this.props.structure.onChange(event, this)
+    }
     const inputBehavior = {
-      onChange: (event) => this.props.handleChange(event, this.props.structure.key),
+      onChange,
       onBlur: () => {
         this.props.setValidationState(this.updateValidationError())
       }
@@ -46,13 +63,13 @@ const InputSelect = React.createClass({
       <FormControl
         componentClass='select'
         placeholder='select'
-        defaultValue={this.props.value}
+        value={this.props.value}
         {...inputBehavior}
       >
         <option key={`key_null`} value='null'>
           --- Select One ---
         </option>
-        {this.props.structure.options.map((option) => {
+        {this.state.options.map((option) => {
           return (
             <option key={`key_${option}`} value={option}>
               {`${option}`.charAt(0).toUpperCase() + `${option}`.slice(1)}
