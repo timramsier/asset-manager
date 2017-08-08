@@ -1,15 +1,17 @@
 import React from 'react'
 import { Match } from 'react-router'
-import axios from 'axios'
 import AsyncLoad from './AsyncLoad'
 import defaultLeftNavButtons from '../config/defaultLeftNavButtons'
 import TopNavigation from './TopNavigation'
 import UnderDevelopment from './UnderDevelopment'
 import apiSettings from '../config/apiSettings'
+import api from './api'
 import '../public/less/main.less'
+
 if (global) {
   global.System = { import () {} }
 }
+
 const App = React.createClass({
   getInitialState () {
     return ({
@@ -42,19 +44,7 @@ const App = React.createClass({
     if (!(apiSettings.auth && apiSettings.auth.username)) {
       console.warn('Supply an API key to APP_DATABASE_API_KEY to connect to api')
     }
-
-    let componentConfig = new Promise((resolve, reject) => {
-      let url = `http://${apiSettings.uri}/categories`
-      axios.get(url, {auth: apiSettings.auth})
-        .then((response) => {
-          resolve(response)
-        }).catch((error) => {
-          console.error(error)
-          reject(error)
-        })
-    })
-    componentConfig.then((result) => {
-      const categories = result.data
+    api.getCategories().then((categories) => {
       const newState = this.state
       Object.assign(newState.categories, categories)
       this.setState(newState)
@@ -133,6 +123,7 @@ const App = React.createClass({
             component={(props) => <AsyncLoad
               props={Object.assign({
                 categories,
+                api,
                 assetModal: this.state.assetModal,
                 checkVisible: this.checkVisible
               }, props)}

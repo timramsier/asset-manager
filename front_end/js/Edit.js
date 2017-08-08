@@ -4,8 +4,7 @@ import addConfirmModal from './addConfirmModal'
 import { Col, Button } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 import shortid from 'shortid'
-// import axios from 'axios'
-import apiSettings from '../config/apiSettings'
+import api from './api'
 
 const { shape, string, arrayOf, func, object } = React.PropTypes
 
@@ -105,18 +104,17 @@ const Edit = React.createClass({
         }
       })
       let { method, shortId } = this.state
-      let url = `http://${apiSettings.uri}/models/all/${shortId}`
+      let url = `/models/all/${shortId}`
       console.log({ method, shortId, url, data })
-      // axios({
-      //   url,
-      //   data,
-      //   this.state.method,
-      //   auth: apiSettings.auth,
-      // }).then((response) => {
-      //   resolve(response)
-      // }).catch((error) => {
-      //   reject(error)
-      // })
+      api._send(
+        this.state.method,
+        url,
+        data
+      ).then((response) => {
+        resolve(response)
+      }).catch((error) => {
+        reject(error)
+      })
     })
   },
   componentWillMount () {

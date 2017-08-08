@@ -4,7 +4,7 @@ import ModelCard from './ModelCard'
 import ModelModal from './ModelModal'
 import { VelocityTransitionGroup } from 'velocity-react'
 
-const { string, shape, array, bool, func, arrayOf } = React.PropTypes
+const { string, shape, array, bool, func, arrayOf, object } = React.PropTypes
 
 const ModelGrid = React.createClass({
   propTypes: {
@@ -57,7 +57,8 @@ const ModelGrid = React.createClass({
         })
       })
     }),
-    checkVisible: func
+    checkVisible: func,
+    apiHandler: object
   },
   getInitialState () {
     return ({
@@ -106,7 +107,10 @@ const ModelGrid = React.createClass({
     return (
       <Row className='row asset-grid'>
         <VelocityTransitionGroup {...modelModalAnimationProps}>
-          {this.state.modelModal.open ? <ModelModal setModelModal={this.setModelModal} model={this.state.modelModal.data} /> : undefined}
+          {this.state.modelModal.open && <ModelModal
+            setModelModal={this.setModelModal}
+            apiHandler={this.props.apiHandler}
+            model={this.state.modelModal.data} /> }
         </VelocityTransitionGroup>
         {this.props.models.map((model) => {
           return (
