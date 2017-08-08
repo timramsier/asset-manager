@@ -3,7 +3,7 @@ import DataTable from './DataTable'
 import { Grid, Row, Col } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 
-const { func, shape, string, array, bool } = React.PropTypes
+const { func, shape, string, array, bool, object } = React.PropTypes
 
 const ModelModal = React.createClass({
   propTypes: {
@@ -30,7 +30,8 @@ const ModelModal = React.createClass({
         }),
         _shortId: string
       })
-    })
+    }),
+    apiHandler: object
   },
   render () {
     let buttonEffect = {
@@ -155,7 +156,11 @@ const ModelModal = React.createClass({
                 <Col xs={12} sm={8} smPull={4}>
                   <div className='assets'>
                     <h3>Assets</h3>
-                    <DataTable apiCall='assets' targetCall={model._shortId} columns={columns} />
+                    <DataTable
+                      apiHandler={this.props.apiHandler}
+                      apiCall='assets'
+                      targetCall={model._shortId}
+                      columns={columns} />
                   </div>
                 </Col>
               </Row>

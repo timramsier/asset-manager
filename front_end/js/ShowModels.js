@@ -1,11 +1,10 @@
 import React from 'react'
 import FontAwesome from 'react-fontawesome'
 import NavItem from './NavItem'
-import axios from 'axios'
 import ModelGrid from './ModelGrid'
 import Search from './Search'
-import apiSettings from '../config/apiSettings'
 import { Row } from 'react-bootstrap'
+import api from './api'
 
 const { string, shape, array, bool, func } = React.PropTypes
 
@@ -33,7 +32,6 @@ const ShowModels = React.createClass({
         search: string
       })
     })
-    // closeMenu: func
   },
   getInitialState () {
     return ({
@@ -76,34 +74,36 @@ const ShowModels = React.createClass({
     }
   },
   updateModelData (updateType = 'refresh') {
-    let queryString
+    let active
     let category = this.props.params.productType.toLowerCase()
     switch (this.state.view) {
       case 'active':
-        queryString = `&active=true`
+        active = true
         break
       case 'inactive':
-        queryString = `&active=false`
+        active = false
         break
       default:
-        queryString = ''
+        active = true
         break
     }
-    let searchString = ''
-    let pre = `?limit=${this.state.limit}&skip=${this.state.skip}`
+    let search
     if (this.state.searchTerm.length > 0) {
-      searchString = `&search=${encodeURIComponent(this.state.searchTerm)}`
+      search = encodeURIComponent(this.state.searchTerm)
     }
-    let url = `http://${apiSettings.uri}/models/${category}${pre}${queryString}${searchString}`
-    axios.get(url, {auth: apiSettings.auth})
+    api.getModels(category, {
+      active,
+      search,
+      limit: this.state.limit,
+      skip: this.state.skip
+    })
       .then((response) => {
         if (updateType === 'refresh') {
-          this.refreshData(response.data)
+          this.refreshData(response)
           this.updateHeaderAccentColor()
         } else if (updateType === 'push') {
-          this.pushData(response.data)
+          this.pushData(response)
         }
-        // this.updateModels(response.data)
         this.state.loading = false
       })
   },

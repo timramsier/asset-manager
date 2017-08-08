@@ -1,8 +1,7 @@
 import React from 'react'
 import { Cell } from 'fixed-data-table'
 import FontAwesome from 'react-fontawesome'
-import axios from 'axios'
-import apiSettings from '../config/apiSettings'
+import api from './api'
 import addConfirmModal from './addConfirmModal'
 
 const { string, number, array, func, object } = React.PropTypes
@@ -93,8 +92,8 @@ const RemoveCell = React.createClass({
     })
   },
   removeData (cellData) {
-    let url = `http://${apiSettings.uri}/${this.props.apiCall}/all/${cellData._shortId}`
-    axios.delete(url, {auth: apiSettings.auth}).then((response) => {
+    let url = `${this.props.apiCall}/all/${cellData._shortId}`
+    api._delete(url).then((response) => {
       if (response.status === 200) {
         this.props.flashMessage('success',
           <span><strong>Success!</strong> <em>{cellData.name}</em> successfully removed.</span>)

@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 import { Table, Column, Cell } from 'fixed-data-table'
 import { Alert, Button } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
@@ -7,10 +6,10 @@ import CustomCell from './CustomCell'
 import AdminModal from './AdminModal'
 import { findDOMNode } from 'react-dom'
 import Search from './Search'
-import apiSettings from '../config/apiSettings'
 import { VelocityTransitionGroup } from 'velocity-react'
 import ReactResizeDetector from 'react-resize-detector'
 import shortid from 'shortid'
+import api from './api'
 
 const { string, arrayOf, shape, number, bool } = React.PropTypes
 
@@ -121,46 +120,47 @@ const DataTable = React.createClass({
     this.setState(newState)
   },
   getMetaData () {
-    let url = `http://${apiSettings.uri}/${this.props.apiCall}/all/meta`
-    axios.get(url, {auth: apiSettings.auth})
+    api.getMetaData(this.props.apiCall)
       .then((response) => {
-        const { count } = response.data
+        const { count } = response
         let newState = this.state
         Object.assign(newState, {metaData: { count }})
         this.setState(newState)
       })
   },
   getData (updateType = 'refresh') {
-    let searchString = ''
+    let search
     if (this.state.searchTerm.length > 0) {
-      searchString = `&search=${encodeURIComponent(this.state.searchTerm)}`
+      search = encodeURIComponent(this.state.searchTerm)
     }
     let targetCall = ''
     this.props.targetCall && (targetCall = `/${this.props.targetCall}`)
-    let url = `http://${apiSettings.uri}/${this.props.apiCall}/all${targetCall}?limit=${this.state.limit}&skip=${this.state.skip}${searchString}`
-    axios.get(url, {auth: apiSettings.auth})
-      .then((response) => {
+    api._get(`${this.props.apiCall}/all${targetCall}`, {
+      limit: this.state.limit,
+      skip: this.state.skip,
+      search
+    }).then((response) => {
         // add DisplayName if possible
-        const _addDisplayName = (data, key, emptyValue = 'null') => {
-          data.map((entry) => {
-            if (entry[key] && entry[key].firstName && entry[key].lastName) {
-              entry[key].displayName = `${entry[key].firstName} ${entry[key].lastName}`
-            } else {
-              Object.assign(entry, {[key]: {displayName: emptyValue}})
-            }
-          })
-          return data
-        }
-        let responseData = response.data
-        responseData = _addDisplayName(responseData, 'assignedTo', 'Unassigned')
-        responseData = _addDisplayName(responseData, 'lastModifiedBy')
-        responseData = _addDisplayName(responseData, 'createdBy')
-        if (updateType === 'refresh') {
-          this.refreshData(responseData)
-        } else if (updateType === 'push') {
-          this.pushData(responseData)
-        }
-      })
+      const _addDisplayName = (data, key, emptyValue = 'null') => {
+        data.map((entry) => {
+          if (entry[key] && entry[key].firstName && entry[key].lastName) {
+            entry[key].displayName = `${entry[key].firstName} ${entry[key].lastName}`
+          } else {
+            Object.assign(entry, {[key]: {displayName: emptyValue}})
+          }
+        })
+        return data
+      }
+      let responseData = response
+      responseData = _addDisplayName(responseData, 'assignedTo', 'Unassigned')
+      responseData = _addDisplayName(responseData, 'lastModifiedBy')
+      responseData = _addDisplayName(responseData, 'createdBy')
+      if (updateType === 'refresh') {
+        this.refreshData(responseData)
+      } else if (updateType === 'push') {
+        this.pushData(responseData)
+      }
+    })
   },
   flashMessage (type, message) {
     let newState = this.state
