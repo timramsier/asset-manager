@@ -244,7 +244,7 @@ const seedData = (apiKey = false) => {
   if (!apiKey) {
     console.log('\x1b[31mMust provide API Key', '\x1b[0m')
   } else {
-    getModifier(apiKey)
+    return getModifier(apiKey)
     .then(clearData)
     .then(addCategories)
     .then(addModels)
