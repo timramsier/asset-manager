@@ -32,7 +32,8 @@ const Edit = React.createClass({
       form: {
         data: {},
         validationError: [],
-        canSave: true
+        canSave: false,
+        changeArray: []
       }
     })
   },
@@ -40,6 +41,7 @@ const Edit = React.createClass({
     let newState = this.state
     Object.assign(newState.form.data, {[key]: event.target.value})
     this.setState(newState)
+    this.checkForDiff(key)
   },
   updateFormData (state) {
     let newState = this.state
@@ -70,6 +72,7 @@ const Edit = React.createClass({
     if (index > -1) {
       Object.assign(newState.form.data[key][index], {[keyName]: event.target.value})
       this.setState(newState)
+      this.checkForDiff({ key, index }, shortId)
     }
   },
   addValidationError (inputName) {
@@ -96,6 +99,82 @@ const Edit = React.createClass({
   checkValidation () {
     return !this.state.form.validationError || this.state.form.validationError.length === 0
   },
+  checkIfDiff () {
+    console.log(this.state.form.changeArray)
+    return !(!this.state.form.changeArray || this.state.form.changeArray.length === 0)
+  },
+  updateSaveState () {
+    let newState = this.state
+    if (this.checkIfDiff() && this.checkValidation()) {
+      Object.assign(newState.form, {canSave: true})
+    } else {
+      Object.assign(newState.form, {canSave: true})
+    }
+    this.setState(newState)
+  },
+  checkForDiff (target, hash = '0') {
+    let ref
+    let diff
+    let inputName
+    if (target instanceof Object) {
+      let { key, index } = target
+      inputName = `input_${key}_${hash}`
+      if (typeof this.state.form.data[key][index] === 'boolean') {
+        ref = `${this.state.form.data[key][index]}`
+      } else {
+        ref = this.state.form.data[key][index]
+      }
+      if (typeof this.props._reset[key][index] === 'boolean') {
+        diff = `${this.props._reset[key][index]}`
+      } else {
+        diff = this.props._reset[key][index]
+      }
+      if (ref.key !== diff.key || ref.value !== diff.value) {
+        this.addFormArray(inputName, 'changeArray')
+      } else {
+        this.removeFormArray(inputName, 'changeArray')
+      }
+    } else {
+      inputName = `input_${target}_${hash}`
+      if (typeof this.state.form.data[target] === 'boolean') {
+        ref = `${this.state.form.data[target]}`
+      } else {
+        ref = this.state.form.data[target]
+      }
+      if (typeof this.props._reset[target] === 'boolean') {
+        diff = `${this.props._reset[target]}`
+      } else {
+        diff = this.props._reset[target]
+      }
+      if (ref !== diff) {
+        this.addFormArray(inputName, 'changeArray')
+      } else {
+        this.removeFormArray(inputName, 'changeArray')
+      }
+    }
+    this.updateSaveState()
+  },
+  addFormArray (inputName, arrayName) {
+    let newState = this.state
+    if (!this.state.form[arrayName] || this.state.form[arrayName].indexOf(inputName) < 0) {
+      let array = newState.form[arrayName] || []
+      array.push(inputName)
+      Object.assign(newState.form, { [arrayName]: array })
+      this.setState(newState)
+    }
+  },
+  removeFormArray (inputName, arrayName) {
+    let newState = this.state
+    if (this.state.form[arrayName]) {
+      let array = newState.form[arrayName] || []
+      let index = array.indexOf(inputName)
+      if (index >= 0) {
+        array.splice(index, 1)
+        Object.assign(newState.form, { [arrayName]: array })
+        this.setState(newState)
+      }
+    }
+  },
   sendData () {
     return new Promise((resolve, reject) => {
       let data = {}
@@ -113,9 +192,8 @@ const Edit = React.createClass({
           }
         }
       })
-      let { method, shortId } = this.state
+      let { shortId } = this.state
       let url = `/models/all/${shortId}`
-      console.log({ method, shortId, url, data })
       api._send(
         this.state.method,
         url,
@@ -152,12 +230,16 @@ const Edit = React.createClass({
       cancel: {
         onClick: (event) => {
           event.preventDefault()
-          this.props.openConfirmModal({
-            modalType: 'warning',
-            header: 'Cancel',
-            body: 'If you leave this page, you will lose any unsaved changes',
-            onConfirm: () => this.props.setAdminModal(false)
-          })
+          if (this.checkIfDiff()) {
+            this.props.openConfirmModal({
+              modalType: 'warning',
+              header: 'Cancel',
+              body: 'If you leave this page, you will lose any unsaved changes',
+              onConfirm: () => this.props.setAdminModal(false)
+            })
+          } else {
+            this.props.setAdminModal(false)
+          }
         }
       },
       save: {
@@ -210,6 +292,7 @@ const Edit = React.createClass({
                     handleKeyValueChange={this.handleKeyValueChange}
                     addValidationError={this.addValidationError}
                     removeValidationError={this.removeValidationError}
+                    checkForDiff={this.checkForDiff}
                   />
                 )
               }
@@ -219,7 +302,7 @@ const Edit = React.createClass({
                 <FontAwesome className='fa-fw' name='times' />Cancel
               </Button>
               <Button bsStyle='success'
-                disabled={this.state.form.canSave}
+                disabled={!this.state.form.canSave}
                 {...buttonEffects.save}
               >
                 <FontAwesome className='fa-fw' name='check' />Save

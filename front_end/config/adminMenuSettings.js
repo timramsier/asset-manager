@@ -80,6 +80,7 @@ export default {
               category: value,
               _parent: category[0]._id
             })
+            component.props.checkForDiff('category')
           })
         }
       },
