@@ -10,7 +10,8 @@ const getModelsByCategory = (req, res, next) => {
   }).getOne(req, res, next, (err, category) => {
     if (err) return res.status(400).send(err)
     if (!category) {
-      return res.status(400).send(`Category with name ${req.params.productType} not found.`)
+      return res.status(400)
+        .send(`Category with name ${req.params.productType} not found.`)
     } else {
       let query = req.query
       Object.assign(query, {_parent: category._id})

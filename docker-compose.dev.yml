@@ -12,7 +12,7 @@ services:
       - APP_CUSTOM_API_KEY=not-secure-api-key
       - APP_DATABASE_NAME=app_default_database
       - APP_CREATE_API_KEY=true
-      - APP_DATABASE_SEED=true
+      - APP_DATABASE_SEED=true 
       - APP_CREATE_ADMIN_USER=true
       - APP_DATABASE_HOST=database
     depends_on:
