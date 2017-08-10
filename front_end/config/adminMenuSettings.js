@@ -128,6 +128,16 @@ export default {
         key: 'specs',
         type: 'keyvalue',
         description: 'Add specs for the model here'
+      },
+      {
+        key: '_parent',
+        transformValue: (value) => {
+          if (value instanceof Object) {
+            return value._id
+          } else {
+            return value
+          }
+        }
       }
     ]
   },

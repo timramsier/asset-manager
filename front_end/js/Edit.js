@@ -15,7 +15,8 @@ const Edit = React.createClass({
       key: string,
       type: string,
       placeholder: string,
-      description: string
+      description: string,
+      transformValue: func
     })),
     data: object,
     _reset: object,
@@ -105,7 +106,11 @@ const Edit = React.createClass({
             return { key, value }
           })
         } else {
-          data[entry.key] = this.state.form.data[entry.key]
+          if (entry.transformValue && entry.transformValue instanceof Function) {
+            data[entry.key] = entry.transformValue(this.state.form.data[entry.key])
+          } else {
+            data[entry.key] = this.state.form.data[entry.key]
+          }
         }
       })
       let { method, shortId } = this.state
@@ -192,20 +197,22 @@ const Edit = React.createClass({
           <h1>{this.state.title}<small title='shortId'>{this.props.data._shortId}</small></h1>
           <form>
             {formStructure.map((input) => {
-              return (
-                <FormInput
-                  key={`input_${input.key}`}
-                  value={this.state.form.data[input.key]}
-                  structure={input}
-                  updateFormData={this.updateFormData}
-                  removeKeyValueEntry={this.removeKeyValueEntry}
-                  pushNewKeyValueEntry={this.pushNewKeyValueEntry}
-                  handleChange={this.handleChange}
-                  handleKeyValueChange={this.handleKeyValueChange}
-                  addValidationError={this.addValidationError}
-                  removeValidationError={this.removeValidationError}
-                />
-              )
+              if (input.type) {
+                return (
+                  <FormInput
+                    key={`input_${input.key}`}
+                    value={this.state.form.data[input.key]}
+                    structure={input}
+                    updateFormData={this.updateFormData}
+                    removeKeyValueEntry={this.removeKeyValueEntry}
+                    pushNewKeyValueEntry={this.pushNewKeyValueEntry}
+                    handleChange={this.handleChange}
+                    handleKeyValueChange={this.handleKeyValueChange}
+                    addValidationError={this.addValidationError}
+                    removeValidationError={this.removeValidationError}
+                  />
+                )
+              }
             })}
             <div className='form-buttons'>
               <Button bsStyle='danger' {...buttonEffects.cancel}>

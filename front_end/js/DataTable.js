@@ -211,9 +211,13 @@ const DataTable = React.createClass({
     return (
       <div className='data-table' key={this.state.key}>
         <div className='data-table-controls'>
-          <Button className='add-new-entry' title='Add New'>
-            <FontAwesome name='plus' />
-          </Button>
+          {this.props.formStructure &&
+            <Button className='add-new-entry'
+              title='Add New'
+              onClick={() => this.setAdminModal(true)}
+              >
+              <FontAwesome name='plus' />
+            </Button>}
           <Search
             xs={12} sm={7} md={6} lg={4}
             setSearchTerm={this.setSearchTerm}
