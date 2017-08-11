@@ -5,6 +5,7 @@ import defaultLeftNavButtons from '../config/defaultLeftNavButtons'
 import TopNavigation from './TopNavigation'
 import UnderDevelopment from './UnderDevelopment'
 import apiSettings from '../config/apiSettings'
+import AdminOptions from './AdminOptions'
 import api from './api'
 import '../public/less/main.less'
 
@@ -137,6 +138,11 @@ const App = React.createClass({
             />
           </Switch>
         </div>
+        <AdminOptions
+          toggleMenuOpen={this.toggleMenuOpen}
+          closeMenu={this.closeMenu}
+          openMenu={this.openMenu}
+        />
       </div>
     )
   }
