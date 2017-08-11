@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import FontAwesome from 'react-fontawesome'
 import AdminOptions from './AdminOptions'
 import { Navbar, Nav, NavItem, FormControl, FormGroup } from 'react-bootstrap'

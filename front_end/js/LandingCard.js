@@ -1,6 +1,6 @@
 import React from 'react'
 import FontAwesome from 'react-fontawesome'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import ReactResizeDetector from 'react-resize-detector'
 import { setGridProps } from './common'
 

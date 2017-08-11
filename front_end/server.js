@@ -12,8 +12,8 @@ require('babel-register')({
 const express = require('express')
 const React = require('react')
 const ReactDOMServer = require('react-dom/server')
-const ReactRouter = require('react-router')
-const ServerRouter = ReactRouter.ServerRouter
+const ReactRouter = require('react-router-dom')
+const StaticRouter = ReactRouter.StaticRouter
 const _ = require('lodash')
 const fs = require('fs')
 
@@ -27,13 +27,17 @@ const server = express()
 server.use('/public', express.static('./public'))
 
 server.use((req, res) => {
-  const context = ReactRouter.createServerRenderContext()
+  const context = {}
   const body = ReactDOMServer.renderToString(
-    React.createElement(ServerRouter, {location: req.url, context: context},
+    React.createElement(StaticRouter, {location: req.url, context},
       React.createElement(App)
     )
   )
-  res.write(template({body: body}))
+  if (context.url) {
+    res.redirect(context.url)
+  }
+
+  res.write(template({body}))
   res.end()
 })
 
