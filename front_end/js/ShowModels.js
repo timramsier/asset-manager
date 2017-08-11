@@ -10,8 +10,10 @@ const { string, shape, array, bool, func } = React.PropTypes
 
 const ShowModels = React.createClass({
   propTypes: {
-    params: shape({
-      productType: string
+    match: shape({
+      params: shape({
+        productType: string
+      })
     }),
     checkVisible: func,
     categories: array,
@@ -75,7 +77,7 @@ const ShowModels = React.createClass({
   },
   updateModelData (updateType = 'refresh') {
     let active
-    let category = this.props.params.productType.toLowerCase()
+    let category = this.props.match.params.productType.toLowerCase()
     switch (this.state.view) {
       case 'active':
         active = true
@@ -109,9 +111,9 @@ const ShowModels = React.createClass({
   },
   updateHeaderAccentColor () {
     let color
-    if (this.props.params.productType !== 'all') {
+    if (this.props.match.params.productType !== 'all') {
       color = this.props.categories.filter((category) => {
-        return category.label === this.props.params.productType.toLowerCase()
+        return category.label === this.props.match.params.productType.toLowerCase()
       })[0].config.color
     } else {
       color = 'rgb(102, 102, 102)'
@@ -123,7 +125,7 @@ const ShowModels = React.createClass({
     }
   },
   componentDidUpdate (prevProps) {
-    if (this.props.params.productType !== prevProps.params.productType) {
+    if (this.props.match.params.productType !== prevProps.match.params.productType) {
       window.scrollTo(0, 0)
       this.state.limit = 12
       this.updateModelData('refresh')
@@ -162,7 +164,7 @@ const ShowModels = React.createClass({
     this._isMounted = false
   },
   render () {
-    const { productType } = this.props.params
+    const { productType } = this.props.match.params
     const categoryName = productType[0].toUpperCase() + productType.slice(1)
     const locationPath = (
       <span className='location-path'>

@@ -1,6 +1,6 @@
 import React from 'react'
 import FontAwesome from 'react-fontawesome'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import { VelocityComponent } from 'velocity-react'
 
 const { string, bool } = React.PropTypes

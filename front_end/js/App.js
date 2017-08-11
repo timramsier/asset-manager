@@ -1,5 +1,5 @@
 import React from 'react'
-import { Match } from 'react-router'
+import { Route, Switch } from 'react-router-dom'
 import AsyncLoad from './AsyncLoad'
 import defaultLeftNavButtons from '../config/defaultLeftNavButtons'
 import TopNavigation from './TopNavigation'
@@ -108,32 +108,34 @@ const App = React.createClass({
           loadingPromise={System.import('./LeftNavigation')}
         />
         <div className='main-content'>
-          <Match
-            exactly pattern='/'
-            component={(props) => <AsyncLoad
-              props={Object.assign({
-                categories,
-                alertMessage
-              }, props)}
-              loadingPromise={System.import('./Landing')}
-            />}
-          />
-          <Match
-            exactly pattern='/show/:productType'
-            component={(props) => <AsyncLoad
-              props={Object.assign({
-                categories,
-                api,
-                assetModal: this.state.assetModal,
-                checkVisible: this.checkVisible
-              }, props)}
-              loadingPromise={System.import('./ShowModels')}
-            />}
-          />
-          {/* Temporary Route */}
-          <Match pattern='/admin/:page'
-            component={() => <UnderDevelopment />}
-          />
+          <Switch>
+            <Route
+              exact path='/'
+              component={(props) => <AsyncLoad
+                props={Object.assign({
+                  categories,
+                  alertMessage
+                }, props)}
+                loadingPromise={System.import('./Landing')}
+              />}
+            />
+            <Route
+              path='/show/:productType'
+              component={(props) => <AsyncLoad
+                props={Object.assign({
+                  categories,
+                  api,
+                  assetModal: this.state.assetModal,
+                  checkVisible: this.checkVisible
+                }, props)}
+                loadingPromise={System.import('./ShowModels')}
+              />}
+            />
+            {/* Temporary Route */}
+            <Route path='/admin/:page'
+              component={() => <UnderDevelopment />}
+            />
+          </Switch>
         </div>
       </div>
     )
