@@ -21,7 +21,10 @@ const KeyValuePair = React.createClass({
     buttonEffect: func,
     setValidationState: func,
     addValidationError: func,
-    removeValidationError: func
+    removeValidationError: func,
+    addFormArray: func,
+    removeFormArray: func,
+    setSaveState: func
   },
   getInitialState () {
     return ({
@@ -42,22 +45,18 @@ const KeyValuePair = React.createClass({
     this.setState(newState)
   },
   updateValidationError () {
-    const { structure } = this.props
     let { key, value } = this.state
     let valid
-    let suffix = 'new'
     if (!this.state.newEntry) {
       key = this.props.data.key
       value = this.props.data.value
-      suffix = this.props.data._shortId
     }
-    let inputName = `input_${structure.type}_${structure.key}_${suffix}`
     if (value.length < 2 || key.length < 2) {
       valid = 'error'
-      this.props.addValidationError(inputName)
+      this.props.addValidationError(this._inputName)
     } else {
       valid = null
-      this.props.removeValidationError(inputName)
+      this.props.removeValidationError(this._inputName)
     }
     return valid
   },
@@ -65,6 +64,12 @@ const KeyValuePair = React.createClass({
     if (!this.state.newEntry) {
       this.updateValidationError()
     }
+    const { structure } = this.props
+    let suffix = 'new'
+    if (!this.state.newEntry) {
+      suffix = this.props.data._shortId
+    }
+    this._inputName = `input_${structure.type}_${structure.key}_${suffix}`
   },
   render () {
     let buttonStyle = {
@@ -105,6 +110,8 @@ const KeyValuePair = React.createClass({
     const buttonEffect = {
       onClick: (event) => {
         event.preventDefault()
+        this.props.addFormArray(this._inputName, 'changeArray')
+        this.props.setSaveState(true)
         if ((this.state.newEntry &&
           this.state.validationState !== 'error' &&
           this.state.key.length >= 2 &&
