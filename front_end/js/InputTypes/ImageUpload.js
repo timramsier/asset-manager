@@ -14,6 +14,8 @@ const InputImage = React.createClass({
     removeValidationError: func,
     addFormArray: func,
     removeFormArray: func,
+    updateFormData: func,
+    setSaveState: func,
     formData: object,
     structure: shape({
       label: string,
@@ -55,19 +57,20 @@ const InputImage = React.createClass({
         imgTag.style.backgroundImage = `url(${event.target.result})`
       }
       image.onload = () => {
-        // const image = `${formData._id}.${file.name.split('.').pop()}`
         this._element.classList.remove('invalid-file')
         this._element.classList.add('valid-file')
         this.props.addFormArray(inputName, 'changeArray')
         this.props.removeValidationError(inputName)
-        console.log(file)
         this.setState({buttonText: file.name})
+        const image = `${formData._id}.${file.name.split('.').pop()}`
+        this.props.updateFormData({ image })
+        this.props.setSaveState(true)
       }
       image.onerror = () => {
         this._element.value = ''
         this._element.classList.add('invalid-file')
         this._element.classList.remove('valid-file')
-        imgTag.style.backgroundImage = `url(${formData.image})`
+        imgTag.style.backgroundImage = `url(${this._originalImage})`
         this.props.removeFormArray(inputName, 'changeArray')
         this.props.addValidationError(inputName)
         this.setState({buttonText: 'Invalid File'})
@@ -76,11 +79,17 @@ const InputImage = React.createClass({
       image.src = URL.createObjectURL(file)
     }
   },
+  componentWillMount () {
+    const { formData } = this.props
+    this._idName = `image-upload-${formData._shortId}`
+  },
   componentDidMount () {
     this.updateValidationError()
     const { formData } = this.props
     this._element = findDOMNode(this)
-    this._idName = `image-upload-${formData._shortId}`
+    this._originalImage = formData.image
+    document.getElementById(`preview-${this._idName}`)
+      .style.backgroundImage = `url(${formData.image})`
   },
   render () {
     const { structure, formData } = this.props
@@ -97,7 +106,7 @@ const InputImage = React.createClass({
         this._element.classList.remove('valid-file')
         document.getElementById(this._idName).value = ''
         document.getElementById(`preview-${this._idName}`)
-          .style.backgroundImage = `url(${formData.image})`
+          .style.backgroundImage = `url(${this._originalImage})`
         this.props.removeValidationError(inputName)
         this.props.removeFormArray(inputName, 'changeArray')
         this.setState({buttonText: 'Choose a file'})
@@ -108,7 +117,6 @@ const InputImage = React.createClass({
         <div
           className='preview-image'
           id={`preview-${this._idName}`}
-          style={{backgroundImage: `url(${formData.image})`}}
         />
         <FormControl
           id={this._idName}
