@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import FontAwesome from 'react-fontawesome'
-import AdminOptions from './AdminOptions'
 import { Navbar, Nav, NavItem, FormControl, FormGroup } from 'react-bootstrap'
 
 const { func } = React.PropTypes
@@ -50,11 +49,6 @@ const TopNavigation = React.createClass({
             </Navbar.Collapse>
           </Navbar>
         </div>
-        <AdminOptions
-          toggleMenuOpen={this.props.toggleMenuOpen}
-          closeMenu={this.props.closeMenu}
-          openMenu={this.props.openMenu}
-        />
       </div>
     )
   }

@@ -63,36 +63,10 @@ export default {
     ],
     formStructure: [
       {
-        label: 'Category',
-        key: 'category',
-        type: 'select',
-        description: 'Select the model category',
-        options: (component) => {
-          api.getCategories().then((categories) => {
-            let options = categories.map(i => i.name)
-            component.setState({ options })
-          })
-        },
-        onChange: (event, component) => {
-          let value = event.target.value
-          api.getCategories({ name: value }).then((category) => {
-            component.props.updateFormData({
-              category: value,
-              _parent: category[0]._id
-            })
-            component.props.checkForDiff('category')
-          })
-        }
-      },
-      {
-        label: 'Active',
-        key: 'active',
-        type: 'select',
-        description: 'Set whether this is an active model or not',
-        options: [
-          true,
-          false
-        ]
+        label: 'Image',
+        key: 'image',
+        type: 'image',
+        description: 'Select an image for the model.'
       },
       {
         label: 'Model Name',
@@ -116,6 +90,40 @@ export default {
         type: 'text',
         placeholder: 'Enter the product version',
         description: 'This is the version of the product (i.e. 2nd Gen, etc.).'
+      },
+      {
+        label: 'Category',
+        key: 'category',
+        type: 'select',
+        colspan: 6,
+        description: 'Select the model category',
+        options: (component) => {
+          api.getCategories().then((categories) => {
+            let options = categories.map(i => i.name)
+            component.setState({ options })
+          })
+        },
+        onChange: (event, component) => {
+          let value = event.target.value
+          api.getCategories({ name: value }).then((category) => {
+            component.props.updateFormData({
+              category: value,
+              _parent: category[0]._id
+            })
+            component.props.checkForDiff('category')
+          })
+        }
+      },
+      {
+        label: 'Active',
+        key: 'active',
+        type: 'select',
+        description: 'Set whether this is an active model or not',
+        colspan: 6,
+        options: [
+          true,
+          false
+        ]
       },
       {
         label: 'Description',

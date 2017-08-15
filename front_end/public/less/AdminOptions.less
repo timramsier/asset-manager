@@ -1,10 +1,11 @@
 .admin-menu {
   .admin-options {
+    // z-index: -1;
     transition: all 400ms cubic-bezier(0.495, 0, 0.510, 0.995);
     display: inline-block;
     position: fixed;
     right: 0;
-    left: ~"calc(100% - 300px)";
+    left: 100%;
     top: 0;
     width:100%;
     max-width:300px;
@@ -16,6 +17,9 @@
     h3 {
       margin-top: 5px;
     }
+  }
+  &.right-open .admin-options {
+    left: ~"calc(100% - 300px)";
   }
   &.admin-full-view {
     .admin-options {

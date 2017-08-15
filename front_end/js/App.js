@@ -1,10 +1,11 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import AsyncLoad from './AsyncLoad'
 import defaultLeftNavButtons from '../config/defaultLeftNavButtons'
 import TopNavigation from './TopNavigation'
 import UnderDevelopment from './UnderDevelopment'
 import apiSettings from '../config/apiSettings'
+import AdminOptions from './AdminOptions'
 import api from './api'
 import '../public/less/main.less'
 
@@ -27,6 +28,7 @@ const App = React.createClass({
   toggleMenuOpen (menu) {
     document.querySelector('.navbar-side').classList.toggle(`${menu}-open`)
     document.querySelector('.main-content').classList.toggle(`${menu}-open`)
+    document.querySelector('.admin-menu').classList.toggle(`${menu}-open`)
   },
   openMenu (menu) {
     setTimeout(() => {
@@ -108,35 +110,38 @@ const App = React.createClass({
           loadingPromise={System.import('./LeftNavigation')}
         />
         <div className='main-content'>
-          <Switch>
-            <Route
-              exact path='/'
-              component={(props) => <AsyncLoad
-                props={Object.assign({
-                  categories,
-                  alertMessage
-                }, props)}
-                loadingPromise={System.import('./Landing')}
-              />}
-            />
-            <Route
-              path='/show/:productType'
-              component={(props) => <AsyncLoad
-                props={Object.assign({
-                  categories,
-                  api,
-                  assetModal: this.state.assetModal,
-                  checkVisible: this.checkVisible
-                }, props)}
-                loadingPromise={System.import('./ShowModels')}
-              />}
-            />
-            {/* Temporary Route */}
-            <Route path='/admin/:page'
-              component={() => <UnderDevelopment />}
-            />
-          </Switch>
+          <Route
+            exact path='/'
+            component={(props) => <AsyncLoad
+              props={Object.assign({
+                categories,
+                alertMessage
+              }, props)}
+              loadingPromise={System.import('./Landing')}
+            />}
+          />
+          <Route
+            path='/show/:productType'
+            component={(props) => <AsyncLoad
+              props={Object.assign({
+                categories,
+                api,
+                assetModal: this.state.assetModal,
+                checkVisible: this.checkVisible
+              }, props)}
+              loadingPromise={System.import('./ShowModels')}
+            />}
+          />
+          {/* Temporary Route */}
+          <Route path='/admin/:page'
+            component={() => <UnderDevelopment />}
+          />
         </div>
+        <AdminOptions
+          toggleMenuOpen={this.toggleMenuOpen}
+          closeMenu={this.closeMenu}
+          openMenu={this.openMenu}
+        />
       </div>
     )
   }

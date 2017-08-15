@@ -1,0 +1,104 @@
+@success: #5cb85c;
+@error: #d9534f;
+@normal: #fff;
+
+.image-upload {
+  display: block;
+  position: relative;
+  .preview-image {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 15px;
+    width: 204px;
+    height: 150px;
+    border-radius: 5px;
+  }
+  .input-file {
+    & {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+    }
+    & + .image-controls {
+      margin-top: -15px;
+    }
+    & + .image-controls > label {
+      width: 164px;
+      height: 34px;
+      position: relative;
+      bottom: -14px;
+      display: inline-block;
+      font-size: 1.25em;
+      padding: 7px 15px;
+      font-weight: 400;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      // border-radius: 5px;
+      color: #000;
+      background-color: @normal;
+      border: 1px darken(@normal, 18) solid;
+      cursor: pointer;
+      margin: 0;
+      margin-right: 5px;
+    }
+    &:focus + .image-controls > label,
+    & + .image-controls > label:hover {
+        .label-hover(@normal);
+    }
+    & + .image-controls > label:active {
+      .label-active(@normal);
+    }
+  }
+  &.valid-file {
+    .input-file {
+      & + .image-controls > label {
+        .label-default(@success);
+        color: #fff;
+      }
+      &:focus + .image-controls > label,
+      & + .image-controls > label:hover {
+        .label-hover(@success);
+      }
+      & + .image-controls > label:active {
+        .label-active(@success);
+      }
+    }
+  }
+  &.invalid-file {
+    .input-file {
+      & + .image-controls > label {
+        .label-default(@error);
+        color: #fff;
+      }
+      &:focus + .image-controls > label,
+      & + .image-controls > label:hover {
+        .label-hover(@error);
+      }
+      & + .image-controls > label:active {
+        .label-active(@error);
+      }
+    }
+  }
+}
+
+// Mixins
+.label-default(@color) {
+  background-color: @color;
+  border-color: darken(@color, 10);
+}
+
+.label-hover(@color) {
+  background-color: darken(@color, 7);
+}
+
+.label-active(@color) {
+  -moz-box-shadow:    inset 0 0 5px 2px darken(@color, 20);
+  -webkit-box-shadow: inset 0 0 5px 2px darken(@color, 20);
+  box-shadow:         inset 0 0 5px 2px darken(@color, 20);
+  background: darken(@color, 10);
+}
