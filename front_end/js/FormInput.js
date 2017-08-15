@@ -54,12 +54,13 @@ const FormInput = React.createClass({
         Input = InputType.TextArea
         break
       case 'keyvalue':
-        // let i = 0
         Input = InputType.KeyValueGroup
         break
       case 'select':
-        // let i = 0
         Input = InputType.Select
+        break
+      case 'image':
+        Input = InputType.ImageUpload
         break
       default:
         Input = () => <span />

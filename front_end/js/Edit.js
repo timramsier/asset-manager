@@ -37,6 +37,9 @@ const Edit = React.createClass({
       }
     })
   },
+  handleFileChange (event, key) {
+
+  },
   handleChange (event, key) {
     let newState = this.state
     Object.assign(newState.form.data, {[key]: event.target.value})
@@ -283,8 +286,11 @@ const Edit = React.createClass({
                 return (
                   <FormInput
                     key={`input_${input.key}`}
+                    formData={this.state.form.data}
                     value={this.state.form.data[input.key]}
                     structure={input}
+                    addFormArray={this.addFormArray}
+                    removeFormArray={this.removeFormArray}
                     updateFormData={this.updateFormData}
                     removeKeyValueEntry={this.removeKeyValueEntry}
                     pushNewKeyValueEntry={this.pushNewKeyValueEntry}
