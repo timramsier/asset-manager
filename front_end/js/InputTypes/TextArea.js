@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormControl } from 'react-bootstrap'
 
-const { shape, string, func, oneOfType, array } = React.PropTypes
+const { shape, string, func, oneOfType, array, number } = React.PropTypes
 
 const InputTextArea = React.createClass({
   propTypes: {
@@ -14,7 +14,8 @@ const InputTextArea = React.createClass({
       key: string,
       type: string,
       placeholder: string,
-      description: string
+      description: string,
+      height: number
     }),
     value: oneOfType([string, array])
   },
@@ -43,7 +44,7 @@ const InputTextArea = React.createClass({
     }
     return (
       <FormControl
-        style={{height: '100px', resize: 'vertical'}}
+        style={{height: `${this.props.structure.height || 100}px`, resize: 'vertical'}}
         componentClass='textarea'
         // placeholder={this.props.structure.placeholder}
         {...inputBehavior}
