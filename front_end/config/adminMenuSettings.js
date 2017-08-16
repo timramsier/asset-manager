@@ -63,12 +63,6 @@ export default {
     ],
     formStructure: [
       {
-        label: 'Image',
-        key: 'image',
-        type: 'image',
-        description: 'Select an image for the model.'
-      },
-      {
         label: 'Model Name',
         key: 'name',
         type: 'text',
@@ -126,11 +120,20 @@ export default {
         ]
       },
       {
+        label: 'Image',
+        key: 'image',
+        type: 'image',
+        description: 'Select an image for the model.',
+        colspan: 6
+      },
+      {
         label: 'Description',
         key: 'description',
         type: 'textarea',
         placeholder: 'Enter the model description',
-        description: 'Enter a short description for the model here.'
+        description: 'Enter a short description for the model here.',
+        colspan: 6,
+        height: 195
       },
       {
         label: 'Specifications',

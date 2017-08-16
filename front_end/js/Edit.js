@@ -37,9 +37,6 @@ const Edit = React.createClass({
       }
     })
   },
-  handleFileChange (event, key) {
-
-  },
   handleChange (event, key) {
     let newState = this.state
     Object.assign(newState.form.data, {[key]: event.target.value})
@@ -103,8 +100,12 @@ const Edit = React.createClass({
     return !this.state.form.validationError || this.state.form.validationError.length === 0
   },
   checkIfDiff () {
-    console.log(this.state.form.changeArray)
     return !(!this.state.form.changeArray || this.state.form.changeArray.length === 0)
+  },
+  setSaveState (value) {
+    let newState = this.state
+    Object.assign(newState.form, {canSave: value})
+    this.setState(newState)
   },
   updateSaveState () {
     let newState = this.state
@@ -299,6 +300,7 @@ const Edit = React.createClass({
                     addValidationError={this.addValidationError}
                     removeValidationError={this.removeValidationError}
                     checkForDiff={this.checkForDiff}
+                    setSaveState={this.setSaveState}
                   />
                 )
               }

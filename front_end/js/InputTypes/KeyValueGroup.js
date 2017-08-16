@@ -20,7 +20,10 @@ const InputKeyValueGroup = React.createClass({
     setValidationState: func,
     addValidationError: func,
     removeValidationError: func,
-    resetArray: func
+    resetArray: func,
+    addFormArray: func,
+    removeFormArray: func,
+    setSaveState: func
   },
   render () {
     let { structure } = this.props
@@ -39,6 +42,8 @@ const InputKeyValueGroup = React.createClass({
               setValidationState={this.props.setValidationState}
               addValidationError={this.props.addValidationError}
               removeValidationError={this.props.removeValidationError}
+              addFormArray={this.props.addFormArray}
+              setSaveState={this.props.setSaveState}
             />
           )
         })}
@@ -49,6 +54,8 @@ const InputKeyValueGroup = React.createClass({
           setValidationState={this.props.setValidationState}
           addValidationError={this.props.addValidationError}
           removeValidationError={this.props.removeValidationError}
+          addFormArray={this.props.addFormArray}
+          setSaveState={this.props.setSaveState}
         />
       </div>
     )

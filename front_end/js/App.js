@@ -132,7 +132,6 @@ const App = React.createClass({
               loadingPromise={System.import('./ShowModels')}
             />}
           />
-          {/* Temporary Route */}
           <Route path='/admin/:page'
             component={() => <UnderDevelopment />}
           />
