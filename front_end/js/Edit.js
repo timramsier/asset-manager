@@ -1,8 +1,10 @@
+/* globals FormData */
 import React from 'react'
 import FormInput from './FormInput'
 import addConfirmModal from './addConfirmModal'
 import { Col, Button } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
+import axios from 'axios'
 import shortid from 'shortid'
 import api from './api'
 
@@ -180,7 +182,31 @@ const Edit = React.createClass({
     }
   },
   sendData () {
-    return new Promise((resolve, reject) => {
+    const uploadFile = () => new Promise((resolve, reject) => {
+      let fileInputs = document.querySelectorAll(`.admin-edit-modal input[type="file"]`)
+      let fileData = new FormData()
+      let updateCounter = 0
+      for (let i = 0; i < fileInputs.length; i++) {
+        let name = fileInputs[i].getAttribute('name')
+        if (fileInputs[i].files[0]) {
+          let file = fileInputs[i].files[0]
+          let fileName = file.name
+          if (name === 'image') {
+            fileName = `${this.props.data._id}.${fileName.split('.').pop()}`
+          }
+          fileData.append(`fileName-${name}`, fileName)
+          fileData.append(name, file)
+          updateCounter++
+        }
+      }
+      if (updateCounter > 0) {
+        axios.put('/upload', fileData)
+          .then(res => { resolve(res) })
+          .catch(err => { reject(err) })
+      }
+    })
+
+    const updatedata = () => new Promise((resolve, reject) => {
       let data = {}
       this.props.formStructure.map(entry => {
         if (entry.type === 'keyvalue') {
@@ -208,6 +234,8 @@ const Edit = React.createClass({
         reject(error)
       })
     })
+
+    return uploadFile().then(updatedata)
   },
   componentWillMount () {
     let { data } = this.props
