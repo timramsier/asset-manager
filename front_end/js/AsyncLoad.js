@@ -14,10 +14,14 @@ const AsyncLoad = React.createClass({
     })
   },
   componentDidMount () {
+    this._isMounted = true
     this.props.loadingPromise.then((module) => {
       this.component = module.default
-      this.setState({loaded: true})
+      this._isMounted && this.setState({loaded: true})
     })
+  },
+  componentWillUnmount () {
+    this._isMounted = false
   },
   render () {
     let LoadingView = () => (
