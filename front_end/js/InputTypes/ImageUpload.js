@@ -63,7 +63,7 @@ const InputImage = React.createClass({
         this.props.removeValidationError(inputName)
         this.setState({buttonText: file.name})
         const image = `${formData._id}.${file.name.split('.').pop()}`
-        this.props.updateFormData({ image })
+        this.props.updateFormData({ image: `/public/uploads/${image}` })
         this.props.setSaveState(true)
       }
       image.onerror = () => {
@@ -121,7 +121,7 @@ const InputImage = React.createClass({
         <FormControl
           id={this._idName}
           type='file'
-          name='image-upload'
+          name='image'
           label={structure.label}
           accept='image/*'
           className='input-file'
