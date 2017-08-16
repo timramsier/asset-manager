@@ -182,7 +182,7 @@ const Edit = React.createClass({
     }
   },
   sendData () {
-    const uploadFile = () => new Promise((resolve, reject) => {
+    const uploadFile = (result) => new Promise((resolve, reject) => {
       let fileInputs = document.querySelectorAll(`.admin-edit-modal input[type="file"]`)
       let fileData = new FormData()
       let updateCounter = 0
@@ -206,7 +206,7 @@ const Edit = React.createClass({
       }
     })
 
-    const updatedata = () => new Promise((resolve, reject) => {
+    const updateData = () => new Promise((resolve, reject) => {
       let data = {}
       this.props.formStructure.map(entry => {
         if (entry.type === 'keyvalue') {
@@ -235,7 +235,7 @@ const Edit = React.createClass({
       })
     })
 
-    return uploadFile().then(updatedata)
+    return updateData().then(uploadFile)
   },
   componentWillMount () {
     let { data } = this.props
