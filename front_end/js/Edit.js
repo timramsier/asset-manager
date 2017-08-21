@@ -5,6 +5,7 @@ import addConfirmModal from './addConfirmModal'
 import { Col, Button } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 import axios from 'axios'
+import { guid } from './common'
 import shortid from 'shortid'
 import api from './api'
 
@@ -182,31 +183,7 @@ const Edit = React.createClass({
     }
   },
   sendData () {
-    const uploadFile = () => new Promise((resolve, reject) => {
-      let fileInputs = document.querySelectorAll(`.admin-edit-modal input[type="file"]`)
-      let fileData = new FormData()
-      let updateCounter = 0
-      for (let i = 0; i < fileInputs.length; i++) {
-        let name = fileInputs[i].getAttribute('name')
-        if (fileInputs[i].files[0]) {
-          let file = fileInputs[i].files[0]
-          let fileName = file.name
-          if (name === 'image') {
-            fileName = `${this.props.data._id}.${fileName.split('.').pop()}`
-          }
-          fileData.append(`fileName-${name}`, fileName)
-          fileData.append(name, file)
-          updateCounter++
-        }
-      }
-      if (updateCounter > 0) {
-        axios.put('/upload', fileData)
-          .then(res => { resolve(res) })
-          .catch(err => { reject(err) })
-      }
-    })
-
-    const updatedata = () => new Promise((resolve, reject) => {
+    const updateData = () => new Promise((resolve, reject) => {
       let data = {}
       this.props.formStructure.map(entry => {
         if (entry.type === 'keyvalue') {
@@ -234,18 +211,57 @@ const Edit = React.createClass({
         reject(error)
       })
     })
+    const removePreviousFile = (result) => new Promise((resolve, reject) => {
+      var filename = result.image.split('\\').pop().split('/').pop()
+      axios.delete('/image/delete', {
+        data: {target: filename}
+      })
+        .then(res => { resolve(res) })
+        .catch(err => { reject(err) })
+    })
+    const uploadFile = (result) => new Promise((resolve, reject) => {
+      let fileInputs = document.querySelectorAll(`.admin-edit-modal input[type="file"]`)
+      let fileData = new FormData()
+      let updateCounter = 0
+      for (let i = 0; i < fileInputs.length; i++) {
+        let name = fileInputs[i].getAttribute('name')
+        if (fileInputs[i].files[0]) {
+          let file = fileInputs[i].files[0]
+          let fileName = file.name
+          if (name === 'image') {
+            if (this.props.data._id && this.props.data._id !== '') {
+              fileName = `${this.props.data._id}.${fileName.split('.').pop()}`
+            } else {
+              fileName = `${this.state.tempId}.${fileName.split('.').pop()}`
+            }
+          }
+          fileData.append(`fileName-${name}`, fileName)
+          fileData.append(name, file)
+          updateCounter++
+        }
+      }
+      if (updateCounter > 0) {
+        axios.put('/image/upload', fileData)
+          .then(res => { resolve(res) })
+          .catch(err => { reject(err) })
+      }
+    })
 
-    return uploadFile().then(updatedata)
+    return updateData()
+      .then(removePreviousFile)
+      .then(uploadFile)
   },
   componentWillMount () {
     let { data } = this.props
     let title = 'Edit'
     let method = 'put'
     let shortId = this.props.data._shortId
+    let tempId
     if (Object.keys(data).length === 0 && data.constructor === Object) {
       title = 'New'
       method = 'post'
       shortId = ''
+      tempId = `temp_${guid()}`
       this.props.formStructure.map(entry => {
         if (entry.type === 'keyvalue') {
           data[entry.key] = []
@@ -254,7 +270,7 @@ const Edit = React.createClass({
         }
       })
     }
-    this.setState({ title, method, shortId, form: { data } })
+    this.setState({ title, tempId, method, shortId, form: { data } })
   },
   render () {
     const formStructure = this.props.formStructure || []
@@ -314,6 +330,7 @@ const Edit = React.createClass({
               if (input.type) {
                 return (
                   <FormInput
+                    tempId={this.state.tempId}
                     key={`input_${input.key}`}
                     formData={this.state.form.data}
                     value={this.state.form.data[input.key]}

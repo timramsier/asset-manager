@@ -2,6 +2,7 @@ import React from 'react'
 import { Cell } from 'fixed-data-table'
 import FontAwesome from 'react-fontawesome'
 import api from './api'
+import axios from 'axios'
 import addConfirmModal from './addConfirmModal'
 
 const { string, number, array, func, object } = React.PropTypes
@@ -92,14 +93,27 @@ const RemoveCell = React.createClass({
     })
   },
   removeData (cellData) {
-    let url = `${this.props.apiCall}/all/${cellData._shortId}`
-    api._delete(url).then((response) => {
-      if (response.status === 200) {
-        this.props.flashMessage('success',
-          <span><strong>Success!</strong> <em>{cellData.name}</em> successfully removed.</span>)
-      }
-      this.props.getData('refresh')
+    const removeImage = (result) => new Promise((resolve, reject) => {
+      var filename = result.image.split('\\').pop().split('/').pop()
+      axios.delete('/image/delete', {
+        data: {target: filename}
+      })
+        .then(res => { resolve(res) })
+        .catch(err => { reject(err) })
     })
+    const removeData = (cellData) => new Promise((resolve, reject) => {
+      let url = `${this.props.apiCall}/all/${cellData._shortId}`
+      api._delete(url).then((response) => {
+        if (response.status === 200) {
+          this.props.flashMessage('success',
+            <span><strong>Success!</strong> <em>{cellData.name}</em> successfully removed.</span>)
+        }
+        this.props.getData('refresh')
+        resolve(cellData)
+      })
+    })
+
+    removeData(cellData).then(removeImage)
   },
   render () {
     const { data, rowIndex, height, width } = this.props

@@ -130,7 +130,7 @@ const _controller = (
 
     update: (req, res, next, callback = (err, result) => {
       if (err) return res.status(400).send(err)
-      res.status(200).send(`Successfully Updated ${req.params.shortId}`)
+      res.status(200).send(JSON.stringify(result))
     }) => {
       if (!req.body) return res.sendStatus(400)
       let data = req.body
@@ -138,8 +138,7 @@ const _controller = (
       model.findOne({_shortId: req.params.shortId}).exec((err, result) => {
         if (err) return res.status(400).send(err)
         if (!result) res.status(200).send(`${req.params.shortId} not found.`)
-        model.findOneAndUpdate({_shortId: req.params.shortId}, data, (err, category) => {
-          if (err) return res.status(400).send(err)
+        model.findOneAndUpdate({_shortId: req.params.shortId}, data, (err, result) => {
           callback(err, result)
         })
       })

@@ -25,6 +25,7 @@ console.log('\x1b[33mConnecting to MongoDB:', database, '\x1b[0m')
 
 const dbUri = `mongodb://${database.host}/${database.name}`
 mongoose.connect(dbUri)
+// mongoose.set('debug', true)
 
 var dbConnection = mongoose.connection
 dbConnection.on('error', console.error.bind(console, 'MongoDB connection error:'))
@@ -87,9 +88,11 @@ dbConnection.on('connected', () => {
     })
   }
   const seedDatabase = (username) => {
-    return new Promise((resolve, reject) => {
-      database.seed ? resolve(seedData(username)) : resolve(false)
-    })
+    if (database.seed) {
+      return seedData(username)
+    } else {
+      return new Promise((resolve, reject) => (resolve(true)))
+    }
   }
   const createAppAdminUser = () => {
     return new Promise((resolve, reject) => {
