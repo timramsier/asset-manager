@@ -5,6 +5,7 @@ import addConfirmModal from './addConfirmModal'
 import { Col, Button } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 import axios from 'axios'
+import { guid } from './common'
 import shortid from 'shortid'
 import api from './api'
 
@@ -192,7 +193,11 @@ const Edit = React.createClass({
           let file = fileInputs[i].files[0]
           let fileName = file.name
           if (name === 'image') {
-            fileName = `${this.props.data._id}.${fileName.split('.').pop()}`
+            if (this.props.data._id && this.props.data._id !== '') {
+              fileName = `${this.props.data._id}.${fileName.split('.').pop()}`
+            } else {
+              fileName = `${this.state.tempId}.${fileName.split('.').pop()}`
+            }
           }
           fileData.append(`fileName-${name}`, fileName)
           fileData.append(name, file)
@@ -242,10 +247,12 @@ const Edit = React.createClass({
     let title = 'Edit'
     let method = 'put'
     let shortId = this.props.data._shortId
+    let tempId
     if (Object.keys(data).length === 0 && data.constructor === Object) {
       title = 'New'
       method = 'post'
       shortId = ''
+      tempId = `temp_${guid()}`
       this.props.formStructure.map(entry => {
         if (entry.type === 'keyvalue') {
           data[entry.key] = []
@@ -254,7 +261,7 @@ const Edit = React.createClass({
         }
       })
     }
-    this.setState({ title, method, shortId, form: { data } })
+    this.setState({ title, tempId, method, shortId, form: { data } })
   },
   render () {
     const formStructure = this.props.formStructure || []
@@ -314,6 +321,7 @@ const Edit = React.createClass({
               if (input.type) {
                 return (
                   <FormInput
+                    tempId={this.state.tempId}
                     key={`input_${input.key}`}
                     formData={this.state.form.data}
                     value={this.state.form.data[input.key]}

@@ -17,6 +17,7 @@ const InputImage = React.createClass({
     updateFormData: func,
     setSaveState: func,
     formData: object,
+    tempId: string,
     structure: shape({
       label: string,
       key: string,
@@ -62,7 +63,9 @@ const InputImage = React.createClass({
         this.props.addFormArray(inputName, 'changeArray')
         this.props.removeValidationError(inputName)
         this.setState({buttonText: file.name})
-        const image = `${formData._id}.${file.name.split('.').pop()}`
+        let fileName = `${this.props.tempId}`
+        formData._id && formData._id !== '' && (fileName = formData._id)
+        const image = `${fileName}.${file.name.split('.').pop()}`
         this.props.updateFormData({ image: `/public/uploads/${image}` })
         this.props.setSaveState(true)
       }
