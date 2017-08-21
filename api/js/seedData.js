@@ -20,10 +20,6 @@ const _coinFlip = () => {
   return (Math.floor(Math.random() * 2) === 0)
 }
 
-// const _guid = () => {
-//   return Math.floor((1 + Math.random()) * 0x100000000).toString(16).substring(1)
-// }
-
 const getModifier = (key) => {
   return new Promise((resolve, reject) => {
     User.findOne({username: key}).exec((err, result) => {
@@ -244,13 +240,17 @@ const seedData = (apiKey = false) => {
   if (!apiKey) {
     console.log('\x1b[31mMust provide API Key', '\x1b[0m')
   } else {
-    return getModifier(apiKey)
-    .then(clearData)
-    .then(addCategories)
-    .then(addModels)
-    .then(addPOs)
-    .then(addAssets).then(() => {
-      console.log('\x1b[32mSuccessfully seeded database', '\x1b[0m')
+    return new Promise((resolve, reject) => {
+      getModifier(apiKey)
+      .then(clearData)
+      .then(addCategories)
+      .then(addModels)
+      .then(addPOs)
+      .then(addAssets)
+      .then(() => {
+        console.log('\x1b[32mSuccessfully seeded database', '\x1b[0m')
+        resolve(true)
+      })
     })
   }
 }

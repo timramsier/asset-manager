@@ -17,6 +17,7 @@ const StaticRouter = ReactRouter.StaticRouter
 const _ = require('lodash')
 const fs = require('fs')
 const fileUpload = require('express-fileupload')
+const bodyParser = require('body-parser')
 
 const PORT = process.env.PORT || 80
 const baseTemplate = fs.readFileSync('./index.html')
@@ -26,17 +27,36 @@ const App = require('./js/App').default
 const server = express()
 
 server.use(fileUpload())
+server.use(bodyParser.json())
+server.use(bodyParser.urlencoded({
+  extended: false
+}))
 
 server.use('/public', express.static('./public'))
 
-server.put('/upload', (req, res) => {
+server.delete('/image/delete', (req, res) => {
+  console.log(req.body)
+  const { target } = req.body
+  const file = `./public/uploads/${target}`
+  if (!fs.existsSync(file)) return res.status(200).send('File Doesn\'t Exist')
+  fs.unlink(file, err => {
+    if (err) return res.status(400).send(err)
+    res.sendStatus(200)
+  })
+})
+
+server.put('/image/upload', (req, res) => {
   if (!req.files) {
     return res.status(400).send('No files were uploaded.')
   }
   const fileKeys = Object.keys(req.files)
   fileKeys.forEach(key => {
     const file = req.files[key]
-    file.mv(`./public/uploads/${req.body[`fileName-${key}`]}`, (err) => {
+    const dir = './public/uploads'
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir)
+    }
+    file.mv(`${dir}/${req.body[`fileName-${key}`]}`, (err) => {
       if (err) { return res.status(500).send(err) }
       res.send('File Uploaded!')
     })

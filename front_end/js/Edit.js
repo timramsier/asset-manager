@@ -183,34 +183,6 @@ const Edit = React.createClass({
     }
   },
   sendData () {
-    const uploadFile = (result) => new Promise((resolve, reject) => {
-      let fileInputs = document.querySelectorAll(`.admin-edit-modal input[type="file"]`)
-      let fileData = new FormData()
-      let updateCounter = 0
-      for (let i = 0; i < fileInputs.length; i++) {
-        let name = fileInputs[i].getAttribute('name')
-        if (fileInputs[i].files[0]) {
-          let file = fileInputs[i].files[0]
-          let fileName = file.name
-          if (name === 'image') {
-            if (this.props.data._id && this.props.data._id !== '') {
-              fileName = `${this.props.data._id}.${fileName.split('.').pop()}`
-            } else {
-              fileName = `${this.state.tempId}.${fileName.split('.').pop()}`
-            }
-          }
-          fileData.append(`fileName-${name}`, fileName)
-          fileData.append(name, file)
-          updateCounter++
-        }
-      }
-      if (updateCounter > 0) {
-        axios.put('/upload', fileData)
-          .then(res => { resolve(res) })
-          .catch(err => { reject(err) })
-      }
-    })
-
     const updateData = () => new Promise((resolve, reject) => {
       let data = {}
       this.props.formStructure.map(entry => {
@@ -239,8 +211,45 @@ const Edit = React.createClass({
         reject(error)
       })
     })
+    const removePreviousFile = (result) => new Promise((resolve, reject) => {
+      var filename = result.image.split('\\').pop().split('/').pop()
+      axios.delete('/image/delete', {
+        data: {target: filename}
+      })
+        .then(res => { resolve(res) })
+        .catch(err => { reject(err) })
+    })
+    const uploadFile = (result) => new Promise((resolve, reject) => {
+      let fileInputs = document.querySelectorAll(`.admin-edit-modal input[type="file"]`)
+      let fileData = new FormData()
+      let updateCounter = 0
+      for (let i = 0; i < fileInputs.length; i++) {
+        let name = fileInputs[i].getAttribute('name')
+        if (fileInputs[i].files[0]) {
+          let file = fileInputs[i].files[0]
+          let fileName = file.name
+          if (name === 'image') {
+            if (this.props.data._id && this.props.data._id !== '') {
+              fileName = `${this.props.data._id}.${fileName.split('.').pop()}`
+            } else {
+              fileName = `${this.state.tempId}.${fileName.split('.').pop()}`
+            }
+          }
+          fileData.append(`fileName-${name}`, fileName)
+          fileData.append(name, file)
+          updateCounter++
+        }
+      }
+      if (updateCounter > 0) {
+        axios.put('/image/upload', fileData)
+          .then(res => { resolve(res) })
+          .catch(err => { reject(err) })
+      }
+    })
 
-    return updateData().then(uploadFile)
+    return updateData()
+      .then(removePreviousFile)
+      .then(uploadFile)
   },
   componentWillMount () {
     let { data } = this.props
