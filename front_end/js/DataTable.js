@@ -75,7 +75,7 @@ const DataTable = React.createClass({
   },
   setSearchTerm (searchTerm) {
     let newState = this.state
-    Object.assign(newState, {searchTerm})
+    Object.assign(newState, { searchTerm, skip: 0 })
     this.setState(newState)
     this.getData()
   },

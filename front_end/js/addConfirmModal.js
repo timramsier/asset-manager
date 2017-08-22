@@ -31,7 +31,7 @@ const addConfirmModal = (WrappedComponent) => {
       let newState = this.state
       Object.assign(newState, {showModal: false})
       this.setState(newState)
-      // setTimeout(() => { this.setState(defaultState) }, 0)
+      setTimeout(() => { this.setState(defaultState) }, 0)
     },
     openConfirmModal (props) {
       let newState = this.state
