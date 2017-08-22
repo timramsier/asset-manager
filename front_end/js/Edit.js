@@ -115,7 +115,7 @@ const Edit = React.createClass({
     if (this.checkIfDiff() && this.checkValidation()) {
       Object.assign(newState.form, {canSave: true})
     } else {
-      Object.assign(newState.form, {canSave: true})
+      Object.assign(newState.form, {canSave: false})
     }
     this.setState(newState)
   },
@@ -341,6 +341,7 @@ const Edit = React.createClass({
                     removeKeyValueEntry={this.removeKeyValueEntry}
                     pushNewKeyValueEntry={this.pushNewKeyValueEntry}
                     handleChange={this.handleChange}
+                    updateSaveState={this.updateSaveState}
                     handleKeyValueChange={this.handleKeyValueChange}
                     addValidationError={this.addValidationError}
                     removeValidationError={this.removeValidationError}
