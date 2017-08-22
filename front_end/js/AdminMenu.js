@@ -51,13 +51,11 @@ const AdminGroup = React.createClass({
 
 const ModelMenu = React.createClass({
   render () {
-    const { columns, formStructure } = config.model
     return (
       <div className='model-menu'>
         <DataTable
-          formStructure={formStructure}
           apiCall='models'
-          columns={columns}
+          {...config.model}
           showTotal
         />
       </div>
@@ -67,10 +65,13 @@ const ModelMenu = React.createClass({
 
 const POMenu = React.createClass({
   render () {
-    const { columns } = config.po
     return (
       <div className='po-menu'>
-        <DataTable apiCall='pos' columns={columns} showTotal />
+        <DataTable
+          apiCall='pos'
+          {...config.po}
+          showTotal
+        />
       </div>
     )
   }

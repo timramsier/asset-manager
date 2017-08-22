@@ -1,13 +1,10 @@
-/* globals FormData */
 import React from 'react'
 import FormInput from './FormInput'
 import addConfirmModal from './addConfirmModal'
 import { Col, Button } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
-import axios from 'axios'
 import { guid } from './common'
 import shortid from 'shortid'
-import api from './api'
 
 const { shape, string, arrayOf, func, object } = React.PropTypes
 
@@ -21,6 +18,7 @@ const Edit = React.createClass({
       description: string,
       transformValue: func
     })),
+    formSubmit: func,
     data: object,
     _reset: object,
     setAdminModal: func,
@@ -183,79 +181,13 @@ const Edit = React.createClass({
     }
   },
   sendData () {
-    const updateData = () => new Promise((resolve, reject) => {
-      let data = {}
-      this.props.formStructure.map(entry => {
-        if (entry.type === 'keyvalue') {
-          data[entry.key] = this.state.form.data[entry.key].map(keyvalue => {
-            let { key, value } = keyvalue
-            return { key, value }
-          })
-        } else {
-          if (entry.transformValue && entry.transformValue instanceof Function) {
-            data[entry.key] = entry.transformValue(this.state.form.data[entry.key])
-          } else {
-            data[entry.key] = this.state.form.data[entry.key]
-          }
-        }
-      })
-      let { shortId } = this.state
-      let url = `/models/all/${shortId}`
-      api._send(
-        this.state.method,
-        url,
-        data
-      ).then((response) => {
-        resolve(response)
-      }).catch((error) => {
-        reject(error)
-      })
-    })
-    const removePreviousFile = (result) => new Promise((resolve, reject) => {
-      var filename = result.image.split('\\').pop().split('/').pop()
-      axios.delete('/image/delete', {
-        data: {target: filename}
-      })
-        .then(res => { resolve(res) })
-        .catch(err => { reject(err) })
-    })
-    const uploadFile = (result) => new Promise((resolve, reject) => {
-      let fileInputs = document.querySelectorAll(`.admin-edit-modal input[type="file"]`)
-      let fileData = new FormData()
-      let updateCounter = 0
-      for (let i = 0; i < fileInputs.length; i++) {
-        let name = fileInputs[i].getAttribute('name')
-        if (fileInputs[i].files[0]) {
-          let file = fileInputs[i].files[0]
-          let fileName = file.name
-          if (name === 'image') {
-            if (this.props.data._id && this.props.data._id !== '') {
-              fileName = `${this.props.data._id}.${fileName.split('.').pop()}`
-            } else {
-              fileName = `${this.state.tempId}.${fileName.split('.').pop()}`
-            }
-          }
-          fileData.append(`fileName-${name}`, fileName)
-          fileData.append(name, file)
-          updateCounter++
-        }
-      }
-      if (updateCounter > 0) {
-        axios.put('/image/upload', fileData)
-          .then(res => { resolve(res) })
-          .catch(err => { reject(err) })
-      }
-    })
-
-    return updateData()
-      .then(removePreviousFile)
-      .then(uploadFile)
+    return this.props.formSubmit(this)
   },
   componentWillMount () {
     let { data } = this.props
+    let shortId = this.props.data._shortId
     let title = 'Edit'
     let method = 'put'
-    let shortId = this.props.data._shortId
     let tempId
     if (Object.keys(data).length === 0 && data.constructor === Object) {
       title = 'New'

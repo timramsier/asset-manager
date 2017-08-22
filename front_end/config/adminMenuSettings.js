@@ -1,4 +1,5 @@
 import api from '../js/api'
+import submit from './submit/submit'
 
 export default {
   model: {
@@ -151,7 +152,8 @@ export default {
           }
         }
       }
-    ]
+    ],
+    formSubmit: submit.model
   },
   po: {
     columns: [
@@ -219,6 +221,24 @@ export default {
         type: 'edit',
         minWidthPix: 50,
         maxWidthPer: 5
+      }
+    ],
+    formStructure: [
+      {
+        label: 'P.O. Number',
+        key: 'poNumber',
+        type: 'text',
+        placeholder: 'Enter the P.0. number',
+        description: 'This is the purchase order number',
+        colspan: 6
+      },
+      {
+        label: 'Business Unit',
+        key: 'bu',
+        type: 'text',
+        placeholder: 'Enter the business unit',
+        description: 'This is the name of the business unit this belongs to',
+        colspan: 6
       }
     ]
   },

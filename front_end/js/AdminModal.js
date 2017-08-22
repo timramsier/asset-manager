@@ -15,6 +15,7 @@ const AdminModal = React.createClass({
       description: string,
       colspan: number
     })),
+    formSubmit: func,
     setAdminModal: func,
     resetTable: func,
     flashMessage: func
@@ -53,6 +54,7 @@ const AdminModal = React.createClass({
                 resetArray={this.resetArray}
                 flashMessage={this.props.flashMessage}
                 formStructure={this.props.formStructure}
+                formSubmit={this.props.formSubmit}
                 setAdminModal={this.props.setAdminModal}
                 resetTable={this.props.resetTable}
               />

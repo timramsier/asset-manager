@@ -11,7 +11,7 @@ import ReactResizeDetector from 'react-resize-detector'
 import shortid from 'shortid'
 import api from './api'
 
-const { string, arrayOf, shape, number, bool } = React.PropTypes
+const { string, arrayOf, shape, number, bool, func } = React.PropTypes
 
 const DataTable = React.createClass({
   propTypes: {
@@ -31,7 +31,8 @@ const DataTable = React.createClass({
       type: string,
       placeholder: string,
       description: string
-    }))
+    })),
+    formSubmit: func
   },
   getInitialState () {
     return ({
@@ -103,6 +104,7 @@ const DataTable = React.createClass({
     this.setState({tableWidth})
   },
   resetTable () {
+    console.log('refreshing')
     this.getData('refresh')
   },
   refreshData (data) {
@@ -273,6 +275,7 @@ const DataTable = React.createClass({
           {this.state.adminModal.open ? <AdminModal
             flashMessage={this.flashMessage}
             resetTable={this.resetTable}
+            formSubmit={this.props.formSubmit}
             formStructure={this.props.formStructure}
             data={this.state.adminModal.data}
             _reset={this.state.adminModal._reset}
