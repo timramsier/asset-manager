@@ -1,5 +1,6 @@
 import React from 'react'
 import KeyValuePair from './KeyValuePair'
+import { VelocityTransitionGroup } from 'velocity-react'
 
 const { shape, string, func, array } = React.PropTypes
 
@@ -30,23 +31,25 @@ const InputKeyValueGroup = React.createClass({
     let value = this.props.value || []
     return (
       <div className='multi-keyvalue-box'>
-        {value.map((entry) => {
-          return (
-            <KeyValuePair
-              handleKeyValueChange={this.props.handleKeyValueChange}
-              buttonEffect={this.props.removeKeyValueEntry}
-              structure={structure}
-              key={entry._shortId}
-              data={entry}
-              shortId={entry._shortId}
-              setValidationState={this.props.setValidationState}
-              addValidationError={this.props.addValidationError}
-              removeValidationError={this.props.removeValidationError}
-              addFormArray={this.props.addFormArray}
-              setSaveState={this.props.setSaveState}
-            />
-          )
-        })}
+        <VelocityTransitionGroup enter={{animation: 'slideDown'}} leave={{animation: 'slideUp'}}>
+          {value.map((entry) => {
+            return (
+              <KeyValuePair
+                handleKeyValueChange={this.props.handleKeyValueChange}
+                buttonEffect={this.props.removeKeyValueEntry}
+                structure={structure}
+                key={entry._shortId}
+                data={entry}
+                shortId={entry._shortId}
+                setValidationState={this.props.setValidationState}
+                addValidationError={this.props.addValidationError}
+                removeValidationError={this.props.removeValidationError}
+                addFormArray={this.props.addFormArray}
+                setSaveState={this.props.setSaveState}
+              />
+            )
+          })}
+        </VelocityTransitionGroup>
         <KeyValuePair
           newEntry
           buttonEffect={this.props.pushNewKeyValueEntry}
