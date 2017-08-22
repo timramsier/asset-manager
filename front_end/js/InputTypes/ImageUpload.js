@@ -16,6 +16,7 @@ const InputImage = React.createClass({
     removeFormArray: func,
     updateFormData: func,
     setSaveState: func,
+    updateSaveState: func,
     formData: object,
     tempId: string,
     structure: shape({
@@ -67,7 +68,7 @@ const InputImage = React.createClass({
         formData._id && formData._id !== '' && (fileName = formData._id)
         const image = `${fileName}.${file.name.split('.').pop()}`
         this.props.updateFormData({ image: `/public/uploads/${image}` })
-        this.props.setSaveState(true)
+        this.props.updateSaveState()
       }
       image.onerror = () => {
         this._element.value = ''
@@ -77,6 +78,7 @@ const InputImage = React.createClass({
         this.props.removeFormArray(inputName, 'changeArray')
         this.props.addValidationError(inputName)
         this.setState({buttonText: 'Invalid File'})
+        this.props.updateSaveState()
       }
       reader.readAsDataURL(file)
       image.src = URL.createObjectURL(file)
@@ -113,6 +115,7 @@ const InputImage = React.createClass({
         this.props.removeValidationError(inputName)
         this.props.removeFormArray(inputName, 'changeArray')
         this.setState({buttonText: 'Choose a file'})
+        this.props.updateSaveState()
       }
     }
     return (
