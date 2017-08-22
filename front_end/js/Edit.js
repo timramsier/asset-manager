@@ -1,7 +1,7 @@
 import React from 'react'
 import FormInput from './FormInput'
 import addConfirmModal from './addConfirmModal'
-import { Col, Button } from 'react-bootstrap'
+import { Col, Button, Well } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 import { guid } from './common'
 import shortid from 'shortid'
@@ -10,15 +10,17 @@ const { shape, string, arrayOf, func, object } = React.PropTypes
 
 const Edit = React.createClass({
   propTypes: {
-    formStructure: arrayOf(shape({
-      label: string,
-      key: string,
-      type: string,
-      placeholder: string,
-      description: string,
-      transformValue: func
-    })),
-    formSubmit: func,
+    form: shape({
+      structure: arrayOf(shape({
+        label: string,
+        key: string,
+        type: string,
+        placeholder: string,
+        description: string,
+        transformValue: func
+      })),
+      submit: func
+    }),
     data: object,
     _reset: object,
     setAdminModal: func,
@@ -181,7 +183,7 @@ const Edit = React.createClass({
     }
   },
   sendData () {
-    return this.props.formSubmit(this)
+    return this.props.form.submit(this)
   },
   componentWillMount () {
     let { data } = this.props
@@ -194,7 +196,7 @@ const Edit = React.createClass({
       method = 'post'
       shortId = ''
       tempId = `temp_${guid()}`
-      this.props.formStructure.map(entry => {
+      this.props.form.structure.map(entry => {
         if (entry.type === 'keyvalue') {
           data[entry.key] = []
         } else {
@@ -205,7 +207,7 @@ const Edit = React.createClass({
     this.setState({ title, tempId, method, shortId, form: { data } })
   },
   render () {
-    const formStructure = this.props.formStructure || []
+    const formStructure = this.props.form.structure || []
     let buttonEffects = {
       cancel: {
         onClick: (event) => {
@@ -253,11 +255,20 @@ const Edit = React.createClass({
         }
       }
     }
+    let description
+    let title
+    if (this.props.form.header) {
+      this.props.form.header.title && (title = this.props.form.header.title)
+      description = (
+        <Well>{this.props.form.header.description}</Well>
+      )
+    }
     return (
       <div className='admin-edit-modal'>
         <Col md={8} className='col-md-offset-2'>
-          <h1>{this.state.title}<small title='shortId'>{this.props.data._shortId}</small></h1>
+          <h1>{title} - {this.state.title} <small title='shortId'>{this.props.data._shortId}</small></h1>
           <form>
+            {description}
             {formStructure.map((input) => {
               if (input.type) {
                 return (

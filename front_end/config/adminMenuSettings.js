@@ -62,98 +62,104 @@ export default {
         maxWidthPer: 5
       }
     ],
-    formStructure: [
-      {
-        label: 'Model Name',
-        key: 'name',
-        type: 'text',
-        placeholder: 'Enter the model name',
-        description: 'This is the name of the model.',
-        colspan: 6
+    form: {
+      header: {
+        title: 'Model',
+        description: 'Add or update a new model by filling out the following form'
       },
-      {
-        label: 'Manufacturer',
-        key: 'vendor',
-        type: 'text',
-        placeholder: 'Enter the manufacturer name',
-        description: 'This manufacturer name of who made this model.',
-        colspan: 6
-      },
-      {
-        label: 'Version',
-        key: 'version',
-        type: 'text',
-        placeholder: 'Enter the product version',
-        description: 'This is the version of the product (i.e. 2nd Gen, etc.).'
-      },
-      {
-        label: 'Category',
-        key: 'category',
-        type: 'select',
-        colspan: 6,
-        description: 'Select the model category',
-        options: (component) => {
-          api.getCategories().then((categories) => {
-            let options = categories.map(i => i.name)
-            component.setState({ options })
-          })
+      structure: [
+        {
+          label: 'Model Name',
+          key: 'name',
+          type: 'text',
+          placeholder: 'Enter the model name',
+          description: 'This is the name of the model.',
+          colspan: 6
         },
-        onChange: (event, component) => {
-          let value = event.target.value
-          api.getCategories({ name: value }).then((category) => {
-            component.props.updateFormData({
-              category: value,
-              _parent: category[0]._id
+        {
+          label: 'Manufacturer',
+          key: 'vendor',
+          type: 'text',
+          placeholder: 'Enter the manufacturer name',
+          description: 'This manufacturer name of who made this model.',
+          colspan: 6
+        },
+        {
+          label: 'Version',
+          key: 'version',
+          type: 'text',
+          placeholder: 'Enter the product version',
+          description: 'This is the version of the product (i.e. 2nd Gen, etc.).'
+        },
+        {
+          label: 'Category',
+          key: 'category',
+          type: 'select',
+          colspan: 6,
+          description: 'Select the model category',
+          options: (component) => {
+            api.getCategories().then((categories) => {
+              let options = categories.map(i => i.name)
+              component.setState({ options })
             })
-            component.props.checkForDiff('category')
-          })
-        }
-      },
-      {
-        label: 'Active',
-        key: 'active',
-        type: 'select',
-        description: 'Set whether this is an active model or not',
-        colspan: 6,
-        options: [
-          true,
-          false
-        ]
-      },
-      {
-        label: 'Image',
-        key: 'image',
-        type: 'image',
-        description: 'Select an image for the model.',
-        colspan: 6
-      },
-      {
-        label: 'Description',
-        key: 'description',
-        type: 'textarea',
-        placeholder: 'Enter the model description',
-        description: 'Enter a short description for the model here.',
-        colspan: 6,
-        height: 195
-      },
-      {
-        label: 'Specifications',
-        key: 'specs',
-        type: 'keyvalue',
-        description: 'Add specs for the model here'
-      },
-      {
-        key: '_parent',
-        transformValue: (value) => {
-          if (value instanceof Object) {
-            return value._id
-          } else {
-            return value
+          },
+          onChange: (event, component) => {
+            let value = event.target.value
+            api.getCategories({ name: value }).then((category) => {
+              component.props.updateFormData({
+                category: value,
+                _parent: category[0]._id
+              })
+              component.props.checkForDiff('category')
+            })
+          }
+        },
+        {
+          label: 'Active',
+          key: 'active',
+          type: 'select',
+          description: 'Set whether this is an active model or not',
+          colspan: 6,
+          options: [
+            true,
+            false
+          ]
+        },
+        {
+          label: 'Image',
+          key: 'image',
+          type: 'image',
+          description: 'Select an image for the model.',
+          colspan: 6
+        },
+        {
+          label: 'Description',
+          key: 'description',
+          type: 'textarea',
+          placeholder: 'Enter the model description',
+          description: 'Enter a short description for the model here.',
+          colspan: 6,
+          height: 195
+        },
+        {
+          label: 'Specifications',
+          key: 'specs',
+          type: 'keyvalue',
+          description: 'Add specs for the model here'
+        },
+        {
+          key: '_parent',
+          transformValue: (value) => {
+            if (value instanceof Object) {
+              return value._id
+            } else {
+              return value
+            }
           }
         }
-      }
-    ],
-    formSubmit: submit.model
+      ],
+      submit: submit.model
+    }
   },
   po: {
     columns: [
@@ -223,24 +229,24 @@ export default {
         maxWidthPer: 5
       }
     ],
-    formStructure: [
-      {
-        label: 'P.O. Number',
-        key: 'poNumber',
-        type: 'text',
-        placeholder: 'Enter the P.0. number',
-        description: 'This is the purchase order number',
-        colspan: 6
-      },
-      {
-        label: 'Business Unit',
-        key: 'bu',
-        type: 'text',
-        placeholder: 'Enter the business unit',
-        description: 'This is the name of the business unit this belongs to',
-        colspan: 6
-      }
-    ]
+    form: {
+      structure: [
+        {
+          label: 'P.O. Number',
+          key: 'poNumber',
+          type: 'text',
+          placeholder: 'Enter the P.0. number',
+          description: 'This is the purchase order number'
+        },
+        {
+          label: 'Business Unit',
+          key: 'bu',
+          type: 'text',
+          placeholder: 'Enter the business unit',
+          description: 'This is the name of the business unit this belongs to'
+        }
+      ]
+    }
   },
   asset: {
     columns: [

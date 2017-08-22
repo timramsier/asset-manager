@@ -5,7 +5,7 @@ import api from '../../js/api'
 export default (component) => {
   const updateData = () => new Promise((resolve, reject) => {
     let data = {}
-    component.props.formStructure.map(entry => {
+    component.props.form.structure.map(entry => {
       if (entry.type === 'keyvalue') {
         data[entry.key] = component.state.form.data[entry.key].map(keyvalue => {
           let { key, value } = keyvalue

@@ -25,14 +25,16 @@ const DataTable = React.createClass({
     })),
     targetCall: string,
     showTotal: bool,
-    formStructure: arrayOf(shape({
-      label: string,
-      key: string,
-      type: string,
-      placeholder: string,
-      description: string
-    })),
-    formSubmit: func
+    form: shape({
+      structure: arrayOf(shape({
+        label: string,
+        key: string,
+        type: string,
+        placeholder: string,
+        description: string
+      })),
+      submit: func
+    })
   },
   getInitialState () {
     return ({
@@ -80,12 +82,12 @@ const DataTable = React.createClass({
     this.setState(newState)
     this.getData()
   },
-  setAdminModal (open, data, formStructure) {
+  setAdminModal (open, data, form) {
     const newState = this.state
     Object.assign(newState.adminModal, {
       open,
       data,
-      formStructure
+      form
     })
     this.setState(newState)
     // locks .main-content from scrolling when modal is open
@@ -104,7 +106,6 @@ const DataTable = React.createClass({
     this.setState({tableWidth})
   },
   resetTable () {
-    console.log('refreshing')
     this.getData('refresh')
   },
   refreshData (data) {
@@ -213,7 +214,7 @@ const DataTable = React.createClass({
     return (
       <div className='data-table' key={this.state.key}>
         <div className='data-table-controls'>
-          {this.props.formStructure &&
+          {this.props.form && this.props.form.structure &&
             <Button className='add-new-entry'
               title='Add New'
               onClick={() => this.setAdminModal(true)}
@@ -275,8 +276,7 @@ const DataTable = React.createClass({
           {this.state.adminModal.open ? <AdminModal
             flashMessage={this.flashMessage}
             resetTable={this.resetTable}
-            formSubmit={this.props.formSubmit}
-            formStructure={this.props.formStructure}
+            form={this.props.form}
             data={this.state.adminModal.data}
             _reset={this.state.adminModal._reset}
             setAdminModal={this.setAdminModal} /> : undefined}
