@@ -4,6 +4,7 @@ import Select from './Select'
 import Text from './Text'
 import TextArea from './TextArea'
 import ImageUpload from './ImageUpload'
+import AssetInputGroup from './AssetInputGroup'
 
 const all = {
   KeyValuePair,
@@ -11,7 +12,8 @@ const all = {
   Select,
   Text,
   TextArea,
-  ImageUpload
+  ImageUpload,
+  AssetInputGroup
 }
 
 export {
@@ -21,5 +23,6 @@ export {
   Select,
   Text,
   TextArea,
-  ImageUpload
+  ImageUpload,
+  AssetInputGroup
 }

@@ -7,14 +7,17 @@ const { object, string, arrayOf, shape, func, number } = React.PropTypes
 const AdminModal = React.createClass({
   propTypes: {
     data: object,
-    formStructure: arrayOf(shape({
-      label: string,
-      key: string,
-      type: string,
-      placeholder: string,
-      description: string,
-      colspan: number
-    })),
+    form: shape({
+      structure: arrayOf(shape({
+        label: string,
+        key: string,
+        type: string,
+        placeholder: string,
+        description: string,
+        colspan: number
+      })),
+      submit: func
+    }),
     setAdminModal: func,
     resetTable: func,
     flashMessage: func
@@ -52,7 +55,7 @@ const AdminModal = React.createClass({
                 _reset={this.state._reset}
                 resetArray={this.resetArray}
                 flashMessage={this.props.flashMessage}
-                formStructure={this.props.formStructure}
+                form={this.props.form}
                 setAdminModal={this.props.setAdminModal}
                 resetTable={this.props.resetTable}
               />
