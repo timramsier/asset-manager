@@ -183,7 +183,14 @@ const Edit = React.createClass({
     }
   },
   sendData () {
-    return this.props.form.submit(this)
+    if (this.props.form.submit && this.props.form.submit instanceof Function) {
+      return this.props.form.submit(this)
+    } else {
+      return new Promise((resolve, reject) => {
+        console.warn('no submit function provided in adminMenuSettings.js')
+        resolve(false)
+      })
+    }
   },
   componentWillMount () {
     let { data } = this.props
@@ -238,7 +245,10 @@ const Edit = React.createClass({
                 .then(() => {
                   this.props.flashMessage(
                     'success',
-                    <span>Successfully updated <strong>{this.state.form.data.name}</strong>.</span>
+                    <span>Successfully updated <strong>
+                      {this.state.form.data.name ||
+                        this.state.form.data.poNumber}
+                    </strong>.</span>
                   )
                 })
                 this.props.setAdminModal(false)

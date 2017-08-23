@@ -87,6 +87,41 @@
   }
 }
 
+.asset-input-group {
+  &-scroll {
+    margin-left: -5px;
+    margin-right: -5px;
+    margin-bottom: 15px;
+    padding: 5px;
+    max-height: 520px;
+    overflow-y: scroll;
+    border: 1px solid #f2f2f2;
+    -webkit-box-shadow: inset 0px 0px 3px 0px rgba(125,125,125,1);
+    -moz-box-shadow: inset 0px 0px 3px 0px rgba(125,125,125,1);
+    box-shadow: inset 0px 0px 3px 0px rgba(125,125,125,1);
+  }
+  .asset-input {
+    & {
+      width: 100%;
+      margin: 5px 0;
+      border-radius: 5px;
+      border: 1px #d1d1d1 solid;
+      background: #f5f5f5;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    &.new-input-true {
+      background: #d8eed8;
+    }
+    & > span {
+      width: 100%;
+    }
+    button {
+      border-radius: 5px!important;
+    }
+  }
+}
+
 // Mixins
 .label-default(@color) {
   background-color: @color;

@@ -63,6 +63,9 @@ const FormInput = React.createClass({
       case 'image':
         Input = InputType.ImageUpload
         break
+      case 'asset':
+        Input = InputType.AssetInputGroup
+        break
       default:
         Input = () => <span />
     }
