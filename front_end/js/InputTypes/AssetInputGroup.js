@@ -26,7 +26,8 @@ const AssetInputGroup = React.createClass({
     resetArray: func,
     addFormArray: func,
     removeFormArray: func,
-    setSaveState: func
+    setSaveState: func,
+    updateSaveState: func
   },
   getInitialState () {
     return ({
@@ -105,6 +106,7 @@ const AssetInputGroup = React.createClass({
                   removeFormArray={this.props.removeFormArray}
                   addFormArray={this.props.addFormArray}
                   pushNewAsset={this.pushNewAsset}
+                  updateSaveState={this.props.updateSaveState}
                 />
               )
             })}
@@ -115,6 +117,7 @@ const AssetInputGroup = React.createClass({
           removeFormArray={this.props.removeFormArray}
           addFormArray={this.props.addFormArray}
           pushNewAsset={this.pushNewAsset}
+          updateSaveState={this.props.updateSaveState}
           newInput
         />
       </div>

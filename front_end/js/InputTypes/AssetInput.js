@@ -16,7 +16,8 @@ const AssetInput = React.createClass({
     newInput: bool,
     removeFormArray: func,
     addFormArray: func,
-    pushNewAsset: func
+    pushNewAsset: func,
+    updateSaveState: func
   },
   getInitialState () {
     return ({
@@ -127,6 +128,7 @@ const AssetInput = React.createClass({
             this.props.addFormArray(_id, 'assets', true)
             this.props.addFormArray(_id, 'changeArray')
           }
+          this.props.updateSaveState()
         }}
         >
         <FontAwesome name='plus' />
@@ -141,6 +143,7 @@ const AssetInput = React.createClass({
           } else {
             this.props.addFormArray(asset._id, 'changeArray')
           }
+          this.props.updateSaveState()
         }}
         >
         <FontAwesome name='trash' />
