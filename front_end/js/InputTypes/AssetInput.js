@@ -125,6 +125,7 @@ const AssetInput = React.createClass({
           if (this.checkValidation()) {
             this.props.pushNewAsset(asset)
             this.props.addFormArray(_id, 'assets', true)
+            this.props.addFormArray(_id, 'changeArray')
           }
         }}
         >
@@ -135,6 +136,11 @@ const AssetInput = React.createClass({
         bsStyle='danger'
         onClick={(event) => {
           this.props.removeFormArray(asset._id, 'assets', true)
+          if (asset._id.startsWith('new_')) {
+            this.props.removeFormArray(asset._id, 'changeArray')
+          } else {
+            this.props.addFormArray(asset._id, 'changeArray')
+          }
         }}
         >
         <FontAwesome name='trash' />

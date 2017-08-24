@@ -1,6 +1,6 @@
 import React from 'react'
 import { VelocityTransitionGroup } from 'velocity-react'
-import { compareArrays } from '../common'
+import { compareArrays, guid } from '../common'
 import api from '../api'
 import AssetInput from './AssetInput'
 
@@ -30,6 +30,7 @@ const AssetInputGroup = React.createClass({
   },
   getInitialState () {
     return ({
+      _id: guid(),
       options: {
         categories: []
       },
@@ -42,7 +43,6 @@ const AssetInputGroup = React.createClass({
     this.setState(newState)
   },
   pushNewAsset (asset) {
-    console.log(asset)
     let newState = this.state
     let assets = newState.assets
     assets.push(asset)
