@@ -3,6 +3,7 @@ import api from '../api'
 import { Col, FormControl, FormGroup, ControlLabel, Grid, Button, Row } from 'react-bootstrap'
 import { VelocityTransitionGroup } from 'velocity-react'
 import FontAwesome from 'react-fontawesome'
+import { guid } from '../common'
 
 const { array, object, shape, bool, func } = React.PropTypes
 
@@ -13,7 +14,9 @@ const AssetInput = React.createClass({
     }),
     asset: object,
     newInput: bool,
-    removeFormArray: func
+    removeFormArray: func,
+    addFormArray: func,
+    pushNewAsset: func
   },
   getInitialState () {
     return ({
@@ -22,13 +25,24 @@ const AssetInput = React.createClass({
         category: 'null',
         model: 'null',
         sn: ''
-      }
+      },
+      validation: {
+        category: null,
+        model: null,
+        sn: null
+      },
+      validationArray: []
     })
+  },
+  setValidationState (validation) {
+    let newState = this.state
+    Object.assign(newState, { validation })
+    this.setState(newState)
   },
   updateModelOptions (category) {
     let newState = this.state
     if (category !== 'null') {
-      api.getModels(category)
+      api.getModels(category, { active: true })
       .then((models) => {
         Object.assign(newState, { models })
         this.setState(newState)
@@ -53,6 +67,9 @@ const AssetInput = React.createClass({
       this.updateModelOptions(this.props.asset._parent.category)
     }
   },
+  checkValidation () {
+    return Object.values(this.state.values).filter(i => i === 'null' || i === '').length === 0
+  },
   render () {
     const { asset, options } = this.props
     const changeBehavior = {
@@ -60,16 +77,31 @@ const AssetInput = React.createClass({
         onChange: (event) => {
           this.handleValueChange({ category: event.target.value })
           this.updateModelOptions(event.target.value)
+        },
+        onBlur: (event) => {
+          let category = null
+          this.state.values.category === 'null' && (category = 'error')
+          this.setValidationState({ category })
         }
       },
       model: {
         onChange: (event) => {
           this.handleValueChange({ model: event.target.value })
+        },
+        onBlur: (event) => {
+          let model = null
+          this.state.values.model === 'null' && (model = 'error')
+          this.setValidationState({ model })
         }
       },
       sn: {
         onChange: (event) => {
           this.handleValueChange({ sn: event.target.value })
+        },
+        onBlur: (event) => {
+          let sn = null
+          this.state.values.sn.length < 1 && (sn = 'error')
+          this.setValidationState({ sn })
         }
       }
     }
@@ -78,7 +110,24 @@ const AssetInput = React.createClass({
     const assetButton = {
       true: (<Button
         title='Add Asset to P.O.'
-        bsStyle='success'>
+        bsStyle='success'
+        onClick={(event) => {
+          const _id = `new_${guid()}`
+          const { model, category, sn } = this.state.values
+          const asset = {
+            _id,
+            sn,
+            _parent: {
+              _id: model,
+              category
+            }
+          }
+          if (this.checkValidation()) {
+            this.props.pushNewAsset(asset)
+            this.props.addFormArray(_id, 'assets', true)
+          }
+        }}
+        >
         <FontAwesome name='plus' />
       </Button>),
       false: (<Button
@@ -102,7 +151,7 @@ const AssetInput = React.createClass({
             <Row>
               <VelocityTransitionGroup enter={{animation: 'fadeIn'}} leave={{animation: 'fadeOut'}}>
                 <Col sm={4}>
-                  <FormGroup>
+                  <FormGroup validationState={this.state.validation.category}>
                     <ControlLabel>Category</ControlLabel>
                     <FormControl
                       disabled={!this.props.newInput}
@@ -124,7 +173,7 @@ const AssetInput = React.createClass({
                 {this.state.models &&
                   this.state.models.length > 0 && (
                   <Col sm={4}>
-                    <FormGroup>
+                    <FormGroup validationState={this.state.validation.model}>
                       <ControlLabel>Model</ControlLabel>
                       <FormControl
                         disabled={!this.props.newInput}
@@ -148,7 +197,7 @@ const AssetInput = React.createClass({
                   this.state.models.length > 0 &&
                   this.state.values.model !== 'null' && (
                   <Col sm={4}>
-                    <FormGroup>
+                    <FormGroup validationState={this.state.validation.sn}>
                       <ControlLabel>Serial Number</ControlLabel>
                       <FormControl
                         disabled={!this.props.newInput}

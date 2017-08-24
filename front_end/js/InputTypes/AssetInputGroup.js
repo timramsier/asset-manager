@@ -42,6 +42,7 @@ const AssetInputGroup = React.createClass({
     this.setState(newState)
   },
   pushNewAsset (asset) {
+    console.log(asset)
     let newState = this.state
     let assets = newState.assets
     assets.push(asset)
@@ -103,6 +104,7 @@ const AssetInputGroup = React.createClass({
                   asset={asset}
                   removeFormArray={this.props.removeFormArray}
                   addFormArray={this.props.addFormArray}
+                  pushNewAsset={this.pushNewAsset}
                 />
               )
             })}
@@ -112,6 +114,7 @@ const AssetInputGroup = React.createClass({
           options={this.state.options}
           removeFormArray={this.props.removeFormArray}
           addFormArray={this.props.addFormArray}
+          pushNewAsset={this.pushNewAsset}
           newInput
         />
       </div>

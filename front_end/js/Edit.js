@@ -184,7 +184,6 @@ const Edit = React.createClass({
       if (this.state.form[arrayName]) {
         let array = newState.form[arrayName] || []
         let index = array.indexOf(inputName)
-        console.log({inputName, arrayName, array, index})
         if (index >= 0) {
           array.splice(index, 1)
           Object.assign(newState.form, { [arrayName]: array })
@@ -194,7 +193,6 @@ const Edit = React.createClass({
       if (this.state.form.data[arrayName]) {
         let array = newState.form.data[arrayName] || []
         let index = array.indexOf(inputName)
-        console.log({inputName, arrayName, array, index})
         if (index >= 0) {
           array.splice(index, 1)
           Object.assign(newState.form.data, { [arrayName]: array })
