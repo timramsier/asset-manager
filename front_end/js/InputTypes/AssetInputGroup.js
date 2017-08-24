@@ -1,5 +1,6 @@
 import React from 'react'
 import { VelocityTransitionGroup } from 'velocity-react'
+import { compareArrays } from '../common'
 import api from '../api'
 import AssetInput from './AssetInput'
 
@@ -40,13 +41,6 @@ const AssetInputGroup = React.createClass({
     Object.assign(newState.options, options)
     this.setState(newState)
   },
-  updateScrollHeight () {
-    const scrollHeight = document.getElementsByClassName('asset-input-group-scroll')[0].getBoundingClientRect().height
-    console.log(scrollHeight)
-    let newState = this.state
-    Object.assign(newState, { scrollHeight })
-    this.setState(newState)
-  },
   pushNewAsset (asset) {
     let newState = this.state
     let assets = newState.assets
@@ -54,14 +48,35 @@ const AssetInputGroup = React.createClass({
     Object.assign(newState, { assets })
     this.setState(newState)
   },
+  removeAsset (_id) {
+    let newState = this.state
+    let index = newState.assets.findIndex(i => i._id === _id)
+    if (index > -1) {
+      newState.assets.splice(index, 1)
+      index > -1 && (this.setState(newState))
+    }
+  },
   componentWillMount () {
     api.getCategories().then((categories) => {
       let options = categories.map(i => i.name)
       this.updateOptions({ categories: options })
     })
-    if (this.props.value) {
-      this.props.value.forEach(value => {
-        api._get('assets', { _id: value })
+  },
+  componentWillReceiveProps (nextProps) {
+    const assets = this.state.assets.map(i => i._id)
+    const values = nextProps.value
+    const actions = {
+      remove: compareArrays(assets, values),
+      add: compareArrays(values, assets)
+    }
+    if (actions.remove.length > 0) {
+      actions.remove.map((_id) => {
+        this.removeAsset(_id)
+      })
+    }
+    if (actions.add.length > 0) {
+      actions.add.map((_id) => {
+        api._get('assets', { _id })
         .then((asset) => {
           this.pushNewAsset(asset[0])
         })
@@ -86,7 +101,8 @@ const AssetInputGroup = React.createClass({
                   key={`key_${asset._id}`}
                   options={this.state.options}
                   asset={asset}
-                  updateScrollHeight={this.updateScrollHeight}
+                  removeFormArray={this.props.removeFormArray}
+                  addFormArray={this.props.addFormArray}
                 />
               )
             })}
@@ -94,7 +110,8 @@ const AssetInputGroup = React.createClass({
         </div>
         <AssetInput
           options={this.state.options}
-          updateScrollHeight={this.updateScrollHeight}
+          removeFormArray={this.props.removeFormArray}
+          addFormArray={this.props.addFormArray}
           newInput
         />
       </div>

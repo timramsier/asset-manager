@@ -13,7 +13,7 @@ const AssetInput = React.createClass({
     }),
     asset: object,
     newInput: bool,
-    updateScrollHeight: func
+    removeFormArray: func
   },
   getInitialState () {
     return ({
@@ -83,7 +83,11 @@ const AssetInput = React.createClass({
       </Button>),
       false: (<Button
         title='Remove Asset from P.O.'
-        bsStyle='danger'>
+        bsStyle='danger'
+        onClick={(event) => {
+          this.props.removeFormArray(asset._id, 'assets', true)
+        }}
+        >
         <FontAwesome name='trash' />
       </Button>)
     }
