@@ -7,7 +7,7 @@ import UnderDevelopment from './UnderDevelopment'
 import apiSettings from '../config/apiSettings'
 import AdminOptions from './AdminOptions'
 import api from './api'
-import '../public/less/main.less'
+import '../less/main.less'
 
 if (global) {
   global.System = { import () {} }

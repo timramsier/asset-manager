@@ -20,9 +20,9 @@ const fileUpload = require('express-fileupload')
 const bodyParser = require('body-parser')
 
 const PORT = process.env.PORT || 80
-const baseTemplate = fs.readFileSync('./index.html')
+const baseTemplate = fs.readFileSync('./public/index.html')
 const template = _.template(baseTemplate)
-const App = require('./js/App').default
+const App = require('./src/js/App').default
 
 const server = express()
 
