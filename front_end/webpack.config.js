@@ -34,7 +34,21 @@ const copyWebpackPlugin = new CopyWebpackPlugin([
 
 const VENDOR_LIB = [
   'react',
-  'react-dom'
+  'react-dom',
+  'axios',
+  'body-parser',
+  'fixed-data-table',
+  'react-bootstrap',
+  'history',
+  'lodash',
+  'react-fontawesome',
+  'react-resize-detector',
+  'react-router',
+  'react-router-dom',
+  'shortid',
+  'smoothscroll-polyfill',
+  'url-search-params',
+  'velocity-react'
 ]
 module.exports = {
   context: __dirname,
