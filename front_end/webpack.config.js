@@ -25,7 +25,7 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
 })
 
 const webpackCleanupPlugin = new WebpackCleanupPlugin({
-  exclude: ['uploads/', 'README.md']
+  exclude: ['uploads/', 'README.md', 'img/']
 })
 
 const copyWebpackPlugin = new CopyWebpackPlugin([
