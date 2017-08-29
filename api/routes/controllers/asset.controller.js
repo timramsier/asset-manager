@@ -10,7 +10,7 @@ const addAsset = (req, res, next) => {
     if (err) return res.status(400).send(err)
     Model.findOneAndUpdate({_id: data._parent}, { $push: { assets: data._id } }, (err, result) => {
       if (err) return res.status(400).send(err)
-      res.status(200).send(result)
+      res.status(200).send(data)
     })
   })
 }

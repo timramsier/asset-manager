@@ -30,25 +30,36 @@ const getModifier = (key) => {
 }
 
 const clearData = (modifier) => {
-  return new Promise((resolve, reject) => {
-    Category.collection.drop({}, (err) => {
-      if (err) return console.log(err)
-      if (verbose) console.log('Removing old category data')
+  return Promise.all([
+    new Promise((resolve, reject) => {
+      Category.collection.drop({}, (err) => {
+        if (err) return console.log(err)
+        if (verbose) console.log('Removing old category data')
+        resolve()
+      })
+    }),
+    new Promise((resolve, reject) => {
+      Model.collection.drop({}, (err) => {
+        if (err) return console.log(err)
+        if (verbose) console.log('Removing old model data')
+        resolve()
+      })
+    }),
+    new Promise((resolve, reject) => {
+      Asset.collection.drop({}, (err) => {
+        if (err) return console.log(err)
+        if (verbose) console.log('Removing old asset data')
+        resolve()
+      })
+    }),
+    new Promise((resolve, reject) => {
+      Po.collection.drop({}, (err) => {
+        if (err) return console.log(err)
+        if (verbose) console.log('Removing old po')
+        resolve()
+      })
     })
-    Model.collection.drop({}, (err) => {
-      if (err) return console.log(err)
-      if (verbose) console.log('Removing old model data')
-    })
-    Asset.collection.drop({}, (err) => {
-      if (err) return console.log(err)
-      if (verbose) console.log('Removing old asset data')
-    })
-    Po.collection.drop({}, (err) => {
-      if (err) return console.log(err)
-      if (verbose) console.log('Removing old po')
-    })
-    setTimeout(() => resolve(modifier), 500)
-  })
+  ]).then(() => Promise.resolve(modifier))
 }
 
 const addCategories = (modifier) => {
