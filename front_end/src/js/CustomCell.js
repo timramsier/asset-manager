@@ -94,12 +94,16 @@ const RemoveCell = React.createClass({
   },
   removeData (cellData) {
     const removeImage = (result) => new Promise((resolve, reject) => {
-      var filename = result.image.split('\\').pop().split('/').pop()
-      axios.delete('/image/delete', {
-        data: {target: filename}
-      })
-        .then(res => { resolve(res) })
-        .catch(err => { reject(err) })
+      if (result.image) {
+        var filename = result.image.split('\\').pop().split('/').pop()
+        axios.delete('/image/delete', {
+          data: {target: filename}
+        })
+          .then(res => { resolve(res) })
+          .catch(err => { reject(err) })
+      } else {
+        resolve(cellData)
+      }
     })
     const removeData = (cellData) => new Promise((resolve, reject) => {
       let url = `${this.props.apiCall}/all/${cellData._shortId}`

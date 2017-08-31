@@ -125,6 +125,7 @@ const AssetInput = React.createClass({
           }
           if (this.checkValidation()) {
             this.props.pushNewAsset(asset)
+            this.props.addFormArray(asset, 'newAssets', true)
             this.props.addFormArray(_id, 'assets', true)
             this.props.addFormArray(_id, 'changeArray')
           }
@@ -140,7 +141,9 @@ const AssetInput = React.createClass({
           this.props.removeFormArray(asset._id, 'assets', true)
           if (asset._id.startsWith('new_')) {
             this.props.removeFormArray(asset._id, 'changeArray')
+            this.props.removeFormArray(asset, 'newAssets', true)
           } else {
+            this.props.addFormArray(asset._shortId, 'removeAssets')
             this.props.addFormArray(asset._id, 'changeArray')
           }
           this.props.updateSaveState()

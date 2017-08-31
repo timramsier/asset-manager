@@ -85,9 +85,6 @@ const ShowModels = React.createClass({
       case 'inactive':
         active = false
         break
-      default:
-        active = true
-        break
     }
     let search
     if (this.state.searchTerm.length > 0) {

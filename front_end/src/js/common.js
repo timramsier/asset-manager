@@ -29,7 +29,11 @@ const guid = () => {
     s4() + '-' + s4() + s4() + s4()
 }
 const compareArrays = (ref, diff) => {
-  return ref.filter(i => { return diff.indexOf(i) < 0 })
+  if (ref instanceof Array && diff instanceof Array) {
+    return ref.filter(i => { return diff.indexOf(i) < 0 })
+  } else {
+    return []
+  }
 }
 
 const all = {

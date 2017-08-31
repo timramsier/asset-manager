@@ -156,6 +156,10 @@ const DataTable = React.createClass({
         })
         return data
       }
+      console.log({url: `${this.props.apiCall}/all${targetCall}`,
+        limit: this.state.limit,
+        skip: this.state.skip,
+        search})
       let responseData = response
       responseData = _addDisplayName(responseData, 'assignedTo', 'Unassigned')
       responseData = _addDisplayName(responseData, 'lastModifiedBy')

@@ -39,7 +39,9 @@ const ApiHandler = function (options) {
     _delete,
     getCategories: (params) => _get('categories', params),
     getModels: (category, params) => _get(`models/${category}`, params),
-    getMetaData: (url) => _get(`${url}/all/meta`)
+    getMetaData: (url) => _get(`${url}/all/meta`),
+    addPO: (poNumber, bu) => _send('post', 'pos', { poNumber, bu }),
+    addAsset: (data) => _send('post', 'assets', data)
   }
 
   return api
