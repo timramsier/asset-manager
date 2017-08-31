@@ -102,8 +102,10 @@ const DataTable = React.createClass({
     }
   },
   resizeTable (element) {
-    var tableWidth = element.offsetWidth
-    this.setState({tableWidth})
+    if (this._isMounted) {
+      var tableWidth = element.offsetWidth
+      this.setState({tableWidth})
+    }
   },
   resetTable () {
     this.getData('refresh')
@@ -154,6 +156,10 @@ const DataTable = React.createClass({
         })
         return data
       }
+      console.log({url: `${this.props.apiCall}/all${targetCall}`,
+        limit: this.state.limit,
+        skip: this.state.skip,
+        search})
       let responseData = response
       responseData = _addDisplayName(responseData, 'assignedTo', 'Unassigned')
       responseData = _addDisplayName(responseData, 'lastModifiedBy')
@@ -182,6 +188,7 @@ const DataTable = React.createClass({
     }
   },
   componentDidMount () {
+    this._isMounted = true
     this._thisElement = findDOMNode(this)
     this.getMetaData()
     this.getData()
@@ -190,6 +197,9 @@ const DataTable = React.createClass({
     window.addEventListener('resize', (event) => {
       this.resizeTable(this._thisElement)
     }, true)
+  },
+  comonentWillUnmount () {
+    this._isMounted = false
   },
   render () {
     const columns = this.state.columns

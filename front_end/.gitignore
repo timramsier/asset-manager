@@ -4,4 +4,4 @@ node_modules/
 *bundle*
 .DS_Store
 npm-debug.log
-public/uploads
+public

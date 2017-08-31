@@ -161,26 +161,45 @@ const Edit = React.createClass({
     }
     this.updateSaveState()
   },
-  addFormArray (inputName, arrayName) {
+  addFormArray (inputName, arrayName, data = false) {
     let newState = this.state
-    if (!this.state.form[arrayName] || this.state.form[arrayName].indexOf(inputName) < 0) {
-      let array = newState.form[arrayName] || []
-      array.push(inputName)
-      Object.assign(newState.form, { [arrayName]: array })
-      this.setState(newState)
-    }
-  },
-  removeFormArray (inputName, arrayName) {
-    let newState = this.state
-    if (this.state.form[arrayName]) {
-      let array = newState.form[arrayName] || []
-      let index = array.indexOf(inputName)
-      if (index >= 0) {
-        array.splice(index, 1)
+    if (!data) {
+      if (!this.state.form[arrayName] || this.state.form[arrayName].indexOf(inputName) < 0) {
+        let array = newState.form[arrayName] || []
+        array.push(inputName)
         Object.assign(newState.form, { [arrayName]: array })
-        this.setState(newState)
+      }
+    } else {
+      if (!this.state.form[arrayName] || this.state.form[arrayName].indexOf(inputName) < 0) {
+        let array = newState.form.data[arrayName] || []
+        array.push(inputName)
+        Object.assign(newState.form.data, { [arrayName]: array })
       }
     }
+    this.setState(newState)
+  },
+  removeFormArray (inputName, arrayName, data = false) {
+    let newState = this.state
+    if (!data) {
+      if (this.state.form[arrayName]) {
+        let array = newState.form[arrayName] || []
+        let index = array.indexOf(inputName)
+        if (index >= 0) {
+          array.splice(index, 1)
+          Object.assign(newState.form, { [arrayName]: array })
+        }
+      }
+    } else {
+      if (this.state.form.data[arrayName]) {
+        let array = newState.form.data[arrayName] || []
+        let index = array.indexOf(inputName)
+        if (index >= 0) {
+          array.splice(index, 1)
+          Object.assign(newState.form.data, { [arrayName]: array })
+        }
+      }
+    }
+    this.setState(newState)
   },
   sendData () {
     if (this.props.form.submit && this.props.form.submit instanceof Function) {

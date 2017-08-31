@@ -1,9 +1,13 @@
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
+// Plugins
 const extractLess = new ExtractTextPlugin({
-  filename: 'styles.css',
+  filename: 'styles.[hash].css',
   disable: process.env.NODE_ENV === 'development'
 })
 
@@ -12,14 +16,51 @@ const definePlugin = new webpack.DefinePlugin({
   'process.env.APP_DATABASE_API_KEY': JSON.stringify(process.env.APP_DATABASE_API_KEY)
 })
 
+const CommonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin({
+  names: ['vendor', 'manifest']
+})
+
+const htmlWebpackPlugin = new HtmlWebpackPlugin({
+  template: './src/html/index.html'
+})
+
+const webpackCleanupPlugin = new WebpackCleanupPlugin({
+  exclude: ['uploads/*', 'README.md', 'img/*']
+})
+
+const copyWebpackPlugin = new CopyWebpackPlugin([
+  {from: 'src/img', to: 'img'}
+])
+
+const VENDOR_LIB = [
+  'react',
+  'react-dom',
+  'axios',
+  'body-parser',
+  'fixed-data-table',
+  'react-bootstrap',
+  'history',
+  'lodash',
+  'react-fontawesome',
+  'react-resize-detector',
+  'react-router',
+  'react-router-dom',
+  'shortid',
+  'smoothscroll-polyfill',
+  'url-search-params',
+  'velocity-react'
+]
 module.exports = {
   context: __dirname,
-  entry: './js/ClientApp.js',
+  entry: {
+    bundle: './src/js/ClientApp.js',
+    vendor: VENDOR_LIB
+  },
   devtool: 'eval',
   output: {
     publicPath: '/public/',
     path: path.join(__dirname, '/public'),
-    filename: 'bundle.js'
+    filename: '[name].[chunkhash].js'
   },
   devServer: {
     publicPath: '/public/',
@@ -52,7 +93,7 @@ module.exports = {
       },
       {
         include: [
-          path.resolve(__dirname, 'js'),
+          path.resolve(__dirname, 'src'),
           path.resolve('node_modules/preat-compat/src')
         ],
         test: /\.js$/,
@@ -71,13 +112,6 @@ module.exports = {
         ]
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: [
-          'file?hash=sha512&digest=hex&name=[hash].[ext]',
-          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-        ]
-      },
-      {
         test: /\.less$/,
         use: extractLess.extract({
           use: [{
@@ -92,8 +126,11 @@ module.exports = {
     ]
   },
   plugins: [
-    // new ExtractTextPlugin('style.css')
     extractLess,
-    definePlugin
+    definePlugin,
+    htmlWebpackPlugin,
+    CommonsChunkPlugin,
+    webpackCleanupPlugin,
+    copyWebpackPlugin
   ]
 }

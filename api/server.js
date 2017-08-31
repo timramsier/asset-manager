@@ -17,7 +17,6 @@ const database = {
   host: process.env.APP_DATABASE_HOST || 'localhost',
   seed: process.env.APP_DATABASE_SEED || false,
   createAdminUser: process.env.APP_CREATE_ADMIN_USER || false,
-  createApiKey: process.env.APP_CREATE_API_KEY || false,
   customApiKey: process.env.APP_CUSTOM_API_KEY
 }
 
@@ -51,46 +50,46 @@ dbConnection.on('connected', () => {
   }
   const createAppApiKey = () => {
     return new Promise((resolve, reject) => {
-      if (database.createApiKey) {
-        User.findOne({accessLevel: 'Main API'}).exec((error, result) => {
-          if (error) console.log(`\x1b[31m${error}\x1b[0m`)
-          let apiKey
-          if (!result) {
-            console.log('\x1b[33mMain API Key does not exist, creating API Key', '\x1b[0m')
-            // if APP_CUSTOM_API_KEY is provided, the created key will be supplied value
-            if (process.env.APP_CUSTOM_API_KEY) {
-              apiKey = process.env.APP_CUSTOM_API_KEY
-            } else {
-              apiKey = guid()
-            }
-            User.create({
-              username: apiKey,
-              firstName: 'API',
-              lastName: 'Key',
-              password: 'x',
-              email: 'api_key@domain.com',
-              accessLevel: 'Main API'
-            }, (error, key) => {
-              if (error) {
-                console.log(`\x1b[31m${error}\x1b[0m`)
-              } else {
-                console.log('\x1b[32mAPI Key:', key.username, '\x1b[0m')
-                resolve(key.username)
-              }
-            })
+      User.findOne({accessLevel: 'Main API'}).exec((error, result) => {
+        if (error) console.log(`\x1b[31m${error}\x1b[0m`)
+        let apiKey
+        if (!result) {
+          console.log('\x1b[33mMain API Key does not exist, creating API Key', '\x1b[0m')
+          // if APP_CUSTOM_API_KEY is provided, the created key will be supplied value
+          if (process.env.APP_CUSTOM_API_KEY) {
+            apiKey = process.env.APP_CUSTOM_API_KEY
           } else {
-            console.log('\x1b[33mMain API Key already exists, using current', '\x1b[0m')
-            console.log('\x1b[32mAPI Key:', result.username, '\x1b[0m')
-            resolve(result.username)
+            apiKey = guid()
           }
-        })
-      }
+          User.create({
+            username: apiKey,
+            firstName: 'API',
+            lastName: 'Key',
+            password: 'x',
+            email: 'api_key@domain.com',
+            accessLevel: 'Main API'
+          }, (error, key) => {
+            if (error) {
+              console.log(`\x1b[31m${error}\x1b[0m`)
+            } else {
+              console.log('\x1b[32mAPI Key:', key.username, '\x1b[0m')
+              resolve(key.username)
+            }
+          })
+        } else {
+          console.log('\x1b[33mMain API Key already exists, using current', '\x1b[0m')
+          console.log('\x1b[32mAPI Key:', result.username, '\x1b[0m')
+          resolve(result.username)
+        }
+      })
     })
   }
   const seedDatabase = (username) => {
     if (database.seed) {
+      console.log('\x1b[32mSeeding Database\x1b[0m')
       return seedData(username)
     } else {
+      console.log('\x1b[33mSkipping Database Seeding\x1b[0m')
       return new Promise((resolve, reject) => (resolve(true)))
     }
   }
@@ -121,6 +120,8 @@ dbConnection.on('connected', () => {
             resolve(false)
           }
         })
+      } else {
+        resolve(true)
       }
     })
   }

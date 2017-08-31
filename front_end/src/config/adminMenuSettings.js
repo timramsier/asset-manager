@@ -230,6 +230,10 @@ export default {
       }
     ],
     form: {
+      header: {
+        title: 'Purchase Orders',
+        description: 'Create and update purchase orders and their assets.'
+      },
       structure: [
         {
           label: 'P.O. Number',
@@ -253,7 +257,8 @@ export default {
           type: 'asset',
           description: 'These are the assets associated with this P.O.'
         }
-      ]
+      ],
+      submit: submit.po
     }
   },
   asset: {

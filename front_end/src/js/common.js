@@ -28,14 +28,23 @@ const guid = () => {
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
     s4() + '-' + s4() + s4() + s4()
 }
+const compareArrays = (ref, diff) => {
+  if (ref instanceof Array && diff instanceof Array) {
+    return ref.filter(i => { return diff.indexOf(i) < 0 })
+  } else {
+    return []
+  }
+}
 
 const all = {
   setGridProps,
-  guid
+  guid,
+  compareArrays
 }
 
 export {
  all as default,
   setGridProps,
-  guid
+  guid,
+  compareArrays
 }

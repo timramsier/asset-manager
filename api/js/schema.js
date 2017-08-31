@@ -55,8 +55,8 @@ const modelSchema = Schema({
 
 const poSchema = Schema({
   _shortId: {type: String, unique: true, default: shortId.generate},
-  poNumber: {type: String, unique: true},
-  bu: String,
+  poNumber: {type: String, required: true},
+  bu: {type: String, required: true},
   lastModifiedBy: { type: String, ref: 'User' },
   lastModified: { type: Date, default: Date.now },
   createdBy: { type: String, ref: 'User' },
