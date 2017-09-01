@@ -108,7 +108,7 @@ const _controller = (
     }) => {
       if (!req.body) return res.status(400).send('No request body found!')
       let data = req.body
-      Object.assign(data, {lastModifiedBy: req.user._id, lastModified: new Date()})
+      Object.assign(data, {createdBy: req.user._id, lastModifiedBy: req.user._id, lastModified: new Date()})
       model.create(data, (err, result) => {
         callback(err, result)
       })

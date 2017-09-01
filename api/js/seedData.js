@@ -9,8 +9,17 @@ const Asset = assetModel
 const Po = poModel
 const categoriesJS = require('../data/categories.js')
 
+mongoose.Promise = global.Promise
+
 // run config
 const verbose = false
+const database = {
+  name: process.env.APP_DATABASE_NAME || 'app_default_database',
+  host: process.env.APP_DATABASE_HOST || 'localhost',
+  seed: process.env.APP_DATABASE_SEED || false,
+  createAdminUser: process.env.APP_CREATE_ADMIN_USER || false,
+  customApiKey: process.env.APP_CUSTOM_API_KEY || 'non-secure-api-key'
+}
 
 const imageCategories = [
   'abstract', 'animals', 'business', 'cats', 'city', 'food', 'nightlife',
@@ -21,6 +30,7 @@ const _coinFlip = () => {
 }
 
 const getModifier = (key) => {
+  console.log('1. getModifier')
   return new Promise((resolve, reject) => {
     User.findOne({username: key}).exec((err, result) => {
       if (err) console.log(err)
@@ -30,6 +40,7 @@ const getModifier = (key) => {
 }
 
 const clearData = (modifier) => {
+  console.log('2. clearData')
   return Promise.all([
     new Promise((resolve, reject) => {
       Category.collection.drop({}, (err) => {
@@ -63,23 +74,26 @@ const clearData = (modifier) => {
 }
 
 const addCategories = (modifier) => {
-  return new Promise((resolve, reject) => {
-    var categories = []
-    categoriesJS.forEach((asset) => {
+  console.log('3. addCategories')
+  let promArray = []
+  categoriesJS.forEach((asset) => {
+    promArray.push(new Promise((resolve, reject) => {
       Category.create(asset, (err, category) => {
         Object.assign(category, {
           lastModifiedBy: modifier
         })
         if (err) {
           if (verbose) console.log(err)
+          reject(err)
         } else {
           if (verbose) console.log('Successfully saved:', category)
-          categories.push(category)
+          resolve(category)
         }
       })
-    })
-    setTimeout(() => resolve({categories, modifier}), 500)
+    }))
   })
+  return Promise.all(promArray)
+    .then((categories) => Promise.resolve({categories, modifier}))
 }
 
 const addModels = (data) => {
@@ -121,23 +135,22 @@ const addModels = (data) => {
     }
     return returnData
   }
-  return new Promise((resolve, reject) => {
-    var models = []
-    categories.forEach((category) => {
-      let data = _createModels(12)
-      data.forEach((model) => {
-        Object.assign(model, {
-          _parent: category._id,
-          category: category.name,
-          lastModifiedBy: modifier,
-          lastModified: new Date()
-        })
+  let promArray = []
+  categories.forEach((category) => {
+    let data = _createModels(12)
+    data.forEach((model) => {
+      Object.assign(model, {
+        _parent: category._id,
+        category: category.name,
+        lastModifiedBy: modifier,
+        lastModified: new Date()
+      })
+      promArray.push(new Promise((resolve, reject) => {
         Model.create(model, (err, model) => {
           if (err) {
             if (verbose) console.log(err)
             reject(err)
           } else {
-            models.push(model)
             Category.findOneAndUpdate(
               { _id: category._id },
               { $push: { models: model._id },
@@ -156,20 +169,23 @@ const addModels = (data) => {
                 reject(err)
               }
               if (verbose) console.log('Successfully created:', model)
+              resolve(model)
             })
           }
         })
-      })
+      }))
     })
-    setTimeout(() => resolve({models, modifier}), 500)
   })
+  console.log('4. addModels')
+  return Promise.all(promArray)
+      .then((models) => Promise.resolve({models, modifier}))
 }
 
 const addPOs = (data) => {
   const { models, modifier } = data
-  return new Promise((resolve, reject) => {
-    let pos = []
-    for (let i = 0; i < 50; i++) {
+  let promArray = []
+  for (let i = 0; i < 50; i++) {
+    promArray.push(new Promise((resolve, reject) => {
       let po = {
         poNumber: Math.floor(Math.random() * 1000000),
         bu: 'IACP',
@@ -179,26 +195,24 @@ const addPOs = (data) => {
       Po.create(po, (err, po) => {
         if (err) {
           if (verbose) console.log(err)
+          reject(err)
         } else {
           if (verbose) console.log('Successfully saved:', po)
-          pos.push(po)
+          resolve(po)
         }
       })
-    }
-    let data = {
-      pos,
-      models,
-      modifier
-    }
-    setTimeout(() => resolve(data), 500)
-  })
+    }))
+  }
+  console.log('5. addPOs')
+  return Promise.all(promArray)
+    .then(pos => Promise.resolve({ pos, models, modifier }))
 }
 
 const addAssets = (data) => {
-  return new Promise((resolve, reject) => {
-    const { models, pos, modifier } = data
-    let assets = []
-    for (let i = 0; i < 200; i++) {
+  const { models, pos, modifier } = data
+  let promArray = []
+  for (let i = 0; i < 200; i++) {
+    promArray.push(new Promise((resolve, reject) => {
       const mIndex = Math.floor(Math.random() * models.length)
       const pIndex = Math.floor(Math.random() * pos.length)
       let asset = {
@@ -239,18 +253,21 @@ const addAssets = (data) => {
               if (verbose) console.log(err)
             }
           )
-          assets.push(asset)
+          resolve(asset)
         }
       })
-    }
-    setTimeout(() => resolve(assets), 500)
-  })
+    }))
+  }
+  console.log('6. addAssets')
+  return Promise.all(promArray)
+    .then(assets => Promise.resolve(assets))
 }
 
 const seedData = (apiKey = false) => {
   if (!apiKey) {
     console.log('\x1b[31mMust provide API Key', '\x1b[0m')
   } else {
+    console.log('0. seedData')
     return new Promise((resolve, reject) => {
       getModifier(apiKey)
       .then(clearData)
@@ -260,10 +277,18 @@ const seedData = (apiKey = false) => {
       .then(addAssets)
       .then(() => {
         console.log('\x1b[32mSuccessfully seeded database', '\x1b[0m')
-        resolve(true)
+        console.log('\x1b[32mClosing seeding connection', '\x1b[0m')
+        process.exit()
       })
     })
   }
 }
+console.log('\x1b[33mConnecting to MongoDB:', database, '\x1b[0m')
 
-module.exports = seedData
+const dbUri = `mongodb://${database.host}/${database.name}`
+mongoose.connect(dbUri)
+var dbConnection = mongoose.connection
+dbConnection.on('error', console.error.bind(console, 'MongoDB connection error:'))
+dbConnection.on('connected', () => {
+  seedData(database.customApiKey)
+})
