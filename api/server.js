@@ -4,9 +4,7 @@ const bodyParser = require('body-parser')
 const logger = require('morgan')
 const passport = require('passport')
 const api = require('./routes/api.router')
-const seedData = require('./js/seedData')
 const User = require('./auth/schema')
-const { guid } = require('./js/common')
 process.on('unhandledRejection', console.log.bind(console))
 // set mongoose's promise library to es6 promise library
 mongoose.Promise = global.Promise
@@ -59,7 +57,7 @@ dbConnection.on('connected', () => {
           if (process.env.APP_CUSTOM_API_KEY) {
             apiKey = process.env.APP_CUSTOM_API_KEY
           } else {
-            apiKey = guid()
+            apiKey = 'non-secure-api-key'
           }
           User.create({
             username: apiKey,
@@ -84,15 +82,7 @@ dbConnection.on('connected', () => {
       })
     })
   }
-  const seedDatabase = (username) => {
-    if (database.seed) {
-      console.log('\x1b[32mSeeding Database\x1b[0m')
-      return seedData(username)
-    } else {
-      console.log('\x1b[33mSkipping Database Seeding\x1b[0m')
-      return new Promise((resolve, reject) => (resolve(true)))
-    }
-  }
+
   const createAppAdminUser = () => {
     return new Promise((resolve, reject) => {
       if (database.createAdminUser) {
@@ -174,7 +164,6 @@ dbConnection.on('connected', () => {
 
   handlePreviousAPIKey()
     .then(createAppApiKey)
-    .then(seedDatabase)
     .then(createAppAdminUser)
     .then(startServer)
 })
