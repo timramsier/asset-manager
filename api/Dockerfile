@@ -9,4 +9,4 @@ COPY . .
 
 RUN npm install
 
-CMD ["node", "/var/www/api.js"]
+CMD ["node", "/var/www/server.js"]
