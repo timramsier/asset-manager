@@ -1,5 +1,6 @@
 // Load required packages
 var User = require('../schema')
+const _controller = require('../../routes/controllers/_.controller')
 
 // Create endpoint /api/users for POST
 exports.postUsers = function (req, res) {
@@ -20,10 +21,4 @@ exports.postUsers = function (req, res) {
 }
 
 // Create endpoint /api/users for GET
-exports.getUsers = function (req, res) {
-  User.find(function (err, users) {
-    if (err) return res.send(err)
-
-    res.json(users)
-  })
-}
+exports.getUsers = _controller(User).getAll
