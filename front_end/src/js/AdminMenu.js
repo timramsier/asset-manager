@@ -79,10 +79,12 @@ const POMenu = React.createClass({
 
 const AssetMenu = React.createClass({
   render () {
-    const { columns } = config.asset
     return (
       <div className='po-menu'>
-        <DataTable apiCall='assets' columns={columns} showTotal />
+        <DataTable
+          apiCall='assets'
+          {...config.asset}
+          showTotal />
       </div>
     )
   }

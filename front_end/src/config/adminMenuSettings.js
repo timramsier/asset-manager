@@ -1,5 +1,6 @@
 import api from '../js/api'
 import submit from './submit/submit'
+import React from 'react' // eslint-disable-line no-unused-vars
 
 export default {
   model: {
@@ -330,7 +331,37 @@ export default {
         minWidthPix: 50,
         maxWidthPer: 5
       }
-    ]
+    ],
+    form: {
+      header: {
+        title: 'Assets',
+        description: 'Update and assign individual assets.  If you need to create a new asset, you will need to use the Purchase Orders menu.'
+      },
+      disableNew: true,
+      structure: [
+        {
+          label: 'Purchase Order',
+          key: 'po',
+          type: 'readonly',
+          description: <span>The P.O. this asset was received from <em>(Read Only)</em></span>,
+          transformValue: (value) => {
+            if (value instanceof Object) {
+              return value.poNumber
+            } else {
+              return value
+            }
+          },
+          colspan: 6
+        },
+        {
+          label: 'Serial Number',
+          key: 'sn',
+          type: 'readonly',
+          description: <span>The serial number for this asset <em>(Read Only)</em></span>,
+          colspan: 6
+        }
+      ]
+    }
   },
   user: {
     columns: [
