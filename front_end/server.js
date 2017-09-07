@@ -18,6 +18,9 @@ const _ = require('lodash')
 const fs = require('fs')
 const fileUpload = require('express-fileupload')
 const bodyParser = require('body-parser')
+const api = require('./src/js/api').default
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy
 
 const PORT = process.env.PORT || 80
 const baseTemplate = fs.readFileSync('./public/index.html')
@@ -31,9 +34,25 @@ server.use(bodyParser.json())
 server.use(bodyParser.urlencoded({
   extended: false
 }))
-
 server.use('/public', express.static('./public'))
 
+// Authentication
+api.getUserByUsername('ADMIN').then(result => console.log(result))
+// passport.use(new LocalStrategy(
+// (username, password, cb) => {
+//   api.getUsers()
+//   db.users.findByUsername(username, (err, user) => {
+//     if (err) { return cb(err) }
+//     if (!user) { return cb(null, false) }
+//     if (user.password !== password) { return cb(null, false) }
+//     return cb(null, user)
+//   })
+// }))
+
+
+
+
+// Routes
 server.delete('/image/delete', (req, res) => {
   console.log(req.body)
   const { target } = req.body
