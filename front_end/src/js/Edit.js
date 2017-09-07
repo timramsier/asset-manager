@@ -6,7 +6,7 @@ import FontAwesome from 'react-fontawesome'
 import { guid } from './common'
 import shortid from 'shortid'
 
-const { shape, string, arrayOf, func, object } = React.PropTypes
+const { shape, string, arrayOf, func, object, oneOfType } = React.PropTypes
 
 const Edit = React.createClass({
   propTypes: {
@@ -16,7 +16,7 @@ const Edit = React.createClass({
         key: string,
         type: string,
         placeholder: string,
-        description: string,
+        description: oneOfType([string, object]),
         transformValue: func
       })),
       submit: func
@@ -289,7 +289,7 @@ const Edit = React.createClass({
     if (this.props.form.header) {
       this.props.form.header.title && (title = this.props.form.header.title)
       description = (
-        <Well>{this.props.form.header.description}</Well>
+        <Well className='admin-edit-description'>{this.props.form.header.description}</Well>
       )
     }
     return (
@@ -299,13 +299,17 @@ const Edit = React.createClass({
           <form>
             {description}
             {formStructure.map((input) => {
+              let value = this.state.form.data[input.key]
+              if (input.transformValue && input.transformValue instanceof Function) {
+                value = input.transformValue(this.state.form.data[input.key])
+              }
               if (input.type) {
                 return (
                   <FormInput
                     tempId={this.state.tempId}
                     key={`input_${input.key}`}
                     formData={this.state.form.data}
-                    value={this.state.form.data[input.key]}
+                    value={value}
                     structure={input}
                     addFormArray={this.addFormArray}
                     removeFormArray={this.removeFormArray}

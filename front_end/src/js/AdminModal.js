@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
 import Edit from './Edit'
 
-const { object, string, arrayOf, shape, func, number } = React.PropTypes
+const { object, string, arrayOf, shape, func, number, oneOfType } = React.PropTypes
 
 const AdminModal = React.createClass({
   propTypes: {
@@ -13,7 +13,7 @@ const AdminModal = React.createClass({
         key: string,
         type: string,
         placeholder: string,
-        description: string,
+        description: oneOfType([string, object]),
         colspan: number
       })),
       submit: func

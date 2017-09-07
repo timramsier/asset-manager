@@ -5,6 +5,7 @@ import Text from './Text'
 import TextArea from './TextArea'
 import ImageUpload from './ImageUpload'
 import AssetInputGroup from './AssetInputGroup'
+import ReadOnly from './ReadOnly'
 
 const all = {
   KeyValuePair,
@@ -13,7 +14,8 @@ const all = {
   Text,
   TextArea,
   ImageUpload,
-  AssetInputGroup
+  AssetInputGroup,
+  ReadOnly
 }
 
 export {
@@ -24,5 +26,6 @@ export {
   Text,
   TextArea,
   ImageUpload,
-  AssetInputGroup
+  AssetInputGroup,
+  ReadOnly
 }
