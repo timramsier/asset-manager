@@ -5,7 +5,7 @@ import HelperText from './HelperText'
 import { Col, FormGroup, ControlLabel } from 'react-bootstrap'
 import { findDOMNode } from 'react-dom'
 
-const { shape, string, func, oneOfType, array, bool } = React.PropTypes
+const { shape, string, func, oneOfType, array, bool, object } = React.PropTypes
 
 const FormInput = React.createClass({
   propTypes: {
@@ -20,7 +20,7 @@ const FormInput = React.createClass({
       key: string,
       type: string,
       placeholder: string,
-      description: string,
+      description: oneOfType([string, object]),
       options: oneOfType([array, func]),
       onChange: func
     }),
@@ -65,6 +65,9 @@ const FormInput = React.createClass({
         break
       case 'asset':
         Input = InputType.AssetInputGroup
+        break
+      case 'readonly':
+        Input = InputType.ReadOnly
         break
       default:
         Input = () => <span />

@@ -1,10 +1,10 @@
 import React from 'react'
 import { findDOMNode } from 'react-dom'
-const { string } = React.PropTypes
+const { string, oneOfType, object } = React.PropTypes
 
 const HelperText = React.createClass({
   propTypes: {
-    children: string
+    children: oneOfType([string, object])
   },
   getInitialState () {
     return ({

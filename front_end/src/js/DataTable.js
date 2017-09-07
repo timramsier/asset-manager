@@ -11,7 +11,7 @@ import ReactResizeDetector from 'react-resize-detector'
 import shortid from 'shortid'
 import api from './api'
 
-const { string, arrayOf, shape, number, bool, func } = React.PropTypes
+const { string, arrayOf, shape, number, bool, func, oneOfType, object } = React.PropTypes
 
 const DataTable = React.createClass({
   propTypes: {
@@ -31,7 +31,7 @@ const DataTable = React.createClass({
         key: string,
         type: string,
         placeholder: string,
-        description: string
+        description: oneOfType([string, object])
       })),
       submit: func
     })
@@ -156,10 +156,6 @@ const DataTable = React.createClass({
         })
         return data
       }
-      console.log({url: `${this.props.apiCall}/all${targetCall}`,
-        limit: this.state.limit,
-        skip: this.state.skip,
-        search})
       let responseData = response
       responseData = _addDisplayName(responseData, 'assignedTo', 'Unassigned')
       responseData = _addDisplayName(responseData, 'lastModifiedBy')
@@ -224,7 +220,9 @@ const DataTable = React.createClass({
     return (
       <div className='data-table' key={this.state.key}>
         <div className='data-table-controls'>
-          {this.props.form && this.props.form.structure &&
+          {this.props.form &&
+            this.props.form.structure &&
+            !this.props.form.disableNew &&
             <Button className='add-new-entry'
               title='Add New'
               onClick={() => this.setAdminModal(true)}
