@@ -39,6 +39,8 @@ const ApiHandler = function (options) {
     _delete,
     getUsers: (params) => _get('users', params),
     getUserByUsername: (username) => _get('users', { username }),
+    getUserById: (_id) => _get('users', { _id }),
+    loginById: (_id, password) => _send('post', 'users/login', { _id, password }),
     getCategories: (params) => _get('categories', params),
     getModels: (category, params) => _get(`models/${category}`, params),
     getMetaData: (url) => _get(`${url}/all/meta`),

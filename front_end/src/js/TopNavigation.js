@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom'
 import FontAwesome from 'react-fontawesome'
 import { Navbar, Nav, NavItem, FormControl, FormGroup } from 'react-bootstrap'
 
-const { func } = React.PropTypes
+const { func, object } = React.PropTypes
 
 const TopNavigation = React.createClass({
   propTypes: {
     toggleMenuOpen: func,
     openMenu: func,
-    closeMenu: func
+    closeMenu: func,
+    user: object
   },
   render () {
     let buttonProperties = {
@@ -33,10 +34,12 @@ const TopNavigation = React.createClass({
             <Navbar.Toggle />
             <Navbar.Collapse>
               <Nav pullRight>
-                <NavItem eventKey={1} className='nav-text' {...buttonProperties}>
-                  <FontAwesome name='gear' className='fa-fw' />
-                  <span className='visible-xs-inline-block'>Preferences</span>
-                </NavItem>
+                {this.props.user && this.props.user.accessLevel === 'Admin' &&
+                  <NavItem eventKey={1} className='nav-text' {...buttonProperties}>
+                    <FontAwesome name='gear' className='fa-fw' />
+                    <span className='visible-xs-inline-block'>Preferences</span>
+                  </NavItem>
+                }
               </Nav>
               <Navbar.Form pullRight>
                 <FormGroup>
@@ -44,7 +47,10 @@ const TopNavigation = React.createClass({
                 </FormGroup>
               </Navbar.Form>
               <Navbar.Text pullRight className='hidden-xs'>
-                Signed in as: <Navbar.Link href='#'>Tim Ramsier</Navbar.Link>
+                {this.props.user && this.props.user.username
+                  ? <span><Navbar.Link href='/logout'>Logout of {this.props.user.username}</Navbar.Link></span>
+                  : <Navbar.Link href='/Login'>Log in</Navbar.Link>
+                }
               </Navbar.Text>
             </Navbar.Collapse>
           </Navbar>

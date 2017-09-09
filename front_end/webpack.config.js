@@ -13,7 +13,8 @@ const extractLess = new ExtractTextPlugin({
 
 const definePlugin = new webpack.DefinePlugin({
   'process.env.APP_FRONTEND_API_URI': JSON.stringify(process.env.APP_FRONTEND_API_URI),
-  'process.env.APP_DATABASE_API_KEY': JSON.stringify(process.env.APP_DATABASE_API_KEY)
+  'process.env.APP_DATABASE_API_KEY': JSON.stringify(process.env.APP_DATABASE_API_KEY),
+  'process.env.PORT': JSON.stringify(process.env.PORT)
 })
 
 const CommonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin({

@@ -21,11 +21,55 @@ const bodyParser = require('body-parser')
 const api = require('./src/js/api').default
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
+const cookieParser = require('cookie-parser')
+const cookieSession = require('cookie-session')
 
 const PORT = process.env.PORT || 80
 const baseTemplate = fs.readFileSync('./public/index.html')
 const template = _.template(baseTemplate)
 const App = require('./src/js/App').default
+
+// Authentication
+
+const ensureLoggedIn = () => {
+  return (req, res, next) => {
+    // isAuthenticated is set by `deserializeUser()`
+    if (!req.isAuthenticated || !req.isAuthenticated()) {
+      res.status(401).send({
+        success: false,
+        message: 'You need to be authenticated to access this page!'
+      })
+    } else {
+      next()
+    }
+  }
+}
+
+passport.serializeUser((user, cb) => {
+  cb(null, user)
+})
+
+passport.deserializeUser((user, cb) => {
+  cb(null, user)
+})
+
+passport.use(new LocalStrategy(
+(username, password, cb) => {
+  return api.getUserByUsername(username)
+    .then(user => {
+      return api.loginById(user[0]._id, password)
+      .then(user => {
+        if (!user) { return cb(null, false) }
+        return cb(null, user)
+      })
+      .catch(err => {
+        if (err) { return cb(err) }
+      })
+    })
+    .catch(err => {
+      if (err) { return cb(err) }
+    })
+}))
 
 const server = express()
 
@@ -36,25 +80,35 @@ server.use(bodyParser.urlencoded({
 }))
 server.use('/public', express.static('./public'))
 
-// Authentication
-api.getUserByUsername('ADMIN').then(result => console.log(result))
-// passport.use(new LocalStrategy(
-// (username, password, cb) => {
-//   api.getUsers()
-//   db.users.findByUsername(username, (err, user) => {
-//     if (err) { return cb(err) }
-//     if (!user) { return cb(null, false) }
-//     if (user.password !== password) { return cb(null, false) }
-//     return cb(null, user)
-//   })
-// }))
+// Initialize passport
+server.use(cookieParser())
+server.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2'],
+  maxAge: 1 * 60 * 60 * 1000 // 24 hours
+}))
+server.use(passport.initialize())
+server.use(passport.session())
 
+server.post('/login',
+  passport.authenticate('local', { failureRedirect: '/login?error' }),
+  (req, res) => {
+    res.redirect('/')
+  })
 
+server.get('/user', (req, res) => {
+  res.json(req.user || {})
+})
 
+server.get('/logout', ensureLoggedIn(),
+  (req, res) => {
+    req.logout()
+    res.redirect('/')
+  }
+)
 
 // Routes
 server.delete('/image/delete', (req, res) => {
-  console.log(req.body)
   const { target } = req.body
   const file = `./public/uploads/${target}`
   if (!fs.existsSync(file)) return res.status(200).send('File Doesn\'t Exist')

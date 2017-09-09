@@ -1,10 +1,12 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
+import axios from 'axios'
 import AsyncLoad from './AsyncLoad'
 import defaultLeftNavButtons from '../config/defaultLeftNavButtons'
 import TopNavigation from './TopNavigation'
 import UnderDevelopment from './UnderDevelopment'
 import apiSettings from '../config/apiSettings'
+import localConfig from '../config/local.config'
 import AdminOptions from './AdminOptions'
 import api from './api'
 import '../less/main.less'
@@ -12,7 +14,6 @@ import '../less/main.less'
 if (global) {
   global.System = { import () {} }
 }
-
 const App = React.createClass({
   getInitialState () {
     return ({
@@ -22,7 +23,8 @@ const App = React.createClass({
         type: 'danger',
         message: 'This page is currently under development'
       },
-      modalOpen: false
+      modalOpen: false,
+      user: {}
     })
   },
   toggleMenuOpen (menu) {
@@ -42,6 +44,26 @@ const App = React.createClass({
       document.querySelector('.main-content').classList.remove(`${menu}-open`)
     }, 400)
   },
+  checkLoginUser (user) {
+    console.log('checking...')
+    const { baseUrl, port } = localConfig
+    let url = baseUrl
+    port && port !== 80 && (url += `:${port}`)
+    if (!this.authCheckId) {
+      axios.get(`${url}/user`)
+        .then((response) => {
+          if (response.data && response.data.username) {
+            let newState = this.state
+            Object.assign(newState, { user: response.data })
+            this.setState(newState)
+          } else {
+            let newState = this.state
+            Object.assign(newState, { user: {} })
+            this.setState(newState)
+          }
+        })
+    }
+  },
   componentDidMount () {
     if (!(apiSettings.auth && apiSettings.auth.username)) {
       console.warn('Supply an API key to APP_DATABASE_API_KEY to connect to api')
@@ -51,6 +73,7 @@ const App = React.createClass({
       Object.assign(newState.categories, categories)
       this.setState(newState)
     })
+    this.checkLoginUser()
   },
   checkVisible (element) {
     let _posY = (element) => {
@@ -83,12 +106,18 @@ const App = React.createClass({
   render () {
     const { categories, alertMessage } = this.state
     const { adminOptions } = defaultLeftNavButtons.buttons
+    if (this.state.user.username) {
+      this.authCheckId = setInterval(this.checkLoginUser, 1 * 1 * 60 * 1000)
+    } else {
+      clearInterval(this.authCheckId)
+    }
     return (
       <div className='app'>
         <TopNavigation
           toggleMenuOpen={this.toggleMenuOpen}
           closeMenu={this.closeMenu}
           openMenu={this.openMenu}
+          user={this.state.user}
         />
         <AsyncLoad
           loadingView={() => {
@@ -121,6 +150,14 @@ const App = React.createClass({
             />}
           />
           <Route
+            path='/login'
+            component={(props) => <AsyncLoad
+              props={props}
+              setLoginUser={this.setLoginUser}
+              loadingPromise={System.import('./Login')}
+            />}
+          />
+          <Route
             path='/show/:productType'
             component={(props) => <AsyncLoad
               props={Object.assign({
@@ -136,11 +173,13 @@ const App = React.createClass({
             component={() => <UnderDevelopment />}
           />
         </div>
-        <AdminOptions
-          toggleMenuOpen={this.toggleMenuOpen}
-          closeMenu={this.closeMenu}
-          openMenu={this.openMenu}
-        />
+        {this.state.user && this.state.user.accessLevel === 'Admin' &&
+          <AdminOptions
+            toggleMenuOpen={this.toggleMenuOpen}
+            closeMenu={this.closeMenu}
+            openMenu={this.openMenu}
+          />
+        }
       </div>
     )
   }
