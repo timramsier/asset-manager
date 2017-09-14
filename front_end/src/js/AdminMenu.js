@@ -4,7 +4,7 @@ import { Nav, NavItem } from 'react-bootstrap'
 import DataTable from './DataTable'
 import config from '../config/adminMenuSettings'
 
-const { string, arrayOf, shape, obj } = React.PropTypes
+const { string, arrayOf, shape, object } = React.PropTypes
 
 // Level 1 Controls
 const AdminGroup = React.createClass({
@@ -14,7 +14,7 @@ const AdminGroup = React.createClass({
     icon: string,
     menuOptions: arrayOf(shape({
       title: string,
-      component: obj
+      component: object
     }))
   },
   getInitialState () {
@@ -48,20 +48,30 @@ const AdminGroup = React.createClass({
 })
 
 // Level 2 controls
+const ModelMenu = (props) => (
+  <div className='model-menu'>
+    <DataTable
+      apiCall='models'
+      {...config.model}
+      {...props}
+      showTotal
+    />
+  </div>
+)
 
-const ModelMenu = React.createClass({
-  render () {
-    return (
-      <div className='model-menu'>
-        <DataTable
-          apiCall='models'
-          {...config.model}
-          showTotal
-        />
-      </div>
-    )
-  }
-})
+// const ModelMenu = React.createClass({
+//   render () {
+//     return (
+//       <div className='model-menu'>
+//         <DataTable
+//           apiCall='models'
+//           {...config.model}
+//           showTotal
+//         />
+//       </div>
+//     )
+//   }
+// })
 
 const POMenu = React.createClass({
   render () {
@@ -103,30 +113,32 @@ const UserMenu = React.createClass({
 
 // export menus
 export default {
-  GeneralSettings: () =>
+  GeneralSettings: (props) =>
     <AdminGroup
       header='General Settings'
       icon='gear'
       label='general'
+      {...props}
     />,
-  IdentityManagement: () =>
+  IdentityManagement: (props) =>
     <AdminGroup
       header='Identity Management'
       icon='user-o'
       label='identity'
       menuOptions={[
-        {title: 'Users', component: <UserMenu />}
+        {title: 'Users', component: <UserMenu {...props} />}
       ]}
     />,
-  StockManagement: () =>
+  StockManagement: (props) =>
     <AdminGroup
       header='Stock Management'
       icon='laptop'
       label='stock'
       menuOptions={[
-        {title: 'Models', component: <ModelMenu />},
-        {title: 'Assets', component: <AssetMenu />},
-        {title: 'Purchase Orders', component: <POMenu />}
+        {title: 'Models', component: <ModelMenu {...props} />},
+        {title: 'Assets', component: <AssetMenu {...props} />},
+        {title: 'Purchase Orders', component: <POMenu {...props} />}
       ]}
+      {...props}
     />
 }

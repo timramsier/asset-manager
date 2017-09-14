@@ -3,10 +3,11 @@ import { findDOMNode } from 'react-dom'
 import AdminMenu from './AdminMenu'
 import FontAwesome from 'react-fontawesome'
 
-const { func } = React.PropTypes
+const { func, object } = React.PropTypes
 
 const AdminOptions = React.createClass({
   propTypes: {
+    user: object,
     toggleMenuOpen: func,
     closeMenu: func,
     openMenu: func
@@ -86,9 +87,12 @@ const AdminOptions = React.createClass({
           </ul>
         </div>
         <div className='admin-content'>
-          {this.state.selectedMenu === 'general' ? <AdminMenu.GeneralSettings /> : undefined}
-          {this.state.selectedMenu === 'users' ? <AdminMenu.IdentityManagement /> : undefined}
-          {this.state.selectedMenu === 'stock' ? <AdminMenu.StockManagement /> : undefined}
+          {this.state.selectedMenu === 'general'
+            ? <AdminMenu.GeneralSettings user={this.props.user} /> : undefined}
+          {this.state.selectedMenu === 'users'
+            ? <AdminMenu.IdentityManagement user={this.props.user} /> : undefined}
+          {this.state.selectedMenu === 'stock'
+            ? <AdminMenu.StockManagement user={this.props.user} /> : undefined}
         </div>
       </div>
     )

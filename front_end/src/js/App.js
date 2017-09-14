@@ -45,7 +45,6 @@ const App = React.createClass({
     }, 400)
   },
   checkLoginUser (user) {
-    console.log('checking...')
     const { baseUrl, port } = localConfig
     let url = baseUrl
     port && port !== 80 && (url += `:${port}`)
@@ -175,6 +174,7 @@ const App = React.createClass({
         </div>
         {this.state.user && this.state.user.accessLevel === 'Admin' &&
           <AdminOptions
+            user={this.state.user}
             toggleMenuOpen={this.toggleMenuOpen}
             closeMenu={this.closeMenu}
             openMenu={this.openMenu}
