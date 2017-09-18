@@ -19,4 +19,4 @@
 // }
 
 // export default defaultLeftNavButtons
-export default {buttons: {adminOptions: []}}
+export default { buttons: { adminOptions: [] } };
