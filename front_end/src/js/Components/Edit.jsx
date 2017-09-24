@@ -142,16 +142,11 @@ const Edit = React.createClass({
     if (target instanceof Object) {
       const { key, index } = target;
       inputName = `input_${key}_${hash}`;
-      if (typeof this.state.form.data[key][index] === 'boolean') {
-        ref = `${this.state.form.data[key][index]}`;
-      } else {
-        ref = this.state.form.data[key][index];
-      }
-      if (typeof this.props._reset[key][index] === 'boolean') {
-        diff = `${this.props._reset[key][index]}`;
-      } else {
-        diff = this.props._reset[key][index];
-      }
+
+      ref = JSON.stringify(this.state.form.data[key][index]);
+
+      diff = JSON.stringify(this.props._reset[key][index]);
+
       if (ref.key !== diff.key || ref.value !== diff.value) {
         this.addFormArray(inputName, 'changeArray');
       } else {
@@ -159,16 +154,11 @@ const Edit = React.createClass({
       }
     } else {
       inputName = `input_${target}_${hash}`;
-      if (typeof this.state.form.data[target] === 'boolean') {
-        ref = `${this.state.form.data[target]}`;
-      } else {
-        ref = this.state.form.data[target];
-      }
-      if (typeof this.props._reset[target] === 'boolean') {
-        diff = `${this.props._reset[target]}`;
-      } else {
-        diff = this.props._reset[target];
-      }
+
+      ref = JSON.stringify(this.state.form.data[target]);
+
+      diff = JSON.stringify(this.props._reset[target]);
+
       if (ref !== diff) {
         this.addFormArray(inputName, 'changeArray');
       } else {
@@ -333,11 +323,13 @@ const Edit = React.createClass({
               ) {
                 value = input.transformValue(this.state.form.data[input.key]);
               }
+              let label = '';
+              if (input.label) label = input.label.replace(' ', '');
               if (input.type) {
                 return (
                   <FormInput
                     tempId={this.state.tempId}
-                    key={`input_${input.key}`}
+                    key={`input_${input.key}_${label}`}
                     formData={this.state.form.data}
                     value={value}
                     structure={input}
@@ -356,7 +348,7 @@ const Edit = React.createClass({
                   />
                 );
               }
-              return <span key={`input_${input.key}`} />;
+              return <span key={`input_${input.key}_${label}`} />;
             })}
             <div className="form-buttons">
               <Button bsStyle="danger" {...buttonEffects.cancel}>

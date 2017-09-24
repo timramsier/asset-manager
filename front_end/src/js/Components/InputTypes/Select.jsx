@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormControl } from 'react-bootstrap';
 
-const { shape, string, func, oneOfType, bool, array } = React.PropTypes;
+const { shape, string, func, oneOfType, bool, array, obj } = React.PropTypes;
 
 const InputSelect = React.createClass({
   propTypes: {
@@ -17,8 +17,9 @@ const InputSelect = React.createClass({
       description: string,
       options: oneOfType([array, func]),
       onChange: func,
+      nullOption: obj,
     }),
-    value: oneOfType([string, bool]),
+    value: oneOfType([string, bool, obj]),
     updateFormDate: func,
   },
   getInitialState() {
@@ -67,6 +68,10 @@ const InputSelect = React.createClass({
         this.props.setValidationState(this.updateValidationError());
       },
     };
+    const nullOption = this.props.structure.nullOption || {
+      label: '--- Select One ---',
+      value: 'null',
+    };
     return (
       <FormControl
         componentClass="select"
@@ -74,8 +79,8 @@ const InputSelect = React.createClass({
         value={this.props.value}
         {...inputBehavior}
       >
-        <option key={`key_null`} value="null">
-          --- Select One ---
+        <option key={`key_null`} value={nullOption.value}>
+          {nullOption.label}
         </option>
         {this.state.options.map(option => (
           <option key={`key_${option}`} value={option}>

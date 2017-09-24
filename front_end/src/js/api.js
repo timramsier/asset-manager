@@ -9,6 +9,7 @@ if (port && port !== 80) {
   url += `:${port}`;
 }
 
+// If user is signed in use their info
 axios.get(`${url}/user`).then(response => {
   if (response.data && response.data.username && response.data.password) {
     const { username, password } = response.data;

@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint js/**/*.js webpack.config.js",
     "start": "NODE_ENV=server node ./src/js/server.js",
-    "container": "webpack && NODE_ENV=server nodemon server.js",
+    "container": "webpack && NODE_ENV=server nodemon ./src/js/server.js",
     "build": "rimraf public && webpack  --hide-modules",
     "dev": "NODE_ENV=server nodemon ./src/js/server.js",
     "watch": "npm run build -- --watch",

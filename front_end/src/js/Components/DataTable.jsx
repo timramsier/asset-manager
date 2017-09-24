@@ -163,26 +163,7 @@ const DataTable = React.createClass({
         search,
       })
       .then(response => {
-        // add DisplayName if possible
-        const _addDisplayName = (data, key, emptyValue = 'null') => {
-          data.forEach(entry => {
-            if (entry[key] && entry[key].firstName && entry[key].lastName) {
-              entry[key].displayName = `${entry[key].firstName} ${entry[key]
-                .lastName}`;
-            } else {
-              Object.assign(entry, { [key]: { displayName: emptyValue } });
-            }
-          });
-          return data;
-        };
-        let responseData = response;
-        responseData = _addDisplayName(
-          responseData,
-          'assignedTo',
-          'Unassigned'
-        );
-        responseData = _addDisplayName(responseData, 'lastModifiedBy');
-        responseData = _addDisplayName(responseData, 'createdBy');
+        const responseData = response;
         if (updateType === 'refresh') {
           this.refreshData(responseData);
         } else if (updateType === 'push') {
@@ -294,8 +275,15 @@ const DataTable = React.createClass({
           {columns.map(column => {
             const DataCell = this.getCellType(column.type);
             let otherProps;
+            let data = this.state.data;
             if (column.subCol) {
               otherProps = { subCol: column.subCol };
+            }
+            if (
+              column.transformData &&
+              column.transformData instanceof Function
+            ) {
+              data = column.transformData(data);
             }
             const maxWidth =
               (this.state.tableWidth - 1) * (column.maxWidthPer / 100);
@@ -309,7 +297,7 @@ const DataTable = React.createClass({
                     flashMessage={this.flashMessage}
                     getData={this.getData}
                     apiCall={this.props.apiCall}
-                    data={this.state.data}
+                    data={data}
                     col={column.col}
                     {...otherProps}
                   />

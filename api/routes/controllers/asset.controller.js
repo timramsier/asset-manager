@@ -69,7 +69,7 @@ module.exports = {
   getAssetByShortId,
   getAllAssets: _controller(Asset, {
     populate: '_parent assignedTo lastModifiedBy po',
-    popFields: 'username accessLevel firstName lastName email vendor name category description active image _shortId poNumber'
+    popFields: 'username accessLevel firstName assignedTo lastName email vendor name category description active image _shortId poNumber'
   }).getAll,
   updateAsset: _controller(Asset).update,
   getAssetMeta: _controller(Asset).getMeta
