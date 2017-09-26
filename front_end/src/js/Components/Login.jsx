@@ -9,6 +9,15 @@ import {
 } from 'react-bootstrap';
 
 const Login = React.createClass({
+  componentDidMount() {
+    if (
+      Object.keys(this.props.user).length !== 0 &&
+      this.props.user.constructor === Object
+    ) {
+      const { history } = this.props;
+      history.replace('/', null);
+    }
+  },
   render() {
     return (
       <Col sm={6} smOffset={3} style={{ marginTop: '100px' }}>

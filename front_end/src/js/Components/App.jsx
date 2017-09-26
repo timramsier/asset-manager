@@ -166,7 +166,12 @@ const App = React.createClass({
             path="/login"
             component={props => (
               <AsyncLoad
-                props={props}
+                props={Object.assign(
+                  {
+                    user: this.state.user,
+                  },
+                  props
+                )}
                 setLoginUser={this.setLoginUser}
                 loadingPromise={System.import('./Login')}
               />
