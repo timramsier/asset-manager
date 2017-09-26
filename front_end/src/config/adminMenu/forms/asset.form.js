@@ -1,5 +1,6 @@
 /* eslint react/jsx-filename-extension: 0 */
 import React from 'react'; // eslint-disable-line no-unused-vars
+import submit from '../submit/submit';
 import api from '../../../js/api';
 
 export default {
@@ -96,7 +97,6 @@ export default {
         const value = event.target.value;
         let assignedTo;
         if (value === null || value === 'null' || value === 'Unassigned') {
-          console.log(value);
           assignedTo = null;
           component.props.updateFormData({
             assignedTo,
@@ -127,4 +127,5 @@ export default {
       colspan: 12,
     },
   ],
+  submit: submit.asset,
 };

@@ -1,4 +1,4 @@
-import api from '../../js/api';
+import api from '../../../js/api';
 
 export default component =>
   new Promise((resolve, reject) => {

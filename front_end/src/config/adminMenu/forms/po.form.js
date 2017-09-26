@@ -1,6 +1,6 @@
 /* eslint react/jsx-filename-extension: 0 */
 import React from 'react'; // eslint-disable-line no-unused-vars
-import submit from '../../submit/submit';
+import submit from '../submit/submit';
 
 export default {
   header: {
