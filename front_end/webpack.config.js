@@ -1,36 +1,41 @@
-const path = require('path')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // Plugins
 const extractLess = new ExtractTextPlugin({
   filename: 'styles.[hash].css',
-  disable: process.env.NODE_ENV === 'development'
-})
+  disable: process.env.NODE_ENV === 'development',
+});
 
 const definePlugin = new webpack.DefinePlugin({
-  'process.env.APP_FRONTEND_API_URI': JSON.stringify(process.env.APP_FRONTEND_API_URI),
-  'process.env.APP_DATABASE_API_KEY': JSON.stringify(process.env.APP_DATABASE_API_KEY)
-})
+  'process.env.APP_FRONTEND_API_URI': JSON.stringify(
+    process.env.APP_FRONTEND_API_URI
+  ),
+  'process.env.APP_DATABASE_API_KEY': JSON.stringify(
+    process.env.APP_DATABASE_API_KEY
+  ),
+  'process.env.PORT': JSON.stringify(process.env.PORT),
+});
 
 const CommonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin({
-  names: ['vendor', 'manifest']
-})
+  names: ['vendor', 'manifest'],
+});
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
-  template: './src/html/index.html'
-})
+  template: './src/html/index.html',
+});
 
 const webpackCleanupPlugin = new WebpackCleanupPlugin({
-  exclude: ['uploads/*', 'README.md', 'img/*']
-})
+  exclude: ['uploads/*', 'README.md', 'img/*'],
+});
 
 const copyWebpackPlugin = new CopyWebpackPlugin([
-  {from: 'src/img', to: 'img'}
-])
+  { from: 'src/img', to: 'img' },
+]);
 
 const VENDOR_LIB = [
   'react',
@@ -48,27 +53,27 @@ const VENDOR_LIB = [
   'shortid',
   'smoothscroll-polyfill',
   'url-search-params',
-  'velocity-react'
-]
+  'velocity-react',
+];
 module.exports = {
   context: __dirname,
   entry: {
-    bundle: './src/js/ClientApp.js',
-    vendor: VENDOR_LIB
+    bundle: './src/js/Components/ClientApp.jsx',
+    vendor: VENDOR_LIB,
   },
   devtool: 'eval',
   output: {
     publicPath: '/public/',
     path: path.join(__dirname, '/public'),
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[chunkhash].js',
   },
   devServer: {
     publicPath: '/public/',
     historyApiFallback: true,
-    port: 8080
+    port: 8080,
   },
   resolve: {
-    extensions: ['.js', '.json']
+    extensions: ['.js', '.jsx', '.json'],
     // alias: {
     //   react: 'preact-compat',
     //   'react-dom': 'preact-compat'
@@ -77,27 +82,27 @@ module.exports = {
   stats: {
     colors: true,
     reasons: true,
-    chunks: true
+    chunks: true,
   },
   module: {
     rules: [
       {
         enforce: 'pre',
-        test: /\.js$/,
+        test: /\.jsx?$/,
         loader: 'eslint-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.json$/,
-        loader: 'json-loader'
+        loader: 'json-loader',
       },
       {
         include: [
           path.resolve(__dirname, 'src'),
-          path.resolve('node_modules/preat-compat/src')
+          path.resolve('node_modules/preat-compat/src'),
         ],
-        test: /\.js$/,
-        loader: 'babel-loader'
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
       },
       {
         test: /\.css$/,
@@ -106,24 +111,27 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              url: false
-            }
-          }
-        ]
+              url: false,
+            },
+          },
+        ],
       },
       {
         test: /\.less$/,
         use: extractLess.extract({
-          use: [{
-            loader: 'css-loader'
-          }, {
-            loader: 'less-loader'
-          }],
+          use: [
+            {
+              loader: 'css-loader',
+            },
+            {
+              loader: 'less-loader',
+            },
+          ],
           // use style-loader in development
-          fallback: 'style-loader'
-        })
-      }
-    ]
+          fallback: 'style-loader',
+        }),
+      },
+    ],
   },
   plugins: [
     extractLess,
@@ -131,6 +139,6 @@ module.exports = {
     htmlWebpackPlugin,
     CommonsChunkPlugin,
     webpackCleanupPlugin,
-    copyWebpackPlugin
-  ]
-}
+    copyWebpackPlugin,
+  ],
+};

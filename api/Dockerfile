@@ -9,4 +9,4 @@ COPY . .
 
 RUN npm install
 
-CMD ["node", "/var/www/server.js"]
+CMD ["npm", "run", "setup"]

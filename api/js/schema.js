@@ -7,7 +7,7 @@ const assetSchema = Schema({
   _shortId: {type: String, unique: true, default: shortId.generate},
   _parent: {type: String, required: true, ref: 'Model'},
   assetTag: {type: String, default: ''},
-  assignedTo: {type: String, ref: 'User'},
+  assignedTo: {type: String, ref: 'User', default: null},
   status: {type: String, default: 'new'},
   sn: {type: String, required: true, default: ''},
   po: { type: String, ref: 'Po' },

@@ -25,14 +25,12 @@ exports.getUsers = _controller(User).getAll
 
 // Validate password
 exports.login = (req, res, next) => {
-  console.log(req.body)
   const { _id, password } = req.body
-  _controller(User, {}, { _id })
+  return _controller(User, {}, { _id })
   .getOne(req, res, next, (err, user) => {
     if (err) return res.send(err).status(500)
     user.verifyPassword(password, function (err, isMatch) {
       if (err) { return res.send(err).status(500) }
-
       // Password did not match
       if (!isMatch) { return res.sendStatus(401) }
 
