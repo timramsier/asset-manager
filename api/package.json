@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "setup": "node js/seedData.js && APP_DATABASE_NAME=app_default_database APP_CREATE_ADMIN_USER=true nodemon server.js",
+    "seed": "node js/seedData.js",
+    "setup": "APP_DATABASE_NAME=app_default_database APP_CREATE_ADMIN_USER=true nodemon server.js",
     "start": "APP_DATABASE_NAME=app_default_database nodemon server.js"
   },
   "author": "",
@@ -17,11 +18,13 @@
     "jwt-simple": "^0.5.1",
     "mongoose": "^4.10.4",
     "morgan": "^1.8.2",
+    "nodemon": "^1.12.1",
     "passport": "^0.3.2",
     "passport-http": "^0.3.0",
     "shortid": "^2.2.8"
   },
   "devDependencies": {
+    "eslint": "^4.8.0",
     "faker": "^4.1.0"
   }
 }

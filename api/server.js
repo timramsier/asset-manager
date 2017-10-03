@@ -15,7 +15,7 @@ const database = {
   host: process.env.APP_DATABASE_HOST || 'localhost',
   seed: process.env.APP_DATABASE_SEED || false,
   createAdminUser: process.env.APP_CREATE_ADMIN_USER || false,
-  customApiKey: process.env.APP_CUSTOM_API_KEY
+  customApiKey: process.env.APP_CUSTOM_API_KEY || 'non-secure-api-key'
 }
 
 console.log('\x1b[33mConnecting to MongoDB:', database, '\x1b[0m')
@@ -82,7 +82,6 @@ dbConnection.on('connected', () => {
       })
     })
   }
-
   const createAppAdminUser = () => {
     return new Promise((resolve, reject) => {
       if (database.createAdminUser) {
