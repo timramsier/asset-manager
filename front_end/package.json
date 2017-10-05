@@ -8,8 +8,8 @@
     "start": "NODE_ENV=server node ./src/js/server.js",
     "container": "webpack && NODE_ENV=server nodemon ./src/js/server.js",
     "build": "rimraf public && webpack  --hide-modules",
-    "dev": "NODE_ENV=server nodemon ./src/js/server.js",
-    "watch": "npm run build -- --watch",
+    "dev": "PORT=8080 NODE_ENV=server nodemon ./src/js/server.js",
+    "watch": "PORT=8080 npm run build -- --watch",
     "test": "NODE_ENV=test jest",
     "update-test": "npm run test -- -u",
     "cover": "npm run rest -- --coverage"

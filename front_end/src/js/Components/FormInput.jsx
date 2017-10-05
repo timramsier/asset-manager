@@ -2,16 +2,8 @@ import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { Col, FormGroup, ControlLabel } from 'react-bootstrap';
 import { findDOMNode } from 'react-dom';
-import {
-  Text,
-  TextArea,
-  KeyValueGroup,
-  Select,
-  ImageUpload,
-  AssetInputGroup,
-  ReadOnly,
-} from './InputTypes/InputType';
 import HelperText from './HelperText';
+import getInputType from '../helpers/getInputType';
 
 const { shape, string, func, oneOfType, array, bool, object } = React.PropTypes;
 
@@ -57,32 +49,7 @@ const FormInput = React.createClass({
   },
   render() {
     const { structure } = this.props;
-    let Input;
-    switch (structure.type) {
-      case 'text':
-        Input = Text;
-        break;
-      case 'textarea':
-        Input = TextArea;
-        break;
-      case 'keyvalue':
-        Input = KeyValueGroup;
-        break;
-      case 'select':
-        Input = Select;
-        break;
-      case 'image':
-        Input = ImageUpload;
-        break;
-      case 'asset':
-        Input = AssetInputGroup;
-        break;
-      case 'readonly':
-        Input = ReadOnly;
-        break;
-      default:
-        Input = () => <span />;
-    }
+    const Input = getInputType(structure.type);
     return (
       <Col md={structure.colspan || 12}>
         <FormGroup

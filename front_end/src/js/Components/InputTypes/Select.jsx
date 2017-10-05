@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormControl } from 'react-bootstrap';
+import ReadOnly from './ReadOnly';
 
 const { shape, string, func, oneOfType, bool, array, obj } = React.PropTypes;
 
@@ -72,6 +73,13 @@ const InputSelect = React.createClass({
       label: '--- Select One ---',
       value: 'null',
     };
+    // Return Readonly if supplied value is not a valid option
+    if (
+      this.state.options.length > 0 &&
+      this.state.options.indexOf(this.props.value) === -1
+    ) {
+      return <ReadOnly {...this.props} />;
+    }
     return (
       <FormControl
         componentClass="select"
