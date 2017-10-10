@@ -70,20 +70,6 @@ const ModelMenu = props => (
   </div>
 );
 
-// const ModelMenu = React.createClass({
-//   render () {
-//     return (
-//       <div className='model-menu'>
-//         <DataTable
-//           apiCall='models'
-//           {...config.model}
-//           showTotal
-//         />
-//       </div>
-//     )
-//   }
-// })
-
 const POMenu = React.createClass({
   render() {
     return (
@@ -106,10 +92,9 @@ const AssetMenu = React.createClass({
 
 const UserMenu = React.createClass({
   render() {
-    const { columns } = config.user;
     return (
       <div className="user-menu">
-        <DataTable apiCall="users" columns={columns} />
+        <DataTable apiCall="users" {...config.user} showTotal />
       </div>
     );
   },

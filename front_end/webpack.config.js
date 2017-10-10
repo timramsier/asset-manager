@@ -2,7 +2,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+// const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // Plugins
@@ -29,9 +29,9 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
   template: './src/html/index.html',
 });
 
-const webpackCleanupPlugin = new WebpackCleanupPlugin({
-  exclude: ['uploads/*', 'README.md', 'img/*'],
-});
+// const webpackCleanupPlugin = new WebpackCleanupPlugin({
+//   exclude: ['uploads/*', 'README.md', 'img/*'],
+// });
 
 const copyWebpackPlugin = new CopyWebpackPlugin([
   { from: 'src/img', to: 'img' },
@@ -138,7 +138,7 @@ module.exports = {
     definePlugin,
     htmlWebpackPlugin,
     CommonsChunkPlugin,
-    webpackCleanupPlugin,
+    // webpackCleanupPlugin,
     copyWebpackPlugin,
   ],
 };

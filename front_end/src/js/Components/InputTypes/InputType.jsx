@@ -6,6 +6,7 @@ import TextArea from './TextArea';
 import ImageUpload from './ImageUpload';
 import AssetInputGroup from './AssetInputGroup';
 import ReadOnly from './ReadOnly';
+import Password from './Password';
 
 const all = {
   KeyValuePair,
@@ -16,6 +17,7 @@ const all = {
   ImageUpload,
   AssetInputGroup,
   ReadOnly,
+  Password,
 };
 
 export {
@@ -28,4 +30,5 @@ export {
   ImageUpload,
   AssetInputGroup,
   ReadOnly,
+  Password,
 };

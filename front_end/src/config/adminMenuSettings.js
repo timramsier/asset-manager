@@ -1,6 +1,11 @@
 /* eslint react/jsx-filename-extension: 0 */
 import React from 'react'; // eslint-disable-line no-unused-vars
-import { modelForm, poForm, assetForm } from './adminMenu/forms/forms.js';
+import {
+  modelForm,
+  poForm,
+  assetForm,
+  userForm,
+} from './adminMenu/forms/forms.js';
 import {
   modelColumn,
   poColumn,
@@ -23,5 +28,6 @@ export default {
   },
   user: {
     columns: userColumn,
+    form: userForm,
   },
 };

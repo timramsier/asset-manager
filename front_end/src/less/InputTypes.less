@@ -122,6 +122,28 @@
   }
 }
 
+.input-password {
+  background:#f2f2f2;
+  padding: 15px;
+  border: darken(#f2f2f2, 10%) solid 1px;
+  border-radius: 5px;
+  display: flex;
+  button {
+    margin: auto;
+  }
+  .input-password-open {
+    width:100%;
+    input {
+      margin-bottom: 15px;
+      display: block;
+    }
+    button {
+      margin-left: 15px;
+      float: right;
+    }
+  }
+}
+
 // Mixins
 .label-default(@color) {
   background-color: @color;
