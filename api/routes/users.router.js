@@ -7,13 +7,18 @@ const router = express.Router();
 
 router
   .route('/')
-  .post(authController.isAuthenticated, userController.postUsers)
+  .post(authController.isAuthenticated, jsonParse, userController.addUser)
   .get(authController.isAuthenticated, userController.getUsers);
 
 router
   .route('/all')
-  .post(authController.isAuthenticated, userController.postUsers)
+  .post(authController.isAuthenticated, jsonParse, userController.addUser)
   .get(authController.isAuthenticated, userController.getUsers);
+
+router
+  .route('/all/:shortId')
+  .get(authController.isAuthenticated, userController.getUserByShortId)
+  .put(authController.isAuthenticated, jsonParse, userController.updateUser);
 
 router
   .route('/all/meta')
