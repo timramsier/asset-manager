@@ -1,5 +1,5 @@
 import _ from 'lodash';
-// import api from '../../../js/api';
+import api from '../../../js/api';
 
 export default component =>
   new Promise((resolve, reject) => {
@@ -11,5 +11,15 @@ export default component =>
       .map(prop => prop.key);
     const filteredData = _.pick(data, selectedProps);
     if (data.newPassword) filteredData.password = data.newPassword;
-    console.log(filteredData);
+    const { shortId, method } = component.state;
+    const url = `/users/all/${shortId}`;
+    console.log({ method, url, filteredData });
+    api
+      ._send(method, url, filteredData)
+      .then(response => {
+        resolve(response);
+      })
+      .catch(error => {
+        reject(error);
+      });
   });
