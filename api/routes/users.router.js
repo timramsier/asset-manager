@@ -16,13 +16,13 @@ router
   .get(authController.isAuthenticated, userController.getUsers);
 
 router
+  .route('/all/meta')
+  .get(authController.isAuthenticated, userController.getUserMeta);
+
+router
   .route('/all/:shortId')
   .get(authController.isAuthenticated, userController.getUserByShortId)
   .put(authController.isAuthenticated, jsonParse, userController.updateUser);
-
-router
-  .route('/all/meta')
-  .get(authController.isAuthenticated, userController.getUserMeta);
   
 router.route('/login').post(jsonParse, userController.login);
 

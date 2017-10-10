@@ -22,6 +22,10 @@ const InputPassword = React.createClass({
   getInitialState() {
     return {
       open: false,
+      feedback: {
+        color: 'black',
+        message: null,
+      },
       enterSecond: false,
       canSave: false,
       values: {
@@ -29,6 +33,11 @@ const InputPassword = React.createClass({
         second: '',
       },
     };
+  },
+  showFeedback({ message, color }) {
+    const newState = this.state;
+    Object.assign(newState.feedback, { message, color });
+    this.setState(newState);
   },
   testPassword(password) {
     // must contain 1 number, one letter, and one special character
@@ -52,9 +61,13 @@ const InputPassword = React.createClass({
     }
 
     // Allow password to be saved if second password matches first
-    if (key === 'second' && value === this.state.values.first) {
+    if (
+      this.state.values.second &&
+      this.state.values.first &&
+      this.state.values.second === this.state.values.first
+    ) {
       Object.assign(newState, { canSave: true });
-    } else if (key === 'second' && value !== this.state.values.first) {
+    } else {
       Object.assign(newState, { canSave: false });
     }
     this.setState(newState);
@@ -80,6 +93,11 @@ const InputPassword = React.createClass({
             'newPassword'
           );
           this.props.addFormArray(`input_${key}`, 'changeArray');
+          this.toggleOpen();
+          this.showFeedback({
+            color: '#5cb85c',
+            message: 'Password Updated.',
+          });
         },
       },
     };
@@ -95,8 +113,19 @@ const InputPassword = React.createClass({
         },
       },
     };
+    // add margin to feedback message if message
+    let marginBottom = 0;
+    if (this.state.feedback.message) {
+      marginBottom = '15px';
+    }
     return (
       <div className="input-password">
+        <div
+          className="feedback"
+          style={{ color: this.state.feedback.color, marginBottom }}
+        >
+          {this.state.feedback.message}
+        </div>
         {!this.state.open ? (
           <Button {...buttonBehavior.default}>Update Password</Button>
         ) : (
