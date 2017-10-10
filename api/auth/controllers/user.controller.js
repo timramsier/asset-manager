@@ -23,6 +23,9 @@ exports.postUsers = function (req, res) {
 // Create endpoint /api/users for GET
 exports.getUsers = _controller(User).getAll
 
+// Get meta information
+exports.getUserMeta = _controller(User).getMeta 
+
 // Validate password
 exports.login = (req, res, next) => {
   const { _id, password } = req.body

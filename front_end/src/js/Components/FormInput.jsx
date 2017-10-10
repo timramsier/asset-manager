@@ -51,7 +51,7 @@ const FormInput = React.createClass({
     const { structure } = this.props;
     const Input = getInputType(structure.type);
     return (
-      <Col md={structure.colspan || 12}>
+      <Col sm={structure.colspan || 12}>
         <FormGroup
           className="form-item"
           validationState={this.state.validationState}

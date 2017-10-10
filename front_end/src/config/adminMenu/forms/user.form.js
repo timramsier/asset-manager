@@ -9,6 +9,22 @@ export default {
   },
   structure: [
     {
+      label: 'Username',
+      key: 'username',
+      type: 'text',
+      placeholder: 'Username',
+      description: 'Enter a unique username for this account',
+      colspan: 6,
+    },
+    {
+      label: 'Email Address',
+      key: 'email',
+      type: 'text',
+      placeholder: 'Email Address',
+      description: "Enter te user's email address",
+      colspan: 6,
+    },
+    {
       label: 'First Name',
       key: 'firstName',
       type: 'text',
@@ -30,6 +46,14 @@ export default {
       type: 'select',
       description: 'Select the permission level of the user',
       options: ['User', 'Admin'],
+      colspan: 6,
+    },
+    {
+      label: 'Password',
+      key: 'password',
+      type: 'password',
+      description:
+        'Enter a password that has at least three of the following: uppercase, lowercase, number, and/or special character',
       colspan: 6,
     },
   ],

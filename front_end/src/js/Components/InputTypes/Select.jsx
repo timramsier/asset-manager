@@ -76,7 +76,8 @@ const InputSelect = React.createClass({
     // Return Readonly if supplied value is not a valid option
     if (
       this.state.options.length > 0 &&
-      this.state.options.indexOf(this.props.value) === -1
+      this.state.options.indexOf(this.props.value) === -1 &&
+      this.props.value
     ) {
       return <ReadOnly {...this.props} />;
     }
