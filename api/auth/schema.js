@@ -38,12 +38,11 @@ const userSchema = Schema({
   },
 });
 
-// Execute before each user.save() call
-userSchema.pre('save', function(callback) {
+function hashPassword(callback) {
   var user = this;
 
   // Break out if the password hasn't changed
-  if (!user.isModified('password')) return callback();
+  if (!user.isModified || !user.isModified('password')) return callback();
 
   // Password changed so we need to hash it
   bcrypt.genSalt(5, function(err, salt) {
@@ -55,7 +54,11 @@ userSchema.pre('save', function(callback) {
       callback();
     });
   });
-});
+}
+
+// Execute before each save, create, and update call
+userSchema.pre('save', hashPassword);
+userSchema.pre('create', hashPassword);
 
 userSchema.methods.verifyPassword = function(password, cb) {
   bcrypt.compare(password, this.password, function(err, isMatch) {
