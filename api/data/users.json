@@ -1,0 +1,3836 @@
+﻿[
+ {
+   "SamAccountName": "WesterlundM",
+   "GivenName": "Masha",
+   "Surname": "Westerlund",
+   "Mail": "Masha.Westerlund@investopedia.com"
+ },
+ {
+   "SamAccountName": "KantorE",
+   "GivenName": "Ellie",
+   "Surname": "Kantor",
+   "Mail": "Ellie.Kantor@investopedia.com"
+ },
+ {
+   "SamAccountName": "PetersK",
+   "GivenName": "Katelyn",
+   "Surname": "Peters",
+   "Mail": "Katelyn.Peters@investopedia.com"
+ },
+ {
+   "SamAccountName": "TedeschiE",
+   "GivenName": "Emily",
+   "Surname": "Tedeschi",
+   "Mail": "Emily.Tedeschi@investopedia.com"
+ },
+ {
+   "SamAccountName": "LaCavaM",
+   "GivenName": "Megan",
+   "Surname": "LaCava",
+   "Mail": "Megan.LaCava@investopedia.com"
+ },
+ {
+   "SamAccountName": "boultsj",
+   "GivenName": "Justin",
+   "Surname": "Boults",
+   "Mail": "Justin.Boults@investopedia.com"
+ },
+ {
+   "SamAccountName": "SpellbergJ",
+   "GivenName": "Jordyn",
+   "Surname": "Spellberg",
+   "Mail": "Jordyn.Spellberg@investopedia.com"
+ },
+ {
+   "SamAccountName": "RaabY",
+   "GivenName": "Yoni",
+   "Surname": "Raab",
+   "Mail": "Yoni.Raab@investopedia.com"
+ },
+ {
+   "SamAccountName": "LinM",
+   "GivenName": "Minjun",
+   "Surname": "Lin",
+   "Mail": "Minjun.Lin@investopedia.com"
+ },
+ {
+   "SamAccountName": "pickella",
+   "GivenName": "Andrew",
+   "Surname": "Pickell",
+   "Mail": "Andrew.Pickell@investopedia.com"
+ },
+ {
+   "SamAccountName": "honge",
+   "GivenName": "Euny",
+   "Surname": "Hong",
+   "Mail": "Euny.Hong@investopedia.com"
+ },
+ {
+   "SamAccountName": "kohnja",
+   "GivenName": "Jason",
+   "Surname": "Kohn",
+   "Mail": "Jason.Kohn@investopedia.com"
+ },
+ {
+   "SamAccountName": "GaglioneD",
+   "GivenName": "Danielle",
+   "Surname": "Gaglione",
+   "Mail": "Danielle.Gaglione@investopedia.com"
+ },
+ {
+   "SamAccountName": "KurtzD",
+   "GivenName": "Don",
+   "Surname": "Kurtz",
+   "Mail": "Don.Kurtz@investopedia.com"
+ },
+ {
+   "SamAccountName": "kerrm",
+   "GivenName": "Matthew",
+   "Surname": "Kerr",
+   "Mail": "Matthew.Kerr@investopedia.com"
+ },
+ {
+   "SamAccountName": "kerra",
+   "GivenName": "Alexandra",
+   "Surname": "Kerr",
+   "Mail": "akerr@investopedia.com"
+ },
+ {
+   "SamAccountName": "SalzmanS",
+   "GivenName": "Sophie",
+   "Surname": "Salzman",
+   "Mail": "Sophie.Salzman@investopedia.com"
+ },
+ {
+   "SamAccountName": "BellitteM",
+   "GivenName": "Michael",
+   "Surname": "Bellitte",
+   "Mail": "Michael.Bellitte@investopedia.com"
+ },
+ {
+   "SamAccountName": "VincentDSouzaD",
+   "GivenName": "Deborah",
+   "Surname": "Vincent D'Souza",
+   "Mail": "Deborah.VincentD'Souza@investopedia.com"
+ },
+ {
+   "SamAccountName": "AndrewsM",
+   "GivenName": "Molly",
+   "Surname": "Andrews",
+   "Mail": "Molly.Andrews@investopedia.com"
+ },
+ {
+   "SamAccountName": "SantaMariaI",
+   "GivenName": "Isabella",
+   "Surname": "Santa Maria",
+   "Mail": "Isabella.SantaMaria@investopedia.com"
+ },
+ {
+   "SamAccountName": "ChoC",
+   "GivenName": "Cheryl",
+   "Surname": "Cho",
+   "Mail": "Cheryl.Cho@investopedia.com"
+ },
+ {
+   "SamAccountName": "kaganj",
+   "GivenName": "Julia",
+   "Surname": "Kagan",
+   "Mail": "Julia.Kagan@investopedia.com"
+ },
+ {
+   "SamAccountName": "LongoM",
+   "GivenName": "Matthew",
+   "Surname": "Longo",
+   "Mail": "Matthew.Longo@investopedia.com"
+ },
+ {
+   "SamAccountName": "PichuraI",
+   "GivenName": "Irina",
+   "Surname": "Pichura",
+   "Mail": "Irina.Pichura@investopedia.com"
+ },
+ {
+   "SamAccountName": "McGlincheyJ",
+   "GivenName": "John",
+   "Surname": "McGlinchey",
+   "Mail": "John.McGlinchey@investopedia.com"
+ },
+ {
+   "SamAccountName": "KrishnaM",
+   "GivenName": "Mrinalini",
+   "Surname": "Krishna",
+   "Mail": "Mrinalini.Krishna@investopedia.com"
+ },
+ {
+   "SamAccountName": "RanfordK",
+   "GivenName": "Kevin",
+   "Surname": "Ranford",
+   "Mail": "Kevin.Ranford@investopedia.com"
+ },
+ {
+   "SamAccountName": "siegeldav",
+   "GivenName": "David",
+   "Surname": "Siegel",
+   "Mail": "David.Siegel@investopedia.com"
+ },
+ {
+   "SamAccountName": "millersco",
+   "GivenName": "Scott",
+   "Surname": "Miller",
+   "Mail": "Scott.Miller@investopedia.com"
+ },
+ {
+   "SamAccountName": "ChapinB",
+   "GivenName": "Bree",
+   "Surname": "Chapin",
+   "Mail": "Bree.Chapin@investopedia.com"
+ },
+ {
+   "SamAccountName": "BontaitesA",
+   "GivenName": "AnneMette",
+   "Surname": "Bontaites",
+   "Mail": "AnneMette.Bontaites@investopedia.com"
+ },
+ {
+   "SamAccountName": "ElkenK",
+   "GivenName": "Karl",
+   "Surname": "Elken",
+   "Mail": "Karl.Elken@investopedia.com"
+ },
+ {
+   "SamAccountName": "PatelU",
+   "GivenName": "Umang",
+   "Surname": "Patel",
+   "Mail": "Umang.Patel@investopedia.com"
+ },
+ {
+   "SamAccountName": "miotonj",
+   "GivenName": "Jeanine",
+   "Surname": "Mioton",
+   "Mail": "Jeanine.Mioton@investopedia.com"
+ },
+ {
+   "SamAccountName": "CoopermanS",
+   "GivenName": "Stephanie",
+   "Surname": "Cooperman",
+   "Mail": "Stephanie.Cooperman@investopedia.com"
+ },
+ {
+   "SamAccountName": "BacakG",
+   "GivenName": "Gregory",
+   "Surname": "Bacak",
+   "Mail": "Gregory.Bacak@investopedia.com"
+ },
+ {
+   "SamAccountName": "VivianJ",
+   "GivenName": "Joshua",
+   "Surname": "Vivian",
+   "Mail": "Joshua.Vivian@investopedia.com"
+ },
+ {
+   "SamAccountName": "RosasL",
+   "GivenName": "Liz",
+   "Surname": "Rosas",
+   "Mail": "Liz.Rosas@investopedia.com"
+ },
+ {
+   "SamAccountName": "DeMaseD",
+   "GivenName": "Danielle",
+   "Surname": "DeMase",
+   "Mail": "Danielle.DeMase@investopedia.com"
+ },
+ {
+   "SamAccountName": "SmykalE",
+   "GivenName": "Emily",
+   "Surname": "Smykal",
+   "Mail": "Emily.Smykal@investopedia.com"
+ },
+ {
+   "SamAccountName": "GibbsB",
+   "GivenName": "Brandon",
+   "Surname": "Gibbs",
+   "Mail": "Brandon.Gibbs@investopedia.com"
+ },
+ {
+   "SamAccountName": "WeissR",
+   "GivenName": "Robin",
+   "Surname": "Weiss",
+   "Mail": "Robin.Weiss@investopedia.com"
+ },
+ {
+   "SamAccountName": "SorinH",
+   "GivenName": "Holli",
+   "Surname": "Sorin",
+   "Mail": "Holli.Sorin@investopedia.com"
+ },
+ {
+   "SamAccountName": "DowneyK",
+   "GivenName": "Katie",
+   "Surname": "Downey",
+   "Mail": "Katie.Downey@investopedia.com"
+ },
+ {
+   "SamAccountName": "LoueyJ",
+   "GivenName": "Jonathan",
+   "Surname": "Louey",
+   "Mail": "Jonathan.Louey@investopedia.com"
+ },
+ {
+   "SamAccountName": "FischerA",
+   "GivenName": "Alexandra",
+   "Surname": "Fischer",
+   "Mail": "Alexandra.Fischer@investopedia.com"
+ },
+ {
+   "SamAccountName": "YudkevichA",
+   "GivenName": "Alina",
+   "Surname": "Yudkevich",
+   "Mail": "Alina.Yudkevich@investopedia.com"
+ },
+ {
+   "SamAccountName": "HuangS",
+   "GivenName": "ShengCheng",
+   "Surname": "Huang",
+   "Mail": "ShengCheng.Huang@investopedia.com"
+ },
+ {
+   "SamAccountName": "RasielJ",
+   "GivenName": "Josh",
+   "Surname": "Rasiel",
+   "Mail": "Josh.Rasiel@investopedia.com"
+ },
+ {
+   "SamAccountName": "LowL",
+   "GivenName": "Lyndon",
+   "Surname": "Low",
+   "Mail": "Lyndon.Low@investopedia.com"
+ },
+ {
+   "SamAccountName": "PettusM",
+   "GivenName": "Melanie",
+   "Surname": "Pettus",
+   "Mail": "Melanie.Pettus@investopedia.com"
+ },
+ {
+   "SamAccountName": "KyleM",
+   "GivenName": "Michael",
+   "Surname": "Kyle",
+   "Mail": "Michael.Kyle@investopedia.com"
+ },
+ {
+   "SamAccountName": "VradiM",
+   "GivenName": "Maria",
+   "Surname": "Vradi",
+   "Mail": "Maria.Vradi@investopedia.com"
+ },
+ {
+   "SamAccountName": "hankina",
+   "GivenName": "Aaron",
+   "Surname": "Hankin",
+   "Mail": "Aaron.Hankin@investopedia.com"
+ },
+ {
+   "SamAccountName": "parrap",
+   "GivenName": "Paolina",
+   "Surname": "Parra",
+   "Mail": "Paolina.Parra@investopedia.com"
+ },
+ {
+   "SamAccountName": "MahsciaoI",
+   "GivenName": "Ivy",
+   "Surname": "Mahsciao",
+   "Mail": "Ivy.Mahsciao@investopedia.com"
+ },
+ {
+   "SamAccountName": "kentonw",
+   "GivenName": "William",
+   "Surname": "Kenton",
+   "Mail": "William.Kenton@investopedia.com"
+ },
+ {
+   "SamAccountName": "AlfanoA",
+   "GivenName": "Anna",
+   "Surname": "Alfano",
+   "Mail": "Anna.Alfano@investopedia.com"
+ },
+ {
+   "SamAccountName": "CoopermanR",
+   "GivenName": "Rebecca",
+   "Surname": "Cooperman",
+   "Mail": "Rebecca.Cooperman@investopedia.com"
+ },
+ {
+   "SamAccountName": "LopataD",
+   "GivenName": "Daniel",
+   "Surname": "Lopata",
+   "Mail": "Daniel.Lopata@investopedia.com"
+ },
+ {
+   "SamAccountName": "DavisR",
+   "GivenName": "Ruth",
+   "Surname": "Konigsberg",
+   "Mail": "Ruth.Konigsberg@investopedia.com"
+ },
+ {
+   "SamAccountName": "SaxB",
+   "GivenName": "Benina",
+   "Surname": "Sax",
+   "Mail": "Benina.Sax@investopedia.com"
+ },
+ {
+   "SamAccountName": "FraserG",
+   "GivenName": "Greg",
+   "Surname": "Fraser",
+   "Mail": "Greg.Fraser@investopedia.com"
+ },
+ {
+   "SamAccountName": "ChomaN",
+   "GivenName": "Nthabi",
+   "Surname": "Choma",
+   "Mail": "Nthabi.Choma@investopedia.com"
+ },
+ {
+   "SamAccountName": "SinghJ",
+   "GivenName": "JD",
+   "Surname": "Singh",
+   "Mail": "JD.Singh@investopedia.com"
+ },
+ {
+   "SamAccountName": "RomanR",
+   "GivenName": "Russ",
+   "Surname": "Roman",
+   "Mail": "Russ.Roman@investopedia.com"
+ },
+ {
+   "SamAccountName": "MercerD",
+   "GivenName": "Dayna",
+   "Surname": "Mercer",
+   "Mail": "Dayna.Mercer@investopedia.com"
+ },
+ {
+   "SamAccountName": "SilverC",
+   "GivenName": "Caleb",
+   "Surname": "Silver",
+   "Mail": "Caleb.Silver@investopedia.com"
+ },
+ {
+   "SamAccountName": "GalloN",
+   "GivenName": "Nicholas",
+   "Surname": "Gallo",
+   "Mail": "Nicholas.Gallo@investopedia.com"
+ },
+ {
+   "SamAccountName": "DangayachA",
+   "GivenName": "Avadh",
+   "Surname": "Dangayach",
+   "Mail": "Avadh.Dangayach@investopedia.com"
+ },
+ {
+   "SamAccountName": "SpinnerR",
+   "GivenName": "Ron",
+   "Surname": "Spinner",
+   "Mail": "Ron.Spinner@investopedia.com"
+ },
+ {
+   "SamAccountName": "NohT",
+   "GivenName": "Tom",
+   "Surname": "Noh",
+   "Mail": "Tom.Noh@investopedia.com"
+ },
+ {
+   "SamAccountName": "KrapflR",
+   "GivenName": "Robby",
+   "Surname": "Krapfl",
+   "Mail": "Robby.Krapfl@investopedia.com"
+ },
+ {
+   "SamAccountName": "osullivanp",
+   "GivenName": "Paul",
+   "Surname": "O'Sullivan",
+   "Mail": "paul.osullivan@investopedia.com"
+ },
+ {
+   "SamAccountName": "TanenbaumJ",
+   "GivenName": "Jason",
+   "Surname": "Tanenbaum",
+   "Mail": "Jason.Tanenbaum@investopedia.com"
+ },
+ {
+   "SamAccountName": "MeassonE",
+   "GivenName": "Eujin",
+   "Surname": "Measson",
+   "Mail": "Eujin.Measson@investopedia.com"
+ },
+ {
+   "SamAccountName": "WolterD",
+   "GivenName": "Dylan",
+   "Surname": "Wolter",
+   "Mail": "Dylan.Wolter@investopedia.com"
+ },
+ {
+   "SamAccountName": "kulicka",
+   "GivenName": "Alex",
+   "Surname": "Kulick",
+   "Mail": "Alex.Kulick@investopedia.com"
+ },
+ {
+   "SamAccountName": "CarterA",
+   "GivenName": "Amanda",
+   "Surname": "Carter",
+   "Mail": "Amanda.Carter@investopedia.com"
+ },
+ {
+   "SamAccountName": "BlalockR",
+   "GivenName": "Robert",
+   "Surname": "Blalock",
+   "Mail": "Robert.Blalock@investopedia.com"
+ },
+ {
+   "SamAccountName": "FloydD",
+   "GivenName": "David",
+   "Surname": "Floyd",
+   "Mail": "David.Floyd@investopedia.com"
+ },
+ {
+   "SamAccountName": "GiustiG",
+   "GivenName": "Greg",
+   "Surname": "Giusti",
+   "Mail": "Greg.Giusti@investopedia.com"
+ },
+ {
+   "SamAccountName": "ChiangD",
+   "GivenName": "Danielle",
+   "Surname": "Chiang",
+   "Mail": "Danielle.Chiang@investopedia.com"
+ },
+ {
+   "SamAccountName": "RanzatoA",
+   "GivenName": "AJ",
+   "Surname": "Ranzato",
+   "Mail": "AJ.Ranzato@investopedia.com"
+ },
+ {
+   "SamAccountName": "LenzerA",
+   "GivenName": "Antonia",
+   "Surname": "Lenzer",
+   "Mail": "Toni.Lenzer@investopedia.com"
+ },
+ {
+   "SamAccountName": "DowJ",
+   "GivenName": "Jacqueline",
+   "Surname": "Dow",
+   "Mail": "Jacqueline.Dow@investopedia.com"
+ },
+ {
+   "SamAccountName": "CannonC",
+   "GivenName": "Chris",
+   "Surname": "Cannon",
+   "Mail": "Chris.Cannon@investopedia.com"
+ },
+ {
+   "SamAccountName": "SacksR",
+   "GivenName": "Rory",
+   "Surname": "Sacks",
+   "Mail": "Rory.Sacks@investopedia.com"
+ },
+ {
+   "SamAccountName": "KagleA",
+   "GivenName": "Abigail",
+   "Surname": "Kagle",
+   "Mail": "Abigail.Kagle@investopedia.com"
+ },
+ {
+   "SamAccountName": "MooneyS",
+   "GivenName": "Stephen",
+   "Surname": "Mooney",
+   "Mail": "Stephen.Mooney@investopedia.com"
+ },
+ {
+   "SamAccountName": "JohnstoneL",
+   "GivenName": "Liam",
+   "Surname": "Johnstone",
+   "Mail": "Liam.Johnstone@investopedia.com"
+ },
+ {
+   "SamAccountName": "HuculakJ",
+   "GivenName": "Justyn",
+   "Surname": "Huculak",
+   "Mail": "Justyn.Huculak@investopedia.com"
+ },
+ {
+   "SamAccountName": "VanAltenJ",
+   "GivenName": "Jon",
+   "Surname": "VanAlten",
+   "Mail": "Jon.VanAlten@investopedia.com"
+ },
+ {
+   "SamAccountName": "McClenaghanM",
+   "GivenName": "Michael",
+   "Surname": "McClenaghan",
+   "Mail": "Michael.McClenaghan@investopedia.com"
+ },
+ {
+   "SamAccountName": "CoxA",
+   "GivenName": "Andrew",
+   "Surname": "Cox",
+   "Mail": "Andrew.Cox@investopedia.com"
+ },
+ {
+   "SamAccountName": "TjeerdsmaH",
+   "GivenName": "Heather",
+   "Surname": "Tjeerdsma",
+   "Mail": "Heather.Tjeerdsma@investopedia.com"
+ },
+ {
+   "SamAccountName": "CourtT",
+   "GivenName": "Tim",
+   "Surname": "Court",
+   "Mail": "Tim.Court@investopedia.com"
+ },
+ {
+   "SamAccountName": "WongH",
+   "GivenName": "Harris",
+   "Surname": "Wong",
+   "Mail": "Harris.Wong@investopedia.com"
+ },
+ {
+   "SamAccountName": "morriss",
+   "GivenName": "Stefan",
+   "Surname": "Morris",
+   "Mail": "Stefan.Morris@investopedia.com"
+ },
+ {
+   "SamAccountName": "quongj",
+   "GivenName": "Jonathan",
+   "Surname": "Quong",
+   "Mail": "Jonathan.Quong@investopedia.com"
+ },
+ {
+   "SamAccountName": "SimsE",
+   "GivenName": "Eddy",
+   "Surname": "Sims",
+   "Mail": "Eddy.Sims@investopedia.com"
+ },
+ {
+   "SamAccountName": "isfeldk",
+   "GivenName": "Kris",
+   "Surname": "Isfeld",
+   "Mail": "Kris.Isfeld@investopedia.com"
+ },
+ {
+   "SamAccountName": "lym",
+   "GivenName": "Mark",
+   "Surname": "Ly",
+   "Mail": "Mark.Ly@investopedia.com"
+ },
+ {
+   "SamAccountName": "zurawelld",
+   "GivenName": "Dylan",
+   "Surname": "Zurawell",
+   "Mail": "dzurawell@investopedia.com"
+ },
+ {
+   "SamAccountName": "lamt",
+   "GivenName": "Tuyen",
+   "Surname": "Lam",
+   "Mail": "Tuyen.Lam@investopedia.com"
+ },
+ {
+   "SamAccountName": "macklonm",
+   "GivenName": "Michael",
+   "Surname": "Macklon",
+   "Mail": "Michael.Macklon@investopedia.com"
+ },
+ {
+   "SamAccountName": "blaisd",
+   "GivenName": "Dan",
+   "Surname": "Blais",
+   "Mail": "Dan.Blais@investopedia.com"
+ },
+ {
+   "SamAccountName": "atkinsonj",
+   "GivenName": "James",
+   "Surname": "Atkinson",
+   "Mail": "James.Atkinson@investopedia.com"
+ },
+ {
+   "SamAccountName": "chue",
+   "GivenName": "Eric",
+   "Surname": "Chu",
+   "Mail": "Eric.Chu@investopedia.com"
+ },
+ {
+   "SamAccountName": "KadwellR",
+   "GivenName": "Ryan",
+   "Surname": "Kadwell",
+   "Mail": "Ryan.Kadwell@investopedia.com"
+ },
+ {
+   "SamAccountName": "DanceM",
+   "GivenName": "Michael",
+   "Surname": "Dance",
+   "Mail": "Michael.Dance@investopedia.com"
+ },
+ {
+   "SamAccountName": "WoodK",
+   "GivenName": "Kara",
+   "Surname": "Wood",
+   "Mail": "Kara.Wood@investopedia.com"
+ },
+ {
+   "SamAccountName": "cheungb",
+   "GivenName": "Billy",
+   "Surname": "Cheung",
+   "Mail": "Billy.Cheung@investopedia.com"
+ },
+ {
+   "SamAccountName": "CharterK",
+   "GivenName": "Kevin",
+   "Surname": "Charter",
+   "Mail": "Kevin.Charter@investopedia.com"
+ },
+ {
+   "SamAccountName": "BamptonK",
+   "GivenName": "Korin",
+   "Surname": "Bampton",
+   "Mail": "Korin.Bampton@investopedia.com"
+ },
+ {
+   "SamAccountName": "LaidlawD",
+   "GivenName": "David",
+   "Surname": "Laidlaw",
+   "Mail": "David.Laidlaw@investopedia.com"
+ },
+ {
+   "SamAccountName": "RyallsJ",
+   "GivenName": "John",
+   "Surname": "Ryalls",
+   "Mail": "John.Ryalls@investopedia.com"
+ },
+ {
+   "SamAccountName": "yasinskik",
+   "GivenName": "Kyle",
+   "Surname": "Yasinski",
+   "Mail": "Kyle.Yasinski@investopedia.com"
+ },
+ {
+   "SamAccountName": "YuD",
+   "GivenName": "Darren",
+   "Surname": "Yu",
+   "Mail": "Darren.Yu@investopedia.com"
+ },
+ {
+   "SamAccountName": "BerjanskiiA",
+   "GivenName": "Al",
+   "Surname": "Berjanskii",
+   "Mail": "Al.Berjanskii@investopedia.com"
+ },
+ {
+   "SamAccountName": "LawrenceE",
+   "GivenName": "Edward",
+   "Surname": "Lawrence",
+   "Mail": "Edward.Lawrence@ask.com"
+ },
+ {
+   "SamAccountName": "LuShan",
+   "GivenName": "Shanny",
+   "Surname": "Lu",
+   "Mail": "Shanny.Lu@investopedia.com"
+ },
+ {
+   "SamAccountName": "WhitelawJ",
+   "GivenName": "Jim",
+   "Surname": "Whitelaw",
+   "Mail": "Jim.Whitelaw@investopedia.com"
+ },
+ {
+   "SamAccountName": "GaoM",
+   "GivenName": "Mark",
+   "Surname": "Gao",
+   "Mail": "mark.gao@investopedia.com"
+ },
+ {
+   "SamAccountName": "ReiterS",
+   "GivenName": "Steve",
+   "Surname": "Reiter",
+   "Mail": "Steve.Reiter@investopedia.com"
+ },
+ {
+   "SamAccountName": "RosenS",
+   "GivenName": "Scott",
+   "Surname": "Rosen",
+   "Mail": "Scott.Rosen@investopedia.com"
+ },
+ {
+   "SamAccountName": "LishingmanD",
+   "GivenName": "Daniel",
+   "Surname": "Lishingman",
+   "Mail": "Daniel.Lishingman@investopedia.com"
+ },
+ {
+   "SamAccountName": "FrielD",
+   "GivenName": "Dustin",
+   "Surname": "Friel",
+   "Mail": "Dustin.Friel@investopedia.com"
+ },
+ {
+   "SamAccountName": "YongT",
+   "GivenName": "Tsung",
+   "Surname": "Yong",
+   "Mail": "Tsung.Yong@investopedia.com"
+ },
+ {
+   "SamAccountName": "LawrenceN",
+   "GivenName": "Nikki",
+   "Surname": "Lawrence",
+   "Mail": "Nikki.Lawrence@investopedia.com"
+ },
+ {
+   "SamAccountName": "CairnsC",
+   "GivenName": "Craig",
+   "Surname": "Cairns",
+   "Mail": "Craig.Cairns@investopedia.com"
+ },
+ {
+   "SamAccountName": "GrigaliunasK",
+   "GivenName": "Kestutis",
+   "Surname": "Grigaliunas",
+   "Mail": "Kestutis.Grigaliunas@investopedia.com"
+ },
+ {
+   "SamAccountName": "PaulichukM",
+   "GivenName": "Michele",
+   "Surname": "Paulichuk",
+   "Mail": "Michele.Paulichuk@investopedia.com"
+ },
+ {
+   "SamAccountName": "WongL",
+   "GivenName": "Lily",
+   "Surname": "Wong",
+   "Mail": "Lily.Wong@investopedia.com"
+ },
+ {
+   "SamAccountName": "RamNir",
+   "GivenName": "Nirmala",
+   "Surname": "Ram",
+   "Mail": "Nirmala.Ram@investopedia.com"
+ },
+ {
+   "SamAccountName": "RuaneL",
+   "GivenName": "Lisa",
+   "Surname": "Ruane",
+   "Mail": "Lisa.Ruane@investopedia.com"
+ },
+ {
+   "SamAccountName": "RegimbaldA",
+   "GivenName": "Adrien",
+   "Surname": "Regimbald",
+   "Mail": "Adrien.Regimbald@investopedia.com"
+ },
+ {
+   "SamAccountName": "SeddonI",
+   "GivenName": "Ian",
+   "Surname": "Seddon",
+   "Mail": "Ian.Seddon@investopedia.com"
+ },
+ {
+   "SamAccountName": "FungKi",
+   "GivenName": "Kingston",
+   "Surname": "Fung",
+   "Mail": "Kingston.Fung@investopedia.com"
+ },
+ {
+   "SamAccountName": "BronsonK",
+   "GivenName": "Kari",
+   "Surname": "Bronson",
+   "Mail": "Kari.Bronson@investopedia.com"
+ },
+ {
+   "SamAccountName": "PhanD",
+   "GivenName": "Daniel",
+   "Surname": "Phan",
+   "Mail": "Daniel.Phan@investopedia.com"
+ },
+ {
+   "SamAccountName": "CourtC",
+   "GivenName": "Cheryl",
+   "Surname": "Court",
+   "Mail": "Cheryl.Court@investopedia.com"
+ },
+ {
+   "SamAccountName": "HancharD",
+   "GivenName": "Devin",
+   "Surname": "Hanchar",
+   "Mail": "Devin.Hanchar@investopedia.com"
+ },
+ {
+   "SamAccountName": "BourgeoisN",
+   "GivenName": "Neil",
+   "Surname": "Bourgeois",
+   "Mail": "Neil.Bourgeois@investopedia.com"
+ },
+ {
+   "SamAccountName": "BrodykN",
+   "GivenName": "Nelson",
+   "Surname": "Brodyk",
+   "Mail": "Nelson.Brodyk@investopedia.com"
+ },
+ {
+   "SamAccountName": "ShrivastavaT",
+   "GivenName": "Tanmay",
+   "Surname": "Shrivastava",
+   "Mail": "Tanmay.Shrivastava@ask.com"
+ },
+ {
+   "SamAccountName": "collinsm",
+   "GivenName": "Michael",
+   "Surname": "Collins",
+   "Mail": "Michael.Collins@ask.com"
+ },
+ {
+   "SamAccountName": "permuderamadassg",
+   "GivenName": "GuruPrasad",
+   "Surname": "PermudeRamadass",
+   "Mail": "GuruPrasad.PermudeRamadass@ask.com"
+ },
+ {
+   "SamAccountName": "jeyarajapt",
+   "GivenName": "Prabhakar Thalapathi",
+   "Surname": "Jeyaraja",
+   "Mail": "PrabhakarThalapathi.Jeyaraja@ask.com"
+ },
+ {
+   "SamAccountName": "boldd",
+   "GivenName": "Deanna",
+   "Surname": "Bold",
+   "Mail": "Deanna.Bold@ask.com"
+ },
+ {
+   "SamAccountName": "ojhask",
+   "GivenName": "Sanat Kumar",
+   "Surname": "Ojha",
+   "Mail": "SanatKumar.Ojha@ask.com"
+ },
+ {
+   "SamAccountName": "okep",
+   "GivenName": "Pallavi",
+   "Surname": "Oke",
+   "Mail": "Pallavi.Oke@ask.com"
+ },
+ {
+   "SamAccountName": "zhaoya",
+   "GivenName": "Yao",
+   "Surname": "Zhao",
+   "Mail": "Yao.Zhao@ask.com"
+ },
+ {
+   "SamAccountName": "varmasagia",
+   "GivenName": "Ashok",
+   "Surname": "Varma Sagi",
+   "Mail": "Ashok.VarmaSagi@ask.com"
+ },
+ {
+   "SamAccountName": "tangd",
+   "GivenName": "Danny",
+   "Surname": "Tang",
+   "Mail": "Danny.Tang@ask.com"
+ },
+ {
+   "SamAccountName": "bashambun",
+   "GivenName": "Niti",
+   "Surname": "Bashambu",
+   "Mail": "Niti.Bashambu@ask.com"
+ },
+ {
+   "SamAccountName": "kathirvelm",
+   "GivenName": "Makesh Kumar",
+   "Surname": "Kathirvel",
+   "Mail": "MakeshKumar.Kathirvel@ask.com"
+ },
+ {
+   "SamAccountName": "spillanea",
+   "GivenName": "Andy",
+   "Surname": "Spillane",
+   "Mail": "Andy.Spillane@ask.com"
+ },
+ {
+   "SamAccountName": "HillJ",
+   "GivenName": "Jeffrey",
+   "Surname": "Hill",
+   "Mail": "Jeffrey.Hill@ask.com"
+ },
+ {
+   "SamAccountName": "wongc",
+   "GivenName": "Cindy",
+   "Surname": "Wong",
+   "Mail": "Cindy.Wong@ask.com"
+ },
+ {
+   "SamAccountName": "kwona",
+   "GivenName": "Amy",
+   "Surname": "Kwon",
+   "Mail": "Amy.Kwon@ask.com"
+ },
+ {
+   "SamAccountName": "dass",
+   "GivenName": "Sourav",
+   "Surname": "Das",
+   "Mail": "Sourav.Das@ask.com"
+ },
+ {
+   "SamAccountName": "jacobp",
+   "GivenName": "Praveen",
+   "Surname": "Jacob",
+   "Mail": "Praveen.Jacob@ask.com"
+ },
+ {
+   "SamAccountName": "SendurpandianS",
+   "GivenName": "Selvanayagam",
+   "Surname": "Sendurpandian",
+   "Mail": "Selvanayagam.Sendurpandian@ask.com"
+ },
+ {
+   "SamAccountName": "rudrappamadivalk",
+   "GivenName": "Kumar",
+   "Surname": "Rudrappamadival",
+   "Mail": "Kumar.Rudrappamadival@ask.com"
+ },
+ {
+   "SamAccountName": "rthana",
+   "GivenName": "ThanaBalakrishnan",
+   "Surname": "R",
+   "Mail": "ThanaBalakrishnan.R@ask.com"
+ },
+ {
+   "SamAccountName": "chowp",
+   "GivenName": "Paxton",
+   "Surname": "Chow",
+   "Mail": "Paxton.Chow@ask.com"
+ },
+ {
+   "SamAccountName": "VargheseB",
+   "GivenName": "Bibin",
+   "Surname": "Varghese",
+   "Mail": "Bibin.Varghese@ask.com"
+ },
+ {
+   "SamAccountName": "BagayatkarP",
+   "GivenName": "Prachi",
+   "Surname": "Bagayatkar",
+   "Mail": "Prachi.Bagayatkar@ask.com"
+ },
+ {
+   "SamAccountName": "TeboJ",
+   "GivenName": "Jarred",
+   "Surname": "Tebo",
+   "Mail": "Jarred.Tebo@ask.com"
+ },
+ {
+   "SamAccountName": "thaik",
+   "GivenName": "Kenneth",
+   "Surname": "Thai",
+   "Mail": "Kenneth.Thai@ask.com"
+ },
+ {
+   "SamAccountName": "venkatesans",
+   "GivenName": "Sriram",
+   "Surname": "Venkatesan",
+   "Mail": "Sriram.Venkatesan@ask.com"
+ },
+ {
+   "SamAccountName": "mohankumarb",
+   "GivenName": "Mohankumar",
+   "Surname": "Balakrishnan",
+   "Mail": "Mohankumar.Balakrishnan@ask.com"
+ },
+ {
+   "SamAccountName": "shahne",
+   "GivenName": "Neha",
+   "Surname": "Shah",
+   "Mail": "Neha.Shah@ask.com"
+ },
+ {
+   "SamAccountName": "SivaprakasamD",
+   "GivenName": "Devan",
+   "Surname": "Sivaprakasam",
+   "Mail": "Devan.Sivaprakasam@ask.com"
+ },
+ {
+   "SamAccountName": "MurphyB",
+   "GivenName": "Brendan",
+   "Surname": "Murphy",
+   "Mail": "Brendan.Murphy@ask.com"
+ },
+ {
+   "SamAccountName": "LeD",
+   "GivenName": "Duc",
+   "Surname": "Le",
+   "Mail": "Duc.Le@ask.com"
+ },
+ {
+   "SamAccountName": "paleyd",
+   "GivenName": "Dmitriy",
+   "Surname": "Paley",
+   "Mail": "Dmitriy.Paley@ask.com"
+ },
+ {
+   "SamAccountName": "ravikumarr",
+   "GivenName": "Ranjana A",
+   "Surname": "Ravikumar",
+   "Mail": "RanjanaA.Ravikumar@ask.com"
+ },
+ {
+   "SamAccountName": "RaghuramanS",
+   "GivenName": "Srinivasan",
+   "Surname": "Raghuraman",
+   "Mail": "Srinivasan.Raghuraman@ask.com"
+ },
+ {
+   "SamAccountName": "HajjarianN",
+   "GivenName": "Nazly",
+   "Surname": "Hajjarian",
+   "Mail": "Nazly.Hajjarian@ask.com"
+ },
+ {
+   "SamAccountName": "rodes",
+   "GivenName": "Shailesh",
+   "Surname": "Rode",
+   "Mail": "Shailesh.Rode@ask.com"
+ },
+ {
+   "SamAccountName": "RamkumarK",
+   "GivenName": "Karthik",
+   "Surname": "Ramkumar",
+   "Mail": "Karthik.Ramkumar@ask.com"
+ },
+ {
+   "SamAccountName": "setlurs",
+   "GivenName": "Sneha",
+   "Surname": "Setlur",
+   "Mail": "Sneha.Setlur@ask.com"
+ },
+ {
+   "SamAccountName": "dasa",
+   "GivenName": "Anirban",
+   "Surname": "Das",
+   "Mail": "Anirban.Das@ask.com"
+ },
+ {
+   "SamAccountName": "vairakkalaii",
+   "GivenName": "Ilangovan",
+   "Surname": "Vairakkalai",
+   "Mail": "Ilangovan.Vairakkalai@ask.com"
+ },
+ {
+   "SamAccountName": "nordenfeltm",
+   "GivenName": "Martin",
+   "Surname": "Nordenfelt",
+   "Mail": "Martin.Nordenfelt@ask.com"
+ },
+ {
+   "SamAccountName": "dziemianczykk",
+   "GivenName": "Kristof",
+   "Surname": "Dziemianczyk",
+   "Mail": "Kristof.Dziemianczyk@ask.com"
+ },
+ {
+   "SamAccountName": "filtonb",
+   "GivenName": "Benjamin",
+   "Surname": "Filton",
+   "Mail": "Benjamin.Filton@ask.com"
+ },
+ {
+   "SamAccountName": "doraisamyk",
+   "GivenName": "Krishnakumar",
+   "Surname": "Doraisamy",
+   "Mail": "Krishnakumar.Doraisamy@ask.com"
+ },
+ {
+   "SamAccountName": "pereirar",
+   "GivenName": "Rafael",
+   "Surname": "Pereira",
+   "Mail": "Rafael.Pereira@ask.com"
+ },
+ {
+   "SamAccountName": "SeemJ",
+   "GivenName": "Jennifer",
+   "Surname": "Seem",
+   "Mail": "Jennifer.Seem@ask.com"
+ },
+ {
+   "SamAccountName": "KimTH",
+   "GivenName": "Tae",
+   "Surname": "Kim",
+   "Mail": "Tae.Kim@ask.com"
+ },
+ {
+   "SamAccountName": "youngm",
+   "GivenName": "Mary",
+   "Surname": "Young",
+   "Mail": "Mary.Young@ask.com"
+ },
+ {
+   "SamAccountName": "ChowdharyG",
+   "GivenName": "Gaurav",
+   "Surname": "Chowdhary",
+   "Mail": "Gaurav.Chowdhary@iacpublishinglabs.com"
+ },
+ {
+   "SamAccountName": "gustilon",
+   "GivenName": "Nicholas",
+   "Surname": "Gustilo",
+   "Mail": "Nicholas.Gustilo@ask.com"
+ },
+ {
+   "SamAccountName": "riccioq",
+   "GivenName": "Quinn",
+   "Surname": "Riccio",
+   "Mail": "Quinn.Riccio@ask.com"
+ },
+ {
+   "SamAccountName": "srivastavaa",
+   "GivenName": "Abhishek",
+   "Surname": "Srivastava",
+   "Mail": "Abhishek.Srivastava@ask.com"
+ },
+ {
+   "SamAccountName": "ramasamyp",
+   "GivenName": "Padmanabhan",
+   "Surname": "Ramasamy",
+   "Mail": "Padmanabhan.Ramasamy@ask.com"
+ },
+ {
+   "SamAccountName": "kalathid",
+   "GivenName": "Divya",
+   "Surname": "Kalathi",
+   "Mail": "Divya.Kalathi@ask.com"
+ },
+ {
+   "SamAccountName": "geevargheseg",
+   "GivenName": "Grace",
+   "Surname": "Geevarghese",
+   "Mail": "Grace.Geevarghese@ask.com"
+ },
+ {
+   "SamAccountName": "thirunavukkarasus",
+   "GivenName": "Sattanathan",
+   "Surname": "Thirunavukkarasu",
+   "Mail": "Sattanathan.Thirunavukkarasu@ask.com"
+ },
+ {
+   "SamAccountName": "PavilletP",
+   "GivenName": "Philippe",
+   "Surname": "Pavillet",
+   "Mail": "Philippe.Pavillet@ask.com"
+ },
+ {
+   "SamAccountName": "thirugnanasambandamn",
+   "GivenName": "Naresh",
+   "Surname": "ThirugnanaSambandam",
+   "Mail": "Naresh.ThirugnanaSambandam@ask.com"
+ },
+ {
+   "SamAccountName": "vallemv",
+   "GivenName": "Varun Gowtham",
+   "Surname": "Vallem",
+   "Mail": "VarunGowtham.Vallem@ask.com"
+ },
+ {
+   "SamAccountName": "chidambaramr",
+   "GivenName": "Rajarajan",
+   "Surname": "Chidambaram",
+   "Mail": "Rajarajan.Chidambaram@ask.com"
+ },
+ {
+   "SamAccountName": "pandurangant",
+   "GivenName": "Thulasiraman",
+   "Surname": "Pandurangan",
+   "Mail": "Thulasiraman.Pandurangan@ask.com"
+ },
+ {
+   "SamAccountName": "Mohans",
+   "GivenName": "Sowmya",
+   "Surname": "Mohan",
+   "Mail": "Sowmya.Mohan@ask.com"
+ },
+ {
+   "SamAccountName": "kumarjd",
+   "GivenName": "Dinesh",
+   "Surname": "Kumar",
+   "Mail": "Dinesh.Kumar@ask.com"
+ },
+ {
+   "SamAccountName": "cchandana",
+   "GivenName": "Chandana",
+   "Surname": "C",
+   "Mail": "Chandana.C@ask.com"
+ },
+ {
+   "SamAccountName": "muruganr",
+   "GivenName": "Revathi",
+   "Surname": "Murugan",
+   "Mail": "Revathi.Murugan@ask.com"
+ },
+ {
+   "SamAccountName": "aragondag",
+   "GivenName": "Gowthami",
+   "Surname": "Aragonda",
+   "Mail": "Gowthami.Aragonda@ask.com"
+ },
+ {
+   "SamAccountName": "lawrencek",
+   "GivenName": "Kirk",
+   "Surname": "Lawrence",
+   "Mail": "Kirk.Lawrence@ask.com"
+ },
+ {
+   "SamAccountName": "hadia",
+   "GivenName": "Abdul",
+   "Surname": "Hadi",
+   "Mail": "Abdul.Hadi@ask.com"
+ },
+ {
+   "SamAccountName": "cadwalladerr",
+   "GivenName": "Robert Cadwallader",
+   "Surname": "Robert Cadwallader",
+   "Mail": "Robert.Cadwallader@ask.com"
+ },
+ {
+   "SamAccountName": "mackayj",
+   "GivenName": "Jonathan",
+   "Surname": "MacKay",
+   "Mail": "Jonathan.MacKay@ask.com"
+ },
+ {
+   "SamAccountName": "fernandezj",
+   "GivenName": "Jose",
+   "Surname": "Fernandez",
+   "Mail": "Jose.Fernandez@ask.com"
+ },
+ {
+   "SamAccountName": "ruiza",
+   "GivenName": "Angel",
+   "Surname": "Ruiz",
+   "Mail": "Angel.Ruiz@ask.com"
+ },
+ {
+   "SamAccountName": "devganp",
+   "GivenName": "Pranay",
+   "Surname": "Devgan",
+   "Mail": "Pranay.Devgan@ask.com"
+ },
+ {
+   "SamAccountName": "jimenezj",
+   "GivenName": "Jose",
+   "Surname": "Jimenez",
+   "Mail": "Jose.Jimenez@ask.com"
+ },
+ {
+   "SamAccountName": "mckirdye",
+   "GivenName": "Eric",
+   "Surname": "McKirdy",
+   "Mail": "eric.mckirdy@iacapps.com"
+ },
+ {
+   "SamAccountName": "GaleaA",
+   "GivenName": "Alex",
+   "Surname": "Galea",
+   "Mail": "Alex.Galea@dictionary.com"
+ },
+ {
+   "SamAccountName": "AuC",
+   "GivenName": "Cindy",
+   "Surname": "Au",
+   "Mail": "Cindy.Au@dictionary.com"
+ },
+ {
+   "SamAccountName": "MacPhailL",
+   "GivenName": "Lauren",
+   "Surname": "MacPhail",
+   "Mail": "Lauren.MacPhail@dictionary.com"
+ },
+ {
+   "SamAccountName": "PantingS",
+   "GivenName": "Simon",
+   "Surname": "Panting",
+   "Mail": "Simon.Panting@dictionary.com"
+ },
+ {
+   "SamAccountName": "SaheliF",
+   "GivenName": "Farhad",
+   "Surname": "Saheli",
+   "Mail": "Farhad.Saheli@dictionary.com"
+ },
+ {
+   "SamAccountName": "DugganC",
+   "GivenName": "Christopher",
+   "Surname": "Duggan",
+   "Mail": "Christopher.Duggan@dictionary.com"
+ },
+ {
+   "SamAccountName": "hurlbuttr",
+   "GivenName": "Renae",
+   "Surname": "Hurlbutt",
+   "Mail": "Renae.Hurlbutt@dictionary.com"
+ },
+ {
+   "SamAccountName": "solomonj",
+   "GivenName": "Jane",
+   "Surname": "Solomon",
+   "Mail": "Jane.Solomon@dictionary.com"
+ },
+ {
+   "SamAccountName": "FleisherM",
+   "GivenName": "Max",
+   "Surname": "Fleisher",
+   "Mail": "Max.Fleisher@dictionary.com"
+ },
+ {
+   "SamAccountName": "SellD",
+   "GivenName": "Daniel",
+   "Surname": "Sell",
+   "Mail": "Daniel.Sell@dictionary.com"
+ },
+ {
+   "SamAccountName": "fierrop",
+   "GivenName": "Paul",
+   "Surname": "Fierro",
+   "Mail": "paul.fierro@dictionary.com"
+ },
+ {
+   "SamAccountName": "BroadC",
+   "GivenName": "Claire",
+   "Surname": "Broad",
+   "Mail": "Claire.Broad@dictionary.com"
+ },
+ {
+   "SamAccountName": "CampbellR",
+   "GivenName": "Randy",
+   "Surname": "Campbell",
+   "Mail": "Randy.Campbell@dictionary.com"
+ },
+ {
+   "SamAccountName": "AnnadurajN",
+   "GivenName": "Naveen",
+   "Surname": "Annaduraj",
+   "Mail": "Naveen.Annaduraj@dictionary.com"
+ },
+ {
+   "SamAccountName": "ChangD",
+   "GivenName": "Derek",
+   "Surname": "Chang",
+   "Mail": "Derek.Chang@dictionary.com"
+ },
+ {
+   "SamAccountName": "GarciaG",
+   "GivenName": "Gem",
+   "Surname": "Garcia",
+   "Mail": "Gem.Garcia@dictionary.com"
+ },
+ {
+   "SamAccountName": "zabryanskiym",
+   "GivenName": "Marina",
+   "Surname": "Zabryanskiy",
+   "Mail": "Marina.Zabryanskiy@dictionary.com"
+ },
+ {
+   "SamAccountName": "ArnoldJ",
+   "GivenName": "Jillian",
+   "Surname": "Arnold",
+   "Mail": "Jillian.Arnold@dictionary.com"
+ },
+ {
+   "SamAccountName": "WangChar",
+   "GivenName": "Charles",
+   "Surname": "Wang",
+   "Mail": "Charles.Wang@dictionary.com"
+ },
+ {
+   "SamAccountName": "leem",
+   "GivenName": "Marion",
+   "Surname": "Lee",
+   "Mail": "Marion.Lee@dictionary.com"
+ },
+ {
+   "SamAccountName": "ArafaS",
+   "GivenName": "Samy",
+   "Surname": "Arafa",
+   "Mail": "Samy.Arafa@dictionary.com"
+ },
+ {
+   "SamAccountName": "TuduryL",
+   "GivenName": "Leila",
+   "Surname": "Tudury",
+   "Mail": "Leila.Tudury@dictionary.com"
+ },
+ {
+   "SamAccountName": "FrierJ",
+   "GivenName": "James",
+   "Surname": "Frier",
+   "Mail": "James.Frier@dictionary.com"
+ },
+ {
+   "SamAccountName": "cicciaril",
+   "GivenName": "Lorena",
+   "Surname": "Cicciari",
+   "Mail": "Lorena.Cicciari@dictionary.com"
+ },
+ {
+   "SamAccountName": "mazzeik",
+   "GivenName": "Karn",
+   "Surname": "Mazzei",
+   "Mail": "Karn.Mazzei@dictionary.com"
+ },
+ {
+   "SamAccountName": "KapoorN",
+   "GivenName": "Nupur",
+   "Surname": "Kapoor",
+   "Mail": "Nupur.Kapoor@dictionary.com"
+ },
+ {
+   "SamAccountName": "SneedF",
+   "GivenName": "Finesse",
+   "Surname": "Sneed",
+   "Mail": "Finesse.Sneed@dictionary.com"
+ },
+ {
+   "SamAccountName": "TrivediN",
+   "GivenName": "Nishant",
+   "Surname": "Trivedi",
+   "Mail": "Nishant.Trivedi@dictionary.com"
+ },
+ {
+   "SamAccountName": "KrasnickP",
+   "GivenName": "Phillip",
+   "Surname": "Krasnick",
+   "Mail": "Phillip.Krasnick@dictionary.com"
+ },
+ {
+   "SamAccountName": "RangarB",
+   "GivenName": "Bani",
+   "Surname": "Rangar",
+   "Mail": "Bani.Rangar@dictionary.com"
+ },
+ {
+   "SamAccountName": "KoernerM",
+   "GivenName": "Mark",
+   "Surname": "Koerner",
+   "Mail": "Mark.Koerner@dictionary.com"
+ },
+ {
+   "SamAccountName": "LinA",
+   "GivenName": "Andy",
+   "Surname": "Lin",
+   "Mail": "Andy.Lin@dictionary.com"
+ },
+ {
+   "SamAccountName": "MuiseL",
+   "GivenName": "Leonard",
+   "Surname": "Muise",
+   "Mail": "Leonard.Muise@dictionary.com"
+ },
+ {
+   "SamAccountName": "KwongR",
+   "GivenName": "Richard",
+   "Surname": "Kwong",
+   "Mail": "Richard.Kwong@dictionary.com"
+ },
+ {
+   "SamAccountName": "wagners",
+   "GivenName": "Scott",
+   "Surname": "Wagner",
+   "Mail": "Scott.Wagner@dictionary.com"
+ },
+ {
+   "SamAccountName": "ErmanM",
+   "GivenName": "Mark",
+   "Surname": "Erman",
+   "Mail": "Mark.Erman@dictionary.com"
+ },
+ {
+   "SamAccountName": "dungcap",
+   "GivenName": "Paul",
+   "Surname": "Dungca",
+   "Mail": "Paul.Dungca@dictionary.com"
+ },
+ {
+   "SamAccountName": "NanjoP",
+   "GivenName": "Peter",
+   "Surname": "Nanjo",
+   "Mail": "Peter.Nanjo@dictionary.com"
+ },
+ {
+   "SamAccountName": "McMillanE",
+   "GivenName": "Elizabeth",
+   "Surname": "McMillan",
+   "Mail": "Elizabeth.McMillan@dictionary.com"
+ },
+ {
+   "SamAccountName": "langoneh",
+   "GivenName": "Helen",
+   "Surname": "Langone",
+   "Mail": "Helen.Langone@dictionary.com"
+ },
+ {
+   "SamAccountName": "ramsiert",
+   "GivenName": "Tim",
+   "Surname": "Ramsier",
+   "Mail": "tim.ramsier@dictionary.com"
+ },
+ {
+   "SamAccountName": "rameshkumars",
+   "GivenName": "Rameshkumar",
+   "Surname": "S",
+   "Mail": "Rameshkumar.S@dictionary.com"
+ },
+ {
+   "SamAccountName": "CohenJer",
+   "GivenName": "Jeremy",
+   "Surname": "Cohen",
+   "Mail": "Jeremy.Cohen@dictionary.com"
+ },
+ {
+   "SamAccountName": "LeonardR",
+   "GivenName": "Rachel",
+   "Surname": "Leonard",
+   "Mail": "Rachel.Leonard@dictionary.com"
+ },
+ {
+   "SamAccountName": "ZhuV",
+   "GivenName": "Victor",
+   "Surname": "Zhu",
+   "Mail": "Victor.Zhu@dictionary.com"
+ },
+ {
+   "SamAccountName": "MerrillR",
+   "GivenName": "Robert",
+   "Surname": "Merrill",
+   "Mail": "Robert.Merrill@dictionary.com"
+ },
+ {
+   "SamAccountName": "CookD",
+   "GivenName": "Dale",
+   "Surname": "Cook",
+   "Mail": "Dale.Cook@dictionary.com"
+ },
+ {
+   "SamAccountName": "leep",
+   "GivenName": "Peter",
+   "Surname": "Lee",
+   "Mail": "Peter.Lee@dictionary.com"
+ },
+ {
+   "SamAccountName": "RothR",
+   "GivenName": "Rosunnara",
+   "Surname": "Roth",
+   "Mail": "Rosunnara.Roth@dictionary.com"
+ },
+ {
+   "SamAccountName": "hiremathv",
+   "GivenName": "Vijaya",
+   "Surname": "Hiremath",
+   "Mail": "Vijaya.Hiremath@dictionary.com"
+ },
+ {
+   "SamAccountName": "MiconeS",
+   "GivenName": "Sandy",
+   "Surname": "Micone",
+   "Mail": "Sandy.Micone@dictionary.com"
+ },
+ {
+   "SamAccountName": "KukielkaY",
+   "GivenName": "Yair",
+   "Surname": "Kukielka",
+   "Mail": "Yair.Kukielka@dictionary.com"
+ },
+ {
+   "SamAccountName": "PavelkaE",
+   "GivenName": "Eric",
+   "Surname": "Pavelka",
+   "Mail": "Eric.Pavelka@dictionary.com"
+ },
+ {
+   "SamAccountName": "sliterl",
+   "GivenName": "Lauren",
+   "Surname": "Sliter",
+   "Mail": "Lauren.Sliter@dictionary.com"
+ },
+ {
+   "SamAccountName": "MaciasC",
+   "GivenName": "Christina",
+   "Surname": "Macias",
+   "Mail": "Christina.Macias@dictionary.com"
+ },
+ {
+   "SamAccountName": "ChenY",
+   "GivenName": "YaYu",
+   "Surname": "Chen",
+   "Mail": "YaYu.Chen@dictionary.com"
+ },
+ {
+   "SamAccountName": "KurzawinskiP",
+   "GivenName": "Pawel",
+   "Surname": "Kurzawinski",
+   "Mail": "Pawel.Kurzawinski@dictionary.com"
+ },
+ {
+   "SamAccountName": "ZwerlingE",
+   "GivenName": "Erik",
+   "Surname": "Zwerling",
+   "Mail": "Erik.Zwerling@dictionary.com"
+ },
+ {
+   "SamAccountName": "YeeC",
+   "GivenName": "Craig",
+   "Surname": "Yee",
+   "Mail": "Craig.Yee@dictionary.com"
+ },
+ {
+   "SamAccountName": "MorrisseyA",
+   "GivenName": "Aileen",
+   "Surname": "Morrissey",
+   "Mail": "Aileen.Morrissey@dictionary.com"
+ },
+ {
+   "SamAccountName": "LeungW",
+   "GivenName": "WaiShing",
+   "Surname": "Leung",
+   "Mail": "WaiShing.Leung@dictionary.com"
+ },
+ {
+   "SamAccountName": "buczekb",
+   "GivenName": "Bartlomiej",
+   "Surname": "Buczek",
+   "Mail": "Bartlomiej.Buczek@dictionary.com"
+ },
+ {
+   "SamAccountName": "SardesaiRo",
+   "GivenName": "Rohan",
+   "Surname": "Sardesai",
+   "Mail": "Rohan.Sardesai@dictionary.com"
+ },
+ {
+   "SamAccountName": "XuS",
+   "GivenName": "Steve",
+   "Surname": "Xu",
+   "Mail": "Steve.Xu@dictionary.com"
+ },
+ {
+   "SamAccountName": "kawalekm",
+   "GivenName": "Marek",
+   "Surname": "Kawalek",
+   "Mail": "Marek.Kawalek@dictionary.com"
+ },
+ {
+   "SamAccountName": "slowika",
+   "GivenName": "Adrian",
+   "Surname": "Slowik",
+   "Mail": "Adrian.Slowik@dictionary.com"
+ },
+ {
+   "SamAccountName": "wysoczanskim",
+   "GivenName": "Michal",
+   "Surname": "Wysoczanski",
+   "Mail": "Michal.Wysoczanski@dictionary.com"
+ },
+ {
+   "SamAccountName": "NarasimhanS",
+   "GivenName": "Sridhar",
+   "Surname": "Narasimhan",
+   "Mail": "Sridhar.Narasimhan@dictionary.com"
+ },
+ {
+   "SamAccountName": "schumacherp",
+   "GivenName": "Piotr",
+   "Surname": "Schumacher",
+   "Mail": "Piotr.Schumacher@dictionary.com"
+ },
+ {
+   "SamAccountName": "przybyslawskib",
+   "GivenName": "Bogusz",
+   "Surname": "Przybyslawski",
+   "Mail": "Bogusz.Przybyslawski@dictionary.com"
+ },
+ {
+   "SamAccountName": "LiuE",
+   "GivenName": "Evan",
+   "Surname": "Liu",
+   "Mail": "Evan.Liu@dictionary.com"
+ },
+ {
+   "SamAccountName": "GuG",
+   "GivenName": "Gerry",
+   "Surname": "Gu",
+   "Mail": "Gerry.Gu@dictionary.com"
+ },
+ {
+   "SamAccountName": "KarunanithiA",
+   "GivenName": "Anand",
+   "Surname": "Karunanithi",
+   "Mail": "Anand.Karunanithi@dictionary.com"
+ },
+ {
+   "SamAccountName": "LindbergC",
+   "GivenName": "Christine",
+   "Surname": "Lindberg",
+   "Mail": "Christine.Lindberg@dictionary.com"
+ },
+ {
+   "SamAccountName": "XueJe",
+   "GivenName": "Jesse",
+   "Surname": "Xue",
+   "Mail": "Jesse.Xue@dictionary.com"
+ },
+ {
+   "SamAccountName": "SethuramanS",
+   "GivenName": "Senthilmaran",
+   "Surname": "Sethuraman",
+   "Mail": "Senthilmaran.Sethuraman@dictionary.com"
+ },
+ {
+   "SamAccountName": "vb",
+   "GivenName": "Bhupathi",
+   "Surname": "V",
+   "Mail": "bhupathi.v@dictionary.com"
+ },
+ {
+   "SamAccountName": "bonikowskih",
+   "GivenName": "Heather",
+   "Surname": "Bonikowski",
+   "Mail": "Heather.Bonikowski@dictionary.com"
+ },
+ {
+   "SamAccountName": "baboukisc",
+   "GivenName": "Connie",
+   "Surname": "Baboukis",
+   "Mail": "Connie.Baboukis@dictionary.com"
+ },
+ {
+   "SamAccountName": "RamarajG",
+   "GivenName": "Gurupriya",
+   "Surname": "Ramaraj",
+   "Mail": "Gurupriya.Ramaraj@dictionary.com"
+ },
+ {
+   "SamAccountName": "posnerd",
+   "GivenName": "Debbie",
+   "Surname": "Posner",
+   "Mail": "Debbie.Posner@dictionary.com"
+ },
+ {
+   "SamAccountName": "levinec",
+   "GivenName": "Charles",
+   "Surname": "Levine",
+   "Mail": "Charles.Levine@dictionary.com"
+ },
+ {
+   "SamAccountName": "pearsonse",
+   "GivenName": "Enid",
+   "Surname": "Pearsons",
+   "Mail": "Enid.Pearsons@dictionary.com"
+ },
+ {
+   "SamAccountName": "brahamc",
+   "GivenName": "Carol",
+   "Surname": "Braham",
+   "Mail": "Carol.Braham@dictionary.com"
+ },
+ {
+   "SamAccountName": "JobviteHR",
+   "GivenName": "IACP",
+   "Surname": "Recruiting",
+   "Mail": "Jobvite.HR@iacpublishinglabs.com"
+ },
+ {
+   "SamAccountName": "MeetingAttendant",
+   "GivenName": "Meeting",
+   "Surname": "Attendant",
+   "Mail": "meeting.attendant@iacpublishinglabs.com"
+ },
+ {
+   "SamAccountName": "MailerJ",
+   "GivenName": "JIRAServiceDesk",
+   "Surname": "Mailer",
+   "Mail": "JIRAServiceDesk.Mailer@iacpublishinglabs.com"
+ },
+ {
+   "SamAccountName": "mancinic",
+   "GivenName": "Chris",
+   "Surname": "Mancini",
+   "Mail": "Chris@inkd.io"
+ },
+ {
+   "SamAccountName": "AltJ",
+   "GivenName": "Jonathan",
+   "Surname": "Alt",
+   "Mail": "jalt@about.com"
+ },
+ {
+   "SamAccountName": "BermanR",
+   "GivenName": "Rachel",
+   "Surname": "Berman",
+   "Mail": "rberman@about.com"
+ },
+ {
+   "SamAccountName": "greenef",
+   "GivenName": "Forrest",
+   "Surname": "Greene",
+   "Mail": "fgreene@about.com"
+ },
+ {
+   "SamAccountName": "laytonl",
+   "GivenName": "Liz",
+   "Surname": "Layton",
+   "Mail": "llayton@about.com"
+ },
+ {
+   "SamAccountName": "rathodh",
+   "GivenName": "Hetal",
+   "Surname": "Rathod",
+   "Mail": "hrathod@about.com"
+ },
+ {
+   "SamAccountName": "kings",
+   "GivenName": "Shamell",
+   "Surname": "King",
+   "Mail": "sking@about.com"
+ },
+ {
+   "SamAccountName": "FisherT",
+   "GivenName": "Tim",
+   "Surname": "Fisher",
+   "Mail": "tfisher@about.com"
+ },
+ {
+   "SamAccountName": "guptaab",
+   "GivenName": "Abhishek",
+   "Surname": "Gupta",
+   "Mail": "agupta@about.com"
+ },
+ {
+   "SamAccountName": "MajeedN",
+   "GivenName": "Nurah",
+   "Surname": "Majeed",
+   "Mail": "nmajeed@about.com"
+ },
+ {
+   "SamAccountName": "BrandinL",
+   "GivenName": "Lauren",
+   "Surname": "Brandin",
+   "Mail": "lbrandin@about.com"
+ },
+ {
+   "SamAccountName": "gonzalezy",
+   "GivenName": "Yudy",
+   "Surname": "Gonzalez",
+   "Mail": "ygonzalez@about.com"
+ },
+ {
+   "SamAccountName": "PinosS",
+   "GivenName": "Sandy",
+   "Surname": "Pinos",
+   "Mail": "spinos@about.com"
+ },
+ {
+   "SamAccountName": "brownellm",
+   "GivenName": "Matthew",
+   "Surname": "Brownell",
+   "Mail": "mbrownell@about.com"
+ },
+ {
+   "SamAccountName": "AbreuR",
+   "GivenName": "Ramon",
+   "Surname": "Abreu",
+   "Mail": "rabreu@about.com"
+ },
+ {
+   "SamAccountName": "GloverA",
+   "GivenName": "Ann",
+   "Surname": "Glover",
+   "Mail": "aglover@about.com"
+ },
+ {
+   "SamAccountName": "ThomasE",
+   "GivenName": "Edward",
+   "Surname": "Thomas",
+   "Mail": "ethomas@about.com"
+ },
+ {
+   "SamAccountName": "ManashirovM",
+   "GivenName": "Mark",
+   "Surname": "Manashirov",
+   "Mail": "mmanashirov@about.com"
+ },
+ {
+   "SamAccountName": "DobrovV",
+   "GivenName": "Vladimir",
+   "Surname": "Dobrov",
+   "Mail": "vdobrov@about.com"
+ },
+ {
+   "SamAccountName": "TuD",
+   "GivenName": "Dave",
+   "Surname": "Tu",
+   "Mail": "dtu@about.com"
+ },
+ {
+   "SamAccountName": "gloverk",
+   "GivenName": "Kris",
+   "Surname": "Glover",
+   "Mail": "kglover@about.com"
+ },
+ {
+   "SamAccountName": "ShamayevaL",
+   "GivenName": "Leyla",
+   "Surname": "Shamayeva",
+   "Mail": "lshamayeva@about.com"
+ },
+ {
+   "SamAccountName": "FuerstK",
+   "GivenName": "Kristin",
+   "Surname": "Fuerst",
+   "Mail": "kfuerst@about.com"
+ },
+ {
+   "SamAccountName": "TurnbullA",
+   "GivenName": "Alec",
+   "Surname": "Turnbull",
+   "Mail": "aturnbull@about.com"
+ },
+ {
+   "SamAccountName": "ZingerL",
+   "GivenName": "Leon",
+   "Surname": "Zinger",
+   "Mail": "lzinger@about.com"
+ },
+ {
+   "SamAccountName": "jonesjm",
+   "GivenName": "James Michael",
+   "Surname": "Jones",
+   "Mail": "mjones@about.com"
+ },
+ {
+   "SamAccountName": "mapplebeckm",
+   "GivenName": "Matthew",
+   "Surname": "Mapplebeck",
+   "Mail": "mmapplebeck@about.com"
+ },
+ {
+   "SamAccountName": "hunth",
+   "GivenName": "Heddy",
+   "Surname": "Hunt",
+   "Mail": "hhunt@about.com"
+ },
+ {
+   "SamAccountName": "rosej",
+   "GivenName": "James",
+   "Surname": "Rose",
+   "Mail": "jrose@about.com"
+ },
+ {
+   "SamAccountName": "ConeR",
+   "GivenName": "Ryan",
+   "Surname": "Cone",
+   "Mail": "rcone@about.com"
+ },
+ {
+   "SamAccountName": "handelsmane",
+   "GivenName": "Eric",
+   "Surname": "Handelsman",
+   "Mail": "ehandelsman@about.com"
+ },
+ {
+   "SamAccountName": "vogeln",
+   "GivenName": "Neil",
+   "Surname": "Vogel",
+   "Mail": "nvogel@about.com"
+ },
+ {
+   "SamAccountName": "MenicucciH",
+   "GivenName": "Heather",
+   "Surname": "Menicucci",
+   "Mail": "hmenicucci@about.com"
+ },
+ {
+   "SamAccountName": "YanNi",
+   "GivenName": "Ni",
+   "Surname": "Yan",
+   "Mail": "nyan@about.com"
+ },
+ {
+   "SamAccountName": "HuangJi",
+   "GivenName": "Jian",
+   "Surname": "Huang",
+   "Mail": "jhuang@about.com"
+ },
+ {
+   "SamAccountName": "RotholzH",
+   "GivenName": "Hal",
+   "Surname": "Rotholz",
+   "Mail": "hrotholz@about.com"
+ },
+ {
+   "SamAccountName": "WeissM",
+   "GivenName": "Margot",
+   "Surname": "Weiss",
+   "Mail": "mweiss@about.com"
+ },
+ {
+   "SamAccountName": "DiGirolamoL",
+   "GivenName": "Lauren",
+   "Surname": "DiGirolamo",
+   "Mail": "ldigirolamo@about.com"
+ },
+ {
+   "SamAccountName": "LuuA",
+   "GivenName": "Austin",
+   "Surname": "Luu",
+   "Mail": "aluu@about.com"
+ },
+ {
+   "SamAccountName": "leblonj",
+   "GivenName": "Jacqueline",
+   "Surname": "LeBlon",
+   "Mail": "jleblon@about.com"
+ },
+ {
+   "SamAccountName": "Brown-LoftinT",
+   "GivenName": "Tiquann",
+   "Surname": "Brown-Loftin",
+   "Mail": "tloftin@about.com"
+ },
+ {
+   "SamAccountName": "FahertyE",
+   "GivenName": "Emily",
+   "Surname": "Faherty",
+   "Mail": "efaherty@about.com"
+ },
+ {
+   "SamAccountName": "AktherF",
+   "GivenName": "Farzana",
+   "Surname": "Akther",
+   "Mail": "fakther@about.com"
+ },
+ {
+   "SamAccountName": "SunJen",
+   "GivenName": "Jennifer",
+   "Surname": "Sun",
+   "Mail": "jsun@about.com"
+ },
+ {
+   "SamAccountName": "SharmaRi",
+   "GivenName": "Richa",
+   "Surname": "Sharma",
+   "Mail": "rsharma@about.com"
+ },
+ {
+   "SamAccountName": "condea",
+   "GivenName": "Arturo",
+   "Surname": "Conde",
+   "Mail": "aconde@about.com"
+ },
+ {
+   "SamAccountName": "sharmam",
+   "GivenName": "Madhulika",
+   "Surname": "Sharma",
+   "Mail": "msharma@about.com"
+ },
+ {
+   "SamAccountName": "YangRu",
+   "GivenName": "Rui",
+   "Surname": "Yang",
+   "Mail": "ryang@about.com"
+ },
+ {
+   "SamAccountName": "beana",
+   "GivenName": "Allison",
+   "Surname": "Bean",
+   "Mail": "abean@about.com"
+ },
+ {
+   "SamAccountName": "BarciaJ",
+   "GivenName": "Justine",
+   "Surname": "Barcia",
+   "Mail": "jbarcia@about.com"
+ },
+ {
+   "SamAccountName": "chelancherys",
+   "GivenName": "Sreejith",
+   "Surname": "Chelanchery",
+   "Mail": "schelanchery@about.com"
+ },
+ {
+   "SamAccountName": "qamarn",
+   "GivenName": "Nabil",
+   "Surname": "Qamar",
+   "Mail": "nqamar@about.com"
+ },
+ {
+   "SamAccountName": "jungm",
+   "GivenName": "Matthew",
+   "Surname": "Jung",
+   "Mail": "mjung@about.com"
+ },
+ {
+   "SamAccountName": "cochranb",
+   "GivenName": "Benjamin",
+   "Surname": "Cochran",
+   "Mail": "bcochran@about.com"
+ },
+ {
+   "SamAccountName": "OrtonA",
+   "GivenName": "Andrea",
+   "Surname": "Orton",
+   "Mail": "aorton@about.com"
+ },
+ {
+   "SamAccountName": "ellersona",
+   "GivenName": "Alex",
+   "Surname": "Ellerson",
+   "Mail": "aellerson@about.com"
+ },
+ {
+   "SamAccountName": "lotkowictzj",
+   "GivenName": "Jason",
+   "Surname": "Lotkowictz",
+   "Mail": "jlotkowictz@about.com"
+ },
+ {
+   "SamAccountName": "sardaj",
+   "GivenName": "Jayant",
+   "Surname": "Sarda",
+   "Mail": "jsarda@about.com"
+ },
+ {
+   "SamAccountName": "HadleyR",
+   "GivenName": "Robert",
+   "Surname": "Hadley",
+   "Mail": "rhadley@about.com"
+ },
+ {
+   "SamAccountName": "LopezR",
+   "GivenName": "Regina",
+   "Surname": "Lopez",
+   "Mail": "rlopez@about.com"
+ },
+ {
+   "SamAccountName": "mooneyd",
+   "GivenName": "Dana",
+   "Surname": "Mooney",
+   "Mail": "dmooney@about.com"
+ },
+ {
+   "SamAccountName": "DhandayuthamA",
+   "GivenName": "Akila",
+   "Surname": "Dhandayutham",
+   "Mail": "adhandayutham@about.com"
+ },
+ {
+   "SamAccountName": "fergusm",
+   "GivenName": "Molly",
+   "Surname": "Fergus",
+   "Mail": "mfergus@about.com"
+ },
+ {
+   "SamAccountName": "carrilloc",
+   "GivenName": "Christian",
+   "Surname": "Carrillo",
+   "Mail": "ccarrillo@about.com"
+ },
+ {
+   "SamAccountName": "chomiakk",
+   "GivenName": "Krista",
+   "Surname": "Chomiak",
+   "Mail": "kchomiak@about.com"
+ },
+ {
+   "SamAccountName": "branghamt",
+   "GivenName": "Tory",
+   "Surname": "Brangham",
+   "Mail": "tbrangham@about.com"
+ },
+ {
+   "SamAccountName": "boyds",
+   "GivenName": "Sharmor",
+   "Surname": "Boyd",
+   "Mail": "sboyd@about.com"
+ },
+ {
+   "SamAccountName": "MullaneC",
+   "GivenName": "Christian",
+   "Surname": "Mullane",
+   "Mail": "cmullane@about.com"
+ },
+ {
+   "SamAccountName": "SuryanarayanaG",
+   "GivenName": "Ganesh",
+   "Surname": "Suryanarayana",
+   "Mail": "gsuryanarayana@about.com"
+ },
+ {
+   "SamAccountName": "cohenc",
+   "GivenName": "Claire",
+   "Surname": "Cohen",
+   "Mail": "ccohen@about.com"
+ },
+ {
+   "SamAccountName": "SpiegelB",
+   "GivenName": "Brett",
+   "Surname": "Spiegel",
+   "Mail": "bspiegel@about.com"
+ },
+ {
+   "SamAccountName": "HuangDa",
+   "GivenName": "Dawen",
+   "Surname": "Huang",
+   "Mail": "dhuang@about.com"
+ },
+ {
+   "SamAccountName": "ahmadn",
+   "GivenName": "Nabil",
+   "Surname": "Ahmad",
+   "Mail": "nahmad@about.com"
+ },
+ {
+   "SamAccountName": "najeddinet",
+   "GivenName": "Tarik",
+   "Surname": "Najeddine",
+   "Mail": "tnajeddine@about.com"
+ },
+ {
+   "SamAccountName": "MarksC",
+   "GivenName": "Colleen",
+   "Surname": "Marks",
+   "Mail": "cmarks@about.com"
+ },
+ {
+   "SamAccountName": "kleinj",
+   "GivenName": "Jodie",
+   "Surname": "Klein",
+   "Mail": "jklein@about.com"
+ },
+ {
+   "SamAccountName": "wangri",
+   "GivenName": "Richard",
+   "Surname": "Wang",
+   "Mail": "rwang@about.com"
+ },
+ {
+   "SamAccountName": "RayapatiA",
+   "GivenName": "Archana",
+   "Surname": "Rayapati",
+   "Mail": "arayapati@about.com"
+ },
+ {
+   "SamAccountName": "KapadiaA",
+   "GivenName": "Ankit",
+   "Surname": "Kapadia",
+   "Mail": "akapadia@about.com"
+ },
+ {
+   "SamAccountName": "confortic",
+   "GivenName": "Christopher",
+   "Surname": "Conforti",
+   "Mail": "cconforti@about.com"
+ },
+ {
+   "SamAccountName": "ParisiR",
+   "GivenName": "Robert",
+   "Surname": "Parisi",
+   "Mail": "rparisi@about.com"
+ },
+ {
+   "SamAccountName": "McHughE",
+   "GivenName": "Eileen",
+   "Surname": "McHugh",
+   "Mail": "emchugh@about.com"
+ },
+ {
+   "SamAccountName": "SeidmanJ",
+   "GivenName": "Joshua",
+   "Surname": "Seidman",
+   "Mail": "jseidman@about.com"
+ },
+ {
+   "SamAccountName": "FollinsK",
+   "GivenName": "Keisha",
+   "Surname": "Follins",
+   "Mail": "kfollins@about.com"
+ },
+ {
+   "SamAccountName": "hagertyj",
+   "GivenName": "James",
+   "Surname": "Hagerty",
+   "Mail": "jhagerty@about.com"
+ },
+ {
+   "SamAccountName": "millardb",
+   "GivenName": "Brandon",
+   "Surname": "Millard",
+   "Mail": "bmillard@about.com"
+ },
+ {
+   "SamAccountName": "WorshamM",
+   "GivenName": "Meredith",
+   "Surname": "Worsham",
+   "Mail": "mworsham@about.com"
+ },
+ {
+   "SamAccountName": "holleranv",
+   "GivenName": "Vincent",
+   "Surname": "Holleran",
+   "Mail": "vholleran@about.com"
+ },
+ {
+   "SamAccountName": "JohnsonA",
+   "GivenName": "Annalyse",
+   "Surname": "Johnson",
+   "Mail": "ajohnson@about.com"
+ },
+ {
+   "SamAccountName": "MeyersAda",
+   "GivenName": "Ada ",
+   "Surname": "Meyers",
+   "Mail": "ameyers@about.com"
+ },
+ {
+   "SamAccountName": "doynek",
+   "GivenName": "Kirsten",
+   "Surname": "Doyne",
+   "Mail": "kdoyne@about.com"
+ },
+ {
+   "SamAccountName": "SwaningerJ",
+   "GivenName": "Jamie",
+   "Surname": "Swaninger",
+   "Mail": "jswaninger@about.com"
+ },
+ {
+   "SamAccountName": "deleonj",
+   "GivenName": "Jax",
+   "Surname": "de Leon",
+   "Mail": "jdeleon@about.com"
+ },
+ {
+   "SamAccountName": "SatijaP",
+   "GivenName": "Prerna",
+   "Surname": "Satija",
+   "Mail": "psatija@about.com"
+ },
+ {
+   "SamAccountName": "MorissetM",
+   "GivenName": "Monique",
+   "Surname": "Morisset",
+   "Mail": "mmorisset@about.com"
+ },
+ {
+   "SamAccountName": "wanshu",
+   "GivenName": "Shuwai",
+   "Surname": "Wan",
+   "Mail": "swan@about.com"
+ },
+ {
+   "SamAccountName": "talagan",
+   "GivenName": "Natalie",
+   "Surname": "Talaga",
+   "Mail": "ntalaga@about.com"
+ },
+ {
+   "SamAccountName": "StedmanM",
+   "GivenName": "Marc",
+   "Surname": "Stedman",
+   "Mail": "mstedman@about.com"
+ },
+ {
+   "SamAccountName": "BolandJ",
+   "GivenName": "Joseph",
+   "Surname": "Boland",
+   "Mail": "jboland@about.com"
+ },
+ {
+   "SamAccountName": "SniderD",
+   "GivenName": "Dan",
+   "Surname": "Snider",
+   "Mail": "dsnider@about.com"
+ },
+ {
+   "SamAccountName": "BankM",
+   "GivenName": "Michael ",
+   "Surname": "Bank",
+   "Mail": "mbank@about.com"
+ },
+ {
+   "SamAccountName": "LockwoodB",
+   "GivenName": "Beatrix",
+   "Surname": "Lockwood",
+   "Mail": "blockwood@about.com"
+ },
+ {
+   "SamAccountName": "MartinezV",
+   "GivenName": "Vanessa",
+   "Surname": "Martinez",
+   "Mail": "vmartinez@about.com"
+ },
+ {
+   "SamAccountName": "itol",
+   "GivenName": "Lisa",
+   "Surname": "Ito",
+   "Mail": "ito@about.com"
+ },
+ {
+   "SamAccountName": "parsonssea",
+   "GivenName": "Sean",
+   "Surname": "Parsons",
+   "Mail": "sparsons@about.com"
+ },
+ {
+   "SamAccountName": "McGonigleB",
+   "GivenName": "Brian",
+   "Surname": "McGonigle",
+   "Mail": "bmcgonigle@about.com"
+ },
+ {
+   "SamAccountName": "AdrianoA",
+   "GivenName": "Alexander",
+   "Surname": "Adriano",
+   "Mail": "aadriano@about.com"
+ },
+ {
+   "SamAccountName": "GhalebL",
+   "GivenName": "Lena",
+   "Surname": "Ghaleb",
+   "Mail": "lghaleb@about.com"
+ },
+ {
+   "SamAccountName": "TenzerJ",
+   "GivenName": "Joshua",
+   "Surname": "Tenzer",
+   "Mail": "jtenzer@about.com"
+ },
+ {
+   "SamAccountName": "NaydenovN",
+   "GivenName": "Nayden",
+   "Surname": "Naydenov",
+   "Mail": "nnaydenov@about.com"
+ },
+ {
+   "SamAccountName": "AbrahamA",
+   "GivenName": "Ajamu",
+   "Surname": "Abraham",
+   "Mail": "aabraham@about.com"
+ },
+ {
+   "SamAccountName": "connelle",
+   "GivenName": "Esan",
+   "Surname": "Connell",
+   "Mail": "econnell@about.com"
+ },
+ {
+   "SamAccountName": "ShiblyF",
+   "GivenName": "Ferdous",
+   "Surname": "Shibly",
+   "Mail": "fshibly@about.com"
+ },
+ {
+   "SamAccountName": "LandolfM",
+   "GivenName": "Matthew",
+   "Surname": "Landolf",
+   "Mail": "mlandolf@about.com"
+ },
+ {
+   "SamAccountName": "johnsonchr",
+   "GivenName": "Christopher",
+   "Surname": "Johnson",
+   "Mail": "cjohnson@about.com"
+ },
+ {
+   "SamAccountName": "EversJ",
+   "GivenName": "Jesse",
+   "Surname": "Evers",
+   "Mail": "jevers@about.com"
+ },
+ {
+   "SamAccountName": "BishopI",
+   "GivenName": "Ian",
+   "Surname": "Bishop",
+   "Mail": "ibishop@about.com"
+ },
+ {
+   "SamAccountName": "JegedeT",
+   "GivenName": "Toulade",
+   "Surname": "Jegede",
+   "Mail": "tjegede@about.com"
+ },
+ {
+   "SamAccountName": "WaiN",
+   "GivenName": "Norman",
+   "Surname": "Wai",
+   "Mail": "nwai@about.com"
+ },
+ {
+   "SamAccountName": "kellyp",
+   "GivenName": "Peter",
+   "Surname": "Kelly",
+   "Mail": "pkelly@about.com"
+ },
+ {
+   "SamAccountName": "IngallsN",
+   "GivenName": "Nicholas",
+   "Surname": "Ingalls",
+   "Mail": "ningalls@about.com"
+ },
+ {
+   "SamAccountName": "DeiV",
+   "GivenName": "Vanessa",
+   "Surname": "Dei",
+   "Mail": "vdei@about.com"
+ },
+ {
+   "SamAccountName": "braswells",
+   "GivenName": "Scot",
+   "Surname": "Braswell",
+   "Mail": "sbraswell@about.com"
+ },
+ {
+   "SamAccountName": "mccleana",
+   "GivenName": "Adam",
+   "Surname": "McClean",
+   "Mail": "amcclean@about.com"
+ },
+ {
+   "SamAccountName": "sjoberga",
+   "GivenName": "Aly",
+   "Surname": "Sjoberg",
+   "Mail": "asjoberg@about.com"
+ },
+ {
+   "SamAccountName": "WuY",
+   "GivenName": "Yongfeng",
+   "Surname": "Wu",
+   "Mail": "ywu@about.com"
+ },
+ {
+   "SamAccountName": "HartwigJ",
+   "GivenName": "Jeff",
+   "Surname": "Hartwig",
+   "Mail": "jhartwig@about.com"
+ },
+ {
+   "SamAccountName": "MartinsenS",
+   "GivenName": "Stewart",
+   "Surname": "Martinsen",
+   "Mail": "rmartinsen@about.com"
+ },
+ {
+   "SamAccountName": "WeinrichL",
+   "GivenName": "Lars",
+   "Surname": "Weinrich",
+   "Mail": "lweinrich@about.com"
+ },
+ {
+   "SamAccountName": "JerezN",
+   "GivenName": "Naihomy",
+   "Surname": "Jerez",
+   "Mail": "njerez@about.com"
+ },
+ {
+   "SamAccountName": "ThomasB",
+   "GivenName": "Brittany",
+   "Surname": "Thomas",
+   "Mail": "bthomas@about.com"
+ },
+ {
+   "SamAccountName": "marsonr",
+   "GivenName": "Ricky",
+   "Surname": "Marson",
+   "Mail": "rmarson@about.com"
+ },
+ {
+   "SamAccountName": "EnglerD",
+   "GivenName": "David",
+   "Surname": "Engler",
+   "Mail": "dengler@about.com"
+ },
+ {
+   "SamAccountName": "beanan",
+   "GivenName": "Andrew",
+   "Surname": "Bean",
+   "Mail": "andrewbean@about.com"
+ },
+ {
+   "SamAccountName": "RainvilleM",
+   "GivenName": "Matthew",
+   "Surname": "Rainville",
+   "Mail": "mrainville@about.com"
+ },
+ {
+   "SamAccountName": "AllenE",
+   "GivenName": "Elizabeth",
+   "Surname": "Allen",
+   "Mail": "lallen@about.com"
+ },
+ {
+   "SamAccountName": "DeSantesJ",
+   "GivenName": "Jessica",
+   "Surname": "DeSantes",
+   "Mail": "jdesantes@about.com"
+ },
+ {
+   "SamAccountName": "AllenR",
+   "GivenName": "Roxanne",
+   "Surname": "Allen",
+   "Mail": "rallen@about.com"
+ },
+ {
+   "SamAccountName": "KellerJac",
+   "GivenName": "Jackelyn",
+   "Surname": "Keller",
+   "Mail": "jkeller@about.com"
+ },
+ {
+   "SamAccountName": "VeltenE",
+   "GivenName": "Elspeth",
+   "Surname": "Velten",
+   "Mail": "evelten@about.com"
+ },
+ {
+   "SamAccountName": "MeyerF",
+   "GivenName": "Frederick",
+   "Surname": "Meyer",
+   "Mail": "fmeyer@about.com"
+ },
+ {
+   "SamAccountName": "LipsonM",
+   "GivenName": "Matthew",
+   "Surname": "Lipson",
+   "Mail": "mlipson@about.com"
+ },
+ {
+   "SamAccountName": "specialk",
+   "GivenName": "Kate",
+   "Surname": "Special",
+   "Mail": "kspecial@about.com"
+ },
+ {
+   "SamAccountName": "SkwarekA",
+   "GivenName": "Andrew",
+   "Surname": "Skwarek",
+   "Mail": "askwarek@about.com"
+ },
+ {
+   "SamAccountName": "DurrJ",
+   "GivenName": "Jonathan",
+   "Surname": "Durr",
+   "Mail": "mdurr@about.com"
+ },
+ {
+   "SamAccountName": "WeirE",
+   "GivenName": "Edward",
+   "Surname": "Weir",
+   "Mail": "Edward.Weir@iacpublishinglabs.com"
+ },
+ {
+   "SamAccountName": "jonestre",
+   "GivenName": "Tre",
+   "Surname": "Jones",
+   "Mail": "Tre.Jones@dictionary.com"
+ },
+ {
+   "SamAccountName": "BrownT",
+   "GivenName": "Tisha",
+   "Surname": "Brown",
+   "Mail": "Tisha.Brown@iacpublishinglabs.com"
+ },
+ {
+   "SamAccountName": "BrathwaiteR",
+   "GivenName": "Robert",
+   "Surname": "Brathwaite",
+   "Mail": "Robert.Brathwaite@iacpublishinglabs.com"
+ },
+ {
+   "SamAccountName": "LallyD",
+   "GivenName": "David",
+   "Surname": "Lally",
+   "Mail": "David.Lally@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "GilroyJ",
+   "GivenName": "John",
+   "Surname": "Gilroy",
+   "Mail": "John.Gilroy@ask.com"
+ },
+ {
+   "SamAccountName": "KozelnickyL",
+   "GivenName": "Lukas",
+   "Surname": "Kozelnicky",
+   "Mail": "Lukas.Kozelnicky@ask.com"
+ },
+ {
+   "SamAccountName": "DeadyK",
+   "GivenName": "Kevin",
+   "Surname": "Deady",
+   "Mail": "Kevin.Deady@ask.com"
+ },
+ {
+   "SamAccountName": "KurpanikL",
+   "GivenName": "Lukasz",
+   "Surname": "Kurpanik",
+   "Mail": "Lukasz.Kurpanik@ask.com"
+ },
+ {
+   "SamAccountName": "OSullivanC",
+   "GivenName": "Caitriona",
+   "Surname": "O'Sullivan",
+   "Mail": "Caitriona.OSullivan@ask.com"
+ },
+ {
+   "SamAccountName": "SalbertD",
+   "GivenName": "Daniel",
+   "Surname": "Salbert",
+   "Mail": "Daniel.Salbert@ask.com"
+ },
+ {
+   "SamAccountName": "ComiskeyR",
+   "GivenName": "Rowena",
+   "Surname": "Comiskey",
+   "Mail": "Rowena.Comiskey@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "LehoczkiB",
+   "GivenName": "Brigitta",
+   "Surname": "Lehoczki",
+   "Mail": "Brigitta.Lehoczki@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "GarciaA",
+   "GivenName": "Aythami",
+   "Surname": "Garcia",
+   "Mail": "aythami.garcia@ask.com"
+ },
+ {
+   "SamAccountName": "srinivasans",
+   "GivenName": "Srinivasan",
+   "Surname": "S",
+   "Mail": "Srinivasan.S@ask.com"
+ },
+ {
+   "SamAccountName": "padmanabhana",
+   "GivenName": "Anand",
+   "Surname": "Padmanabhan",
+   "Mail": "Anand.Padmanabhan@ask.com"
+ },
+ {
+   "SamAccountName": "gnanasundarams",
+   "GivenName": "Sivamurugan",
+   "Surname": "Gnanasundaram",
+   "Mail": "Sivamurugan.Gnanasundaram@ask.com"
+ },
+ {
+   "SamAccountName": "McClureD",
+   "GivenName": "Peter",
+   "Surname": "McClure",
+   "Mail": "dmcclure@consumersearch.com"
+ },
+ {
+   "SamAccountName": "RosemanZa",
+   "GivenName": "Zachary",
+   "Surname": "Roseman",
+   "Mail": "Zachary.Roseman@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "PrabhuV",
+   "GivenName": "Vivek",
+   "Surname": "Prabhu",
+   "Mail": "Vivek.Prabhu@ask.com"
+ },
+ {
+   "SamAccountName": "jorgensenj",
+   "GivenName": "Jake",
+   "Surname": "Jorgensen",
+   "Mail": "Jake.Jorgensen@ask.com"
+ },
+ {
+   "SamAccountName": "mazheruv",
+   "GivenName": "Vladimir",
+   "Surname": "Mazheru",
+   "Mail": "Vladimir.Mazheru@ask.com"
+ },
+ {
+   "SamAccountName": "ZelmanoviczH",
+   "GivenName": "Henny",
+   "Surname": "Zelmanovicz",
+   "Mail": "Henny.Zelmanovicz@ask.com"
+ },
+ {
+   "SamAccountName": "thakkarm",
+   "GivenName": "Milan",
+   "Surname": "Thakkar",
+   "Mail": "Milan.Thakkar@ask.com"
+ },
+ {
+   "SamAccountName": "FossnerD",
+   "GivenName": "Daniel",
+   "Surname": "Fossner",
+   "Mail": "Daniel.Fossner@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "BoseA",
+   "GivenName": "Arthy",
+   "Surname": "Bose",
+   "Mail": "Arthy.Bose@ask.com"
+ },
+ {
+   "SamAccountName": "ShiW",
+   "GivenName": "Weiwei",
+   "Surname": "Shi",
+   "Mail": "Weiwei.Shi@ask.com"
+ },
+ {
+   "SamAccountName": "agenskya",
+   "GivenName": "Adam",
+   "Surname": "Agensky",
+   "Mail": "Adam.Agensky@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "LaronC",
+   "GivenName": "Carl",
+   "Surname": "Laron",
+   "Mail": "Carl.Laron@consumersearch.com"
+ },
+ {
+   "SamAccountName": "eanest",
+   "GivenName": "Thomas",
+   "Surname": "Eanes",
+   "Mail": "Thomas.Eanes@ask.com"
+ },
+ {
+   "SamAccountName": "sua",
+   "GivenName": "Annie",
+   "Surname": "Su",
+   "Mail": "Annie.Su@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "schusterh",
+   "GivenName": "Heidi",
+   "Surname": "Schuster",
+   "Mail": "Heidi.Schuster@ask.com"
+ },
+ {
+   "SamAccountName": "HamouJ",
+   "GivenName": "Jamal",
+   "Surname": "Hamou",
+   "Mail": "Jamal.Hamou@ask.com"
+ },
+ {
+   "SamAccountName": "deJesusCa",
+   "GivenName": "Carmen",
+   "Surname": "deJesus",
+   "Mail": "Carmen.deJesus@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "patils",
+   "GivenName": "Sagar",
+   "Surname": "Patil",
+   "Mail": "Sagar.Patil@ask.com"
+ },
+ {
+   "SamAccountName": "YinJ",
+   "GivenName": "Joy",
+   "Surname": "Yin",
+   "Mail": "Joy.Yin@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "IchakeS",
+   "GivenName": "Sachin",
+   "Surname": "Ichake",
+   "Mail": "Sachin.Ichake@ask.com"
+ },
+ {
+   "SamAccountName": "AgrawalR",
+   "GivenName": "Rashmi",
+   "Surname": "Agrawal",
+   "Mail": "Rashmi.Agrawal@ask.com"
+ },
+ {
+   "SamAccountName": "MaorOr",
+   "GivenName": "Oren",
+   "Surname": "Maor",
+   "Mail": "Oren.Maor@sturdynetworks.com"
+ },
+ {
+   "SamAccountName": "DraperGa",
+   "GivenName": "Garison",
+   "Surname": "Draper",
+   "Mail": "Garison.Draper@sturdynetworks.com"
+ },
+ {
+   "SamAccountName": "WuT",
+   "GivenName": "Tina",
+   "Surname": "Wu",
+   "Mail": "Tina.Wu@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "KumarA",
+   "GivenName": "Ankur",
+   "Surname": "Kumar",
+   "Mail": "Ankur.Kumar@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "MooreAnd",
+   "GivenName": "Andrea",
+   "Surname": "Moore",
+   "Mail": "Andrea.Moore@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "aslamis",
+   "GivenName": "Syd",
+   "Surname": "Aslami",
+   "Mail": "Syd.Aslami@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "mallus",
+   "GivenName": "Srikanth",
+   "Surname": "Mallu",
+   "Mail": "Srikanth.Mallu@ask.com"
+ },
+ {
+   "SamAccountName": "MorganBry",
+   "GivenName": "Bryan",
+   "Surname": "Morgan",
+   "Mail": "Bryan.Morgan@ask.com"
+ },
+ {
+   "SamAccountName": "AnguianoE",
+   "GivenName": "Enrique",
+   "Surname": "Henestroza Anguiano",
+   "Mail": "Enrique.Anguiano@ask.com"
+ },
+ {
+   "SamAccountName": "KillenN",
+   "GivenName": "Nicole",
+   "Surname": "Killen",
+   "Mail": "Nicole.Killen@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "bandarus",
+   "GivenName": "Sunil",
+   "Surname": "Bandaru",
+   "Mail": "Sunil.Bandaru@ask.com"
+ },
+ {
+   "SamAccountName": "LevinR",
+   "GivenName": "Rebecca",
+   "Surname": "Levin",
+   "Mail": "Rebecca.Levin@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "anika",
+   "GivenName": "Ameera",
+   "Surname": "Anik",
+   "Mail": "Ameera.Anik@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "muhammada",
+   "GivenName": "Abdulkareem",
+   "Surname": "Muhammad",
+   "Mail": "Abdulkareem.Muhammad@ask.com"
+ },
+ {
+   "SamAccountName": "calixtong",
+   "GivenName": "Gerard",
+   "Surname": "Calixton",
+   "Mail": "Gerard.Calixton@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "corcorans",
+   "GivenName": "Sean",
+   "Surname": "Corcoran",
+   "Mail": "Sean.Corcoran@ask.com"
+ },
+ {
+   "SamAccountName": "BuenoJa",
+   "GivenName": "Jackie",
+   "Surname": "Bueno",
+   "Mail": "Jackie.Bueno@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "sapienf",
+   "GivenName": "Francesca",
+   "Surname": "Sapien",
+   "Mail": "Francesca.Sapien@ask.com"
+ },
+ {
+   "SamAccountName": "TuttleC",
+   "GivenName": "Chris",
+   "Surname": "Tuttle",
+   "Mail": "Chris.Tuttle@ask.com"
+ },
+ {
+   "SamAccountName": "GatchalianA",
+   "GivenName": "Angel",
+   "Surname": "Gatchalian",
+   "Mail": "Angel.Gatchalian@ask.com"
+ },
+ {
+   "SamAccountName": "oneillk",
+   "GivenName": "Kevin",
+   "Surname": "O'Neill",
+   "Mail": "Kevin.O'Neill@ask.com"
+ },
+ {
+   "SamAccountName": "BayanjargalY",
+   "GivenName": "Yuna",
+   "Surname": "Bayanjargal",
+   "Mail": "Yuna.Bayanjargal@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "wallaces",
+   "GivenName": "Sarah",
+   "Surname": "Wallace",
+   "Mail": "Sarah.Wallace@ask.com"
+ },
+ {
+   "SamAccountName": "AbdulwahabS",
+   "GivenName": "Saleem",
+   "Surname": "Abdulwahab",
+   "Mail": "Saleem.Abdulwahab@ask.com"
+ },
+ {
+   "SamAccountName": "RostonA",
+   "GivenName": "Adam",
+   "Surname": "Roston",
+   "Mail": "Adam.Roston@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "weia",
+   "GivenName": "Amy",
+   "Surname": "Wei",
+   "Mail": "Amy.Wei@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "saitop",
+   "GivenName": "Paul",
+   "Surname": "Saito",
+   "Mail": "Paul.Saito@ask.com"
+ },
+ {
+   "SamAccountName": "LachanceD",
+   "GivenName": "Denis",
+   "Surname": "Lachance",
+   "Mail": "Denis.Lachance@ask.com"
+ },
+ {
+   "SamAccountName": "GarlandMat",
+   "GivenName": "Matt",
+   "Surname": "Garland",
+   "Mail": "Matt.Garland@ask.com"
+ },
+ {
+   "SamAccountName": "LuiS",
+   "GivenName": "Sharon",
+   "Surname": "Lui",
+   "Mail": "Sharon.Lui@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "ivanovap",
+   "GivenName": "Petya",
+   "Surname": "Ivanova",
+   "Mail": "Petya.Ivanova@ask.com"
+ },
+ {
+   "SamAccountName": "mayfieldm",
+   "GivenName": "Michael",
+   "Surname": "Mayfield",
+   "Mail": "Michael.Mayfield@ask.com"
+ },
+ {
+   "SamAccountName": "KaruppaiahVe",
+   "GivenName": "Veni",
+   "Surname": "Karuppaiah",
+   "Mail": "Veni.Karuppaiah@ask.com"
+ },
+ {
+   "SamAccountName": "VeeramuthuM",
+   "GivenName": "Mohan",
+   "Surname": "Veeramuthu",
+   "Mail": "Mohan.Veeramuthu@ask.com"
+ },
+ {
+   "SamAccountName": "rossl",
+   "GivenName": "Lisa",
+   "Surname": "Ross",
+   "Mail": "Lisa.Ross@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "LockhartN",
+   "GivenName": "Neil",
+   "Surname": "Lockhart",
+   "Mail": "Neil.Lockhart@ask.com"
+ },
+ {
+   "SamAccountName": "hot",
+   "GivenName": "Truyen",
+   "Surname": "Ho",
+   "Mail": "Truyen.Ho@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "kranzbergm",
+   "GivenName": "Michael",
+   "Surname": "Kranzberg",
+   "Mail": "mkranzberg@arrowsi.com"
+ },
+ {
+   "SamAccountName": "klevene",
+   "GivenName": "Esther",
+   "Surname": "Kleven",
+   "Mail": "ekleven@arrowsi.com"
+ },
+ {
+   "SamAccountName": "birchl",
+   "GivenName": "Lawrence",
+   "Surname": "Birch",
+   "Mail": "lbirch@arrowsi.com"
+ },
+ {
+   "SamAccountName": "mahajana",
+   "GivenName": "Ashok",
+   "Surname": "Mahajan",
+   "Mail": "Ashok.Mahajan@ask.com"
+ },
+ {
+   "SamAccountName": "simpsont",
+   "GivenName": "Tom",
+   "Surname": "Simpson",
+   "Mail": "Tom.Simpson@ask.com"
+ },
+ {
+   "SamAccountName": "fener",
+   "GivenName": "Rolfe",
+   "Surname": "Fene",
+   "Mail": "rfene@arrowsi.com"
+ },
+ {
+   "SamAccountName": "maxwellt",
+   "GivenName": "Tracy",
+   "Surname": "Maxwell",
+   "Mail": "tmaxwell@arrowsi.com"
+ },
+ {
+   "SamAccountName": "oswaldm",
+   "GivenName": "Mark",
+   "Surname": "Oswald",
+   "Mail": "moswald@arrowsi.com"
+ },
+ {
+   "SamAccountName": "cisneross",
+   "GivenName": "Sam",
+   "Surname": "Cisneros",
+   "Mail": "Sam.Cisneros@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "rodriguezd",
+   "GivenName": "",
+   "Surname": "",
+   "Mail": "drodriguez@arrowsi.com"
+ },
+ {
+   "SamAccountName": "combsv",
+   "GivenName": "Valerie",
+   "Surname": "Combs",
+   "Mail": "Valerie.Combs@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "mullerj",
+   "GivenName": "Jarrod",
+   "Surname": "Muller",
+   "Mail": "jmuller@arrowsi.com"
+ },
+ {
+   "SamAccountName": "yel",
+   "GivenName": "Lucas",
+   "Surname": "Ye",
+   "Mail": "Lucas.Ye@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "mengz",
+   "GivenName": "Zhu",
+   "Surname": "Meng",
+   "Mail": "Zhu.Meng@ask.com"
+ },
+ {
+   "SamAccountName": "BartlingA",
+   "GivenName": "Aron",
+   "Surname": "Bartling",
+   "Mail": "Aron.Bartling@ask.com"
+ },
+ {
+   "SamAccountName": "AmatoD",
+   "GivenName": "David",
+   "Surname": "Amato",
+   "Mail": "David.Amato@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "el-kawar",
+   "GivenName": "Rima",
+   "Surname": "El-Kawa",
+   "Mail": "Rima.El-Kawa@ask.com"
+ },
+ {
+   "SamAccountName": "LoboM",
+   "GivenName": "Maxx",
+   "Surname": "Lobo",
+   "Mail": "Maxx.Lobo@ask.com"
+ },
+ {
+   "SamAccountName": "let",
+   "GivenName": "Tony",
+   "Surname": "Le",
+   "Mail": "Tony.Le@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "suguitanm",
+   "GivenName": "Michael",
+   "Surname": "Suguitan",
+   "Mail": "Michael.Suguitan@ask.com"
+ },
+ {
+   "SamAccountName": "KrishnamoorthyV",
+   "GivenName": "Vinodh",
+   "Surname": "Krishnamoorthy",
+   "Mail": "Vinodh.Krishnamoorthy@ask.com"
+ },
+ {
+   "SamAccountName": "fouilliartv",
+   "GivenName": "Veronique",
+   "Surname": "Conrad-Dormoy",
+   "Mail": "Veronique.Conrad@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "sharmar",
+   "GivenName": "Robin",
+   "Surname": "Sharma",
+   "Mail": "Robin.Sharma@ask.com"
+ },
+ {
+   "SamAccountName": "SotoI",
+   "GivenName": "Ivan",
+   "Surname": "Soto",
+   "Mail": "Ivan.Soto@ask.com"
+ },
+ {
+   "SamAccountName": "CotterK",
+   "GivenName": "Kevin",
+   "Surname": "Cotter",
+   "Mail": "Kevin.Cotter@ask.com"
+ },
+ {
+   "SamAccountName": "baksee",
+   "GivenName": "Erika",
+   "Surname": "Bakse",
+   "Mail": "Erika.Bakse@ask.com"
+ },
+ {
+   "SamAccountName": "spitzerj",
+   "GivenName": "Jeffrey",
+   "Surname": "Spitzer",
+   "Mail": "Jeffrey.Spitzer@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "SmithD",
+   "GivenName": "David",
+   "Surname": "Smith",
+   "Mail": "David.Smith@ask.com"
+ },
+ {
+   "SamAccountName": "SatheesanJ",
+   "GivenName": "Jagadeesan",
+   "Surname": "Satheesan",
+   "Mail": "Jagadeesan.Satheesan@ask.com"
+ },
+ {
+   "SamAccountName": "DarbyA",
+   "GivenName": "Aaron",
+   "Surname": "Darby",
+   "Mail": "Aaron.Darby@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "TsangY",
+   "GivenName": "Mable",
+   "Surname": "Tsang",
+   "Mail": "Mable.Tsang@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "McGillowayS",
+   "GivenName": "Shane",
+   "Surname": "McGilloway",
+   "Mail": "Shane.McGilloway@ask.com"
+ },
+ {
+   "SamAccountName": "RowleyD",
+   "GivenName": "David",
+   "Surname": "Rowley",
+   "Mail": "David.Rowley@ask.com"
+ },
+ {
+   "SamAccountName": "wangv",
+   "GivenName": "Vivienne",
+   "Surname": "Wang",
+   "Mail": "Vivienne.Wang@ask.com"
+ },
+ {
+   "SamAccountName": "KaoA",
+   "GivenName": "Albert",
+   "Surname": "Kao",
+   "Mail": "Albert.Kao@ask.com"
+ },
+ {
+   "SamAccountName": "bryana",
+   "GivenName": "Allison",
+   "Surname": "Bryan",
+   "Mail": "Allison.Bryan@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "MajithiaH",
+   "GivenName": "Hemali",
+   "Surname": "Majithia",
+   "Mail": "Hemali.Majithia@ask.com"
+ },
+ {
+   "SamAccountName": "WangM",
+   "GivenName": "Muyuan",
+   "Surname": "Wang",
+   "Mail": "Muyuan.Wang@ask.com"
+ },
+ {
+   "SamAccountName": "HoffmanD",
+   "GivenName": "Dean",
+   "Surname": "Hoffman",
+   "Mail": "Dean.Hoffman@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "bryantn",
+   "GivenName": "Nick",
+   "Surname": "Bryant",
+   "Mail": "Nick.Bryant@ask.com"
+ },
+ {
+   "SamAccountName": "orcuttb",
+   "GivenName": "Bill",
+   "Surname": "Orcutt",
+   "Mail": "Bill.Orcutt@ask.com"
+ },
+ {
+   "SamAccountName": "PoultenD",
+   "GivenName": "Dave",
+   "Surname": "Poulten",
+   "Mail": "David.Poulten@ask.com"
+ },
+ {
+   "SamAccountName": "knightb",
+   "GivenName": "Benjamin",
+   "Surname": "Knight",
+   "Mail": "Benjamin.Knight@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "CostanzaB",
+   "GivenName": "Ben",
+   "Surname": "Costanza",
+   "Mail": "Ben.Costanza@ask.com"
+ },
+ {
+   "SamAccountName": "O'ConnorS",
+   "GivenName": "Shawn",
+   "Surname": "O'Connor",
+   "Mail": "Shawn.O'Connor@ask.com"
+ },
+ {
+   "SamAccountName": "vandenbosk",
+   "GivenName": "Katie",
+   "Surname": "Van Den Bos",
+   "Mail": "Katie.VanDenBos@ask.com"
+ },
+ {
+   "SamAccountName": "AccountsPayable",
+   "GivenName": "Accounts",
+   "Surname": "Payable",
+   "Mail": "AccountsPayable@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "EisenH",
+   "GivenName": "Hal",
+   "Surname": "Eisen",
+   "Mail": "Hal.Eisen@ask.com"
+ },
+ {
+   "SamAccountName": "garciasa",
+   "GivenName": "Sasha",
+   "Surname": "Garcia",
+   "Mail": "Sasha.Garcia@ask.com"
+ },
+ {
+   "SamAccountName": "ZamoraE",
+   "GivenName": "Eunice",
+   "Surname": "Zamora",
+   "Mail": "Eunice.Zamora@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "BurgessKe",
+   "GivenName": "Kelly",
+   "Surname": "Burgess",
+   "Mail": "kburgess@consumersearch.com"
+ },
+ {
+   "SamAccountName": "shimoniakr",
+   "GivenName": "Roman",
+   "Surname": "Shimoniak",
+   "Mail": "Roman.Shimoniak@ask.com"
+ },
+ {
+   "SamAccountName": "leemat",
+   "GivenName": "Matt",
+   "Surname": "Lee",
+   "Mail": "Matt.Lee@ask.com"
+ },
+ {
+   "SamAccountName": "ChauF",
+   "GivenName": "Florence",
+   "Surname": "Chau",
+   "Mail": "Florence.Chau@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "marshallr",
+   "GivenName": "Richard",
+   "Surname": "Marshall",
+   "Mail": "Richard.Marshall@ask.com"
+ },
+ {
+   "SamAccountName": "weim",
+   "GivenName": "Mark",
+   "Surname": "Wei",
+   "Mail": "Mark.Wei@ask.com"
+ },
+ {
+   "SamAccountName": "lid",
+   "GivenName": "Daniel",
+   "Surname": "Li",
+   "Mail": "Daniel.Li@ask.com"
+ },
+ {
+   "SamAccountName": "LarssonA",
+   "GivenName": "Axel",
+   "Surname": "Larsson",
+   "Mail": "Axel.Larsson@ask.com"
+ },
+ {
+   "SamAccountName": "KasselJ",
+   "GivenName": "Jeff",
+   "Surname": "Kassel",
+   "Mail": "Jeff.Kassel@ask.com"
+ },
+ {
+   "SamAccountName": "hauffb",
+   "GivenName": "Brett",
+   "Surname": "Hauff",
+   "Mail": "brett.hauff@ask.com"
+ },
+ {
+   "SamAccountName": "tchabovskya",
+   "GivenName": "Andrew",
+   "Surname": "Tchabovsky",
+   "Mail": "Andrew.Tchabovsky@ask.com"
+ },
+ {
+   "SamAccountName": "wrightb",
+   "GivenName": "Ben",
+   "Surname": "Wright",
+   "Mail": "Ben@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "MoralesA",
+   "GivenName": "Anita",
+   "Surname": "Morales",
+   "Mail": "Anita.Morales@ask.com"
+ },
+ {
+   "SamAccountName": "sinks",
+   "GivenName": "Stephanie",
+   "Surname": "Sink",
+   "Mail": "Stephanie.Sink@ask.com"
+ },
+ {
+   "SamAccountName": "kimr",
+   "GivenName": "Robert",
+   "Surname": "Kim",
+   "Mail": "Robert.Kim@ask.com"
+ },
+ {
+   "SamAccountName": "JosephGratiusB",
+   "GivenName": "Batlin Mariadhas",
+   "Surname": "Joseph Gratius",
+   "Mail": "BatlinMariadhas.JosephGratius@ask.com"
+ },
+ {
+   "SamAccountName": "hurs",
+   "GivenName": "Shawn",
+   "Surname": "Hur",
+   "Mail": "Shawn.Hur@ask.com"
+ },
+ {
+   "SamAccountName": "hsuj",
+   "GivenName": "Jennifer",
+   "Surname": "Hsu",
+   "Mail": "Jennifer.Hsu@ask.com"
+ },
+ {
+   "SamAccountName": "HollerauerJul",
+   "GivenName": "Juliet",
+   "Surname": "Hollerauer",
+   "Mail": "Juliet.Hollerauer@sturdynetworks.com"
+ },
+ {
+   "SamAccountName": "bryantj",
+   "GivenName": "John",
+   "Surname": "Bryant",
+   "Mail": "John.Bryant@ask.com"
+ },
+ {
+   "SamAccountName": "WilliamsST",
+   "GivenName": "Stephanie",
+   "Surname": "Williams",
+   "Mail": "Stephanie.Williams@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "albertm",
+   "GivenName": "Matthew",
+   "Surname": "Albert",
+   "Mail": "Matthew.Albert@ask.com"
+ },
+ {
+   "SamAccountName": "whalenm",
+   "GivenName": "Michael",
+   "Surname": "Whalen",
+   "Mail": "Michael.Whalen@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "orrm",
+   "GivenName": "Mike",
+   "Surname": "Orr",
+   "Mail": "morr@arrowsi.com"
+ },
+ {
+   "SamAccountName": "waltont",
+   "GivenName": "Tim",
+   "Surname": "Walton",
+   "Mail": "twalton@arrowsi.com"
+ },
+ {
+   "SamAccountName": "hallidayr",
+   "GivenName": "Robert",
+   "Surname": "Halliday",
+   "Mail": "rhalliday@arrowsi.com"
+ },
+ {
+   "SamAccountName": "WienerD",
+   "GivenName": "Daniel",
+   "Surname": "Wiener",
+   "Mail": "Daniel.Wiener@ask.com"
+ },
+ {
+   "SamAccountName": "SheaH",
+   "GivenName": "Hanna",
+   "Surname": "Shea",
+   "Mail": "Hanna.Shea@ask.com"
+ },
+ {
+   "SamAccountName": "kahlona",
+   "GivenName": "Amarpreet",
+   "Surname": "Kahlon",
+   "Mail": "Amarpreet.Kahlon@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "BayT",
+   "GivenName": "TJ",
+   "Surname": "Bay",
+   "Mail": "TJ.Bay@ask.com"
+ },
+ {
+   "SamAccountName": "HowerD",
+   "GivenName": "Daniel",
+   "Surname": "Hower",
+   "Mail": "Daniel.Hower@ask.com"
+ },
+ {
+   "SamAccountName": "OkpuR",
+   "GivenName": "Roro",
+   "Surname": "Okpu",
+   "Mail": "Roro.Okpu@ask.com"
+ },
+ {
+   "SamAccountName": "fosterh",
+   "GivenName": "Heather",
+   "Surname": "Foster",
+   "Mail": "Heather.Foster@ask.com"
+ },
+ {
+   "SamAccountName": "anthonysampys",
+   "GivenName": "Sebastin Joseph",
+   "Surname": "Anthonysamy",
+   "Mail": "SebastinJoseph.Anthonysamy@ask.com"
+ },
+ {
+   "SamAccountName": "mushtaqy",
+   "GivenName": "Yasir",
+   "Surname": "Mushtaq",
+   "Mail": "Yasir.Mushtaq@ask.com"
+ },
+ {
+   "SamAccountName": "MailhotF",
+   "GivenName": "Fred",
+   "Surname": "Mailhot",
+   "Mail": "Fred.Mailhot@ask.com"
+ },
+ {
+   "SamAccountName": "EarC",
+   "GivenName": "Chenglim",
+   "Surname": "Ear",
+   "Mail": "Chenglim.Ear@ask.com"
+ },
+ {
+   "SamAccountName": "LiangK",
+   "GivenName": "Kimberly",
+   "Surname": "Liang",
+   "Mail": "Kimberly.Liang@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "WilliamsBl",
+   "GivenName": "Blake",
+   "Surname": "Williams",
+   "Mail": "Blake.Williams@ask.com"
+ },
+ {
+   "SamAccountName": "leer",
+   "GivenName": "Robert",
+   "Surname": "Lee",
+   "Mail": "Robert.Lee@ask.com"
+ },
+ {
+   "SamAccountName": "QiuC",
+   "GivenName": "Ciara",
+   "Surname": "Qiu",
+   "Mail": "Ciara.Qiu@ask.com"
+ },
+ {
+   "SamAccountName": "MurphyJo",
+   "GivenName": "John",
+   "Surname": "Murphy",
+   "Mail": "John.Murphy@ask.com"
+ },
+ {
+   "SamAccountName": "suchm",
+   "GivenName": "Michael",
+   "Surname": "Such",
+   "Mail": "Michael.Such@ask.com"
+ },
+ {
+   "SamAccountName": "BailissC",
+   "GivenName": "Claire",
+   "Surname": "Bailiss",
+   "Mail": "Claire.Bailiss@iacpublishing.com"
+ },
+ {
+   "SamAccountName": "wangp",
+   "GivenName": "Pengxiang",
+   "Surname": "Wang",
+   "Mail": "Pengxiang.Wang@ask.com"
+ },
+ {
+   "SamAccountName": "BapatA",
+   "GivenName": "Ajay",
+   "Surname": "Bapat",
+   "Mail": "ajay.bapat@ask.com"
+ },
+ {
+   "SamAccountName": "KimJ",
+   "GivenName": "Jason",
+   "Surname": "Kim",
+   "Mail": "Jason.Kim@ask.com"
+ },
+ {
+   "SamAccountName": "JosyulaS",
+   "GivenName": "Sailaja",
+   "Surname": "Josyula",
+   "Mail": "Sailaja.Josyula@iacapps.com"
+ },
+ {
+   "SamAccountName": "vanhornl",
+   "GivenName": "Leif",
+   "Surname": "Van Horn",
+   "Mail": "Leif.VanHorn@ask.com"
+ },
+ {
+   "SamAccountName": "leea",
+   "GivenName": "Arthur",
+   "Surname": "Lee",
+   "Mail": "Arthur.Lee@askmedia.com"
+ },
+ {
+   "SamAccountName": "jablonskimi",
+   "GivenName": "Michael",
+   "Surname": "Jablonski",
+   "Mail": "Michael.Jablonski@iacpublishinglabs.com"
+ },
+ {
+   "SamAccountName": "DeLosSantosLo",
+   "GivenName": "Louis",
+   "Surname": "DeLosSantos",
+   "Mail": "louis@vimeo.com"
+ },
+ {
+   "SamAccountName": "CiampiniPh",
+   "GivenName": "Phil",
+   "Surname": "Ciampini",
+   "Mail": "Phil.Ciampini@iacpublishinglabs.com"
+ },
+ {
+   "SamAccountName": "PeledJo",
+   "GivenName": "Joe",
+   "Surname": "Peled",
+   "Mail": "joep@vimeo.com"
+ },
+ {
+   "SamAccountName": "KellyMic",
+   "GivenName": "Michael",
+   "Surname": "Kelly",
+   "Mail": "mikek@vimeo.com"
+ },
+ {
+   "SamAccountName": "LefeberCo",
+   "GivenName": "Collin",
+   "Surname": "Lefeber",
+   "Mail": "collin@vimeo.com"
+ },
+ {
+   "SamAccountName": "FrickMi",
+   "GivenName": "Michael",
+   "Surname": "Frick",
+   "Mail": "frick@vimeo.com"
+ },
+ {
+   "SamAccountName": "EllentuchT",
+   "GivenName": "Scott",
+   "Surname": "Ellentuch",
+   "Mail": "tuc@vimeo.com"
+ },
+ {
+   "SamAccountName": "ScranoMa",
+   "GivenName": "Mark",
+   "Surname": "Scrano",
+   "Mail": "marks@vimeo.com"
+ },
+ {
+   "SamAccountName": "KillenJus",
+   "GivenName": "Justin",
+   "Surname": "Killen",
+   "Mail": "justin.killen@citygridmedia.com"
+ }
+]

@@ -5,9 +5,11 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node js/seedData.js",
-    "setup": "APP_DATABASE_NAME=app_default_database APP_CREATE_ADMIN_USER=true nodemon server.js",
-    "start": "APP_DATABASE_NAME=app_default_database nodemon server.js"
+    "import": "APP_DATABASE_NAME=app_default_database node -e 'require(`./js/importLegacyInfo.js`).connectAndImport({usersPath: `../data/users`, assetsPath: `../data/assets`, samiPath: `../data/sami`, modelsPath: `../data/models`})'",
+    "wipe": "APP_DATABASE_NAME=app_default_database node -e 'require(`./js/databaseHelpers.js`).connectAndClear()'",
+    "seed": "APP_DATABASE_NAME=app_default_database node -e 'require(`./js/databaseHelpers.js`).connectAndSeed(true)'",
+    "setup": "APP_DATABASE_NAME=app_default_database node -e 'require(`./js/databaseHelpers.js`).connectAndSeed()'",
+    "start": "APP_DATABASE_NAME=app_default_database APP_CREATE_ADMIN_USER=true nodemon server.js"
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +26,7 @@
     "shortid": "^2.2.8"
   },
   "devDependencies": {
+    "csv-parser": "^1.11.0",
     "eslint": "^4.8.0",
     "faker": "^4.1.0"
   }
