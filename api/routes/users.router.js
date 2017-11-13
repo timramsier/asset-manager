@@ -22,7 +22,8 @@ router
 router
   .route('/all/:shortId')
   .get(authController.isAuthenticated, userController.getUserByShortId)
-  .put(authController.isAuthenticated, jsonParse, userController.updateUser);
+  .put(authController.isAuthenticated, jsonParse, userController.updateUser)
+  .delete(authController.isAuthenticated, userController.removeUser);
   
 router.route('/login').post(jsonParse, userController.login);
 

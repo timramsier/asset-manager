@@ -16,7 +16,7 @@ const assetSchema = Schema({
 });
 
 const specSchema = Schema({
-  _shortId: { type: String, unique: true, default: shortId.generate },
+  _shortId: { type: String, unique: true, default: shortId.generate, sparse: true },
   key: String,
   value: String,
 });

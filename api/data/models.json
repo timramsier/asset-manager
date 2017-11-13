@@ -1,0 +1,863 @@
+﻿[
+ {
+   "Category": "laptops",
+   "Manufacturer": "Apple",
+   "ModelNbr": "13 INCH MACBOOK AIR",
+   "Description": "Apple MacBook Air 13in 2.2 GHz Dual Core i7 Processor, 8GB Ram, 512GB Flash, and $ 3 Recycle fee",
+   "Price": "1,612.00"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "Apple",
+   "ModelNbr": "13 INCH MACBOOK PRO RETINA",
+   "Description": "MacBook Pro 13\" Retina Display with 3.0GHz Dual-core Intel Core i7, 16GB Ram, 512GB PCIe Flash Storage $3 Recycle Fee",
+   "Price": "2,026.00"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "Apple",
+   "ModelNbr": "15 INCH MACBOOK PRO RETINA",
+   "Description": "MacBook Pro 15-inch 2.8GHz Quad-core Intel Core i7 16GB 512GB Flash Storage ,Retina Display, Backlit Keyboard, $4 recycle fee",
+   "Price": "2,487.00"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "Apple",
+   "ModelNbr": "15 INCH MACBOOK PRO",
+   "Description": "updated AnitGlare Screen15 Inch Macbooks with Apple Care Proposal # W72634443.",
+   "Price": "2,716.00"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "Apple",
+   "ModelNbr": "13 INCH MACBOOK PRO",
+   "Description": "MacBook Pro 13-inch 2.9GHz Dual-core Intel Core i7 8GB, 256GB Solid State Drive SuperDrive 8x backlit Keyboard, Mini DisplayPort to VGA Adapter Country Kit Z0LX W/ $ 6 recycle fee",
+   "Price": "1,779.00"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "Apple",
+   "ModelNbr": "MacBook Air",
+   "Description": "Apple MacBook Air 13in 1.70GHz Dual Core i7 Processor, 8GB Ram, 256GB Flash, Mini VGA adptr and $ 3 Recycle fee",
+   "Price": "1,454.00"
+ },
+ {
+   "Category": "desktops",
+   "Manufacturer": "Apple",
+   "ModelNbr": "MAC MINI",
+   "Description": "APPLE MAC MINI",
+   "Price": "0"
+ },
+ {
+   "Category": "desktops",
+   "Manufacturer": "Apple",
+   "ModelNbr": "27 INCH IMAC",
+   "Description": "27 Inch IMAC 3.1GHz, 1TB Serial ATA, 8 GB RAM",
+   "Price": "1,939.00"
+ },
+ {
+   "Category": "desktops",
+   "Manufacturer": "Apple",
+   "ModelNbr": "27 INCH IMAC RETINA",
+   "Description": "iMac with Retina 5K display 4.0GHz i7 16GB 1TB",
+   "Price": "2,713.00"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "Dell",
+   "ModelNbr": "Latitude E6420",
+   "Description": "Dell E6420 i7 2.4GHz 8GB ram and 128gb SSD Quote # 5979664",
+   "Price": "1,643.56"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "Lenovo",
+   "ModelNbr": "T450",
+   "Description": "20BV000DUS - THINKPAD T450,I75600U(2C, 2.6 / 3.2GHZ, 4MB,1600MHZ),VPRO,INTEL HD GRAPHICS 5",
+   "Price": "1,455.00"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "Dell",
+   "ModelNbr": "Latitude E6220",
+   "Description": "Dell Latitude e6220 i5 2.5GHz 8GB Ram 128GB SSD w/webcam Quote # 6023839",
+   "Price": "1,867.11"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "Dell",
+   "ModelNbr": "Latitude E6430",
+   "Description": "E6430 i7-3520M 2.9ghz 8gb 256 SSD 14\" Mse/kybd/Dock",
+   "Price": "1,678.20"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "IBM",
+   "ModelNbr": "T430S",
+   "Description": "2355HKU THINKPAD T430S I7-3520M 2.9G 8GB 180GB 14IN BT W7P 64BIT",
+   "Price": "1,469.16"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "IBM",
+   "ModelNbr": "X1 CARBON",
+   "Description": "Lenovo X1 Carbon Part # 346035U Quote # 6584037",
+   "Price": "1,489.70"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "IBM",
+   "ModelNbr": "T440S",
+   "Description": "Thinkpad T440S i7 2.1GHz 8GB 256GB Ram",
+   "Price": "1,585.44"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "Lenovo",
+   "ModelNbr": "X1 YOGA",
+   "Description": "THINKPAD X1 YOGA 1ST GENERATION, INTEL CORE I7-6600U (2.60GHZ, 4MB) 14.0 2560X14 20FQ002YUS",
+   "Price": "2,162.41"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "Dell",
+   "ModelNbr": "Latitude E6320",
+   "Description": "LATITUDE E6320 I5 2.5GHZ 8GB 128GB SSD ADVD PORT REP 3-year A - MFG # 599238108",
+   "Price": "1,675.88"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "Dell",
+   "ModelNbr": "Latitude E6410",
+   "Description": "Dell Latitude E6410 i7-620M 2.80GHz, 4.0GB Ram 2DIMM, 160GB Hard Drive, 512mb NVIDIA NVS 3100M graphics, Wide Screen WXGA+ LED",
+   "Price": "1,334.23"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "Lenovo",
+   "ModelNbr": "X1 Carbon 5th Gen",
+   "Description": "Lenovo ThinkPad X1 Carbon 20HR Core i7 7600U / 2.8 GHz - 16GB RAM - 512 GB SSD TCG Opal Encryption 2, NVMe - 14 IPS 2560 x 1440 (WQHD) CA ELECTRONIC WASTE RECYC",
+   "Price": "2,108.93"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "Lenovo",
+   "ModelNbr": "X1 Carbon 4th Gen",
+   "Description": "THINKPAD X1 CARBON 4TH GEN 20FB005LUS",
+   "Price": "2,138.38"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "Dell",
+   "ModelNbr": "Latitude E4300",
+   "Description": "DELL LATITUDE E4300",
+   "Price": "0"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "Dell",
+   "ModelNbr": "Latitude E7240",
+   "Description": "DELL LATITUDE E7240 LAPTOP",
+   "Price": "0"
+ },
+ {
+   "Category": "laptops",
+   "Manufacturer": "Microsoft",
+   "ModelNbr": "Surface Pro 5",
+   "Description": "SURFACE PRO 512GB I7 16GBCM FKJ-00001",
+   "Price": "1,997.73"
+ },
+ {
+   "Category": "desktops",
+   "Manufacturer": "Lenovo",
+   "ModelNbr": "M93P",
+   "Description": "THINKCENTRE M93P I7-4770, 8GB, 1TB SATA W7P64 - Part# 10A9002VUS",
+   "Price": "953.1"
+ },
+ {
+   "Category": "desktops",
+   "Manufacturer": "Dell",
+   "ModelNbr": "OPTIPLEX 780",
+   "Description": "Dell Optiplex 780 Small Form factor E8400 3.0GHz, 8GB Ram 4 Dimm, 320GB HD",
+   "Price": "947.77"
+ },
+ {
+   "Category": "desktops",
+   "Manufacturer": "Dell",
+   "ModelNbr": "OPTIPLEX 790",
+   "Description": "Dell Optiplex 790 SFF 3.3GHz, 8GB ram and 320GB HD supplier part # 598084642",
+   "Price": "897.04"
+ },
+ {
+   "Category": "desktops",
+   "Manufacturer": "Dell",
+   "ModelNbr": "Optiplex 790 SFF",
+   "Description": "Dell Optiplex 790 Small Form factor 3.3GHz, 8GB ram 320GB HD supplier # 598084642",
+   "Price": "897.04"
+ },
+ {
+   "Category": "desktops",
+   "Manufacturer": "IBM",
+   "ModelNbr": "M92P",
+   "Description": "ThinkCentre M92P SFF Intel Core i7-3770 Part # 3209CTO",
+   "Price": "1,636.02"
+ },
+ {
+   "Category": "desktops",
+   "Manufacturer": "IBM",
+   "ModelNbr": "THINKCENTRE M93P",
+   "Description": "THINKCENTRE M93P I7-4770, 8GB, 1TB SATA W7P64 - Part# 10A9002VUS",
+   "Price": "953.1"
+ },
+ {
+   "Category": "desktops",
+   "Manufacturer": "Dell",
+   "ModelNbr": "Precision T7600",
+   "Description": "PREC T7600 MT 6CORE XEON 2.2GHZ PROC 128GB MEM 2TB HDD 8XDVDR Quote# 6641852",
+   "Price": "7,279.47"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "IBM",
+   "ModelNbr": "Unknown Docking Station",
+   "Description": "Docking station",
+   "Price": "0"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Lenovo",
+   "ModelNbr": "T440S Dock",
+   "Description": "T440S Docking Station Ultra Dock-90",
+   "Price": "202.87"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Lenovo",
+   "ModelNbr": "40A20090US",
+   "Description": "T450 docking station",
+   "Price": "0"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Dell",
+   "ModelNbr": "20 INCH LCD",
+   "Description": "Dell 20\" Ultrasharp 2007FP Flat Panel Monitor",
+   "Price": "374"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Dell",
+   "ModelNbr": "U2410",
+   "Description": "DELL U2410, 24 inch VIS UltraSharp Widescreen,Flat Panel,",
+   "Price": "457.88"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Dell",
+   "ModelNbr": "24 INCH LCD",
+   "Description": "DELL U2410, 24 inch VIS UltraSharp Widescreen,Flat Panel,",
+   "Price": "457.88"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Dell",
+   "ModelNbr": "U2413",
+   "Description": "DELL U2413, 24 inch VIS UltraSharp Widescreen,Flat Panel,",
+   "Price": "428.99"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Dell",
+   "ModelNbr": "2007 FPW",
+   "Description": "20 inch Wide screen monitor",
+   "Price": "0"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "Thunderbolt Display",
+   "Description": "Apple Thunderbolt Display (27-inch)",
+   "Price": "899"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Dell",
+   "ModelNbr": "2007FP",
+   "Description": "Dell 20\" Ultrasharp 2007FP Flat Panel Monitor",
+   "Price": "374"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Dell",
+   "ModelNbr": "U2913WM",
+   "Description": "Dell UltraSharp 29 Ultrawide Monitor - U2913WM",
+   "Price": "397.19"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Dell",
+   "ModelNbr": "Dell 24 inch LCD",
+   "Description": "Dell 24 inc LCD",
+   "Price": "0"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "27 INCH THUNDERBOLT DISPLAY",
+   "Description": "Apple Thunderbolt Display (27-inch)",
+   "Price": "899"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Dell",
+   "ModelNbr": "P2715Q",
+   "Description": "DELL 27\" Monitor P2715Q - Quote # 1020201744791.1",
+   "Price": "545.99"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "Apple Thunderbolt Display (27-inch)",
+   "Description": "Apple Thunderbolt Display (27-inch)",
+   "Price": "899"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "27 INCH DISPLAY",
+   "Description": "Apple Thunderbolt Display (27-inch)w/recycle fee",
+   "Price": "899"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "HP",
+   "ModelNbr": "P2055dn",
+   "Description": "",
+   "Price": "200"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Western Digital",
+   "ModelNbr": "WD USB HDD",
+   "Description": "WESTERN DIGITAL EXTERNAL USB HARD DRIVE",
+   "Price": "0"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Samsung",
+   "ModelNbr": "Galaxy S6",
+   "Description": "Samsung Galaxy S6 Factory Unlocked 32GB Smartphone (U.S. Warranty Version)",
+   "Price": "499"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Samsung",
+   "ModelNbr": "Gear VR",
+   "Description": "Samsung Gear VR - Virtual Reality Headset",
+   "Price": "99.99"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPhone 6",
+   "Description": "iPhone 6 - Space Gray, 64GB, SIM-Free",
+   "Price": "649"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Microsoft",
+   "ModelNbr": "SURFACE TABLET",
+   "Description": "Surface with Windows RT - 32 GB with Black Touch Cover",
+   "Price": "599"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Other",
+   "ModelNbr": "NEXUS 7",
+   "Description": "Nexus 7 Tablet � 16GB WiFi Only",
+   "Price": "199"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPad Mini",
+   "Description": "iPad Mini White and Silver 16GB Wifi Only",
+   "Price": "329"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPad Air",
+   "Description": "iPad Air - 16GB Wi-Fi - Space Gray",
+   "Price": "499"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Other",
+   "ModelNbr": "Unite Pro",
+   "Description": "ATT UNITE PRO MIFI PHONE 510-693-2321 IMEI 013804001505601 ICCID 89014103277033243507",
+   "Price": "0"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Other",
+   "ModelNbr": "MiFi Liberate",
+   "Description": "ATT MIFI LIBERATE HOTSPOT PHONE # 510-693-9171 IMEI 013240006024340 ICCID 89014103256322134601",
+   "Price": "0"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "FUJITSU SYSTEMS",
+   "ModelNbr": "ix500",
+   "Description": "ScanSnap IX500",
+   "Price": "500"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPad",
+   "Description": "iPad with Retina display - Black 16GB",
+   "Price": "489"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "HP",
+   "ModelNbr": "HP LaserJet Pro M401N",
+   "Description": "HP LaserJet Pro 400 Printer M401n, Print speed black upto 35rpm",
+   "Price": "249.95"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "FUJITSU SYSTEMS",
+   "ModelNbr": "ScanSnap iX500",
+   "Description": "Fujitsu ScanSnap iX500 Scanner for PC and Mac (PA03656-B005)",
+   "Price": "412.36"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Amazon",
+   "ModelNbr": "Kindle Fire HD 10",
+   "Description": "Fire HD 10, 10.1\" HD Display, Wi-Fi, 32 GB, Black, W/O Special Offers.",
+   "Price": "224.99"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Other",
+   "ModelNbr": "Goolge Pixel",
+   "Description": "IMEI: 352689080833316 SKU: G-2PW4100-011-A",
+   "Price": "649"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Motorola",
+   "ModelNbr": "Moto G",
+   "Description": "IMEI: 353307069874776",
+   "Price": "0"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Other",
+   "ModelNbr": "Nikon DSLR",
+   "Description": "Nikon DSLR with lenses. D5200",
+   "Price": "0"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPad 2",
+   "Description": "APPLE IPAD 2 FOR URBANSPOON",
+   "Price": "0"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "HP",
+   "ModelNbr": "Officejet Pro 8620",
+   "Description": "HP Officejet Pro 8620 printer",
+   "Price": "299"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Other",
+   "ModelNbr": "HTC One�",
+   "Description": "HTC One� Unlocked",
+   "Price": "599.99"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "LG",
+   "ModelNbr": "Nexus 4 - Phone",
+   "Description": "Nexus 4 - Phone",
+   "Price": "299"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Samsung",
+   "ModelNbr": "Galaxy Note II",
+   "Description": "Samsung Galaxy Note II N7100 White 3G Unlocked Cell Phone w/ 5.5\" Super AMOLED Touch Screen / Bluetooth 4.0",
+   "Price": "599.99"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Samsung",
+   "ModelNbr": "Galaxy Gear Smartwatch",
+   "Description": "Samsung Galaxy Gear Smartwatch- Retail Packaging - Lime Green",
+   "Price": "299"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Samsung",
+   "ModelNbr": "Nexus 10",
+   "Description": "Nexus 10 Tablet 16GB Wifi for Mobile Team",
+   "Price": "399"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Other",
+   "ModelNbr": "Nexus 5",
+   "Description": "Nexus 5 16 GB for mobile testing SERIAL 311KPGS404703 IMEI 358239054047032 ESN 35823905404703",
+   "Price": "349"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Amazon",
+   "ModelNbr": "Kindle Fire HD",
+   "Description": "Amazon Kindle Fire HD 7 - 8GB",
+   "Price": "139"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Samsung",
+   "ModelNbr": "Galaxy Tab 3",
+   "Description": "Samsung Galaxy Tab 3 (10.1-Inch, White)",
+   "Price": "349"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Samsung",
+   "ModelNbr": "Galaxy Tab 2",
+   "Description": "Samsung Galaxy Tab 2 (10.1-Inch, Wi-Fi)",
+   "Price": "379.99"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Samsung",
+   "ModelNbr": "Galaxy S4 I9505",
+   "Description": "Samsung Galaxy S4 I9505 White 3G LTE Quad-Core 1.9GHz 16GB Unlocked Cell Phone",
+   "Price": "699.99"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Other",
+   "ModelNbr": "HTC EVO",
+   "Description": "HTC Phone",
+   "Price": "0"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Amazon",
+   "ModelNbr": "Echo",
+   "Description": "Amazon Echo",
+   "Price": "179.99"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPod Touch 8GB Black",
+   "Description": "iPod touch 8 GB � Black Quote # SC621203554",
+   "Price": "179"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPad (Retina)",
+   "Description": "iPad (Retina) - 16GB Wifi - White",
+   "Price": "399"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Other",
+   "ModelNbr": "H15111",
+   "Description": "NEXUS 6P",
+   "Price": "549.65"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Other",
+   "ModelNbr": "Google Glass Explorer Edition",
+   "Description": "Google Glass Explorer Edition",
+   "Price": "1"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPhone 7 Plus",
+   "Description": "iPhone 7 Plus 32gb Rose Gold T-Mobile Unlocked",
+   "Price": "842.06"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Other",
+   "ModelNbr": "Nexus 6{P H1511",
+   "Description": "Device: Nexus 6P Color: Matte Gold Storage: 32GB No Device Protection needed",
+   "Price": "499"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPhone 7",
+   "Description": "iPhone 7 128 gb Jet Black T-Mobile Unlocked",
+   "Price": "820.16"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "Apple Watch 2",
+   "Description": "Apple Watch Series 2 38mm Silver Aluminum White Sport Band",
+   "Price": "369"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Other",
+   "ModelNbr": "Google Daydream View",
+   "Description": "Google Daydream View for Pixel Phone",
+   "Price": "80"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Samsung",
+   "ModelNbr": "Galaxy S7",
+   "Description": "Samsung Galaxy S7 G930F 32GB Factory Unlocked GSM Smartphone International Version (Gold) - NO WARRANTY",
+   "Price": "645"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Sprint",
+   "ModelNbr": "MiFi4082",
+   "Description": "SPRINT MIFI 4G",
+   "Price": "0"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPod touch",
+   "Description": "iPod touch 32GB RED",
+   "Price": "299"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "CANON",
+   "ModelNbr": "EOS 5D",
+   "Description": "Cannon EOS 5D SLR Camera",
+   "Price": "4,599.00"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPad 3",
+   "Description": "iPad 3 White 16GB Wifi only Testing: App Development",
+   "Price": "499"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Microsoft",
+   "ModelNbr": "Surface RT",
+   "Description": "Surface RT",
+   "Price": "0"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Nokia",
+   "ModelNbr": "Lumia 520",
+   "Description": "",
+   "Price": "0"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Samsung",
+   "ModelNbr": "Galaxy S4",
+   "Description": "",
+   "Price": "0"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Samsung",
+   "ModelNbr": "Galaxy S3",
+   "Description": "Samsung Galaxy S3 SGH-i747 4G LTE GSM Unlocked 16GB No Warranty (White)",
+   "Price": "254"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Samsung",
+   "ModelNbr": "Samsung Galaxy Tab 3",
+   "Description": "Samsung Galaxy Tab 3 (7-Inch, White)",
+   "Price": "169.99"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Samsung",
+   "ModelNbr": "Galaxy Note III",
+   "Description": "Samsung Galaxy Note 3 III N9000 32gb White Factory Unlocked Android Cell Phone",
+   "Price": "714.99"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "APPLE TV",
+   "Description": "Apple TV",
+   "Price": "99"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Amazon",
+   "ModelNbr": "Kindle",
+   "Description": "Amazon Kindle",
+   "Price": "0"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Nokia",
+   "ModelNbr": "Nokia Lumia 900",
+   "Description": "ATT NOKIA LUMIA 900 PHONE WITH SERVICE IMEI: 359746044148992 GSM: 002Z4N0",
+   "Price": "0"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPhone 5",
+   "Description": "iPhone 5 with service phone number 510-289-7054",
+   "Price": "0"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Samsung",
+   "ModelNbr": "Galaxy Tab 4",
+   "Description": "Samsung Galaxy Tab 4 (10.1-Inch, Black)",
+   "Price": "299"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPhone 6 Plus",
+   "Description": "iPhone 6 Plus - Space Grey, SIM-Free, 16GB QA TEST PHONE",
+   "Price": "749"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Samsung",
+   "ModelNbr": "Tab 4",
+   "Description": "Samsung Galaxy Tab 4 - 16GB (10.1-Inch, Black)",
+   "Price": "219.99"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Samsung",
+   "ModelNbr": "Galaxy S5",
+   "Description": "Samsung Galaxy S5 SM-G900H 16GB Factory Unlocked International Version - WHITE",
+   "Price": "589.4"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPad Retina",
+   "Description": "Apple iPad MD328LL/A (16GB, Wi-Fi, White) 3rd Generation",
+   "Price": "394.95"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "LG",
+   "ModelNbr": "LG G3",
+   "Description": "LG G3 D855 16GB Metallic Black Factory Unlocked 4G 3G 2G 2G GSM 850/900/1800/1900 & 850(B5)/ 900(B8)/ 1900(B2)/ 2100(B1) & LTE 800(B20)/ 1800(B3)/ 2600(B7)",
+   "Price": "543.74"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPhone 5S",
+   "Description": "iPhone 5s 16GB SIM free - Space Gray",
+   "Price": "649"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Amazon",
+   "ModelNbr": "Fire HD 7",
+   "Description": "Fire HD 7 Tablet",
+   "Price": "139"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Nokia",
+   "ModelNbr": "Lumia 930",
+   "Description": "Nokia Lumia 930 International Unlocked Version - White",
+   "Price": "580.32"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Other",
+   "ModelNbr": "HTC One M8",
+   "Description": "HTC One M8 - Factory Unlocked 32GB - US Warranty (Gunmetal Grey)",
+   "Price": "653.95"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "",
+   "ModelNbr": "Surface 3",
+   "Description": "Microsoft Surface Pro 3 (512 GB, Intel Core i7, Windows 8.1) - Free Windows 10 Upgrade",
+   "Price": "1,692.00"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPad mini 4",
+   "Description": "iPad mini 4 - Space Gray, 64GB, WiFi only.",
+   "Price": "499"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "MLMD2LL/A",
+   "Description": "iPhone SE 64GB",
+   "Price": "499.99"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Western Digital",
+   "ModelNbr": "Passport 1TB",
+   "Description": "1 TB - external ( portable ) -USB 3.0 - blue WD My Passport Hard Drive",
+   "Price": "103.9"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Lenovo",
+   "ModelNbr": "X1 TABLET",
+   "Description": "THINKPAD X1 TABLET, INTEL M7-6Y75 (1.20GHZ, 4MB), 12.0 2160X1440 TOUCH, WINDOWS - 20GG0034US THINKPAD X1 TABLET, INTEL M7-6Y75 (1.20GHZ, 4MB), 12.0 2160X1440 TOUCH, WINDOWS",
+   "Price": "1,708.70"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPhone 6s",
+   "Description": "iPhone 6s Space Gray 16GB2 SIM-free",
+   "Price": "649"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Samsung",
+   "ModelNbr": "T3 SSD",
+   "Description": "500 GB External SSD",
+   "Price": "199"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPad mini with Retina",
+   "Description": "iPad mini with Retina - 16GB, Space Gray.",
+   "Price": "375"
+ },
+ {
+   "Category": "miscellaneous",
+   "Manufacturer": "Apple",
+   "ModelNbr": "iPhone 6S Plus",
+   "Description": "iPhone 6S Plus Space Gray with 64GB",
+   "Price": "0"
+ }
+]

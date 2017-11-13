@@ -173,13 +173,8 @@ const _controller = (model, options, query) => {
         if (err) return res.status(400).send(err);
         if (!result)
           return res.status(200).send(`${req.params.shortId} not found.`);
-        model.findOneAndUpdate(
-          { _shortId: req.params.shortId },
-          data,
-          (err, result) => {
-            callback(err, result);
-          }
-        );
+        Object.assign(result, data)
+        result.save()
       });
     }
   };
