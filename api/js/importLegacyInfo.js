@@ -26,6 +26,12 @@ const categoryMap = [
   { name: 'Other', category: 'miscellaneous' },
 ];
 
+const statusMap = {
+  'In Use': 'deployed',
+  eWasted: 'e-wasted',
+  'Not In Use': 'stock',
+};
+
 const createUsers = ({ data, modifier }) => {
   const { usersJson } = data;
   const formattedUsers = usersJson.map(user => {
@@ -109,7 +115,79 @@ const createModels = ({ data, modifier }) => {
         .catch(err => Promise.reject(err))
     );
   });
-  return Promise.all(promArray);
+  return Promise.all(promArray).then(models => {
+    data.models = models;
+    return Promise.resolve({ data, modifier });
+  });
+};
+
+const createPOs = ({ data, modifier }) => {
+  const { assetsJson } = data;
+  let promArray = [];
+
+  // get just the PO numbers
+  let pos = assetsJson
+    .map(asset => {
+      return asset.OraclePO || 'NA';
+    })
+    .filter((x, i, a) => a.indexOf(x) == i);
+
+  pos.forEach(po => {
+    console.log(po);
+    promArray.push(
+      Po.create({
+        poNumber: po,
+        bu: 'NA',
+        lastModifiedBy: modifier,
+        createdBy: modifier,
+      }).catch(err => Promise.reject(err))
+    );
+  });
+
+  return Promise.all(promArray).then(pos => {
+    data.pos = pos;
+    return Promise.resolve({ data, modifier });
+  });
+};
+
+const createAssets = ({ data, modifier }) => {
+  const { assetsJson, pos, models } = data;
+  let promArray = [];
+  assetJson.forEach(assetJson => {
+    // get PO
+    (() => Promise.resolve(pos.filter(p => p === assetJson.OraclePO)[0]))()
+      // get model
+      .then(po => {
+        const model = models.filter(m => m.name === assetJson.ModelNbr)[0];
+        return Promise.resolve({ po, model });
+      })
+      // get user
+      .then(({ po, model }) => {
+        if (assetJson.OwnerType === 'User') {
+          const username = samiJson.filter(
+            (s = s.SamiID === assetJson.OwnerSamiID)
+          )[0];
+          return User.findOne({ username })
+            .exec()
+            .then(user => Promise.resolve({ po, model, user }));
+        } else {
+          const user = null;
+          return Promise.resolve();
+        }
+      })
+      .then(({ po, model, user }) => {
+        const asset = {
+          _parent: model._id,
+          assetTag: assetJson.AssetTag,
+          status: statusMap[assetJson.AssetStatus],
+          sn: assetJson.SerialNbr,
+          po: po._id,
+          assignedTo: user ? user._id : null,
+        };
+        console.log(asset)
+        // promArray.push(Asset.create());
+      });
+  });
 };
 
 const endProcess = () => {
@@ -130,6 +208,7 @@ const connectAndImport = ({ usersPath, assetsPath, samiPath, modelsPath }) => {
     }).then(apiKey => {
       getCategories({ data, modifier: apiKey._id })
         .then(createModels)
+        .then(createPOs)
         .then(result => console.log(result))
         .then(endProcess);
     });
