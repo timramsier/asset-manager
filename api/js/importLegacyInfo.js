@@ -158,7 +158,9 @@ const createPOs = ({ data, modifier }) => {
     return Promise.resolve({ data, modifier });
   });
 };
+
 const wait = ms => new Promise(r => setTimeout(r, ms));
+
 const createAssets = ({ data, modifier }) => {
   const { assetsJson, samiJson, pos, models } = data;
   let promArray = [];
@@ -191,6 +193,7 @@ const createAssets = ({ data, modifier }) => {
     };
 
     const createAsset = ({ po, model, user }) => {
+      console.log(user);
       return new Promise((resolve, reject) => {
         const asset = {
           _parent: model._id,
@@ -211,15 +214,35 @@ const createAssets = ({ data, modifier }) => {
                   lastModified: new Date()
                 }
               },
-              (err, asset) => {
+              (err, po) => {
                 if (verbose) console.log(err);
-                asset.save(err => {
+                po.save(err => {
                   if (err) {
                     if (verbose) console.log(err);
                     return reject(err);
                   }
-                  if (verbose) console.log("Successfully created:", asset);
-                  return resolve(asset);
+                  Model.findOneAndUpdate(
+                    { _id: asset._parent },
+                    {
+                      $push: { assets: asset._id },
+                      $set: {
+                        lastModifiedBy: modifier,
+                        lastModified: new Date()
+                      }
+                    },
+                    (err, model) => {
+                      if (verbose) console.log(err);
+                      model.save(err => {
+                        if (err) {
+                          if (verbose) console.log(err);
+                          return reject(err);
+                        }
+                        if (verbose)
+                          console.log("Successfully created:", asset);
+                        return resolve(asset);
+                      });
+                    }
+                  );
                 });
               }
             );

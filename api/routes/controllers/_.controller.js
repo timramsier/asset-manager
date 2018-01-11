@@ -1,8 +1,8 @@
 const _controller = (model, options, query) => {
   let _options = {
-    properties: '',
-    populate: '',
-    popFields: '',
+    properties: "",
+    populate: "",
+    popFields: "",
     limit: 12,
     skip: 0
   };
@@ -14,7 +14,7 @@ const _controller = (model, options, query) => {
       next,
       callback = (err, result) => {
         if (err) return res.status(400).send(err);
-        res.status(200).send(JSON.stringify(result));
+        res.status(200).json(result);
       }
     ) => {
       var score = {};
@@ -28,10 +28,10 @@ const _controller = (model, options, query) => {
       if (search.search) {
         // check if index exists else remove 'search' url query data
         if (model.schema._custom && model.schema._custom.textIndex) {
-          search['$text'] = { $search: decodeURIComponent(req.query.search) };
+          search["$text"] = { $search: decodeURIComponent(req.query.search) };
           delete search.search;
-          score = { score: { $meta: 'textScore' } };
-          sort = { score: { $meta: 'textScore' } };
+          score = { score: { $meta: "textScore" } };
+          sort = { score: { $meta: "textScore" } };
         } else {
           delete search.search;
         }
@@ -63,7 +63,7 @@ const _controller = (model, options, query) => {
       next,
       callback = (err, result) => {
         if (err) return res.status(400).send(err);
-        res.status(200).send(JSON.stringify(result));
+        res.status(200).json(result);
       }
     ) => {
       model.collection.stats((err, result) => {
@@ -81,7 +81,7 @@ const _controller = (model, options, query) => {
       next,
       callback = (err, result) => {
         if (err) return res.status(400).send(err);
-        res.status(200).send(JSON.stringify(result));
+        res.status(200).json(result);
       }
     ) => {
       var score = {};
@@ -95,10 +95,10 @@ const _controller = (model, options, query) => {
       if (search.search) {
         // check if index exists else remove 'search' url query data
         if (model.schema._custom && model.schema._custom.textIndex) {
-          search['$text'] = { $search: decodeURIComponent(req.query.search) };
+          search["$text"] = { $search: decodeURIComponent(req.query.search) };
           delete search.search;
-          score = { score: { $meta: 'textScore' } };
-          sort = { score: { $meta: 'textScore' } };
+          score = { score: { $meta: "textScore" } };
+          sort = { score: { $meta: "textScore" } };
         } else {
           delete search.search;
         }
@@ -120,10 +120,10 @@ const _controller = (model, options, query) => {
       next,
       callback = (err, result) => {
         if (err) return res.status(400).send(err);
-        res.status(200).send(JSON.stringify(result));
+        res.status(200).json(result);
       }
     ) => {
-      if (!req.body) return res.status(400).send('No request body found!');
+      if (!req.body) return res.status(400).send("No request body found!");
       let data = req.body;
       Object.assign(data, {
         createdBy: req.user._id,
@@ -160,7 +160,7 @@ const _controller = (model, options, query) => {
       next,
       callback = (err, result) => {
         if (err) return res.status(400).send(err);
-        res.status(200).send(JSON.stringify(result));
+        res.status(200).json(result);
       }
     ) => {
       if (!req.body) return res.sendStatus(400);
@@ -173,8 +173,8 @@ const _controller = (model, options, query) => {
         if (err) return res.status(400).send(err);
         if (!result)
           return res.status(200).send(`${req.params.shortId} not found.`);
-        Object.assign(result, data)
-        result.save()
+        Object.assign(result, data);
+        result.save();
       });
     }
   };
