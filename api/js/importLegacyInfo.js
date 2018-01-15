@@ -201,7 +201,8 @@ const createAssets = ({ data, modifier }) => {
           status: statusMap[assetJson.AssetStatus],
           sn: assetJson.SerialNbr,
           po: po._id,
-          assignedTo: user ? user._id : null
+          assignedTo: user ? user._id : null,
+          lastModifiedBy: modifier
         };
         Asset.create(asset)
           .then(asset => {
