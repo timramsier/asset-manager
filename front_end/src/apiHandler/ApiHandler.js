@@ -4,7 +4,7 @@ const ApiHandler = options => {
   const _default = {
     uri: `http://localhost:3000/api/beta`,
     auth: {
-      username: 'test-api-key',
+      username: 'non-secure-api-key',
       password: 'x',
     },
   };
