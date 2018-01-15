@@ -9,14 +9,14 @@ const assetSchema = Schema({
   assetTag: { type: String, default: '' },
   assignedTo: { type: String, ref: 'User', default: null },
   status: { type: String, default: 'new' },
-  sn: { type: String, required: true, default: '' },
+  sn: { type: String, default: '' },
   po: { type: String, ref: 'Po' },
   lastModifiedBy: { type: String, ref: 'User' },
   lastModified: { type: Date, default: Date.now },
 });
 
 const specSchema = Schema({
-  _shortId: { type: String, unique: true, default: shortId.generate },
+  _shortId: { type: String, unique: true, default: shortId.generate, sparse: true },
   key: String,
   value: String,
 });
