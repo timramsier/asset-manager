@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
 import DataTable from './DataTable';
+import { addDisplayName } from '../../config/transforms/functions';
 
 const { func, shape, string, array, bool, object } = React.PropTypes;
 
@@ -93,6 +94,7 @@ const ModelModal = React.createClass({
         type: 'text',
         minWidthPix: 100,
         maxWidthPer: 15,
+        transformData: data => addDisplayName(data, 'assignedTo', 'Unassigned'),
       },
       {
         col: 'po',

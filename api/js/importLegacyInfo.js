@@ -193,7 +193,6 @@ const createAssets = ({ data, modifier }) => {
     };
 
     const createAsset = ({ po, model, user }) => {
-      console.log(user);
       return new Promise((resolve, reject) => {
         const asset = {
           _parent: model._id,

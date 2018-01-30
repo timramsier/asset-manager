@@ -37,7 +37,7 @@ const InputImage = React.createClass({
     const { structure, value } = this.props;
     let valid;
     const inputName = `input_${structure.type}_${structure.key}`;
-    if (value.length < 3) {
+    if (value && value.length < 3) {
       valid = 'error';
       this.props.addValidationError(inputName);
     } else {

@@ -21,6 +21,8 @@ services:
     build: ./front_end
     volumes:
       - ./front_end:/var/www
+    environment:
+      - APP_SERVER_API_URI=http://api-server:3000/api/beta
     ports:
       - "80:80"
     depends_on:

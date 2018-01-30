@@ -25,6 +25,7 @@ services:
       - "80:80"
     environment:
       - APP_DATABASE_API_KEY=707c1e06-9b6d-3a06-6006-44649231a26f
+      - APP_SERVER_API_URI=http://api-server:3000/api/beta
     depends_on:
       - api-server
       - database

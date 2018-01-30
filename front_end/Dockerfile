@@ -1,5 +1,5 @@
 FROM node:8.1.4-alpine
-MAINTAINER Tim Ramsier
+LABEL maintainer "Tim Ramsier"
 
 RUN mkdir /var/www
 

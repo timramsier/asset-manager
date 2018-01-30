@@ -23,17 +23,26 @@ const ApiHandler = options => {
   const _get = (url, params) =>
     _instance({ method: 'get', url, params })
       .then(response => response.data)
-      .catch(err => err);
+      .catch(err => {
+        console.log(err);
+        return err;
+      });
 
   const _send = (method, url, data) =>
     _instance({ method, url, data })
       .then(response => response.data)
-      .catch(err => err);
+      .catch(err => {
+        console.log(err);
+        return err;
+      });
 
   const _delete = url =>
     _instance({ method: 'delete', url })
       .then(response => response.data)
-      .catch(err => err);
+      .catch(err => {
+        console.log(err);
+        return err;
+      });
 
   const api = {
     _instance,
