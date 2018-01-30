@@ -282,7 +282,7 @@ const connectAndImport = ({ usersPath, assetsPath, samiPath, modelsPath }) => {
       username: dbConfig.customApiKey
     }).then(apiKey => {
       getCategories({ data, modifier: apiKey._id })
-        // .then(createUsers)
+        .then(createUsers)
         .then(createModels)
         .then(createPOs)
         .then(createAssets)
