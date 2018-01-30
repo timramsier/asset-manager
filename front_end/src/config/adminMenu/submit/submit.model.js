@@ -8,12 +8,12 @@ export default component => {
       const data = {};
       component.props.form.structure.forEach(entry => {
         if (entry.type === 'keyvalue') {
-          data[entry.key] = component.state.form.data[
-            entry.key
-          ].map(keyvalue => {
-            const { key, value } = keyvalue;
-            return { key, value };
-          });
+          data[entry.key] = component.state.form.data[entry.key].map(
+            keyvalue => {
+              const { key, value } = keyvalue;
+              return { key, value };
+            }
+          );
         } else if (
           entry.transformValue &&
           entry.transformValue instanceof Function

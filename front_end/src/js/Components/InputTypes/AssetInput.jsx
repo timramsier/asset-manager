@@ -189,7 +189,7 @@ const AssetInput = React.createClass({
                   <FormGroup validationState={this.state.validation.category}>
                     <ControlLabel>Category</ControlLabel>
                     <FormControl
-                      disabled={!this.props.newInput}
+                      // disabled={!this.props.newInput}
                       componentClass="select"
                       value={this.state.values.category}
                       {...changeBehavior.category}

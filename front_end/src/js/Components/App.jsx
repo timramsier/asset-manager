@@ -143,6 +143,7 @@ const App = React.createClass({
             toggleMenuOpen: this.toggleMenuOpen,
             closeMenu: this.closeMenu,
           }}
+          // eslint-disable-next-line no-undef
           loadingPromise={System.import('./LeftNavigation')}
         />
         <div className="main-content">
@@ -158,6 +159,7 @@ const App = React.createClass({
                   },
                   props
                 )}
+                // eslint-disable-next-line no-undef
                 loadingPromise={System.import('./Landing')}
               />
             )}
@@ -173,6 +175,7 @@ const App = React.createClass({
                   props
                 )}
                 setLoginUser={this.setLoginUser}
+                // eslint-disable-next-line no-undef
                 loadingPromise={System.import('./Login')}
               />
             )}
@@ -190,6 +193,7 @@ const App = React.createClass({
                   },
                   props
                 )}
+                // eslint-disable-next-line no-undef
                 loadingPromise={System.import('./ShowModels')}
               />
             )}

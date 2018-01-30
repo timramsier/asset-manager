@@ -15,6 +15,9 @@ const definePlugin = new webpack.DefinePlugin({
   'process.env.APP_FRONTEND_API_URI': JSON.stringify(
     process.env.APP_FRONTEND_API_URI
   ),
+  'process.env.APP_SERVER_API_URI': JSON.stringify(
+    process.env.APP_SERVER_API_URI
+  ),
   'process.env.APP_DATABASE_API_KEY': JSON.stringify(
     process.env.APP_DATABASE_API_KEY
   ),
@@ -34,7 +37,10 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
 // });
 
 const copyWebpackPlugin = new CopyWebpackPlugin([
-  { from: 'src/img', to: 'img' },
+  {
+    from: 'src/img',
+    to: 'img',
+  },
 ]);
 
 const VENDOR_LIB = [

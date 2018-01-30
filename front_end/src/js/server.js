@@ -19,7 +19,7 @@ const _ = require('lodash');
 const fs = require('fs');
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
-const api = require('./api').default;
+const api = require('./api.server').default;
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
@@ -31,7 +31,6 @@ const template = _.template(baseTemplate);
 const App = require('./Components/App').default;
 
 // Authentication
-
 const ensureLoggedIn = () => (req, res, next) => {
   // isAuthenticated is set by `deserializeUser()`
   if (!req.isAuthenticated || !req.isAuthenticated()) {

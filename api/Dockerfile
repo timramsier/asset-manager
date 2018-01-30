@@ -1,5 +1,5 @@
 FROM node:8.1.4-alpine
-MAINTAINER Tim Ramsier
+LABEL maintainer "Tim Ramsier"
 
 RUN mkdir /var/www
 
@@ -9,4 +9,4 @@ COPY . .
 
 RUN npm install
 
-CMD ["npm", "run", "seed","&&", "npm", "run", "setup"]
+CMD ["npm", "run", "start"]
