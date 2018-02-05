@@ -6,6 +6,8 @@ services:
       - ~/app_data/asset_manager/db:/data/db
   api-server:
     build: ./api
+    volumes:
+      - ./api:/var/www
     ports:
       - "3000:3000"
     environment:
