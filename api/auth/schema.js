@@ -75,4 +75,6 @@ userSchema.index({
   username: 'text',
 });
 
+userSchema._custom = { textIndex: true };
+
 module.exports = mongoose.model('User', userSchema);

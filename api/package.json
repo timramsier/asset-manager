@@ -10,7 +10,7 @@
     "seed": "APP_DATABASE_NAME=app_default_database node -e 'require(`./js/databaseHelpers.js`).connectAndSeed(true)'",
     "setup": "APP_DATABASE_NAME=app_default_database node -e 'require(`./js/databaseHelpers.js`).connectAndSeed()'",
     "start:init": "APP_DATABASE_NAME=app_default_database APP_CREATE_ADMIN_USER=true nodemon server.js",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
