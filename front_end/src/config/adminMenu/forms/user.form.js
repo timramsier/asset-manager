@@ -45,7 +45,7 @@ export default {
       key: 'accessLevel',
       type: 'select',
       description: 'Select the permission level of the user',
-      options: ['User', 'Admin'],
+      options: ['Basic', 'User', 'Admin'],
       colspan: 6,
     },
     {
